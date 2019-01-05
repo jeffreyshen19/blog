@@ -1,0 +1,29 @@
+// ** Fonts **
+
+@font-face { //Headings
+  font-family: "OpenSans";
+  font-weight: bold;
+  src: url("../../fonts/Open_Sans/OpenSans-Bold.ttf");
+}
+
+@font-face { //Sans Captions & non-body text elements
+  font-family: "OpenSans";
+  src: url("../../fonts/Open_Sans/OpenSans-Regular.ttf");
+}
+
+@font-face{ //Body text
+  font-family: "CrimsonText";
+  src: url("../../fonts/crimsontext/CrimsonText-Regular.ttf");
+}
+
+@font-face{ //Body text (BOLD)
+  font-family: "CrimsonText";
+  font-weight: bold;
+  src: url("../../fonts/crimsontext/CrimsonText-Bold.ttf");
+}
+
+@font-face{ //Body text (ITALIC)
+  font-family: "CrimsonText";
+  font-style: italic;
+  src: url("../../fonts/crimsontext/CrimsonText-Italic.ttf");
+}
