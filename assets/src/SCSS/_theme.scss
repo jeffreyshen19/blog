@@ -27,3 +27,24 @@
   font-style: italic;
   src: url("../../fonts/crimsontext/CrimsonText-Italic.ttf");
 }
+
+// ** Palette **
+
+// ** Text Styling **
+
+h1, h2, h3, h4, h5, h6{
+  font-family: "OpenSans";
+  font-weight: bold;
+}
+
+p, li, span{
+  font-family: "CrimsonText";
+}
+
+a{
+  font-family: "OpenSans";
+}
+
+// ** Customize Bulma **
+
+@import "../../../bower_components/bulma/bulma.sass";
