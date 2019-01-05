@@ -15,14 +15,11 @@
 # in the templates via {{ site.myvariable }}.
 title: Your awesome title
 email: your-email@example.com
-description: >- # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username: jekyllrb
-github_username:  jekyll
+description: "Politics, culture, and society—explored with data & CS."
+baseurl: ""
+url: "http://blog.jeffreyshen.com"
+twitter_username: JeffreyShen10
+github_username:  jeffreyshen19
 
 # Build settings
 markdown: kramdown
@@ -33,8 +30,8 @@ plugins:
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
 # to override the default setting.
-exclude:
-  - Gemfile
-  - Gemfile.lock
-  - node_modules
-  - assets/src
+# exclude:
+#   - Gemfile
+#   - Gemfile.lock
+#   - node_modules
+#   - assets/src
