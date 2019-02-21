@@ -18,6 +18,7 @@ exclude:
   - Gemfile.lock
   - node_modules
   - README.md
+  - bower_components
 
 # SCSS
 # sass:
