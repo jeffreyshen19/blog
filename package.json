@@ -17,8 +17,10 @@
   },
   "homepage": "https://github.com/jeffreyshen19/jshen-personal-blog#readme",
   "devDependencies": {
+    "browser-sync": "^2.26.3",
     "gulp": "^4.0.0",
     "gulp-minify": "^3.1.0",
-    "gulp-sass": "^4.0.2"
+    "gulp-sass": "^4.0.2",
+    "gulp-util": "^3.0.8"
   }
 }

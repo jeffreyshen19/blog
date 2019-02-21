@@ -1,0 +1,27 @@
+header{
+  height: 100vh;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.container{
+  padding-top: 40px;
+  padding-bottom: 20px;
+}
+
+footer{
+  .level{
+    margin: 0 !important;
+  }
+  .links{
+    a{
+      margin-left: 10px;
+    }
+  }
+  .social{
+    a{
+      margin-left: 5px;
+    }
+  }
+}

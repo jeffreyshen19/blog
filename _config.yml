@@ -16,14 +16,13 @@
 title: Your awesome title
 email: your-email@example.com
 description: "Politics, culture, and society—explored with data & CS."
-baseurl: ""
+baseurl: "/"
 url: "http://blog.jeffreyshen.com"
 twitter_username: JeffreyShen10
 github_username:  jeffreyshen19
 
 # Build settings
 markdown: kramdown
-theme: minima
 plugins:
   - jekyll-feed
 
