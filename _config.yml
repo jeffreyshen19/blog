@@ -17,5 +17,8 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - node_modules
-  - assets/src
   - README.md
+
+# SCSS
+# sass:
+#   sass_dir: ./_scss
