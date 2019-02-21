@@ -7,13 +7,15 @@ twitter_username: JeffreyShen10
 github_username:  jeffreyshen19
 
 # Build settings
+theme: minima
 markdown: kramdown
 plugins:
   - jekyll-feed
 
-# Ignore 
+# Ignore
 exclude:
   - Gemfile
   - Gemfile.lock
   - node_modules
   - assets/src
+  - README.md
