@@ -1,0 +1,18 @@
+footer{
+  background: $gray;
+  padding: 40px 40px 20px;
+
+  .level{
+    margin: 0 !important;
+  }
+  .links{
+    a{
+      margin-left: 10px;
+    }
+  }
+  .social{
+    a{
+      margin-left: 5px;
+    }
+  }
+}
