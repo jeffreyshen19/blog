@@ -16,3 +16,18 @@ footer{
     }
   }
 }
+
+@media screen and (max-width: 768px){
+  footer{
+    #links{
+      margin-top: 0 !important;
+    }
+    #description{
+      margin-top: 0 !important;
+      text-align: center;
+    }
+    #social{
+      margin-top: 10px !important;
+    }
+  }
+}
