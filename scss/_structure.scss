@@ -3,6 +3,32 @@ header{
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+  padding: 40px;
+
+  nav{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    padding: 15px 20px;
+
+    a{
+      font-family: "CrimsonText";
+      font-weight: bold;
+      font-size: 30px;
+    }
+  }
+
+  .text{
+    top: 50%;
+    transform: translateY(-50%);
+    position: relative;
+
+    h1{
+      margin-bottom: 8px;
+      line-height: 1em;
+    }
+  }
 }
 
 .container{

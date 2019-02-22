@@ -42,12 +42,12 @@
   <!-- Header -->
   <header style = "background-image:url('/assets/graphics/posts/{{ page.featured_image }}')">
     <nav>
-      <h1>Jeffrey Shen // Blog</h1>
+      <a href = "/" style = "color:{{page.color}}">JS</a>
     </nav>
 
-    <div class = "has-text-centered">
-      <h1>{{ page.title }}</h1>
-      <h2>{{ page.subtitle }}</h2>
+    <div class = "has-text-centered text" style = "color:{{page.color}}">
+      <h1 class = "is-size-1">{{ page.title }}</h1>
+      <p class = "is-size-4">{{ page.subtitle }}</p>
     </div>
   </header>
 
