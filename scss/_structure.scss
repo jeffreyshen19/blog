@@ -6,6 +6,36 @@ header{
 }
 
 .container{
-  padding-top: 40px;
-  padding-bottom: 20px;
+  padding: 40px 20px;
+}
+
+#subscribe{
+  width: 100%;
+  text-align: center;
+  padding: 50px 40px;
+  color: $gray;
+
+  background: #4e54c8;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #8f94fb, #4e54c8);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #8f94fb, #4e54c8); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  #mc_embed_signup_scroll{
+    text-align: left;
+    p{
+      margin-top: -5px;
+    }
+  }
+
+  h2{
+    margin-bottom: 8px;
+  }
+
+  .input, .button{
+    border: none;
+  }
+
+  .button{
+    background: #f0f0f0;
+    font-weight: bold;
+  }
 }

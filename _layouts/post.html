@@ -54,9 +54,9 @@
   <div class = "container">
 
     <!-- Attribution -->
-    <p>Jeffrey Shen</p>
+    <p><strong>Jeffrey Shen</strong></p>
     <p>{{ page.date | date: "%b %-d, %Y" }}</p>
-    <hr>
+    <br>
 
     <!-- Content -->
     {{ content }}
@@ -70,34 +70,21 @@
         <li><a href = "{{ post.url }}" target = "_blank">{{ post.title }}</a></li>
       {% endfor %}
     </ol>
-    <hr>
+    <br>
+
+    <!-- Subscribe Banner  -->
+    {% include subscribe.html %}
+    <br>
 
     <!-- Social & Related Content -->
-    <div class="fb-like" data-href="{{page.url}}" data-layout="button_count" data-action="like" data-size="large" data-show-faces="false" data-share="false"></div>
-    <a class="twitter-share-button"
-      href="https://twitter.com/intent/tweet?text={{page.title}}"
-      data-size="large">
-    Tweet</a>
-
-
-    <!-- Mailchimp Signup Form  -->
-    <div id="mc_embed_signup">
-      <form action="https://jeffreyshen.us7.list-manage.com/subscribe/post?u=a4aa043c23423342050e28668&amp;id=2de6eeb975" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-        <div id="mc_embed_signup_scroll">
-          <h2>Never miss a post.</h2>
-          <div class="mc-field-group">
-            <label for="mce-EMAIL">Email</label>
-            <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
-          </div>
-          <div id="mce-responses" class="clear">
-            <div class="response" id="mce-error-response" style="display:none"></div>
-            <div class="response" id="mce-success-response" style="display:none"></div>
-          </div>
-          <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-          <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_a4aa043c23423342050e28668_2de6eeb975" tabindex="-1" value=""></div>
-          <div class="clear"><input type="submit" value="JOIN!" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
-        </div>
-      </form>
+    <div class = "level is-mobile">
+      <div class = "level-left">
+        <div class="fb-like level-item" data-href="{{page.url}}" data-layout="button_count" data-action="like" data-size="large" data-show-faces="false" data-share="false"></div>
+        <div class = "level-item"><a class="twitter-share-button"
+          href="https://twitter.com/intent/tweet?text={{page.title}}"
+          data-size="large">
+        Tweet</a></div>
+      </div>
     </div>
 
   </div>
