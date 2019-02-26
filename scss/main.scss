@@ -1,0 +1,17 @@
+---
+---
+
+@import "theme";
+@import "footer";
+@import "nav";
+@import "components/subscribe";
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+#wrapper {
+  min-height: 100%;
+  margin-top: 200px;
+}

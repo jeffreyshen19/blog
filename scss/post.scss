@@ -3,4 +3,28 @@
 
 @import "theme";
 @import "footer";
-@import "structure";
+@import "nav";
+@import "components/subscribe";
+
+header{
+  height: 100vh;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 40px;
+
+  .text{
+    top: 50%;
+    transform: translateY(-50%);
+    position: relative;
+
+    h1{
+      margin-bottom: 8px;
+      line-height: 1em;
+    }
+  }
+}
+
+.container{
+  padding: 40px 20px;
+}

@@ -1,27 +1,51 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-<head>
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-115738654-4"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+  <head>
+    {% include head.html %}
+    <title>Jeffrey Shen • {{site.description}}</title>
+    <link type = "text/css" rel = "stylesheet" href = "/scss/main.css">
+  </head>
+  <body>
+    <!-- Nav -->
+    <nav>
+      <a href = "/" style = "color:black">JS</a>
+    </nav>
 
-    gtag('config', 'UA-115738654-4');
-  </script>
+    <div id="wrapper">
+      <div class="home">
+        {%- if page.title -%}
+          <h1 class="page-heading">{{ page.title }}</h1>
+        {%- endif -%}
 
-  <meta charset = "utf-8">
-  <meta name = "Description" content = "{{site.description}}">
-  <meta name = "author" content = "Jeffrey Shen">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Jeffrey Shen • {{site.description}}</title>
+        {{ content }}
 
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-  <link type = "text/css" rel = "stylesheet" href = "/scss/bulma.min.css">
-  <!-- <link type = "text/css" rel = "stylesheet" href = "/scss/post.css"> -->
-</head>
-<body>
-  {{content}}
-</body>
+        {%- if site.posts.size > 0 -%}
+          <h2 class="post-list-heading">{{ page.list_title | default: "Posts" }}</h2>
+          <ul class="post-list">
+            {%- for post in site.posts -%}
+            <li>
+              {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+              <span class="post-meta">{{ post.date | date: date_format }}</span>
+              <h3>
+                <a class="post-link" href="{{ post.url | relative_url }}">
+                  {{ post.title | escape }}
+                </a>
+              </h3>
+              {%- if site.show_excerpts -%}
+                {{ post.excerpt }}
+              {%- endif -%}
+            </li>
+            {%- endfor -%}
+          </ul>
+
+          <p class="feed-subscribe"><svg class="svg-icon orange"><use xlink:href="{{ '/assets/minima-social-icons.svg#rss' | relative_url }}"></use></svg><a href="{{ "/feed.xml" | relative_url }}">Subscribe</a></p>
+        {%- endif -%}
+
+      </div>
+    </div>
+
+    <!-- Footer -->
+    {%- include footer.html -%}
+
+  </body>
 </html>
