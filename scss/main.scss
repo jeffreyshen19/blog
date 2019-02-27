@@ -20,6 +20,7 @@ header{
   a.heading{
     display: inline;
     margin-right: 10px;
+    white-space: nowrap;
   }
 }
 
@@ -72,4 +73,24 @@ header{
 
 footer{
   margin-top: 50px;
+}
+
+@media screen and (max-width: 1020px){
+  .container{
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 890px){
+  .container{
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 768px){
+  #posts{
+    img{
+      width: 100%;
+    }
+  }
 }
