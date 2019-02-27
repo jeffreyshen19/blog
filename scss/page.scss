@@ -1,0 +1,29 @@
+---
+---
+
+@import "theme";
+@import "footer";
+@import "nav";
+
+#wrapper{
+  min-height: 100vh;
+  padding-top: 30px;
+  padding-bottom: 40px;
+  width: 70%;
+  margin: 0 auto;
+  position: relative;
+
+  nav{
+    position: relative;
+    padding: 0;
+  }
+
+  h1{
+    margin-bottom: 10px;
+    text-align: center;
+  }
+
+  p{
+    margin-bottom: 1em;
+  }
+}
