@@ -30,6 +30,7 @@
 
 // ** Palette **
 $gray: #f2f2f2;
+$purple: #6c5ce7;
 
 // ** Text Styling **
 
@@ -48,4 +49,10 @@ a, .sans{
 
 ul, ol{
   padding-left: 20px;
+}
+
+// ** Layout **
+
+.container{
+  padding: 40px 20px;
 }

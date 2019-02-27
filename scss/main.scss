@@ -6,12 +6,70 @@
 @import "nav";
 @import "components/subscribe";
 
-html, body {
-  height: 100%;
-  margin: 0;
+body{
+  padding-top: 40px;
 }
 
-#wrapper {
-  min-height: 100%;
-  margin-top: 200px;
+header{
+  h1{
+    font-family: "Georgia";
+  }
+  .links{
+    margin-top: 10px;
+  }
+  a.heading{
+    display: inline;
+    margin-right: 10px;
+  }
+}
+
+#post{
+  img{
+    width: 100%;
+  }
+  a{
+    color: black;
+    &:hover{
+      color: $purple;
+    }
+  }
+}
+
+#posts{
+  padding-left: 0;
+  padding-top: 5px;
+
+  h1{
+    line-height: 1em;
+    margin-bottom: 5px;
+  }
+
+  h1 a{
+    color: black;
+    &:hover{
+      color: $purple;
+    }
+    margin: 0;
+  }
+
+  img{
+    width: 200px;
+  }
+
+  .meta{
+    font-family: "OpenSans";
+    span{
+      font-family: inherit;
+      color: $purple;
+    }
+  }
+}
+
+.container{
+  width: 70%;
+  margin: 0 auto;
+}
+
+footer{
+  margin-top: 50px;
 }

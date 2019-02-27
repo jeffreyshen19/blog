@@ -6,42 +6,64 @@
     <link type = "text/css" rel = "stylesheet" href = "/scss/main.css">
   </head>
   <body>
-    <!-- Nav -->
-    <nav>
-      <a href = "/" style = "color:black">JS</a>
-    </nav>
 
-    <div id="wrapper">
-      <div class="home">
-        {%- if page.title -%}
-          <h1 class="page-heading">{{ page.title }}</h1>
-        {%- endif -%}
+    <div class = "container">
+      <!-- Header -->
+      <header class = "has-text-centered">
+        <h1 class = "is-size-2">{{site.title}}</h1>
+        <p class = "is-size-4">Exploring politics, culture, and society with computer science</p>
+        <div class = "links">
+          <a href = "/about" class = "heading is-size-6">ABOUT</a>
+          <a href = "/politics" class = "heading is-size-6">POLITICS</a>
+          <a href = "/culture" class = "heading is-size-6">CULTURE</a>
+          <a href = "/social" class = "heading is-size-6">SOCIAL ISSUES</a>
+        </div>
+        <br>
+        <br>
+      </header>
 
-        {{ content }}
+      <!-- Featured Content -->
+      <div id = "post">
+        {%- assign featured_post = site.posts[0] -%}
+        <img src = "/assets/graphics/posts/{{ featured_post.featured_image }}"/>
+        <h1 class = "is-size-3">
+          <a href="{{ featured_post.url | relative_url }}">
+            {{ featured_post.title | escape }}
+          </a>
+        </h1>
+        <p class = "is-size-5">{{ featured_post.description }}</p>
+      </div>
+      <br>
+      <br>
 
-        {%- if site.posts.size > 0 -%}
-          <h2 class="post-list-heading">{{ page.list_title | default: "Posts" }}</h2>
-          <ul class="post-list">
-            {%- for post in site.posts -%}
-            <li>
-              {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-              <span class="post-meta">{{ post.date | date: date_format }}</span>
-              <h3>
-                <a class="post-link" href="{{ post.url | relative_url }}">
+      <!-- Subscribe Banner  -->
+      {% include subscribe.html %}
+      <br>
+      <br>
+
+      <!-- Post Feed -->
+      <h1 class = "is-size-5">ALL POSTS</h1>
+      <div id = "posts">
+        {%- for post in site.posts -%}
+          {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+          <div class = "columns">
+            <div class = "column is-narrow">
+              <img src = "/assets/graphics/posts/{{ post.featured_image }}"/>
+            </div>
+            <div class = "column">
+              <h1 class = "is-size-3">
+                <a href="{{ post.url | relative_url }}">
                   {{ post.title | escape }}
                 </a>
-              </h3>
-              {%- if site.show_excerpts -%}
-                {{ post.excerpt }}
-              {%- endif -%}
-            </li>
-            {%- endfor -%}
-          </ul>
-
-          <p class="feed-subscribe"><svg class="svg-icon orange"><use xlink:href="{{ '/assets/minima-social-icons.svg#rss' | relative_url }}"></use></svg><a href="{{ "/feed.xml" | relative_url }}">Subscribe</a></p>
-        {%- endif -%}
-
+              </h1>
+              <p class = "is-size-5">{{ post.description }}</p>
+              <br>
+              <p class = "meta is-size-6 heading"><span>{{post.categories}}</span> • {{ post.date | date: date_format }}</p>
+            </div>
+          </div>
+        {%- endfor -%}
       </div>
+
     </div>
 
     <!-- Footer -->
