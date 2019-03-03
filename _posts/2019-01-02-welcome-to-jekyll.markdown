@@ -5,7 +5,7 @@ subtitle: "This is a subtitle."
 date:   2019-01-02 14:43:26 -0800
 categories: jekyll
 source_code: "[link]"
-featured_image: "test.jpg"
+image: "test.jpg"
 references: [{title: "Title of Reference", url: "https://example.com"}]
 color: "#fff"
 description: "Ea nisi sunt ad qui adipisicing id nisi officia velit qui qui culpa sit anim aliqua reprehenderit."
