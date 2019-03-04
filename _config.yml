@@ -6,6 +6,9 @@ url: "http://blog.jeffreyshen.com"
 twitter_username: JeffreyShen10
 github_username:  jeffreyshen19
 
+plugins:
+  - jekyll-jsminify
+
 # Build settings
 theme: minima
 markdown: kramdown
