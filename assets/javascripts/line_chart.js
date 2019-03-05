@@ -11,12 +11,12 @@ var lineCharts = Array.apply(null, Array(d3.selectAll(".line-chart").size())); /
 
 function drawLineChart(chart, dataset, data){
   // Statics
-  var	margin = {top: 30, right: 20, bottom: 30, left: 50};
+  var	margin = {top: 30, right: 20, bottom: 50, left: 65};
   var	padding = {top: 40, right: 20, bottom: 40, left: 20};
 
   // Set dimensions of graph
   var width = d3.select("#body").node().offsetWidth - margin.left - margin.right - padding.left - padding.right,
-      height = 500 - margin.top - margin.bottom;
+      height = (dataset.height || 300) - margin.top - margin.bottom;
 
   // Set the ranges
   var	x = d3.scaleTime().range([0, width]),
@@ -29,7 +29,7 @@ function drawLineChart(chart, dataset, data){
   // Define line(s)
   var	valueline = d3.line()
     .x(function(d) { return x(d.date); })
-    .y(function(d) { return y(d.average_prop_unique_words); });
+    .y(function(d) { return y(d.average_prop_unique_words); }); //TODO
 
   // Reset canvas
   chart.selectAll("*").remove();
@@ -49,7 +49,7 @@ function drawLineChart(chart, dataset, data){
   // Add Line(s)
   svg.append("path")
     .attr("class", "line")
-    .attr("d", valueline(data));
+    .attr("d", valueline(data)); //TODO
 
   // Add the X Axis
   svg.append("g")
@@ -62,6 +62,20 @@ function drawLineChart(chart, dataset, data){
     .attr("class", "y axis")
     .call(yAxis);
 
+  // X Axis Label
+  svg.append("text")
+    .attr("transform", "translate(" + (width / 2) + " ," + (height + margin.top + 20) + ")")
+    .attr("class", "axis-label")
+    .text(dataset.xlabel);
+
+  // Y Axis Label
+  svg.append("text")
+    .attr("transform", "rotate(-90)")
+    .attr("class", "axis-label")
+    .attr("y", 0 - margin.left)
+    .attr("x", 0 - (height / 2))
+    .attr("dy", "1em")
+    .text(dataset.ylabel);
 }
 
 /*

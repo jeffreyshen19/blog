@@ -9,4 +9,4 @@ references: []
 color: "#fff"
 ---
 
-{% include graphs/line-chart.html csv = "/data/mumble_rap/lyricalness.csv" %}
+{% include graphs/line-chart.html csv = "/data/mumble_rap/lyricalness.csv" xlabel = "Date" ylabel = "Avg. % of Unique Words" %}
