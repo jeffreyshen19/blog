@@ -26,11 +26,6 @@ function drawLineChart(chart, dataset, data){
   var xAxis = d3.axisBottom(x),
       yAxis = d3.axisLeft(y);
 
-  // Define line(s)
-  var	valueline = d3.line()
-    .x(function(d) { return x(d.date); })
-    .y(function(d) { return y(d.average_prop_unique_words); }); //TODO
-
   // Reset canvas
   chart.selectAll("*").remove();
 
@@ -43,13 +38,24 @@ function drawLineChart(chart, dataset, data){
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
   // Fit Domain
-  x.domain(d3.extent(data, function(d) { return d.date; }));
-  y.domain([0, d3.max(data, function(d) { return d.average_prop_unique_words; })]);
+  x.domain(d3.extent(data, function(d) { return d[dataset.xcol]; }));
+  y.domain([0, d3.max(data, function(d) {
+    return Math.max(...dataset.ycols.split(",").map(function(ycol){
+      return d[ycol];
+    }));
+  })]);
 
   // Add Line(s)
-  svg.append("path")
-    .attr("class", "line")
-    .attr("d", valueline(data)); //TODO
+  dataset.ycols.split(",").forEach(function(ycol, i){
+    var	valueline = d3.line()
+      .x(function(d) { return x(d[dataset.xcol]); })
+      .y(function(d) { return y(d[ycol]); });
+
+    svg.append("path")
+      .attr("class", "line")
+      .style("stroke", dataset.linecolors.split(",")[i])
+      .attr("d", valueline(data));
+  });
 
   // Add the X Axis
   svg.append("g")
@@ -82,6 +88,25 @@ function drawLineChart(chart, dataset, data){
     .attr("x", 0 - (height / 2))
     .attr("dy", "1em")
     .text(dataset.ylabel);
+
+  // Add legend if there are multiple lines
+  if(dataset.ycols.split(",").length > 1){
+    chart.append("div")
+      .attr("class", "legend")
+      .selectAll(".legend-label")
+      .data(dataset.linelabels.split(",").map(function(e, i){
+          return {
+            "color": dataset.linecolors.split(",")[i],
+            "label": e
+          };
+        }))
+      .enter()
+      .append('div')
+        .attr("class", "legend-label")
+        .html(function(d, i){
+          return "<div class = 'bubble' style = 'background-color:" + d.color + "'></div><span>" + d.label + "</span>";
+        });
+  }
 }
 
 /*
@@ -99,8 +124,10 @@ function initializeLineCharts(){
       var	parseDate = d3.timeParse("%Y-%m-%d");
 
       data.forEach(function(d){
-        d.date = parseDate(d.date);
-        d.average_prop_unique_words = parseFloat(d.average_prop_unique_words);
+        d[dataset.xcol] = parseDate(d[dataset.xcol]);
+        dataset.ycols.split(",").forEach(function(ycol){
+          d[ycol] = parseFloat(d[ycol]);
+        });
       });
 
       drawLineChart(chart, dataset, data);

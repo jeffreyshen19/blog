@@ -1,7 +1,6 @@
 .line {
   fill: none;
-  stroke: steelblue;
-  stroke-width: 1px;
+  stroke-width: 2px;
 }
 
 .axis{
@@ -18,4 +17,23 @@
 .title{
   font-size: 20px;
   font-weight: bold;
+}
+
+.legend span{
+  font-size: 14px;
+  font-family: "OpenSans";
+  margin-left: 6px;
+}
+
+.legend-label{
+  margin-right: 15px;
+  display: inline-block;
+}
+
+.bubble{
+  width: 14px;
+  height: 14px;
+  border-radius: 100%;
+  display: inline-block;
+  vertical-align: middle;
 }
