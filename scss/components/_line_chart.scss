@@ -22,7 +22,6 @@
 .legend span{
   font-size: 14px;
   font-family: "OpenSans";
-  margin-left: 6px;
 }
 
 .legend-label{
@@ -36,4 +35,18 @@
   border-radius: 100%;
   display: inline-block;
   vertical-align: middle;
+  margin-right: 6px;
+}
+
+.tooltip{
+  position: absolute;
+  white-space: nowrap;
+  background: white;
+  padding: 10px;
+  box-sizing: border-box;
+  background: #EEEEEE;
+}
+
+.hidden{
+  display: none;
 }

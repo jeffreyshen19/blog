@@ -38,12 +38,14 @@ function drawLineChart(chart, dataset, data){
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
   // Fit Domain
-  x.domain(d3.extent(data, function(d) { return d[dataset.xcol]; }));
-  y.domain([0, d3.max(data, function(d) {
+  var ymax = d3.max(data, function(d) {
     return Math.max(...dataset.ycols.split(",").map(function(ycol){
       return d[ycol];
     }));
-  })]);
+  });
+  var xextent = d3.extent(data, function(d) { return d[dataset.xcol]; });
+  x.domain(xextent);
+  y.domain([0, ymax]);
 
   // Add Line(s)
   dataset.ycols.split(",").forEach(function(ycol, i){
@@ -107,6 +109,62 @@ function drawLineChart(chart, dataset, data){
           return "<div class = 'bubble' style = 'background-color:" + d.color + "'></div><span>" + d.label + "</span>";
         });
   }
+
+  /*
+    TOOLTIP
+  */
+
+  // Add tooltip and tooltip line
+  chart.append("div")
+    .attr("class", "tooltip hidden");
+
+  svg.append("line")
+    .attr("class", "tooltip-line hidden")
+    .attr("x1", x(xextent[0]))
+    .attr("y1", y(0))
+    .attr("x2", x(xextent[0]))
+    .attr("y2", y(ymax))
+    .style("stroke", "black")
+    .style("stroke-width", "1")
+    .style("stroke-dasharray", "5,5");
+
+  var tooltipLine = chart.select(".tooltip-line"),
+      tooltip = chart.select(".tooltip");
+
+  var bisect = d3.bisector(function(d){ return d[dataset.xcol]; }).right;
+  var ycols = dataset.ycols.split(","),
+      colors = dataset.linecolors.split(","),
+      labels = dataset.linelabels.split(",");
+
+  var format = d3.timeFormat("%b %e, %Y");
+
+  chart.select("svg").on("mousemove", function(){
+    var mouse = d3.mouse(this),
+        mouseX = x.invert(mouse[0] - margin.left),
+        index = bisect(data, mouseX),
+        datum = data[index];
+
+    if(index == 0){
+      tooltip.classed("hidden", true);
+      tooltipLine.classed("hidden", true);
+    }
+    else{
+      tooltipLine.attr("x1", x(datum[dataset.xcol]))
+        .attr("x2", x(datum[dataset.xcol]))
+        .classed("hidden", false);
+
+      tooltip.classed("hidden", false)
+        .html("<strong>" + format(datum[dataset.xcol]) + "</strong><br>" + ycols.map(function(d, i){
+          return "<div class = 'tooltip-label'><div class = 'bubble' style = 'background-color:" + colors[i] + "'></div>" + labels[i] + ": " + datum[d].toFixed(2) + "</div>";
+        }).join(""))
+        .style("left", (20 + mouse[0] + tooltip.node().offsetWidth > chart.node().offsetWidth ? mouse[0] + 10 - tooltip.node().offsetWidth : mouse[0] + 30) + "px")
+        .style("top", y(0) + margin.top + 10 + "px");
+    }
+  }).on("mouseout", function(d){
+    tooltip.classed("hidden", true);
+    tooltipLine.classed("hidden", true);
+  });
+
 }
 
 /*
