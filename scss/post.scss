@@ -3,27 +3,20 @@
 
 @import "theme";
 @import "footer";
-@import "nav";
 @import "components/subscribe";
 @import "components/line_chart";
+@import "components/headers";
 
-header{
-  height: 75vh;
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  padding: 40px;
+.date{
+  color: $blue;
+  font-family: "OpenSans";
+  font-size: 0.9rem;
+  margin-top: -4px;
+}
 
-  .text{
-    top: 50%;
-    transform: translateY(-50%);
-    position: relative;
-
-    h1{
-      margin-bottom: 8px;
-      line-height: 1em;
-    }
-  }
+.container{
+  width: 60%;
+  margin: 0 auto;
 }
 
 .content{
@@ -34,4 +27,42 @@ header{
   h1{
     font-size: 1.5rem;
   }
+}
+
+
+@media screen and (max-width: 1000px){
+  .container{
+    width: 70%;
+  }
+
+  header.centered{
+    width: 75%;
+  }
+}
+
+@media screen and (max-width: 800px){
+  .container{
+    width: 80%;
+  }
+
+  header.centered{
+    width: 85%;
+  }
+}
+
+@media screen and (max-width: 600px){
+  .container{
+    width: 95%;
+  }
+
+  header.centered{
+    width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+
+    .titles{
+      padding: 0 10px;
+    }
+  }
+
 }

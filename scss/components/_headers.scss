@@ -1,0 +1,48 @@
+@import "nav";
+
+header.jumbotron{
+  height: 75vh;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 40px;
+
+  .text{
+    top: 50%;
+    transform: translateY(-50%);
+    position: relative;
+
+    h1{
+      margin-bottom: 8px;
+      line-height: 1em;
+    }
+  }
+}
+
+header.default{
+  padding-top: 70px;
+  padding-bottom: 0;
+  margin-bottom: -10px;
+}
+
+header.centered{
+  nav{
+    text-align: left;
+  }
+
+  .caption{
+    font-family: "OpenSans";
+    text-align: left;
+  }
+
+  padding-top: 70px;
+  width: 65%;
+  margin: 0 auto;
+  text-align: center;
+  margin-bottom: -20px;
+}
+
+header h1{
+  line-height: 1em;
+  margin-bottom: 5px;
+}
