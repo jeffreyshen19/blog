@@ -5,4 +5,5 @@ subtitle: "A historical primer on Congressional seat-votes curves and partisan b
 categories: Politics
 image: "capitol.jpg"
 redirect_url: "https://jeffreyshen19.github.io/Seats-Votes-Curves/"
+featured: "true"
 ---

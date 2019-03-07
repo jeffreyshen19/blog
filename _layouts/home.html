@@ -24,7 +24,8 @@
 
       <!-- Featured Content -->
       <div id = "post">
-        {%- assign featured_post = site.posts[0] -%}
+        {%- assign posts = site.posts | where: "featured", "true" -%}
+        {%- assign featured_post = posts[0] -%}
         <img src = "/assets/graphics/posts/{{ featured_post.image }}"/>
         <h1 class = "is-size-3">
           <a href="{{ featured_post.url | relative_url }}">
