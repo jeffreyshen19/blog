@@ -8,7 +8,7 @@
 @import "components/line_chart";
 
 header{
-  height: 100vh;
+  height: 75vh;
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -23,5 +23,11 @@ header{
       margin-bottom: 8px;
       line-height: 1em;
     }
+  }
+}
+
+.content{
+  p, ul{
+    margin-bottom: 1rem;
   }
 }

@@ -157,8 +157,8 @@ function drawLineChart(chart, dataset, data){
         .html("<strong>" + format(datum[dataset.xcol]) + "</strong><br>" + ycols.map(function(d, i){
           return "<div class = 'tooltip-label'><div class = 'bubble' style = 'background-color:" + colors[i] + "'></div>" + labels[i] + ": " + datum[d].toFixed(2) + "</div>";
         }).join(""))
-        .style("left", (20 + mouse[0] + tooltip.node().offsetWidth > chart.node().offsetWidth ? mouse[0] + 10 - tooltip.node().offsetWidth : mouse[0] + 30) + "px")
-        .style("top", y(0) + margin.top + 10 + "px");
+        .style("left", (20 + mouse[0] + tooltip.node().offsetWidth > chart.node().offsetWidth ? mouse[0] - 10 - tooltip.node().offsetWidth : mouse[0] + 10) + "px")
+        .style("top", y(0) - tooltip.node().offsetHeight + margin.top - 10 + "px");
     }
   }).on("mouseout", function(d){
     tooltip.classed("hidden", true);
