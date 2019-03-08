@@ -27,6 +27,12 @@ function drawLineChart(chart, dataset, data){
   var xAxis = d3.axisBottom(x),
       yAxis = d3.axisLeft(y);
 
+  // Set ticks responsively
+  var body_width = d3.select("body").node().offsetWidth;
+  if(body_width < 400) xAxis.ticks(d3.timeYear.every(8));
+  else if(body_width < 800) xAxis.ticks(d3.timeYear.every(4));
+  else xAxis.ticks(d3.timeYear.every(2));
+
   // Reset canvas
   chart.selectAll("*").remove();
 
@@ -145,7 +151,7 @@ function drawLineChart(chart, dataset, data){
         index = bisect(data, mouseX),
         datum = data[index];
 
-    if(index == 0){
+    if(datum == null){
       tooltip.classed("hidden", true);
       tooltipLine.classed("hidden", true);
     }
