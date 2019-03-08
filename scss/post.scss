@@ -20,8 +20,11 @@
 }
 
 .content{
+  font-size: 18px;
+
   p, ul{
-    margin-bottom: 1rem;
+    margin-bottom: 1em;
+    line-height: 1.7em;
   }
 
   h1{
@@ -29,13 +32,12 @@
   }
 }
 
-
 @media screen and (max-width: 1000px){
   .container{
     width: 70%;
   }
 
-  header.centered{
+  header.centered, .offset{
     width: 75%;
   }
 }
@@ -45,7 +47,7 @@
     width: 80%;
   }
 
-  header.centered{
+  header.centered, .offset{
     width: 85%;
   }
 }
@@ -55,7 +57,7 @@
     width: 95%;
   }
 
-  header.centered{
+  header.centered, .offset{
     width: 100%;
     padding-left: 0;
     padding-right: 0;
