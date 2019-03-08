@@ -32,13 +32,23 @@
   }
 }
 
+// Elements that produce slightly from text
+.offset{
+  width: 65vw !important;
+  margin-left: calc(-2.5vw - 20px) !important;
+}
+
 @media screen and (max-width: 1000px){
   .container{
     width: 70%;
   }
 
-  header.centered, .offset{
+  header.centered{
     width: 75%;
+  }
+
+  .offset{
+    width: 75vw !important;
   }
 }
 
@@ -47,8 +57,12 @@
     width: 80%;
   }
 
-  header.centered, .offset{
+  header.centered{
     width: 85%;
+  }
+
+  .offset{
+    width: 85vw !important;
   }
 }
 
@@ -57,7 +71,7 @@
     width: 95%;
   }
 
-  header.centered, .offset{
+  header.centered{
     width: 100%;
     padding-left: 0;
     padding-right: 0;
@@ -67,4 +81,7 @@
     }
   }
 
+  .offset{
+    width: 100vw !important;
+  }
 }
