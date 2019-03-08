@@ -28,6 +28,32 @@ header.default{
 header.centered{
   nav{
     text-align: left;
+    background: $black;
+    padding-bottom: 10px;
+    a{
+      color: white;
+      &:hover{
+        color: white;
+      }
+    }
+
+    &:after{
+      height: 5px;
+      width: 100%;
+      background: #4e54c8;  /* fallback for old browsers */
+      background: -webkit-linear-gradient(to right, #8f94fb, #4e54c8);  /* Chrome 10-25, Safari 5.1-6 */
+      background: linear-gradient(to right, #8f94fb, #4e54c8); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 70px;
+    }
+  }
+
+  .category{
+    color: $purple;
+    font-family: "OpenSans";
+    font-size: 1.1rem;
   }
 
   .caption{
@@ -39,7 +65,7 @@ header.centered{
     width: 100%;
   }
 
-  padding-top: 80px;
+  padding-top: 120px;
   width: 65%;
   margin: 0 auto;
   text-align: center;
