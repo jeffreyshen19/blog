@@ -165,7 +165,7 @@ function drawLineChart(chart, dataset, data){
           return "<div class = 'tooltip-label'><div class = 'bubble' style = 'background-color:" + colors[i] + "'></div>" + labels[i] + ": " + datum[d].toFixed(2) + "</div>";
         }).join(""))
         .style("left", (20 + mouse[0] + tooltip.node().offsetWidth > width + margin.left + margin.right ? mouse[0] - 10 - tooltip.node().offsetWidth - offset: mouse[0] + 10 - offset) + "px")
-        .style("top", y(0) - tooltip.node().offsetHeight + margin.top - 10 + "px");
+        .style("top", y(0) - tooltip.node().offsetHeight + margin.top + 24 + "px");
     }
   }).on("mouseout", function(d){
     tooltip.classed("hidden", true);

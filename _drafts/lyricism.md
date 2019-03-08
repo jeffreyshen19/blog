@@ -10,7 +10,7 @@ header: centered
 caption: "L.A. rapper Blueface is just one of many newer artists criticized as lacking talent or lyricism."
 ---
 
-Lyricism in hip-hop seems to be on the decline, with many of today's rappers replacing the intricate rhymes and storytelling of the nineties with catchy (but nevertheless lyrically deficient) bars. Yet, criticism of “modern music” has always been tainted with some degree of myopic nostalgia, and it’s easy to cherry-pick examples of hip-hop’s supposed decline. So, have popular rap songs actually gotten less lyrical over time? I scraped the lyrics of Billboard’s Hot Rap Songs to find out.  
+Lyricism in hip-hop seems to be on the decline, with many of today's rappers replacing the intricate rhymes and storytelling of the nineties with catchy (but nevertheless lyrically deficient) bars. Yet, criticism of “modern music” has always been tainted with some degree of nostalgia, and it’s easy to cherry-pick examples of hip-hop’s supposed decline. So, have popular rap songs actually gotten less lyrical over time? I scraped the lyrics of Billboard’s Hot Rap Songs to find out.  
 
 Billboard provides twenty-five of the most popular rap songs, updated weekly, through their [Hot Rap Songs](https://www.billboard.com/charts/rap-song) chart. I scraped the lyrics (using [Genius](https://genius.com)) for every song on these charts, from 1989 (when the chart was created) up to the present, giving me a dataset of popular rap song lyrics over time.
 
