@@ -179,24 +179,47 @@ function drawLineChart(chart, dataset, data){
 */
 
 function initializeLineCharts(){
-  // Iterate through all line charts
+  //Load all data first
+  var csv = [];
   d3.selectAll(".line-chart").each(function(d, i){
-    var chart = d3.select(this),
-        dataset = this.dataset;
+    if(csv.indexOf(this.dataset.csv) == -1) csv.push(this.dataset.csv);
+  });
 
-    // Load data
-    d3.csv(this.dataset.csv).then(function(data) {
-      var	parseDate = d3.timeParse("%Y-%m-%d");
+  var promises = [];
+  csv.forEach(function(d, i){
+    promises.push(d3.csv(d));
+  });
 
-      data.forEach(function(d){
+  Promise.all(promises).then(function(values) {
+    var csvData = values.map(function(data, i){
+      return {
+        "csv": csv[i],
+        "data": data
+      };
+    });
+
+    // Iterate through all line charts
+    d3.selectAll(".line-chart").each(function(d, i){
+      var chart = d3.select(this),
+          dataset = this.dataset,
+          parseDate = d3.timeParse("%Y-%m-%d");
+
+      var data = null;
+      for(var j = 0; j < csvData.length; j++){
+        if(csvData[j].csv == dataset.csv) {
+          data = JSON.parse(JSON.stringify(csvData[j].data));
+          break;
+        }
+      }
+
+      lineCharts[i] = data.map(function(d){
         d[dataset.xcol] = parseDate(d[dataset.xcol]);
         dataset.ycols.split(",").forEach(function(ycol){
           d[ycol] = parseFloat(d[ycol]);
         });
-      });
-
-      drawLineChart(chart, dataset, data);
-      lineCharts[i] = data; //Save data so it doesn't need to be loaded each time.
+        return d;
+      }); //Save data so it doesn't need to be loaded each time.
+      drawLineChart(chart, dataset, lineCharts[i]);
     });
   });
 }
