@@ -26,7 +26,7 @@
       <div id = "post">
         {%- assign posts = site.posts | where: "featured", "true" -%}
         {%- assign featured_post = posts[0] -%}
-        <img src = "/assets/graphics/posts/{{ featured_post.image }}"/>
+        <a href = "{{ featured_post.url | relative_url }}"><img src = "/assets/graphics/posts/{{ featured_post.image }}"/></a>
         <h1 class = "is-size-3">
           <a href="{{ featured_post.url | relative_url }}">
             {{ featured_post.title | escape }}
@@ -49,7 +49,7 @@
           {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
           <div class = "columns">
             <div class = "column is-narrow">
-              <img src = "/assets/graphics/posts/{{ post.image }}"/>
+              <a href = "{{post.url | relative_url}}"><img src = "/assets/graphics/posts/{{ post.image }}"/></a>
             </div>
             <div class = "column">
               <h1 class = "is-size-3">
@@ -58,8 +58,7 @@
                 </a>
               </h1>
               <p class = "is-size-5">{{ post.subtitle }}</p>
-              <br>
-              <p class = "meta is-size-6 heading"><span>{{post.categories}}</span> • {{ post.date | date: date_format }}</p>
+              <p class = "meta is-size-6 heading" style = "margin-top:10px;"><a href = "/{{post.categories[0] | downcase}}">{{post.categories}}</a> • {{ post.date | date: date_format }}</p>
             </div>
           </div>
         {%- endfor -%}
