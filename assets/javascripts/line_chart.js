@@ -11,11 +11,12 @@ var lineCharts = Array.apply(null, Array(d3.selectAll(".line-chart").size())); /
 
 function drawLineChart(chart, dataset, data){
   // Statics
-  var	margin = {top: 35, right: 20, bottom: 50, left: 65};
+  var	margin = {top: 5, right: 20, bottom: 20, left: 65};
   var	padding = {top: 40, right: 20, bottom: 40, left: 20};
+  var offset = (d3.select("body").node().offsetWidth - d3.select("#body").node().offsetWidth) / 2;
 
   // Set dimensions of graph
-  var width = d3.select("#body").node().offsetWidth - margin.left - margin.right - padding.left - padding.right,
+  var width = d3.select("#body").node().offsetWidth - margin.left - margin.right - padding.left - padding.right + 2 * offset,
       height = (dataset.height || 300) - margin.top - margin.bottom;
 
   // Set the ranges
@@ -34,6 +35,7 @@ function drawLineChart(chart, dataset, data){
     .append("svg")
       .attr("width", width + margin.left + margin.right)
       .attr("height", height + margin.top + margin.bottom)
+      .style("transform", "translate(-" + offset + "px,0px)")
     .append("g")
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
@@ -71,16 +73,15 @@ function drawLineChart(chart, dataset, data){
     .call(yAxis);
 
   // Chart title
-  svg.append("text")
-    .attr("transform", "translate(" + (width / 2) + " ," + (20 - margin.top) + ")")
-    .attr("class", "axis-label title")
-    .text(dataset.title);
+  chart.insert("p", ":first-child")
+    .html(dataset.title)
+    .attr("class", "axis-label title");
 
   // X Axis Label
-  svg.append("text")
-    .attr("transform", "translate(" + (width / 2) + " ," + (height + margin.top + 10) + ")")
+  chart.append("p")
     .attr("class", "axis-label")
-    .text(dataset.xlabel);
+    .style("text-align", "center")
+    .html(dataset.xlabel);
 
   // Y Axis Label
   svg.append("text")
@@ -157,7 +158,7 @@ function drawLineChart(chart, dataset, data){
         .html("<strong>" + format(datum[dataset.xcol]) + "</strong><br>" + ycols.map(function(d, i){
           return "<div class = 'tooltip-label'><div class = 'bubble' style = 'background-color:" + colors[i] + "'></div>" + labels[i] + ": " + datum[d].toFixed(2) + "</div>";
         }).join(""))
-        .style("left", (20 + mouse[0] + tooltip.node().offsetWidth > chart.node().offsetWidth ? mouse[0] - 10 - tooltip.node().offsetWidth : mouse[0] + 10) + "px")
+        .style("left", (20 + mouse[0] + tooltip.node().offsetWidth > width + margin.left + margin.right ? mouse[0] - 10 - tooltip.node().offsetWidth - offset: mouse[0] + 10 - offset) + "px")
         .style("top", y(0) - tooltip.node().offsetHeight + margin.top - 10 + "px");
     }
   }).on("mouseout", function(d){

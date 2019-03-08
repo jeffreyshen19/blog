@@ -17,6 +17,8 @@
 .title{
   font-size: 20px;
   font-weight: bold;
+  text-align: center;
+  margin-bottom: 0px !important;
 }
 
 .legend span{
@@ -53,4 +55,10 @@
 
 .line-chart{
   position: relative;
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+  svg{
+    position: relative;
+  }
 }

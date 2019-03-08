@@ -20,7 +20,7 @@ header.jumbotron{
 }
 
 header.default{
-  padding-top: 70px;
+  padding-top: 80px;
   padding-bottom: 0;
   margin-bottom: -10px;
 }
@@ -35,7 +35,11 @@ header.centered{
     text-align: left;
   }
 
-  padding-top: 70px;
+  img{
+    width: 100%;
+  }
+
+  padding-top: 80px;
   width: 65%;
   margin: 0 auto;
   text-align: center;
