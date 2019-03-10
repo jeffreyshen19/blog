@@ -28,6 +28,8 @@ function Chart(selector, config) {
     var xAxis = d3.axisBottom(x),
         yAxis = d3.axisLeft(y);
 
+    if(config.yAxisFormat) yAxis.tickFormat(config.yAxisFormat);
+
     // Set ticks responsively
     var body_width = d3.select("body").node().offsetWidth;
     config.setTicks(xAxis, body_width);
@@ -51,7 +53,8 @@ function Chart(selector, config) {
       }));
     });
     var xextent = d3.extent(data, function(d) { return d[dataset.xcol]; });
-    x.domain(xextent);
+    if(config.domain) x.domain(config.domain(data, dataset.xcol));
+    else x.domain(xextent);
     y.domain([0, ymax]);
 
     // Render data

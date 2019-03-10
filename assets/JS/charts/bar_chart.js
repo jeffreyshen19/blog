@@ -3,7 +3,7 @@
   Plots a bar chart
 */
 
-var bar_chart = new Chart(".x-schart", {
+var bar_chart = new Chart(".bar-chart", {
   "parseX": function(x){return x;},
   "xScale": "scaleBand",
   "yScale": "scaleLinear",
@@ -12,7 +12,12 @@ var bar_chart = new Chart(".x-schart", {
     // else if(width < 800) xAxis.ticks(d3.timeYear.every(4));
     // else xAxis.ticks(d3.timeYear.every(2));
   },
+  "domain": function(data, xcol){
+    return data.map(function(d) { return d[xcol]; });
+  },
+  "yAxisFormat": d3.format(".2s"),
   "renderData": function(svg, data, x, y, xcol, ycol, color, width, height){
+    console.log(data);
     svg.selectAll(".bar")
         .data(data)
       .enter().append("rect")

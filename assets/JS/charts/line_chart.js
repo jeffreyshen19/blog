@@ -24,7 +24,6 @@ var line_chart = new Chart(".line-chart", {
   },
   "useTooltipLine": true,
   "positionTooltip": function(mouse, tooltip, margin, width, height, offset, x, y){
-    console.log(y(0));
     return {
       "left": (20 + mouse[0] + tooltip.node().offsetWidth > width + margin.left + margin.right ? mouse[0] - 10 - tooltip.node().offsetWidth - offset: mouse[0] + 10 - offset),
       "top": y(0) - tooltip.node().offsetHeight + margin.top + 24,
