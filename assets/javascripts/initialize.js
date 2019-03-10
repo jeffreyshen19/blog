@@ -1,1 +1,1 @@
-initializeLineCharts();
+line_chart.initialize();
