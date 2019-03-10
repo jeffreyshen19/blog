@@ -4,23 +4,13 @@
 */
 
 function Chart(selector, config) {
-
-  parseX = config.parseX;
-  xScale = config.xScale;
-  yScale = config.yScale;
-  setTicks = config.setTicks;
-  renderData = config.renderData;
-  useTooltipLine = config.useTooltipLine;
-  positionTooltip = config.positionTooltip;
-  formatTooltip = config.formatTooltip;
-
   this.charts = Array.apply(null, Array(d3.selectAll(selector).size())); // Array holding all chart data
 
   /*
     Draws a single graph
   */
 
-  var drawChart = function(chart, dataset, data){
+  this.drawChart = function(chart, dataset, data){
     // Statics
     var	margin = {top: 5, right: 20, bottom: 20, left: 65};
     var	padding = {top: 40, right: 20, bottom: 40, left: 20};
@@ -31,8 +21,8 @@ function Chart(selector, config) {
         height = (dataset.height || 300) - margin.top - margin.bottom;
 
     // Set the ranges
-    var	x = window.d3[xScale]().range([0, width]),
-        y = window.d3[yScale]().range([height, 0]);
+    var	x = window.d3[config.xScale]().range([0, width]),
+        y = window.d3[config.yScale]().range([height, 0]);
 
     // Define axes
     var xAxis = d3.axisBottom(x),
@@ -40,7 +30,7 @@ function Chart(selector, config) {
 
     // Set ticks responsively
     var body_width = d3.select("body").node().offsetWidth;
-    setTicks(xAxis, body_width);
+    config.setTicks(xAxis, body_width);
 
     // Reset canvas
     chart.selectAll("*").remove();
@@ -66,7 +56,7 @@ function Chart(selector, config) {
 
     // Render data
     dataset.ycols.split(",").forEach(function(ycol, i){
-      renderData(svg, data, x, y, dataset.xcol, ycol, dataset.linecolors.split(",")[i]);
+      config.renderData(svg, data, x, y, dataset.xcol, ycol, dataset.linecolors.split(",")[i], width, height);
     });
 
     // Add the X Axis
@@ -131,7 +121,7 @@ function Chart(selector, config) {
     chart.append("div")
       .attr("class", "tooltip hidden");
 
-    if(useTooltipLine) svg.append("line")
+    if(config.useTooltipLine) svg.append("line")
       .attr("class", "tooltip-line hidden")
       .attr("x1", x(xextent[0]))
       .attr("y1", y(0))
@@ -144,7 +134,7 @@ function Chart(selector, config) {
     var tooltip = chart.select(".tooltip"),
         tooltipLine;
 
-    if(useTooltipLine) tooltipLine = chart.select(".tooltip-line");
+    if(config.useTooltipLine) tooltipLine = chart.select(".tooltip-line");
 
     var bisect = d3.bisector(function(d){ return d[dataset.xcol]; }).right;
 
@@ -159,20 +149,20 @@ function Chart(selector, config) {
         tooltipLine.classed("hidden", true);
       }
       else{
-        if(useTooltipLine) tooltipLine.attr("x1", x(datum[dataset.xcol]))
+        if(config.useTooltipLine) tooltipLine.attr("x1", x(datum[dataset.xcol]))
           .attr("x2", x(datum[dataset.xcol]))
           .classed("hidden", false);
 
         tooltip.classed("hidden", false)
-          .html("<strong>" + formatTooltip(datum[dataset.xcol]) + "</strong><br>" + ycols.map(function(d, i){
+          .html("<strong>" + config.formatTooltip(datum[dataset.xcol]) + "</strong><br>" + ycols.map(function(d, i){
             return "<div class = 'tooltip-label'><div class = 'bubble' style = 'background-color:" + colors[i] + "'></div>" + labels[i] + ": " + datum[d].toFixed(2) + "</div>";
           }).join(""))
-          .style("left", positionTooltip(mouse, tooltip, margin, width, height, offset, x, y).left + "px")
-          .style("top", positionTooltip(mouse, tooltip, margin, width, height, offset, x, y).top + "px");
+          .style("left", config.positionTooltip(mouse, tooltip, margin, width, height, offset, x, y).left + "px")
+          .style("top", config.positionTooltip(mouse, tooltip, margin, width, height, offset, x, y).top + "px");
       }
     }).on("mouseout", function(d){
       tooltip.classed("hidden", true);
-      if(useTooltipLine) tooltipLine.classed("hidden", true);
+      if(config.useTooltipLine) tooltipLine.classed("hidden", true);
     });
 
   };
@@ -182,6 +172,7 @@ function Chart(selector, config) {
   */
   this.redraw = function(){
     charts = this.charts;
+    drawChart = this.drawChart;
     d3.selectAll(selector).each(function(d, i){
       drawChart(d3.select(this), this.dataset, charts[i]);
     });
@@ -203,6 +194,7 @@ function Chart(selector, config) {
     });
 
     var charts = this.charts;
+    var drawChart = this.drawChart;
 
     Promise.all(promises).then(function(values) {
       var csvData = values.map(function(data, i){
@@ -226,7 +218,7 @@ function Chart(selector, config) {
         }
 
         charts[i] = data.map(function(d){
-          d[dataset.xcol] = parseX(d[dataset.xcol]);
+          d[dataset.xcol] = config.parseX(d[dataset.xcol]);
           dataset.ycols.split(",").forEach(function(ycol){
             d[ycol] = parseFloat(d[ycol]);
           });
