@@ -25,5 +25,5 @@ exclude:
 
 # SCSS
 sass:
-    sass_dir: scss
+    sass_dir: assets/SCSS
     style: compressed
