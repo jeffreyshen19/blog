@@ -13,6 +13,7 @@ function Chart(selector, config) {
   this.drawChart = function(chart, dataset, data){
     // Statics
     var	margin = {top: 5, right: 20, bottom: 20, left: 65};
+    if(config.rotatedText) margin.bottom = 70;
     var	padding = {top: 40, right: 20, bottom: 40, left: 20};
     var offset = (d3.select("body").node().offsetWidth - d3.select("#body").node().offsetWidth) / 2;
 
@@ -63,7 +64,16 @@ function Chart(selector, config) {
     });
 
     // Add the X Axis
-    svg.append("g")
+    if(config.rotatedText) svg.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height + ")")
+      .call(xAxis)
+      .selectAll("text")
+        .style("text-anchor", "end")
+        .attr("dx", "-0.5em")
+        .attr("dy", "0.5em")
+        .attr("transform", "rotate(-30)");
+    else svg.append("g")
       .attr("class", "x axis")
       .attr("transform", "translate(0," + height + ")")
       .call(xAxis);

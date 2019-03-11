@@ -8,16 +8,17 @@ var bar_chart = new Chart(".bar-chart", {
   "xScale": "scaleBand",
   "yScale": "scaleLinear",
   "setTicks": function(xAxis, width){
-    // if(width < 400) xAxis.ticks(d3.timeYear.every(8));
-    // else if(width < 800) xAxis.ticks(d3.timeYear.every(4));
-    // else xAxis.ticks(d3.timeYear.every(2));
+    xAxis.tickFormat(function(d){
+      d = d.split(" ");
+      return d[0].charAt(0) + ". " + d[1];
+    });
   },
   "domain": function(data, xcol){
     return data.map(function(d) { return d[xcol]; });
   },
+  "rotatedText": true,
   "yAxisFormat": d3.format(".2s"),
   "renderData": function(svg, data, x, y, xcol, ycol, color, width, height){
-    console.log(data);
     svg.selectAll(".bar")
         .data(data)
       .enter().append("rect")
@@ -30,7 +31,6 @@ var bar_chart = new Chart(".bar-chart", {
   },
   "useTooltipLine": false,
   "positionTooltip": function(mouse, tooltip, margin, width, height, offset, x, y){
-    console.log(y(0));
     return {
       "left": (20 + mouse[0] + tooltip.node().offsetWidth > width + margin.left + margin.right ? mouse[0] - 10 - tooltip.node().offsetWidth - offset: mouse[0] + 10 - offset),
       "top": y(0) - tooltip.node().offsetHeight + margin.top + 24,
