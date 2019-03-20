@@ -1,10 +1,9 @@
-candidate,twitter_handle,announcement_date,announcement_tweet,hashtags,followers,likes_on_announcement
-Cory Booker,CoryBooker,2/1/19,https://twitter.com/corybooker/status/1091308916879884288,"Cory2020,Booker2020",,
-Kirsten Gillibrand,SenGillibrand,1/15/19,https://twitter.com/sengillibrand/status/1085318564968521728,"Kirsten2020,Gillibrand2020",,
-Kamala Harris,KamalaHarris,1/21/19,https://twitter.com/kamalaharris/status/1087342097009643520,"Kamala2020,Harris2020",,
-Amy Klobuchar,amyklobuchar,2/10/19,https://twitter.com/amyklobuchar/status/1094694571831894016,"AmyForAmerica,Amy2020,Klobuchar2020",,
-Bernie Sanders,BernieSanders,2/19/19,https://twitter.com/berniesanders/status/1097828878310096901,"Bernie2020,Sanders2020,NotMeUs",,
-Elizabeth Warren,ewarren,2/9/19,https://twitter.com/ewarren/status/1094221040656494592,"Warren2020,Elizabeth2020,WinWithWarren,ElizabethWarren2020",,
-Andrew Yang,AndrewYang,2/8/18,https://twitter.com/andrewyangvfa/status/961700253522112513,"Yang2020,YangGang,HumanityFirst",,
-Beto O'Rourke,BetoORourke,3/14/19,https://twitter.com/BetoORourke/status/1106155281845760000,Beto2020,,
-Joe Biden,JoeBiden,,,Biden2020,,
+candidate,twitter_handle,announcement_date,announcement_tweet_id,hashtags,followers,announcement_likes,announcement_retweets,average_post_likes,total_posts
+Cory Booker,CoryBooker,2/1/19,1091308916879884288,"Cory2020,Booker2020",4214367,108577,28997,3877.3285714285716,280
+Kirsten Gillibrand,SenGillibrand,1/15/19,1085318564968521728,"Kirsten2020,Gillibrand2020",1382299,24581,4086,3057.7731707317075,410
+Kamala Harris,KamalaHarris,1/21/19,1087342097009643520,"Kamala2020,Harris2020",2470750,19200,3604,14142.918825561313,579
+Amy Klobuchar,amyklobuchar,2/10/19,1094694571831894016,"AmyForAmerica,Amy2020,Klobuchar2020",656437,32231,5948,4259.227467811159,233
+Bernie Sanders,BernieSanders,2/19/19,1097828878310096901,"Bernie2020,Sanders2020,NotMeUs",9149034,273391,106774,9698.073717948719,312
+Elizabeth Warren,ewarren,2/9/19,1094221040656494592,"Warren2020,Elizabeth2020,WinWithWarren,ElizabethWarren2020",2300225,5316,802,4153.184579439252,428
+Andrew Yang,AndrewYang,2/8/18,961700253522112513,"Yang2020,YangGang,HumanityFirst",186014,1550,668,331.72232472324725,3252
+Beto O'Rourke,BetoORourke,3/14/19,1106155281845760000,Beto2020,1352068,256393,92310,9834.225806451614,93
