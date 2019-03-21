@@ -38,14 +38,9 @@ What about enthusiasm towards each candidate's announcement to run for president
 
 Sanders again leads in overall retweets and likes, but surprisingly, Beto O'Rourke took the second place slot, reflecting a degree of excitement—and media attention—towards his candidacy.
 
-Finally, I looked at average engagement (likes and retweets) to each post by a presidential candidate. I wanted to see how successful each candidate is at engaging with their audience on a regular basis on Twitter, so I've calculated the average amount of retweets and likes on each post per candidate. I've only counted posts which were posted after the presidential candidate announced their campaign on Twitter.
+Finally, I looked at average engagement (likes and retweets) to each post by a presidential candidate. I wanted to see how successful each candidate is at engaging with their audience on a regular basis on Twitter, so I've calculated the average amount of retweets and likes on each post per candidate. I've only counted posts which were posted after the presidential candidate announced their campaign on Twitter, and do not count retweets by the candidate.
 
 {% include graphs/bar-chart.html csv = "/data/twitter-primary/democrat-primary-candidates.csv" xlabel = "Presidential Candidate" ylabel = "Average Likes per Post" title = "Average Likes per Post (Since Announcement)" xcol = "candidate" ycols = "average_post_likes" linelabels = "Average Likes per Post" linecolors = "#6c5ce7" height = 400 %}
 {% include graphs/bar-chart.html csv = "/data/twitter-primary/democrat-primary-candidates.csv" xlabel = "Presidential Candidate" ylabel = "Average Retweets per Post" title = "Average Retweets per Post (Since Announcement)" xcol = "candidate" ycols = "average_post_retweets" linelabels = "Average Retweets per Post" linecolors = "#6c5ce7" height = 400 %}
 
-
-[Why is this?]
-
-[look at maximum and minimum post likes and standard distribution (box charts for each candidate )]
-
-RETWEETS NOT INCLUDED
+Interestingly, Kamala Harris leads in this category over Sanders, an unexpected result given Sanders's otherwise domination of social media. Why is this? Does Harris have just a few number of posts which perform extremely well, or does she actually perform the best overall in terms of engagement? To find out, I plotted box-and-whisker plots for the likes on each candidate's posts.
