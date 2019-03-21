@@ -30,9 +30,11 @@ with open("./democrat-primary-candidates-raw.csv") as csv_file:
 
             like_counts = []
             total_favorites = 0
+            total_retweets = 0
             for post in posts:
                 like_counts.append(post._json["favorite_count"])
                 total_favorites += post._json["favorite_count"]
+                total_retweets += post._json["retweet_count"]
 
             output.append({
                 "candidate": row["candidate"],
@@ -44,11 +46,12 @@ with open("./democrat-primary-candidates-raw.csv") as csv_file:
                 "announcement_retweets": tweet["retweet_count"],
                 "followers": tweet["user"]["followers_count"],
                 "average_post_likes": total_favorites / len(posts),
+                "average_post_retweets": total_retweets / len(posts),
                 "total_posts": len(posts)
             })
 
     with open("../../data/twitter-primary/democrat-primary-candidates.csv", mode='w') as csv_file:
-        fieldnames = ["candidate", "twitter_handle", "announcement_date", "announcement_tweet_id", "hashtags", "followers", "announcement_likes", "announcement_retweets", "average_post_likes", "total_posts"]
+        fieldnames = ["candidate", "twitter_handle", "announcement_date", "announcement_tweet_id", "hashtags", "followers", "announcement_likes", "announcement_retweets", "average_post_likes", "average_post_retweets",  "total_posts"]
         writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
 
         writer.writeheader()
