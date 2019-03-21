@@ -3,7 +3,7 @@ from dotenv import load_dotenv
 import os
 import csv
 from datetime import datetime
-
+import numpy as np
 
 '''
 Populates csv with latest data from Twitter
@@ -28,13 +28,21 @@ with open("./democrat-primary-candidates-raw.csv") as csv_file:
             while len(posts) % 200 == 0:
                 posts += list(api.GetUserTimeline(screen_name=row["twitter_handle"], since_id=(announcement_tweet_id - 1), max_id = posts[len(posts) - 1]._json['id_str'], trim_user=True, count=200))
 
+
+
             like_counts = []
             total_favorites = 0
             total_retweets = 0
             for post in posts:
-                like_counts.append(post._json["favorite_count"])
-                total_favorites += post._json["favorite_count"]
-                total_retweets += post._json["retweet_count"]
+                if "retweeted_status" not in post._json: 
+                    like_counts.append(post._json["favorite_count"])
+                    total_favorites += post._json["favorite_count"]
+                    total_retweets += post._json["retweet_count"]
+
+            # Calculate 5 number summary
+            like_counts = np.array(like_counts)
+            quartiles = np.percentile(like_counts, [25, 50, 75])
+            data_min, data_max = like_counts.min(), like_counts.max()
 
             output.append({
                 "candidate": row["candidate"],
@@ -47,11 +55,16 @@ with open("./democrat-primary-candidates-raw.csv") as csv_file:
                 "followers": tweet["user"]["followers_count"],
                 "average_post_likes": total_favorites / len(posts),
                 "average_post_retweets": total_retweets / len(posts),
-                "total_posts": len(posts)
+                "total_posts": len(posts),
+                "likes_min": data_min,
+                "likes_q1": quartiles[0],
+                "likes_med": quartiles[1],
+                "likes_q3": quartiles[2],
+                "likes_max": data_max,
             })
 
     with open("../../data/twitter-primary/democrat-primary-candidates.csv", mode='w') as csv_file:
-        fieldnames = ["candidate", "twitter_handle", "announcement_date", "announcement_tweet_id", "hashtags", "followers", "announcement_likes", "announcement_retweets", "average_post_likes", "average_post_retweets",  "total_posts"]
+        fieldnames = ["candidate", "twitter_handle", "announcement_date", "announcement_tweet_id", "hashtags", "followers", "announcement_likes", "announcement_retweets", "average_post_likes", "average_post_retweets",  "total_posts",'likes_q3', 'likes_med', 'likes_max', 'likes_min', 'likes_q1']
         writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
 
         writer.writeheader()
