@@ -47,6 +47,10 @@ function Chart(selector, config) {
       .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
+    // Add tooltip and tooltip line
+    chart.append("div")
+      .attr("class", "tooltip hidden");
+
     // Fit Domain
     var ymax = d3.max(data, function(d) {
       return Math.max(...dataset.ycols.split(",").map(function(ycol){
@@ -60,7 +64,7 @@ function Chart(selector, config) {
 
     // Render data
     dataset.ycols.split(",").forEach(function(ycol, i){
-      config.renderData(svg, data, x, y, dataset.xcol, ycol, dataset.linecolors.split(",")[i], width, height);
+      config.renderData(svg, data, x, y, dataset.xcol, ycol, dataset.linecolors.split(",")[i], width, height, chart, dataset);
     });
 
     // Add the X Axis
@@ -130,10 +134,6 @@ function Chart(selector, config) {
         colors = dataset.linecolors.split(","),
         labels = dataset.linelabels.split(",");
 
-    // Add tooltip and tooltip line
-    chart.append("div")
-      .attr("class", "tooltip hidden");
-
     if(config.useTooltipLine) svg.append("line")
       .attr("class", "tooltip-line hidden")
       .attr("x1", x(xextent[0]))
@@ -151,33 +151,34 @@ function Chart(selector, config) {
 
     var bisect = d3.bisector(function(d){ return d[dataset.xcol]; }).right;
 
-    chart.select("svg").on("mousemove", function(){
-      var mouse = d3.mouse(this),
-          mouseX = x.invert(mouse[0] - margin.left),
-          index = bisect(data, mouseX),
-          datum = data[index];
+    if(selector != ".bar-chart"){
+      chart.select("svg").on("mousemove", function(){
+        var mouse = d3.mouse(this),
+            mouseX = x.invert(mouse[0] - margin.left),
+            index = bisect(data, mouseX),
+            datum = data[index];
 
-      if(datum == null){
+        if(datum == null){
+          tooltip.classed("hidden", true);
+          tooltipLine.classed("hidden", true);
+        }
+        else{
+          if(config.useTooltipLine) tooltipLine.attr("x1", x(datum[dataset.xcol]))
+            .attr("x2", x(datum[dataset.xcol]))
+            .classed("hidden", false);
+
+          tooltip.classed("hidden", false)
+            .html("<strong>" + config.formatTooltip(datum[dataset.xcol]) + "</strong><br>" + ycols.map(function(d, i){
+              return "<div class = 'tooltip-label'><div class = 'bubble' style = 'background-color:" + colors[i] + "'></div>" + labels[i] + ": " + datum[d].toFixed(2) + "</div>";
+            }).join(""))
+            .style("left", config.positionTooltip(mouse, tooltip, margin, width, height, offset, x, y).left + "px")
+            .style("top", config.positionTooltip(mouse, tooltip, margin, width, height, offset, x, y).top + "px");
+        }
+      }).on("mouseout", function(d){
         tooltip.classed("hidden", true);
-        tooltipLine.classed("hidden", true);
-      }
-      else{
-        if(config.useTooltipLine) tooltipLine.attr("x1", x(datum[dataset.xcol]))
-          .attr("x2", x(datum[dataset.xcol]))
-          .classed("hidden", false);
-
-        tooltip.classed("hidden", false)
-          .html("<strong>" + config.formatTooltip(datum[dataset.xcol]) + "</strong><br>" + ycols.map(function(d, i){
-            return "<div class = 'tooltip-label'><div class = 'bubble' style = 'background-color:" + colors[i] + "'></div>" + labels[i] + ": " + datum[d].toFixed(2) + "</div>";
-          }).join(""))
-          .style("left", config.positionTooltip(mouse, tooltip, margin, width, height, offset, x, y).left + "px")
-          .style("top", config.positionTooltip(mouse, tooltip, margin, width, height, offset, x, y).top + "px");
-      }
-    }).on("mouseout", function(d){
-      tooltip.classed("hidden", true);
-      if(config.useTooltipLine) tooltipLine.classed("hidden", true);
-    });
-
+        if(config.useTooltipLine) tooltipLine.classed("hidden", true);
+      });
+    }
   };
 
   /*

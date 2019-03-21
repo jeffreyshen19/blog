@@ -18,7 +18,13 @@ var bar_chart = new Chart(".bar-chart", {
   },
   "rotatedText": true,
   "yAxisFormat": d3.format(".2s"),
-  "renderData": function(svg, data, x, y, xcol, ycol, color, width, height){
+  "renderData": function(svg, data, x, y, xcol, ycol, color, width, height, chart, dataset){
+    var tooltip = chart.select(".tooltip"),
+        labels = dataset.linelabels.split(","),
+        ycols = dataset.ycols.split(","),
+        commas = d3.format(",.0f"),
+        offset = (d3.select("body").node().offsetWidth - d3.select("#body").node().offsetWidth) / 2;
+
     svg.selectAll(".bar")
         .data(data)
       .enter().append("rect")
@@ -27,7 +33,18 @@ var bar_chart = new Chart(".bar-chart", {
         .attr("x", function(d) { return x(d[xcol]); })
         .attr("width", x.bandwidth())
         .attr("y", function(d) { return y(d[ycol]); })
-        .attr("height", function(d) { return height - y(d[ycol]); });
+        .attr("height", function(d) { return height - y(d[ycol]); })
+        .on("mousemove", function(d){
+          var mouse = d3.mouse(this);
+          tooltip
+            .classed("hidden", false)
+            .html("<strong>" + d[xcol] + "</strong><br>" + ycols.map(function(col, i){
+                return "<div class = 'tooltip-label'>" + labels[i] + ": " + commas(d[col]) + "</div>";
+            }).join(""))
+            .style("left", (mouse[0] + tooltip.node().offsetWidth > width ? mouse[0] + 55 - tooltip.node().offsetWidth - offset: mouse[0] + 75 - offset) + "px")
+            .style("top", mouse[1] + 50 + "px");
+        })
+        .on("mouseout", function(d){ tooltip.classed("hidden", true);});
   },
   "useTooltipLine": false,
   "positionTooltip": function(mouse, tooltip, margin, width, height, offset, x, y){
@@ -35,6 +52,5 @@ var bar_chart = new Chart(".bar-chart", {
       "left": (20 + mouse[0] + tooltip.node().offsetWidth > width + margin.left + margin.right ? mouse[0] - 10 - tooltip.node().offsetWidth - offset: mouse[0] + 10 - offset),
       "top": y(0) - tooltip.node().offsetHeight + margin.top + 24,
     };
-  },
-  "formatTooltip": d3.timeFormat("%b %e, %Y"),
+  }
 });
