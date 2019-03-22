@@ -12,7 +12,9 @@ function Chart(selector, config) {
 
   this.drawChart = function(chart, dataset, data){
     // Statics
-    var	margin = {top: 5, right: 20, bottom: 20, left: 65};
+    var	margin;
+    if(config.margin) margin = config.margin;
+    else margin = {top: 5, right: 20, bottom: 20, left: 65};
     if(config.rotatedText) margin.bottom = 70;
     var	padding = {top: 40, right: 20, bottom: 40, left: 20};
     var offset = (d3.select("body").node().offsetWidth - d3.select("#body").node().offsetWidth) / 2;
@@ -58,9 +60,10 @@ function Chart(selector, config) {
       }));
     });
     var xextent = d3.extent(data, function(d) { return d[dataset.xcol]; });
-    if(config.domain) x.domain(config.domain(data, dataset.xcol));
+    if(config.domain) x.domain(config.domain(data, dataset.xcol, dataset));
     else x.domain(xextent);
-    y.domain([0, ymax]);
+    if(config.ydomain) y.domain(config.ydomain(data, dataset.xcol));
+    else y.domain([0, ymax]);
 
     // Render data
     dataset.ycols.split(",").forEach(function(ycol, i){
@@ -151,7 +154,7 @@ function Chart(selector, config) {
 
     var bisect = d3.bisector(function(d){ return d[dataset.xcol]; }).right;
 
-    if(selector != ".bar-chart"){
+    if(selector != ".bar-chart" && config.useTooltip == null){
       chart.select("svg").on("mousemove", function(){
         var mouse = d3.mouse(this),
             mouseX = x.invert(mouse[0] - margin.left),

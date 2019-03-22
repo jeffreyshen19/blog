@@ -44,3 +44,5 @@ Finally, I looked at average engagement (likes and retweets) to each post by a p
 {% include graphs/bar-chart.html csv = "/data/twitter-primary/democrat-primary-candidates.csv" xlabel = "Presidential Candidate" ylabel = "Average Retweets per Post" title = "Average Retweets per Post (Since Announcement)" xcol = "candidate" ycols = "average_post_retweets" linelabels = "Average Retweets per Post" linecolors = "#6c5ce7" height = 400 %}
 
 Interestingly, Kamala Harris leads in this category over Sanders, an unexpected result given Sanders's otherwise domination of social media. Why is this? Does Harris have just a few number of posts which perform extremely well, or does she actually perform the best overall in terms of engagement? To find out, I plotted box-and-whisker plots for the likes on each candidate's posts.
+
+{% include graphs/box-plot.html csv = "/data/twitter-primary/democrat-primary-candidates.csv" xlabel = "Likes" ylabel = "Candidate" title = "Likes per Candidate" xcol = "candidate" fivenum = "likes_min,likes_q1,likes_med,likes_q3,likes_max" linelabels = "Likes" linecolors = "#6c5ce7" height = 500 %}
