@@ -72,6 +72,26 @@
       </div>
     </div>
 
+    <h1>Related Posts</h1>
+    <div id = "related-posts">
+      {%- for post in site.related_posts limit: 3 -%}
+        <div class = "columns">
+          <div class = "column is-narrow">
+            <a href = "{{post.url | relative_url}}"><img src = "/assets/graphics/posts/{{ post.image }}"/></a>
+          </div>
+          <div class = "column">
+            <h1 class = "is-size-3">
+              <a href="{{ post.url | relative_url }}">
+                {{ post.title | escape }}
+              </a>
+            </h1>
+            <p class = "is-size-5">{{ post.subtitle }}</p>
+            <p class = "meta is-size-6 heading" style = "margin-top:10px;"><a href = "/{{post.categories[0] | downcase}}">{{post.categories}}</a></p>
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+
   </div>
 
   <!-- Footer -->
