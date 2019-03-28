@@ -36,7 +36,7 @@ header{
   }
 }
 
-#posts{
+.posts{
   padding-left: 0;
   padding-top: 5px;
 
@@ -87,7 +87,7 @@ footer{
 }
 
 @media screen and (max-width: 768px){
-  #posts{
+  .posts{
     img{
       width: 100%;
     }
