@@ -44,26 +44,23 @@ with open('video_statistics.csv') as csvfile:
 
     for row in rows:
         rowArtists = getArtists(row["displayTitle"])
-        for artist in rowArtists:
-            if artist in artists:
-                views[artists.index(artist)] += int(row["views"])
-                count[artists.index(artist)] += 1
+        for i in range(len(rowArtists)):
+            if rowArtists[i] in artists:
+                views[artists.index(rowArtists[i])] += int(row["views"])
+                count[artists.index(rowArtists[i])] += 1
             else:
-                artists.append(artist)
+                artists.append(rowArtists[i])
                 views.append(int(row["views"]))
                 count.append(1)
 
-        # Create adjacency matrix
-        if(len(rowArtists) > 1):
-            for i in range(len(rowArtists)):
-                if rowArtists[i] not in adjacency:
-                    adjacency[rowArtists[i]] = {}
+            if rowArtists[i] not in adjacency:
+                adjacency[rowArtists[i]] = {}
 
-                columnArtists = [x for j,x in enumerate(rowArtists) if j != i]
+            columnArtists = [x for j,x in enumerate(rowArtists) if j != i]
 
-                for artist in columnArtists:
-                    if artist not in adjacency[rowArtists[i]]: adjacency[rowArtists[i]][artist] = 1
-                    else: adjacency[rowArtists[i]][artist] += 1
+            for artist in columnArtists:
+                if artist not in adjacency[rowArtists[i]]: adjacency[rowArtists[i]][artist] = 1
+                else: adjacency[rowArtists[i]][artist] += 1
 
     with open('adjacency.json', 'w') as outfile:
         json.dump(adjacency, outfile)

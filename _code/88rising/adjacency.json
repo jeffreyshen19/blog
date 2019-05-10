@@ -1,19 +1,54 @@
 {
-  "XXXTentacion": {
-    "RONNYJ": 1,
-    "Keith Ape": 1,
-    "Rich Brian": 1
-  },
-  "RONNYJ": {
+  "Rich Brian": {
     "XXXTentacion": 1,
-    "Keith Ape": 2,
+    "Keith Ape": 1,
+    "RONNYJ": 1,
+    "AUGUST 08": 2,
+    "Higher Brothers": 3,
+    "Joji": 3,
+    "88RISING": 1,
+    "Young Thug": 1,
+    "Rich The Kid": 1,
+    "Diplo": 1,
+    "Pouya": 1,
+    "Ghostface Killah": 1,
+    "21 Savage": 2,
+    "ZHU.": 1,
+    "THEY.": 1,
+    "SKRILLEX": 1,
+    "Offset": 1,
+    "NIKI": 1,
+    "The Kinjaz": 1,
+    "Diablo": 1,
+    "Dua Lipa": 1,
+    "Yung Pinch": 1,
+    "Don Krez": 1,
+    "Yung Bans": 1,
+    "Southside": 1,
+    "Playboi Carti": 1,
+    "Murda Beatz": 1
+  },
+  "Joji": {
+    "Rich Brian": 3,
+    "AUGUST 08": 1,
+    "Higher Brothers": 3,
+    "88RISING": 1,
+    "Clams Casino": 1,
+    "BlocBoy JB": 1,
+    "Trippie Redd": 1,
+    "D33J": 1,
+    "Shlohmo": 1,
+    "NIKI": 1
+  },
+  "XXXTentacion": {
     "Rich Brian": 1,
-    "Ski Mask The SlumpGod": 1
+    "Keith Ape": 1,
+    "RONNYJ": 1
   },
   "Keith Ape": {
+    "Rich Brian": 1,
     "XXXTentacion": 1,
     "RONNYJ": 2,
-    "Rich Brian": 1,
     "Ski Mask The Slump God": 2,
     "Higher Brothers": 1,
     "Jedi P": 1,
@@ -27,57 +62,25 @@
     "Uno the Activist": 1,
     "Wifisfuneral": 1
   },
-  "Rich Brian": {
+  "RONNYJ": {
+    "Rich Brian": 1,
     "XXXTentacion": 1,
-    "RONNYJ": 1,
-    "Keith Ape": 1,
-    "AUGUST 08": 2,
-    "88RISING": 1,
-    "Higher Brothers": 3,
-    "Joji": 3,
-    "Young Thug": 1,
-    "Diplo": 1,
-    "Rich The Kid": 1,
-    "Ghostface Killah": 1,
-    "Pouya": 1,
-    "21 Savage": 2,
-    "THEY.": 1,
-    "SKRILLEX": 1,
-    "ZHU.": 1,
-    "Offset": 1,
-    "NIKI": 1,
-    "The Kinjaz": 1,
-    "Diablo": 1,
-    "Dua Lipa": 1,
-    "Yung Bans": 1,
-    "Don Krez": 1,
-    "Yung Pinch": 1,
-    "Southside": 1,
-    "Murda Beatz": 1,
-    "Playboi Carti": 1
+    "Keith Ape": 2,
+    "Ski Mask The SlumpGod": 1
   },
   "AUGUST 08": {
     "Rich Brian": 2,
-    "88RISING": 1,
     "Higher Brothers": 1,
     "Joji": 1,
+    "88RISING": 1,
     "Smino": 2,
     "WYNNE": 2
   },
-  "88RISING": {
-    "AUGUST 08": 1,
-    "Rich Brian": 1,
-    "Higher Brothers": 2,
-    "Joji": 1,
-    "Falcons": 1,
-    "BlocBoy JB": 1,
-    "NIKI": 1
-  },
   "Higher Brothers": {
-    "AUGUST 08": 1,
     "Rich Brian": 3,
-    "88RISING": 2,
+    "AUGUST 08": 1,
     "Joji": 3,
+    "88RISING": 2,
     "Richie Souf": 2,
     "Famous Dex": 1,
     "Keith Ape": 1,
@@ -87,13 +90,13 @@
     "Charlie Heat": 1,
     "Denzel Curry": 2,
     "Bohan Phoenix": 1,
-    "BlocBoy JB": 2,
     "Falcons": 2,
+    "BlocBoy JB": 2,
     "Jay Park": 1,
     "HARIKIRI": 5,
-    "Yung Bans": 1,
-    "Don Krez": 2,
     "Yung Pinch": 1,
+    "Don Krez": 2,
+    "Yung Bans": 1,
     "Ken Rebel": 1,
     "03 Greedo": 1,
     "ScHoolboy Q": 1,
@@ -104,16 +107,13 @@
     "KOHH": 1,
     "Guapdad 4000": 1
   },
-  "Joji": {
+  "88RISING": {
+    "Rich Brian": 1,
     "AUGUST 08": 1,
-    "Rich Brian": 3,
-    "88RISING": 1,
-    "Higher Brothers": 3,
-    "Clams Casino": 1,
+    "Higher Brothers": 2,
+    "Joji": 1,
+    "Falcons": 1,
     "BlocBoy JB": 1,
-    "Trippie Redd": 1,
-    "Shlohmo": 1,
-    "D33J": 1,
     "NIKI": 1
   },
   "Ski Mask The Slump God": {
@@ -135,50 +135,60 @@
     "Keith Ape": 1
   },
   "Young Thug": {
-    "Diplo": 1,
     "Rich The Kid": 1,
-    "Rich Brian": 1
+    "Rich Brian": 1,
+    "Diplo": 1
+  },
+  "Rich The Kid": {
+    "Young Thug": 1,
+    "Rich Brian": 1,
+    "Diplo": 1
   },
   "Diplo": {
     "Young Thug": 1,
     "Rich The Kid": 1,
     "Rich Brian": 1
   },
-  "Rich The Kid": {
-    "Young Thug": 1,
-    "Diplo": 1,
+  "Pouya": {
+    "Ghostface Killah": 1,
     "Rich Brian": 1
   },
   "Ghostface Killah": {
     "Pouya": 1,
     "Rich Brian": 1
   },
-  "Pouya": {
-    "Ghostface Killah": 1,
-    "Rich Brian": 1
-  },
   "21 Savage": {
     "Rich Brian": 2
-  },
-  "THEY.": {
-    "SKRILLEX": 1,
-    "ZHU.": 1,
-    "Rich Brian": 1
-  },
-  "SKRILLEX": {
-    "THEY.": 1,
-    "ZHU.": 1,
-    "Rich Brian": 1
   },
   "ZHU.": {
     "THEY.": 1,
     "SKRILLEX": 1,
     "Rich Brian": 1
   },
+  "THEY.": {
+    "ZHU.": 1,
+    "SKRILLEX": 1,
+    "Rich Brian": 1
+  },
+  "SKRILLEX": {
+    "ZHU.": 1,
+    "THEY.": 1,
+    "Rich Brian": 1
+  },
+  "Yaeji": {},
+  "Trippie Redd": {
+    "Joji": 1
+  },
+  "NIKI": {
+    "Rich Brian": 1,
+    "Joji": 1,
+    "Higher Brothers": 1,
+    "88RISING": 1
+  },
   "BlocBoy JB": {
     "Joji": 1,
-    "Higher Brothers": 2,
     "Falcons": 2,
+    "Higher Brothers": 2,
     "88RISING": 1
   },
   "Ski Mask the Slump God": {
@@ -205,15 +215,16 @@
     "Okasian": 2,
     "Keith Ape": 2
   },
+  "Lexie Liu": {
+    "KILLY": 1
+  },
   "J. MAG": {
     "Higher Brothers": 2
   },
   "Phum Viphurit": {
     "Higher Brothers": 1
   },
-  "Trippie Redd": {
-    "Joji": 1
-  },
+  "HYUKOH (\ud601\uc624)": {},
   "Charlie Heat": {
     "Higher Brothers": 1
   },
@@ -223,41 +234,36 @@
     "Don Krez": 1
   },
   "Ski Mask The SlumpGod": {
-    "RONNYJ": 1,
-    "Keith Ape": 1
-  },
-  "NIKI": {
-    "Rich Brian": 1,
-    "Joji": 1,
-    "Higher Brothers": 1,
-    "88RISING": 1
-  },
-  "Shlohmo": {
-    "D33J": 1,
-    "Joji": 1
+    "Keith Ape": 1,
+    "RONNYJ": 1
   },
   "D33J": {
     "Shlohmo": 1,
     "Joji": 1
   },
+  "Shlohmo": {
+    "D33J": 1,
+    "Joji": 1
+  },
   "Verbal": {
-    "Famous Dex": 1,
-    "Keith Ape": 1
+    "Keith Ape": 1,
+    "Famous Dex": 1
   },
   "Denzel Curry": {
-    "Ski Mask the Slump God": 2,
-    "Higher Brothers": 2
+    "Higher Brothers": 2,
+    "Ski Mask the Slump God": 2
   },
   "Bohan Phoenix": {
     "Higher Brothers": 1
   },
+  "MaSiWei": {},
   "The Kinjaz": {
     "Rich Brian": 1,
     "Goldlink": 1
   },
   "Falcons": {
-    "Higher Brothers": 2,
     "BlocBoy JB": 2,
+    "Higher Brothers": 2,
     "88RISING": 1
   },
   "Diablo": {
@@ -270,67 +276,72 @@
   },
   "Jay Park": {
     "Higher Brothers": 1,
-    "josh pan": 1,
-    "G2": 1,
+    "Dumbfoundead": 1,
     "Simon D": 1,
-    "Dumbfoundead": 1
+    "G2": 1,
+    "josh pan": 1
   },
   "Yung Gleesh": {
     "Keith Ape": 1,
     "Uno the Activist": 1
   },
   "Uno the Activist": {
-    "Yung Gleesh": 1,
-    "Keith Ape": 1
+    "Keith Ape": 1,
+    "Yung Gleesh": 1
   },
   "HARIKIRI": {
     "Higher Brothers": 5
   },
-  "Yung Bans": {
+  "Yung Pinch": {
     "Rich Brian": 1,
     "Higher Brothers": 1,
     "Don Krez": 1,
-    "Yung Pinch": 1
+    "Yung Bans": 1
   },
   "Don Krez": {
-    "Yung Bans": 1,
     "Rich Brian": 1,
     "Higher Brothers": 2,
     "Yung Pinch": 1,
+    "Yung Bans": 1,
     "KOHH": 1
   },
-  "Yung Pinch": {
-    "Yung Bans": 1,
+  "Yung Bans": {
     "Rich Brian": 1,
     "Higher Brothers": 1,
+    "Yung Pinch": 1,
     "Don Krez": 1
   },
   "Ken Rebel": {
     "Higher Brothers": 1
   },
+  "Channel Tres": {},
   "03 Greedo": {
     "Higher Brothers": 1
   },
   "iLL Chris": {
-    "Ski Mask The Slump God": 1,
-    "Robb Banks": 1
+    "Robb Banks": 1,
+    "Ski Mask The Slump God": 1
   },
   "Robb Banks": {
-    "Ski Mask The Slump God": 1,
-    "iLL Chris": 1
+    "iLL Chris": 1,
+    "Ski Mask The Slump God": 1
+  },
+  "NESSLY": {
+    "KILLY": 1
   },
   "KILLY": {
     "NESSLY": 1,
     "Lexie Liu": 1
-  },
-  "NESSLY": {
-    "KILLY": 1
   },
   "ScHoolboy Q": {
     "Higher Brothers": 1,
     "Swings": 1,
     "DMEANOR": 1,
     "JAHKOY": 1
+  },
+  "Brian Puspos": {
+    "josh pan": 1,
+    "MYRNE": 1
   },
   "Wifisfuneral": {
     "Keith Ape": 1
@@ -341,14 +352,15 @@
   "Soulja Boy": {
     "Higher Brothers": 2
   },
-  "Southside": {
-    "Murda Beatz": 1,
-    "Playboi Carti": 1,
-    "Rich Brian": 1
+  "Dumbfoundead": {
+    "Jay Park": 1,
+    "Simon D": 1,
+    "G2": 1,
+    "josh pan": 1
   },
-  "Murda Beatz": {
-    "Southside": 1,
+  "Southside": {
     "Playboi Carti": 1,
+    "Murda Beatz": 1,
     "Rich Brian": 1
   },
   "Playboi Carti": {
@@ -356,54 +368,56 @@
     "Murda Beatz": 1,
     "Rich Brian": 1
   },
-  "Vic Mensa": {
-    "Towkio": 1
+  "Murda Beatz": {
+    "Southside": 1,
+    "Playboi Carti": 1,
+    "Rich Brian": 1
   },
   "Towkio": {
     "Vic Mensa": 1
   },
-  "josh pan": {
+  "Vic Mensa": {
+    "Towkio": 1
+  },
+  "Simon D": {
+    "Dumbfoundead": 1,
     "Jay Park": 1,
     "G2": 1,
-    "Simon D": 1,
+    "josh pan": 1
+  },
+  "G2": {
     "Dumbfoundead": 1,
+    "Jay Park": 1,
+    "Simon D": 1,
+    "josh pan": 1
+  },
+  "josh pan": {
+    "Dumbfoundead": 1,
+    "Jay Park": 1,
+    "Simon D": 1,
+    "G2": 1,
     "bbno$": 1,
     "Brian Puspos": 1,
     "X&G": 1
   },
-  "G2": {
-    "josh pan": 1,
-    "Jay Park": 1,
-    "Simon D": 1,
-    "Dumbfoundead": 1
-  },
-  "Simon D": {
-    "josh pan": 1,
-    "Jay Park": 1,
-    "G2": 1,
-    "Dumbfoundead": 1
-  },
-  "Dumbfoundead": {
-    "josh pan": 1,
-    "Jay Park": 1,
-    "G2": 1,
-    "Simon D": 1
+  "Goldlink": {
+    "The Kinjaz": 1
   },
   "Smino": {
     "AUGUST 08": 2
   },
+  "Suboi": {},
+  "lilcobaine": {},
   "Maaly Raw": {
     "Higher Brothers": 1
   },
   "bbno$": {
     "josh pan": 1
   },
-  "Goldlink": {
-    "The Kinjaz": 1
-  },
-  "Lexie Liu": {
-    "KILLY": 1
-  },
+  "Rina Sawayama": {},
+  "KiD TRUNKS.": {},
+  "YUNG BAE": {},
+  "Sen Morimoto": {},
   "WYNNE": {
     "AUGUST 08": 2
   },
@@ -413,31 +427,36 @@
   "ICYTWAT": {
     "$ILKMONEY": 1
   },
+  "Bengfang": {},
   "Guapdad 4000": {
     "Higher Brothers": 1
   },
-  "Brian Puspos": {
-    "josh pan": 1,
-    "MYRNE": 1
+  "Dbo": {},
+  "Tatsuro Yamashita": {},
+  "Shigeo Sekito": {},
+  "Jess Connelly": {},
+  "YURUFUWA GANG": {},
+  "Japanese Breakfast": {
+    "Giraffage": 1
   },
   "Giraffage": {
     "Japanese Breakfast": 1
   },
-  "Japanese Breakfast": {
-    "Giraffage": 1
+  "Eric Nam": {
+    "AObeats": 1
   },
   "AObeats": {
     "Eric Nam": 1
   },
-  "Eric Nam": {
-    "AObeats": 1
-  },
+  "Yeseo": {},
   "YENTOWN": {
     "BAAUER": 1
   },
   "BAAUER": {
     "YENTOWN": 1
   },
+  "Horim": {},
+  "CIFIKA": {},
   "Gentle Bones": {
     "MYRNE": 1
   },
@@ -446,8 +465,8 @@
     "Brian Puspos": 1
   },
   "Swings": {
-    "DMEANOR": 1,
     "ScHoolboy Q": 1,
+    "DMEANOR": 1,
     "JAHKOY": 1
   },
   "DMEANOR": {
@@ -457,22 +476,28 @@
   },
   "JAHKOY": {
     "Swings": 1,
-    "DMEANOR": 1,
-    "ScHoolboy Q": 1
+    "ScHoolboy Q": 1,
+    "DMEANOR": 1
+  },
+  "Ikkubaru": {},
+  "Rainbow Chan": {},
+  "KID FRESINO": {
+    "jjj": 1
   },
   "jjj": {
     "KID FRESINO": 1
   },
-  "KID FRESINO": {
-    "jjj": 1
-  },
   "X&G": {
     "josh pan": 1
   },
+  "Yllis": {},
+  "Tanukichan": {},
   "Starro": {
     "Bosco": 1
   },
   "Bosco": {
     "Starro": 1
-  }
+  },
+  "KiWi": {},
+  "Guzz": {}
 }
