@@ -1,5 +1,6 @@
 import csv
 import re
+import json
 
 '''
 Scrapes the titles to identify which artists played and are connected to who
@@ -39,9 +40,11 @@ with open('video_statistics.csv') as csvfile:
     artists = []
     views = []
     count = []
+    adjacency = {}
 
     for row in rows:
-        for artist in getArtists(row["displayTitle"]):
+        rowArtists = getArtists(row["displayTitle"])
+        for artist in rowArtists:
             if artist in artists:
                 views[artists.index(artist)] += int(row["views"])
                 count[artists.index(artist)] += 1
@@ -50,7 +53,20 @@ with open('video_statistics.csv') as csvfile:
                 views.append(int(row["views"]))
                 count.append(1)
 
-    # Create adjacency matrix
+        # Create adjacency matrix
+        if(len(rowArtists) > 1):
+            for i in range(len(rowArtists)):
+                if rowArtists[i] not in adjacency:
+                    adjacency[rowArtists[i]] = {}
+
+                columnArtists = [x for j,x in enumerate(rowArtists) if j != i]
+
+                for artist in columnArtists:
+                    if artist not in adjacency[rowArtists[i]]: adjacency[rowArtists[i]][artist] = 1
+                    else: adjacency[rowArtists[i]][artist] += 1
+
+    with open('adjacency.json', 'w') as outfile:
+        json.dump(adjacency, outfile)
 
     # Create bar chart of each artist views
     f = open('artist_statistics.csv', "w+")
