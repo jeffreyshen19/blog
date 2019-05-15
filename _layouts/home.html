@@ -16,6 +16,7 @@
           <a href = "/about" class = "heading is-size-6">ABOUT</a>
           <a href = "/#politics" class = "heading is-size-6">POLITICS</a>
           <a href = "/#culture" class = "heading is-size-6">CULTURE</a>
+          <a href = "/#society" class = "heading is-size-6">SOCIETY</a>
           <!-- <a href = "/#social" class = "heading is-size-6">SOCIAL ISSUES</a> -->
         </div>
         <br>
@@ -67,7 +68,7 @@
       </div>
       <br>
       <h1 class = "is-size-5">SOCIETY</h1>
-      <div class = "posts" id = "politics">
+      <div class = "posts" id = "society">
         {%- for post in site.posts-%}
           {% if post.categories contains "Society" %}
             {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
