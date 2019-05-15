@@ -50,7 +50,9 @@
     <!-- Sources -->
     <h1>Further Reading</h1>
     <ol>
-      <li><a href = "{{ page.source_code }}" target = "_blank">Source Code</a></li>
+      {% if page.source_code %}
+        <li><a href = "{{ page.source_code }}" target = "_blank">Source Code</a></li>
+      {% endif %}
       {% for post in page.references %}
         <li><a href = "{{ post.url }}" target = "_blank">{{ post.title }}</a></li>
       {% endfor %}
