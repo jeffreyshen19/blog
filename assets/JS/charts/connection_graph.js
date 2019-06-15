@@ -18,7 +18,7 @@ function drawConnectionGraph(chart, dataset, graph){
       .style("transform", "translate(-" + offset + "px,0px)")
     .append("g");
 
-  var color = ["red", "black", "blue", "green"];
+  var color = ["#142d4c", "#fdcb6e", "#5ca0d3", "#6c5ce7"];
 
   var simulation = d3.forceSimulation()
     .force("link", d3.forceLink().id(function(d) { return d.id; }))
@@ -49,9 +49,6 @@ function drawConnectionGraph(chart, dataset, graph){
     })
     .attr('x', radius + 2)
     .attr('y', radius / 2);
-
-  node.append("title")
-    .text(function(d) { return d.id; });
 
   simulation
     .nodes(graph.nodes)
