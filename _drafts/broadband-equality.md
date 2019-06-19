@@ -18,3 +18,7 @@ header: default
 javascript: broadband.js
 featured: true
 ---
+
+Downloaded the [latest data from the FCC (December 2017 )](https://opendata.fcc.gov/Wireline/Fixed-Broadband-Deployment-Data-Dec-2017-Status-V2/ei6b-6aiz) on broadband access by census tracts (without data on broadband supplied by satellite).
+
+FCC data is not actually accurate (https://blogs.microsoft.com/on-the-issues/2019/04/08/its-time-for-a-new-approach-for-mapping-broadband-data-to-better-serve-americans/)
