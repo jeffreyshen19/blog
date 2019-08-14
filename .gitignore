@@ -5,3 +5,4 @@ node_modules
 billboard.json
 .env
 .DS_Store
+_code/broadband/fbd_us_without_satellite_dec2017_v2.csv
