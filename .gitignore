@@ -4,3 +4,4 @@ _site
 node_modules
 billboard.json
 .env
+.DS_Store
