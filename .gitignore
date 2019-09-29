@@ -6,4 +6,5 @@ billboard.json
 .env
 .DS_Store
 _code/broadband/broadband_census_block_jun2018_without_satellite_v1.csv
+_code/broadband/USA_Block_Group_Boundaries.lpk
 .ipynb_checkpoints
