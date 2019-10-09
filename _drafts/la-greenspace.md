@@ -37,4 +37,6 @@ featured: true
 
 Downloaded park data, county boundary, census block groups from 2016 in california, acs 5 year estimate data from 2016 on race, per-capita income, population Total
 
+Select only Parks and Gardens features
+
 (maybe add transportation later.)  
