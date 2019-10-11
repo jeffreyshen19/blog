@@ -13,8 +13,8 @@ references: [{
     "title": "Census Demographics Data (2016)"
   },  
   {
-    "url": "https://factfinder.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_16_5YR_B01003&prodType=table",
-    "title": "Census Population Total (2016)"
+    "url": "https://factfinder.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_16_5YR_B03003&prodType=table",
+    "title": "Hispanic or Latino Origin (2016)"
   },  
   {
     "url": "https://geohub.lacity.org/datasets/county-boundary",
@@ -35,7 +35,7 @@ image: filler.png
 featured: true
 ---
 
-Downloaded park data, county boundary, census block groups from 2016 in california, acs 5 year estimate data from 2016 on race, per-capita income, population Total
+Downloaded park data, county boundary, census block groups from 2016 in california, acs 5 year estimate data from 2016 on race, per-capita income, acs 5 year data on hispanic population
 
 Select only Parks and Gardens features
 
