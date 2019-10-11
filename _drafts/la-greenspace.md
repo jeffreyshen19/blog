@@ -9,12 +9,8 @@ references: [{
     "title": "Census Block Group Shapefiles (2016)"
   },  
   {
-    "url": "https://factfinder.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_16_5YR_B02001&prodType=table",
-    "title": "Census Demographics Data (2016)"
-  },  
-  {
-    "url": "https://factfinder.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_16_5YR_B03003&prodType=table",
-    "title": "Hispanic or Latino Origin (2016)"
+    "url": "https://factfinder.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_16_5YR_B03002&prodType=table",
+    "title": "Census Race and Hispanic Origin Data (2016)"
   },  
   {
     "url": "https://geohub.lacity.org/datasets/county-boundary",
