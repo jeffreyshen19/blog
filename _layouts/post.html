@@ -100,6 +100,8 @@
   {% include footer.html %}
 
   <!-- Import JS -->
-  <script src = "/assets/JS/{{page.javascript}}"></script>
+  {% if page.javascript %}
+    <script src = "/assets/JS/{{page.javascript}}"></script>
+  {% endif %}
 </body>
 </html>
