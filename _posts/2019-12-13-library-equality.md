@@ -33,7 +33,7 @@ featured: true
 
 LOS ANGELES, CA — I grew up just a few blocks away from the Westwood Public Library, and I spent nearly every Saturday there, reading in the stacks or playing online games on the computers. With busy parents and the limited Internet of the early 2000s, the local library was my connection to the outside world, and it was there that I was first exposed to computers, history, science, and many of my other interests.
 
-Libraries have always been incredibly important and formative institutions to me, but I do not think I would have been able to go to my local library if it was farther away. Los Angeles is not known to be a very accessible city, and I wondered if libraries were just as accessible to other communities. I decided to find out, using GIS.
+Libraries have always been incredibly important and formative institutions to me, but I do not think I would have been able to go to my local library if it was farther away. Los Angeles is not known to be a very walkable city, and I wondered if libraries were just as accessible to other communities. I decided to find out, using GIS.
 
 To start off, how far away is the local library from the average Angelino? Using a [dataset](https://egis3.lacounty.gov/dataportal/tag/libraries/) containing all public library locations in Los Angeles and the [2017 Census block groups](https://www.census.gov/cgi-bin/geo/shapefiles/index.php?year=2019&layergroup=Block+Groups), I calculated the distance between the centroid of each census block group and the nearest library.
 
@@ -46,4 +46,4 @@ Additionally, looking at the racial and economic demographics of Los Angeles Cou
 {% include graphs/image.html url = "library/race.png" caption = "Racial demographics of Los Angeles County. Data from 2017 U.S. Census." %}
 {% include graphs/image.html url = "library/per-capita-income.png" caption = "Per capita income in Los Angeles County. Data from 2017 U.S. Census." %}
 
-Overall, these results suggest that libraries in Los Angeles County are doing a good job serving the adjacency community. Besides a handful of rural, wealthy communities, most libraries are within walking distance of L.A. residents.
+Overall, these results suggest that libraries in Los Angeles County are doing a good job serving the adjacenct community. Besides a handful of rural, wealthy communities, most libraries are within walking distance of L.A. residents.
