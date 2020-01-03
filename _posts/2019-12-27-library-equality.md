@@ -28,7 +28,7 @@ references: [{
 ]
 header: centered
 caption: "The Westwood Public Library, just a ten minute walk away from where I grew up."
-featured: true
+featured: false
 ---
 
 LOS ANGELES, CA — I grew up just a few blocks away from the Westwood Public Library, and I spent nearly every Saturday there, reading in the stacks or playing online games on the computers. With busy parents and the limited Internet of the early 2000s, the local library was my connection to the outside world, and it was there that I was first exposed to computers, history, science, and many of my other interests.
