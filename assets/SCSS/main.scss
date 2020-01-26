@@ -2,7 +2,6 @@
 ---
 
 @import "theme";
-@import "footer";
 @import "nav";
 @import "components/subscribe";
 
@@ -73,6 +72,7 @@ header{
 .container{
   width: 70%;
   margin: 0 auto;
+  padding-bottom: 60px;
 }
 
 footer{
