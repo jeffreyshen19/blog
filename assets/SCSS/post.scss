@@ -40,29 +40,48 @@
   padding-top: 5px;
   padding-bottom: 40px;
 
-  h1{
-    line-height: 1em;
-    margin-bottom: 5px;
-  }
+  .columns{
+    margin-top: 10px;
 
-  h1 a{
-    color: black;
-    &:hover{
-      color: $purple;
+    h1{
+      line-height: 1em;
+      margin-bottom: 5px;
+      font-size: 1.6em;
+
+      a{
+        color: black;
+        margin: 0;
+
+        &:hover{
+          color: $purple;
+        }
+      }
     }
-    margin: 0;
-  }
 
-  img{
-    width: 200px;
-  }
+    p{
+      font-size: 1.1em;
+    }
 
-  .meta{
-    font-family: "IBMPlexSans";
-    a{
-      font-family: inherit;
+    .img{
+      width: 200px;
+      display: inline-block;
+      height: 100px;
+      background-position: center;
+      background-size: cover;
+    }
+
+    .column-right{
+      padding-top: 0;
+    }
+
+    .meta{
+      font-family: "IBMPlexSans";
+      a{
+        font-family: inherit;
+      }
     }
   }
+
 }
 
 // Elements that produce slightly from text
