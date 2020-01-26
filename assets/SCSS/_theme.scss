@@ -1,14 +1,14 @@
 // ** Fonts **
 
 @font-face { //Headings
-  font-family: "OpenSans";
+  font-family: "IBMPlexSans";
   font-weight: bold;
-  src: url("../fonts/Open_Sans/OpenSans-Bold.ttf");
+  src: url("../fonts/IBM_Plex_Sans/IBMPlexSans-Bold.ttf");
 }
 
 @font-face { //Sans Captions & non-body text elements
-  font-family: "OpenSans";
-  src: url("../fonts/Open_Sans/OpenSans-Regular.ttf");
+  font-family: "IBMPlexSans";
+  src: url("../fonts/IBM_Plex_Sans/IBMPlexSans-Regular.ttf");
 }
 
 @font-face{ //Body text
@@ -37,7 +37,7 @@ $black: #24252a;
 // ** Text Styling **
 
 h1, h2, h3, h4, h5, h6{
-  font-family: "OpenSans";
+  font-family: "IBMPlexSans";
   font-weight: bold;
 }
 
@@ -46,7 +46,7 @@ p, li, span, p a{
 }
 
 a, .sans{
-  font-family: "OpenSans";
+  font-family: "IBMPlexSans";
 }
 
 a{
