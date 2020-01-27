@@ -26,8 +26,8 @@
 
       <!-- Featured Content -->
       {%- assign posts = site.posts | where: "featured", "true" -%}
-      {%- assign post = posts[0] -%}
-      {% include post-thumb.html class = "featured" post = post %}
+      {%- assign featured_post = posts[0] -%}
+      {% include post-thumb.html class = "featured" post = featured_post %}
       <br>
       <br>
 
@@ -39,10 +39,12 @@
       <!-- Post Feed -->
       <div class = "columns is-multiline is-4">
         {%- for post in site.posts-%}
-          {% include post-thumb.html class = "column is-4" post = post small = true %}
+          {% if post.title != featured_post.title %} <!-- Filter out featured post -->
+            {% include post-thumb.html class = "column is-4" post = post small = true %}
+          {% endif %}
         {%- endfor -%}
       </div>
-      
+
     </div>
 
   </body>
