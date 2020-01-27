@@ -25,17 +25,9 @@
       </header>
 
       <!-- Featured Content -->
-      <div id = "post">
-        {%- assign posts = site.posts | where: "featured", "true" -%}
-        {%- assign featured_post = posts[0] -%}
-        <a href = "{{ featured_post.url | relative_url }}"><img src = "/assets/graphics/posts/{{ featured_post.image }}"/></a>
-        <h1 class = "is-size-3">
-          <a href="{{ featured_post.url | relative_url }}">
-            {{ featured_post.title | escape }}
-          </a>
-        </h1>
-        <p class = "is-size-5">{{ featured_post.subtitle }}</p>
-      </div>
+      {%- assign posts = site.posts | where: "featured", "true" -%}
+      {%- assign post = posts[0] -%}
+      {% include post-thumb.html id = "featured-post" post = post %}
       <br>
       <br>
 
@@ -50,7 +42,7 @@
         {%- for post in site.posts-%}
           {% if post.categories contains "Politics" %}
             {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-            <div class = "columns">
+            <div class = "post columns">
               <div class = "column is-narrow">
                 <a href = "{{post.url | relative_url}}"><img src = "/assets/graphics/posts/{{ post.image }}"/></a>
               </div>
