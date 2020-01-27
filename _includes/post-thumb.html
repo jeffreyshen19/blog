@@ -1,11 +1,16 @@
-<div class = "post" id = "{{include.id}}">
+<div class = "post {{include.class}}">
   {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
   <a href = "{{ include.post.url | relative_url }}"></a>
   <img src = "/assets/graphics/posts/{{ include.post.image }}"/>
   <div class = "text">
     <p class = "meta is-size-6 heading">{{include.post.categories}}</p>
-    <h1 class = "is-size-3">{{ include.post.title | escape }}</h1>
-    <p class = "is-size-5">{{ include.post.subtitle }}</p>
+    {% if include.small %}
+      <h1 class = "is-size-4">{{ include.post.title | escape }}</h1>
+      <p class = "is-size-6">{{ include.post.subtitle }}</p>
+    {% else %}
+      <h1 class = "is-size-3">{{ include.post.title | escape }}</h1>
+      <p class = "is-size-5">{{ include.post.subtitle }}</p>
+    {% endif %}
     <p class = "date is-size-6">{{ include.post.date | date: date_format }}</p>
   </div>
 </div>

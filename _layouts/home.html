@@ -27,7 +27,7 @@
       <!-- Featured Content -->
       {%- assign posts = site.posts | where: "featured", "true" -%}
       {%- assign post = posts[0] -%}
-      {% include post-thumb.html id = "featured-post" post = post %}
+      {% include post-thumb.html class = "featured" post = post %}
       <br>
       <br>
 
@@ -37,75 +37,12 @@
       <br>
 
       <!-- Post Feed -->
-      <h1 class = "is-size-5">POLITICS</h1>
-      <div class = "posts" id = "politics">
+      <div class = "columns is-multiline is-4">
         {%- for post in site.posts-%}
-          {% if post.categories contains "Politics" %}
-            {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-            <div class = "post columns">
-              <div class = "column is-narrow">
-                <a href = "{{post.url | relative_url}}"><img src = "/assets/graphics/posts/{{ post.image }}"/></a>
-              </div>
-              <div class = "column">
-                <h1 class = "is-size-4">
-                  <a href="{{ post.url | relative_url }}">
-                    {{ post.title | escape }}
-                  </a>
-                </h1>
-                <p class = "is-size-5">{{ post.subtitle }}</p>
-                <p class = "meta is-size-6 heading" style = "margin-top:10px;"><a href = "/{{post.categories[0] | downcase}}">{{post.categories}}</a> • {{ post.date | date: date_format }}</p>
-              </div>
-            </div>
-          {% endif %}
+          {% include post-thumb.html class = "column is-4" post = post small = true %}
         {%- endfor -%}
       </div>
-      <br>
-      <h1 class = "is-size-5">SOCIETY</h1>
-      <div class = "posts" id = "society">
-        {%- for post in site.posts-%}
-          {% if post.categories contains "Society" %}
-            {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-            <div class = "columns">
-              <div class = "column is-narrow">
-                <a href = "{{post.url | relative_url}}"><img src = "/assets/graphics/posts/{{ post.image }}"/></a>
-              </div>
-              <div class = "column">
-                <h1 class = "is-size-4">
-                  <a href="{{ post.url | relative_url }}">
-                    {{ post.title | escape }}
-                  </a>
-                </h1>
-                <p class = "is-size-5">{{ post.subtitle }}</p>
-                <p class = "meta is-size-6 heading" style = "margin-top:10px;"><a href = "/{{post.categories[0] | downcase}}">{{post.categories}}</a> • {{ post.date | date: date_format }}</p>
-              </div>
-            </div>
-          {% endif %}
-        {%- endfor -%}
-      </div>
-      <br>
-      <h1 class = "is-size-5">CULTURE</h1>
-      <div class = "posts" id = "culture">
-        {%- for post in site.posts-%}
-          {% if post.categories contains "Culture" %}
-            {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-            <div class = "columns">
-              <div class = "column is-narrow">
-                <a href = "{{post.url | relative_url}}"><img src = "/assets/graphics/posts/{{ post.image }}"/></a>
-              </div>
-              <div class = "column">
-                <h1 class = "is-size-4">
-                  <a href="{{ post.url | relative_url }}">
-                    {{ post.title | escape }}
-                  </a>
-                </h1>
-                <p class = "is-size-5">{{ post.subtitle }}</p>
-                <p class = "meta is-size-6 heading" style = "margin-top:10px;"><a href = "/{{post.categories[0] | downcase}}">{{post.categories}}</a> • {{ post.date | date: date_format }}</p>
-              </div>
-            </div>
-          {% endif %}
-        {%- endfor -%}
-      </div>
-
+      
     </div>
 
   </body>

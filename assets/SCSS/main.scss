@@ -23,27 +23,10 @@ header{
   }
 }
 
-#featured-post{
-  img{
-    width: 100%;
-  }
-  a{
-    color: black;
-    &:hover{
-      color: $purple;
-    }
-  }
-  h1{
-    line-height: 1em;
-    margin-bottom: 5px;
-    margin-top: 10px;
-  }
-}
-
 .post{
-  padding: 0;
   position: relative;
   border: none;
+  width: 100%;
 
   a{
     width: 100%;
@@ -65,6 +48,13 @@ header{
     border-top: none;
     border-bottom-left-radius: 6px;
     border-bottom-right-radius: 6px;
+    box-sizing: border-box;
+
+    h1{
+      line-height: 1.2em;
+      margin-bottom: 5px;
+      margin-top: 10px;
+    }
 
     .meta, .date{
       font-family: "IBMPlexSans";
