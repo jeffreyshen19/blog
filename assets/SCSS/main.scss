@@ -86,7 +86,7 @@ header{
   .contents{
     border: none;
   }
-  
+
   .text{
     border-top: none;
     border-bottom-left-radius: 6px;
@@ -118,9 +118,9 @@ footer{
 }
 
 @media screen and (max-width: 768px){
-  .posts{
-    img{
-      width: 100%;
+  .post {
+    .img{
+      height: 300px;
     }
   }
 }
