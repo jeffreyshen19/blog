@@ -75,22 +75,9 @@
     </div>
 
     <h1>Related Posts</h1>
-    <div id = "related-posts">
+    <div id = "related-posts" class = "posts columns is-4">
       {%- for post in site.related_posts limit: 3 -%}
-        <div class = "columns">
-          <a href = "{{post.url | relative_url}}">
-            <div class = "column is-narrow img" style = "background-image: url('/assets/graphics/posts/{{ post.image }}')">
-            </div>
-          </a>
-          <div class = "column column-right">
-            <h1>
-              <a href="{{ post.url | relative_url }}">
-                {{ post.title | escape }}
-              </a>
-            </h1>
-            <p>{{ post.subtitle }}</p>
-          </div>
-        </div>
+        {% include post-thumb.html class = "column is-4" post = post small = true %}
       {%- endfor -%}
     </div>
 
