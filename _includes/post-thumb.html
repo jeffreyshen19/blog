@@ -1,7 +1,11 @@
 <div class = "post {{include.class}}">
   {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
   <a href = "{{ include.post.url | relative_url }}"></a>
-  <img src = "/assets/graphics/posts/{{ include.post.image }}"/>
+  {% if include.small %}
+    <div class = "img" style = "background-image: url('/assets/graphics/posts/{{ include.post.image }}')"/></div>
+  {% else %}
+    <img src = "/assets/graphics/posts/{{ include.post.image }}">
+  {% endif %}
   <div class = "text">
     <p class = "meta is-size-6 heading">{{include.post.categories}}</p>
     {% if include.small %}

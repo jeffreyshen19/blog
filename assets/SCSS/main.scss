@@ -36,9 +36,16 @@ header{
     position: absolute;
   }
 
-  img{
+  img, .img{
+    width: 100%;
     border-top-left-radius: 6px;
     border-top-right-radius: 6px;
+  }
+
+  .img{
+    height: 170px;
+    background-position: center;
+    background-size: cover;
   }
 
   .text{
