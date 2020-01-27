@@ -38,52 +38,7 @@
 }
 
 #related-posts{
-  padding-left: 0;
-  padding-top: 5px;
-  padding-bottom: 40px;
-
-  .columns{
-    margin-top: 10px;
-
-    h1{
-      line-height: 1em;
-      margin-bottom: 5px;
-      font-size: 1.6em;
-
-      a{
-        color: black;
-        margin: 0;
-
-        &:hover{
-          color: $purple;
-        }
-      }
-    }
-
-    p{
-      font-size: 1.1em;
-    }
-
-    .img{
-      width: 200px;
-      display: inline-block;
-      height: 100px;
-      background-position: center;
-      background-size: cover;
-    }
-
-    .column-right{
-      padding-top: 0;
-    }
-
-    .meta{
-      font-family: "IBMPlexSans";
-      a{
-        font-family: inherit;
-      }
-    }
-  }
-
+  padding-top: 8px;
 }
 
 // Elements that produce slightly from text
