@@ -37,7 +37,7 @@
       <br>
 
       <!-- Post Feed -->
-      <div class = "columns is-multiline is-4">
+      <div class = "posts columns is-multiline is-4">
         {%- for post in site.posts-%}
           {% if post.title != featured_post.title %} <!-- Filter out featured post -->
             {% include post-thumb.html class = "column is-4" post = post small = true %}
