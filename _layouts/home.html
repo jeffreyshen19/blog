@@ -14,9 +14,8 @@
         <p class = "is-size-4">Exploring politics, culture, and society with computer science</p>
         <div class = "links">
           <a href = "http://jeffreyshen.com" class = "heading is-size-6">ABOUT</a>
-          <a href = "/#politics" class = "heading is-size-6">POLITICS</a>
-          <a href = "/#culture" class = "heading is-size-6">CULTURE</a>
-          <a href = "/#society" class = "heading is-size-6">SOCIETY</a>
+          <a href = "/#posts" class = "heading is-size-6">POSTS</a>
+          <a href = "mailto:jjshen@mit.edu" class = "heading is-size-6">CONTACT</a>
           <a href = "https://twitter.com/JeffreyShen10" target = "_blank" class = "heading is-size-6"><i class = "fab fa-twitter"></i></a>
           <a href = "https://github.com/jeffreyshen19" target = "_blank" class = "heading is-size-6"><i class = "fab fa-github"></i></a>
         </div>
@@ -37,7 +36,7 @@
       <br>
 
       <!-- Post Feed -->
-      <div class = "posts columns is-multiline is-4">
+      <div id = "posts" class = "posts columns is-multiline is-4">
         {%- for post in site.posts-%}
           {% if post.title != featured_post.title %} <!-- Filter out featured post -->
             {% include post-thumb.html class = "column is-4" post = post small = true %}
