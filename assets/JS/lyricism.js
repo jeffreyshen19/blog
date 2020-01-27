@@ -1,7 +1,6 @@
 ---
 ---
 
-{% include_relative charts/d3.min.js %}
 {% include_relative charts/Chart.js %}
 {% include_relative charts/line_chart.js %}
 

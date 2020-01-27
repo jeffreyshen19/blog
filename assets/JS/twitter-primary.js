@@ -1,7 +1,6 @@
 ---
 ---
 
-{% include_relative charts/d3.min.js %}
 {% include_relative charts/Chart.js %}
 {% include_relative charts/bar_chart.js %}
 {% include_relative charts/box_plot.js %}
