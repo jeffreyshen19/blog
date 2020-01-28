@@ -92,7 +92,9 @@
     <script src="https://unpkg.com/react@16/umd/react.production.min.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js" crossorigin></script>
     <script src="https://d3js.org/d3.v5.min.js"></script>
-    <script src = "/assets/JS/{{page.javascript}}"></script>
+    {%- for js in page.javascript -%}
+      <script src = "/assets/JS/{{js}}"></script>
+    {%- endfor -%}
   {% endif %}
 </body>
 </html>
