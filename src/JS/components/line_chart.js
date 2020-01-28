@@ -1,3 +1,4 @@
+import Chart from "/dist/JS/components/chart.js"
 
 const e = React.createElement;
 
@@ -211,7 +212,7 @@ class LineChart extends React.Component {
 
   render() {
     if(this.state.data.length && this.state.chart) this.renderGraph();
-    return (null);
+    return (<Chart></Chart>);
   }
 }
 
