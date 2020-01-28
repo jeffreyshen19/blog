@@ -3,9 +3,19 @@ const e = React.createElement;
 class LineChart extends React.Component {
   constructor(props) {
     super(props);
+
+    const margin = {top: 5, right: 20, bottom: 20, left: 65},
+        padding = {top: 40, right: 20, bottom: 40, left: 20};
+
     this.state = {
       data: [],
-      chart: null
+      chart: null,
+      width: 0,
+      height: (props.height || 300) - margin.top - margin.bottom,
+      margin: margin,
+      padding: padding,
+      offset: 0,
+      body_width: 0,
     };
 
     // Load data from csv
@@ -22,34 +32,40 @@ class LineChart extends React.Component {
     })
   }
 
-  componentDidMount(){
-    let chart = d3.select(this.props.chart);
+  updateDimensions() { //Calculate new width
+    let offset = (d3.select("body").node().offsetWidth -  d3.select("#body").node().offsetWidth) / 2,
+        body_width = d3.select("body").node().offsetWidth,
+        width = d3.select("#body").node().offsetWidth - this.state.margin.left - this.state.margin.right - this.state.padding.left - this.state.padding.right + 2 * offset;
 
+    this.setState({
+      width: width,
+      offset: offset,
+      body_width: body_width,
+    })
+  }
+
+  componentDidMount(){
+    // Handle resize
+    this.updateDimensions();
+    window.addEventListener("resize", this.updateDimensions.bind(this));
+
+    // Add D3 selector to state
+    let chart = d3.select(this.props.chart);
     this.setState({
       chart: chart
     });
   }
 
-  positionTooltip(mouse, tooltip, margin, width, height, offset, x, y){
-    return {
-      "left": (20 + mouse[0] + tooltip.node().offsetWidth > width + margin.left + margin.right ? mouse[0] - 10 - tooltip.node().offsetWidth - offset: mouse[0] + 10 - offset),
-      "top": y(0) - tooltip.node().offsetHeight + margin.top + 24,
-    };
-  }
-
   renderGraph(){
-    const margin = {top: 5, right: 20, bottom: 20, left: 65},
-        padding = {top: 40, right: 20, bottom: 40, left: 20};
-
-    let offset = (d3.select("body").node().offsetWidth - d3.select("#body").node().offsetWidth) / 2,
-        body_width = d3.select("body").node().offsetWidth,
+    let margin = this.state.margin,
+        padding = this.state.padding,
         dataset = this.props,
         chart = this.state.chart,
-        data = this.state.data;
-
-    // Set dimensions of graph
-    let width = d3.select("#body").node().offsetWidth - margin.left - margin.right - padding.left - padding.right + 2 * offset,
-        height = (dataset.height || 300) - margin.top - margin.bottom;
+        data = this.state.data,
+        width = this.state.width,
+        height = this.state.height,
+        offset = this.state.offset,
+        body_width = this.state.body_width;
 
     // Set the ranges
     var	x = d3.scaleTime().range([0, width]),
@@ -156,7 +172,13 @@ class LineChart extends React.Component {
 
     var bisect = d3.bisector(function(d){ return d[dataset.xcol]; }).right;
 
-    let positionTooltip = this.positionTooltip;
+    let positionTooltip = (mouse, tooltip, x, y) => {
+      return {
+        "left": (20 + mouse[0] + tooltip.node().offsetWidth > this.state.width + this.state.margin.left + this.state.margin.right ? mouse[0] - 10 - tooltip.node().offsetWidth - this.state.offset: mouse[0] + 10 - this.state.offset),
+        "top": y(0) - tooltip.node().offsetHeight + this.state.margin.top + 24,
+      };
+    }
+
     chart.select("svg").on("mousemove", function(){
       var mouse = d3.mouse(this),
           mouseX = x.invert(mouse[0] - margin.left),
@@ -176,8 +198,8 @@ class LineChart extends React.Component {
           .html("<strong>" + d3.timeFormat("%b %e, %Y")(datum[dataset.xcol]) + "</strong><br>" + ycols.map(function(d, i){
             return "<div class = 'tooltip-label'><div class = 'bubble' style = 'background-color:" + colors[i] + "'></div>" + labels[i] + ": " + datum[d].toFixed(2) + "</div>";
           }).join(""))
-          .style("left", positionTooltip(mouse, tooltip, margin, width, height, offset, x, y).left + "px")
-          .style("top", positionTooltip(mouse, tooltip, margin, width, height, offset, x, y).top + "px");
+          .style("left", positionTooltip(mouse, tooltip, x, y).left + "px")
+          .style("top", positionTooltip(mouse, tooltip, x, y).top + "px");
       }
     }).on("mouseout", function(d){
       tooltip.classed("hidden", true);
