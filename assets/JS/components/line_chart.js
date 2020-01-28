@@ -222,5 +222,3 @@ for(let i = 0; i < elements.length; i++){
     chart: elements[i]
   }), elements[i]);
 }
-
-// TODO: deal with resizing
