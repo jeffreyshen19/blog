@@ -6,11 +6,12 @@ var gutil = require('gulp-util');
 var babel = require('gulp-babel');
 
 gulp.task('babel', function() {
-  return gulp.src('assets/src/JS/components/line_chart.js')
+  return gulp.src('./src/JS/components/*.js')
     .pipe(babel({
-        presets: ['@babel/env']
+        presets: ['@babel/env', "minify"],
+        plugins: ['transform-react-jsx']
     }))
-    .pipe(gulp.dest('assets/dist/JS'))
+    .pipe(gulp.dest('./dist/JS/components'))
 });
 
 
@@ -35,5 +36,5 @@ gulp.task('jekyll', function() {
 //   gulp.watch('assets/src/JS/components/*.js', gulp.series('babel'));
 // }));
 gulp.task('default', gulp.parallel('babel', function a() {
-  gulp.watch('assets/src/JS/components/*.js', gulp.series('babel'));
+  gulp.watch('/src/JS/components/*.js', gulp.series('babel'));
 }));
