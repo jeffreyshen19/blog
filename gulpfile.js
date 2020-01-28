@@ -32,9 +32,6 @@ gulp.task('jekyll', function() {
   jekyll.stderr.on('data', jekyllLogger);
 });
 
-// gulp.task('default', gulp.parallel(gulp.parallel('babel', 'jekyll'), function a() {
-//   gulp.watch('assets/src/JS/components/*.js', gulp.series('babel'));
-// }));
-gulp.task('default', gulp.parallel('babel', function a() {
+gulp.task('default', gulp.parallel(gulp.parallel('babel', 'jekyll'), function a() {
   gulp.watch('/src/JS/components/*.js', gulp.series('babel'));
 }));
