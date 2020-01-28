@@ -9,12 +9,13 @@ class LineChart extends React.Component {
   }
 
   render() {
-
     return (
-      <p></p>
+      <p>This is a line chart</p>
     );
   }
 }
 
-// const domContainer = document.querySelector('#bar_chart');
-// ReactDOM.render(e(LineChart), domContainer);
+let elements = document.getElementsByClassName('line-chart');
+for(let i = 0; i < elements.length; i++){
+  ReactDOM.render(e(LineChart), elements[i]);
+}
