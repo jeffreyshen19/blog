@@ -17,8 +17,11 @@
   },
   "homepage": "https://github.com/jeffreyshen19/jshen-personal-blog#readme",
   "devDependencies": {
+    "@babel/core": "^7.8.3",
+    "@babel/preset-env": "^7.8.3",
     "browser-sync": "^2.26.3",
     "gulp": "^4.0.0",
+    "gulp-babel": "^8.0.0",
     "gulp-minify": "^3.1.0",
     "gulp-sass": "^4.0.2",
     "gulp-util": "^3.0.8"

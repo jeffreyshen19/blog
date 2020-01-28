@@ -3,7 +3,7 @@
 <head>
   {% include head.html %}
   <title>{{ page.title }} • Jeffrey Shen </title>
-  <link type = "text/css" rel = "stylesheet" href = "/assets/SCSS/post.css">
+  <link type = "text/css" rel = "stylesheet" href = "/src/SCSS/post.css">
 </head>
 <body>
 
@@ -94,7 +94,7 @@
     <script src="https://unpkg.com/babel-standalone@6.26.0/babel.min.js"></script>
     <script src="https://d3js.org/d3.v5.min.js"></script>
     {%- for js in page.javascript -%}
-      <script src = "/assets/JS/{{js}}" type = "text/babel"></script>
+      <script src = "/src/JS/{{js}}" type = "text/babel"></script>
     {%- endfor -%}
   {% endif %}
 </body>

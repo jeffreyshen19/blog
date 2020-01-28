@@ -3,34 +3,34 @@
 @font-face { //Headings
   font-family: "IBMPlexSans";
   font-weight: bold;
-  src: url("../fonts/IBM_Plex_Sans/IBMPlexSans-Bold.ttf");
+  src: url("/assets/fonts/IBM_Plex_Sans/IBMPlexSans-Bold.ttf");
 }
 
 @font-face { //Headings
   font-family: "IBMPlexSans";
-  src: url("../fonts/IBM_Plex_Sans/IBMPlexSans-SemiBold.ttf");
+  src: url("/assets/fonts/IBM_Plex_Sans/IBMPlexSans-SemiBold.ttf");
 }
 
 @font-face { //Sans Captions & non-body text elements
   font-family: "IBMPlexSans";
-  src: url("../fonts/IBM_Plex_Sans/IBMPlexSans-Regular.ttf");
+  src: url("/assets/fonts/IBM_Plex_Sans/IBMPlexSans-Regular.ttf");
 }
 
 @font-face{ //Body text
   font-family: "CrimsonText";
-  src: url("../fonts/crimsontext/CrimsonText-Regular.ttf");
+  src: url("/assets/fonts/crimsontext/CrimsonText-Regular.ttf");
 }
 
 @font-face{ //Body text (BOLD)
   font-family: "CrimsonText";
   font-weight: bold;
-  src: url("../fonts/crimsontext/CrimsonText-Bold.ttf");
+  src: url("/assets/fonts/crimsontext/CrimsonText-Bold.ttf");
 }
 
 @font-face{ //Body text (ITALIC)
   font-family: "CrimsonText";
   font-style: italic;
-  src: url("../fonts/crimsontext/CrimsonText-Italic.ttf");
+  src: url("/assets/fonts/crimsontext/CrimsonText-Italic.ttf");
 }
 
 // ** Palette **

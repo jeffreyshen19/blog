@@ -3,18 +3,16 @@ var sass = require('gulp-sass');
 var minify = require('gulp-minify');
 var child = require('child_process');
 var gutil = require('gulp-util');
+var babel = require('gulp-babel');
 
-gulp.task('sass', function () {
-  return gulp.src('assets/_src/SCSS/*.scss')
-    .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
-    .pipe(gulp.dest('assets/dist/CSS'));
+gulp.task('babel', function() {
+  return gulp.src('assets/src/JS/components/line_chart.js')
+    .pipe(babel({
+        presets: ['@babel/env']
+    }))
+    .pipe(gulp.dest('assets/dist/JS'))
 });
 
-gulp.task('compress', function() {
-  return gulp.src('assets/_src/JS/*.js')
-    .pipe(minify({}))
-    .pipe(gulp.dest('assets/dist/JS'));
-});
 
 gulp.task('jekyll', function() {
   var jekyll = child.spawn('jekyll', ['serve',
@@ -33,7 +31,9 @@ gulp.task('jekyll', function() {
   jekyll.stderr.on('data', jekyllLogger);
 });
 
-gulp.task('default', gulp.parallel(gulp.parallel('sass', 'compress', 'jekyll'), function a() {
-  gulp.watch('assets/_src/SCSS/*.scss', gulp.series('sass'));
-  gulp.watch('assets/_src/JS/*.js', gulp.series('compress'));
+// gulp.task('default', gulp.parallel(gulp.parallel('babel', 'jekyll'), function a() {
+//   gulp.watch('assets/src/JS/components/*.js', gulp.series('babel'));
+// }));
+gulp.task('default', gulp.parallel('babel', function a() {
+  gulp.watch('assets/src/JS/components/*.js', gulp.series('babel'));
 }));
