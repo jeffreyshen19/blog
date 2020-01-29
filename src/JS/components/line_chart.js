@@ -4,7 +4,6 @@ const e = React.createElement;
 
 class LineChart extends React.Component {
   constructor(props) {
-    console.log(props);
     super(props);
   }
 
@@ -17,7 +16,6 @@ class LineChart extends React.Component {
   }
 
   xAxisFormat(body_width, axis){
-    console.log("formatting x axis");
     if(body_width < 400) axis.ticks(d3.timeYear.every(8));
     else if(body_width < 800) axis.ticks(d3.timeYear.every(4));
     else axis.ticks(d3.timeYear.every(2));
@@ -44,6 +42,10 @@ class LineChart extends React.Component {
     };
   }
 
+  formatTooltip(datum){
+    return d3.timeFormat("%b %e, %Y")(datum);
+  }
+
   render() {
     return (
       <Chart {...this.props}
@@ -54,6 +56,7 @@ class LineChart extends React.Component {
         xAxisFormat = {this.xAxisFormat}
         renderData = {this.renderData}
         positionTooltip = {this.positionTooltip}
+        formatTooltip = {this.formatTooltip}
         useTooltipLine = {true}
         >
       </Chart>

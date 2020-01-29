@@ -1,4 +1,4 @@
-"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports["default"]=void 0;function _typeof(a){return _typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(a){return typeof a}:function(a){return a&&"function"==typeof Symbol&&a.constructor===Symbol&&a!==Symbol.prototype?"symbol":typeof a},_typeof(a)}function _toConsumableArray(a){return _arrayWithoutHoles(a)||_iterableToArray(a)||_nonIterableSpread()}function _nonIterableSpread(){throw new TypeError("Invalid attempt to spread non-iterable instance")}function _iterableToArray(a){if(Symbol.iterator in Object(a)||"[object Arguments]"===Object.prototype.toString.call(a))return Array.from(a)}function _arrayWithoutHoles(a){if(Array.isArray(a)){for(var b=0,c=Array(a.length);b<a.length;b++)c[b]=a[b];return c}}function _classCallCheck(a,b){if(!(a instanceof b))throw new TypeError("Cannot call a class as a function")}function _defineProperties(a,b){for(var c,d=0;d<b.length;d++)c=b[d],c.enumerable=c.enumerable||!1,c.configurable=!0,"value"in c&&(c.writable=!0),Object.defineProperty(a,c.key,c)}function _createClass(a,b,c){return b&&_defineProperties(a.prototype,b),c&&_defineProperties(a,c),a}function _possibleConstructorReturn(a,b){return b&&("object"===_typeof(b)||"function"==typeof b)?b:_assertThisInitialized(a)}function _assertThisInitialized(a){if(void 0===a)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return a}function _getPrototypeOf(a){return _getPrototypeOf=Object.setPrototypeOf?Object.getPrototypeOf:function(a){return a.__proto__||Object.getPrototypeOf(a)},_getPrototypeOf(a)}function _inherits(a,b){if("function"!=typeof b&&null!==b)throw new TypeError("Super expression must either be null or a function");a.prototype=Object.create(b&&b.prototype,{constructor:{value:a,writable:!0,configurable:!0}}),b&&_setPrototypeOf(a,b)}function _setPrototypeOf(a,b){return _setPrototypeOf=Object.setPrototypeOf||function(a,b){return a.__proto__=b,a},_setPrototypeOf(a,b)}/*
+/*
   Parent class for all D3 charts.
 
   Props:
@@ -14,14 +14,166 @@
     * renderData (required): method which takes i, ycol, x, y, svg, state and specifies how to draw the graph, given each ycol.
     * useTooltipLine (optional): boolean, display a vertical line with the tooltip
     * positionTooltip (required): method which takes mouse, tooltip, x, y, state and outputs an object with integer fields x, y telling how the tooltip should be positioned
-*/var Chart=/*#__PURE__*/function(a){function b(a){var c;return _classCallCheck(this,b),c=_possibleConstructorReturn(this,_getPrototypeOf(b).call(this,a)),console.log(a),c.state={data:[],chart:null,width:0,margin:a.margin,padding:a.padding,height:(a.height||300)-a.margin.top-a.margin.bottom,offset:0,body_width:0,dataset:a},d3.csv(a.csv).then(function(b){c.setState({data:b.map(function(b){return b[a.xcol]=d3.timeParse("%Y-%m-%d")(b[a.xcol]),a.ycols.split(",").forEach(function(a){b[a]=parseFloat(b[a])}),b})})}),c}return _inherits(b,a),_createClass(b,[{key:"updateDimensions",value:function updateDimensions(){//Calculate new width
-var a=(d3.select("body").node().offsetWidth-d3.select("#body").node().offsetWidth)/2,b=d3.select("body").node().offsetWidth,c=d3.select("#body").node().offsetWidth-this.state.margin.left-this.state.margin.right-this.state.padding.left-this.state.padding.right+2*a;this.setState({width:c,offset:a,body_width:b})}},{key:"componentDidMount",value:function componentDidMount(){this.updateDimensions(),window.addEventListener("resize",this.updateDimensions.bind(this));// Add D3 selector to state
-var a=d3.select(this.props.chart);this.setState({chart:a})}},{key:"renderGraph",value:function renderGraph(){var a=this.state.margin,b=this.state.padding,c=this.state.dataset,d=this.state.chart,e=this.state.data,f=this.state.width,g=this.state.height,h=this.state.offset,i=this.state.body_width;console.log("yooo");// Set the ranges
-var j=this.props.xScale(f,g).range([0,f]),k=this.props.yScale(f,g).range([0,g]),l=d3.axisBottom(j),m=d3.axisLeft(k);// Define axes
-this.props.xAxisFormat&&this.props.xAxisFormat(i,l),this.props.yAxisFormat&&this.props.yAxisFormat(i,m),d.selectAll("*").remove();// Create canvas
-var n=d.append("svg").attr("width",f+a.left+a.right).attr("height",g+a.top+a.bottom).style("transform","translate(-"+h+"px,0px)").append("g").attr("transform","translate("+a.left+","+a.top+")");// Add tooltip and tooltip line
-d.append("div").attr("class","tooltip hidden");// Fit Domain
-var o=d3.max(e,function(a){var b=Math.max;return b.apply(Math,_toConsumableArray(c.ycols.split(",").map(function(b){return a[b]})))}),p=d3.extent(e,function(a){return a[c.xcol]});this.props.setXDomain?j.domain(this.props.setXDomain(e,c)):j.domain(p),this.props.setYDomain?k.domain(this.props.setYDomain(e,c)):k.domain([0,o]);// Render data
-var q=this.state;c.ycols.split(",").forEach(function(a,b){this.props.renderData(b,a,j,k,n,q)}),n.append("g").attr("class","x axis").attr("transform","translate(0,"+g+")").call(l),n.append("g").attr("class","y axis").call(m),d.insert("p",":first-child").html(c.title).attr("class","axis-label title"),d.append("p").attr("class","axis-label").style("text-align","center").html(c.xlabel),n.append("text").attr("transform","rotate(-90)").attr("class","axis-label").attr("y",0-a.left).attr("x",0-g/2).attr("dy","1em").text(c.ylabel),1<c.ycols.split(",").length&&d.append("div").attr("class","legend").selectAll(".legend-label").data(c.linelabels.split(",").map(function(a,b){return{color:c.linecolors.split(",")[b],label:a}})).enter().append("div").attr("class","legend-label").html(function(a){return"<div class = 'bubble' style = 'background-color:"+a.color+"'></div><span>"+a.label+"</span>"});/*
+*/
+export default class Chart extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: [],
+      chart: null,
+      width: 0,
+      margin: props.margin,
+      padding: props.padding,
+      height: (props.height || 300) - props.margin.top - props.margin.bottom,
+      offset: 0,
+      body_width: 0,
+      dataset: props
+    }; // Load data from csv
+
+    d3.csv(props.csv).then(values => {
+      this.setState({
+        data: values.map(function (d) {
+          //Process csv data into correct format
+          d[props.xcol] = d3.timeParse("%Y-%m-%d")(d[props.xcol]);
+          props.ycols.split(",").forEach(function (ycol) {
+            d[ycol] = parseFloat(d[ycol]);
+          });
+          return d;
+        })
+      });
+    });
+  }
+
+  updateDimensions() {
+    //Calculate new width
+    let offset = (d3.select("body").node().offsetWidth - d3.select("#body").node().offsetWidth) / 2,
+        body_width = d3.select("body").node().offsetWidth,
+        width = d3.select("#body").node().offsetWidth - this.state.margin.left - this.state.margin.right - this.state.padding.left - this.state.padding.right + 2 * offset;
+    this.setState({
+      width: width,
+      offset: offset,
+      body_width: body_width
+    });
+  }
+
+  componentDidMount() {
+    // Handle resize
+    this.updateDimensions();
+    window.addEventListener("resize", this.updateDimensions.bind(this)); // Add D3 selector to state
+
+    let chart = d3.select(this.props.chart);
+    this.setState({
+      chart: chart
+    });
+  }
+
+  renderGraph() {
+    let margin = this.state.margin,
+        padding = this.state.padding,
+        dataset = this.state.dataset,
+        chart = this.state.chart,
+        data = this.state.data,
+        width = this.state.width,
+        height = this.state.height,
+        offset = this.state.offset,
+        body_width = this.state.body_width; // Set the ranges
+
+    var x = this.props.xScale(width, height).range([0, width]),
+        y = this.props.yScale(width, height).range([height, 0]); // Define axes
+
+    var xAxis = d3.axisBottom(x),
+        yAxis = d3.axisLeft(y); // Set how ticks should behave responsively
+
+    if (this.props.xAxisFormat) this.props.xAxisFormat(body_width, xAxis);
+    if (this.props.yAxisFormat) this.props.yAxisFormat(body_width, yAxis); // Reset canvas
+
+    chart.selectAll("*").remove(); // Create canvas
+
+    var svg = chart.append("svg").attr("width", width + margin.left + margin.right).attr("height", height + margin.top + margin.bottom).style("transform", "translate(-" + offset + "px,0px)").append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")"); // Add tooltip and tooltip line
+
+    chart.append("div").attr("class", "tooltip hidden"); // Fit Domain
+
+    var ymax = d3.max(data, function (d) {
+      return Math.max(...dataset.ycols.split(",").map(function (ycol) {
+        return d[ycol];
+      }));
+    });
+    var xextent = d3.extent(data, function (d) {
+      return d[dataset.xcol];
+    });
+    if (this.props.setXDomain) x.domain(this.props.setXDomain(data, dataset));else x.domain(xextent);
+    if (this.props.setYDomain) y.domain(this.props.setYDomain(data, dataset));else y.domain([0, ymax]); // Render data
+
+    let state = this.state;
+    dataset.ycols.split(",").forEach((ycol, i) => {
+      this.props.renderData(i, ycol, x, y, svg, state);
+    }); // Add X Axis
+
+    svg.append("g").attr("class", "x axis").attr("transform", "translate(0," + height + ")").call(xAxis); // Add the Y Axis
+
+    svg.append("g").attr("class", "y axis").call(yAxis); // Chart title
+
+    chart.insert("p", ":first-child").html(dataset.title).attr("class", "axis-label title"); // X Axis Label
+
+    chart.append("p").attr("class", "axis-label").style("text-align", "center").html(dataset.xlabel); // Y Axis Label
+
+    svg.append("text").attr("transform", "rotate(-90)").attr("class", "axis-label").attr("y", 0 - margin.left).attr("x", 0 - height / 2).attr("dy", "1em").text(dataset.ylabel); // Add legend if there are multiple lines
+
+    if (dataset.ycols.split(",").length > 1) {
+      chart.append("div").attr("class", "legend").selectAll(".legend-label").data(dataset.linelabels.split(",").map(function (e, i) {
+        return {
+          "color": dataset.linecolors.split(",")[i],
+          "label": e
+        };
+      })).enter().append('div').attr("class", "legend-label").html(function (d, i) {
+        return "<div class = 'bubble' style = 'background-color:" + d.color + "'></div><span>" + d.label + "</span>";
+      });
+    }
+    /*
       TOOLTIP
-    */var r=c.ycols.split(","),s=c.linecolors.split(","),t=c.linelabels.split(","),u=this.props.useTooltipLine,v=this.props.positionTooltip;u&&n.append("line").attr("class","tooltip-line hidden").attr("x1",j(p[0])).attr("y1",k(0)).attr("x2",j(p[0])).attr("y2",k(o)).style("stroke","black").style("stroke-width","1").style("stroke-dasharray","5,5");var w,x=d.select(".tooltip");u&&(w=d.select(".tooltip-line"));var y=d3.bisector(function(a){return a[c.xcol]}).right;this.props.disableTooltip&&d.select("svg").on("mousemove",function(){var b=d3.mouse(this),d=j.invert(b[0]-a.left),f=y(e,d),g=e[f];null==g?(x.classed("hidden",!0),w.classed("hidden",!0)):(u&&w.attr("x1",j(g[c.xcol])).attr("x2",j(g[c.xcol])).classed("hidden",!1),x.classed("hidden",!1).html("<strong>"+config.formatTooltip(g[c.xcol])+"</strong><br>"+r.map(function(a,b){return"<div class = 'tooltip-label'><div class = 'bubble' style = 'background-color:"+s[b]+"'></div>"+t[b]+": "+g[a].toFixed(2)+"</div>"}).join("")).style("left",v(b,x,j,k,q).left+"px").style("top",v(b,x,j,k,q).top+"px"))}).on("mouseout",function(){x.classed("hidden",!0),u&&w.classed("hidden",!0)})}},{key:"render",value:function render(){return this.state.data.length&&this.state.chart&&this.renderGraph(),null}}]),b}(React.Component);exports["default"]=Chart;
+    */
+
+
+    var ycols = dataset.ycols.split(","),
+        colors = dataset.linecolors.split(","),
+        labels = dataset.linelabels.split(","),
+        useTooltipLine = this.props.useTooltipLine,
+        positionTooltip = this.props.positionTooltip,
+        formatTooltip = this.props.formatTooltip;
+    if (useTooltipLine) svg.append("line").attr("class", "tooltip-line hidden").attr("x1", x(xextent[0])).attr("y1", y(0)).attr("x2", x(xextent[0])).attr("y2", y(ymax)).style("stroke", "black").style("stroke-width", "1").style("stroke-dasharray", "5,5");
+    var tooltip = chart.select(".tooltip"),
+        tooltipLine;
+    if (useTooltipLine) tooltipLine = chart.select(".tooltip-line");
+    var bisect = d3.bisector(function (d) {
+      return d[dataset.xcol];
+    }).right;
+
+    if (this.props.disableTooltip == null) {
+      chart.select("svg").on("mousemove", function () {
+        var mouse = d3.mouse(this),
+            mouseX = x.invert(mouse[0] - margin.left),
+            index = bisect(data, mouseX),
+            datum = data[index];
+
+        if (datum == null) {
+          tooltip.classed("hidden", true);
+          tooltipLine.classed("hidden", true);
+        } else {
+          if (useTooltipLine) tooltipLine.attr("x1", x(datum[dataset.xcol])).attr("x2", x(datum[dataset.xcol])).classed("hidden", false);
+          tooltip.classed("hidden", false).html("<strong>" + formatTooltip(datum[dataset.xcol]) + "</strong><br>" + ycols.map(function (d, i) {
+            return "<div class = 'tooltip-label'><div class = 'bubble' style = 'background-color:" + colors[i] + "'></div>" + labels[i] + ": " + datum[d].toFixed(2) + "</div>";
+          }).join("")).style("left", positionTooltip(mouse, tooltip, x, y, state).left + "px").style("top", positionTooltip(mouse, tooltip, x, y, state).top + "px");
+        }
+      }).on("mouseout", function (d) {
+        tooltip.classed("hidden", true);
+        if (useTooltipLine) tooltipLine.classed("hidden", true);
+      });
+    }
+  }
+
+  render() {
+    if (this.state.data.length && this.state.chart) this.renderGraph();
+    return null;
+  }
+
+}

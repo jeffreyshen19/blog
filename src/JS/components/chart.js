@@ -20,8 +20,6 @@ export default class Chart extends React.Component{
   constructor(props) {
     super(props);
 
-    console.log(props);
-
     this.state = {
       data: [],
       chart: null,
@@ -83,11 +81,9 @@ export default class Chart extends React.Component{
         offset = this.state.offset,
         body_width = this.state.body_width;
 
-    console.log("yooo");
-
     // Set the ranges
     var	x = this.props.xScale(width, height).range([0, width]),
-        y = this.props.yScale(width, height).range([0, height]);
+        y = this.props.yScale(width, height).range([height, 0]);
 
     // Define axes
     var xAxis = d3.axisBottom(x),
@@ -129,7 +125,7 @@ export default class Chart extends React.Component{
 
     // Render data
     let state = this.state;
-    dataset.ycols.split(",").forEach(function(ycol, i){
+    dataset.ycols.split(",").forEach((ycol, i) => {
       this.props.renderData(i, ycol, x, y, svg, state);
     });
 
@@ -190,7 +186,9 @@ export default class Chart extends React.Component{
     var ycols = dataset.ycols.split(","),
         colors = dataset.linecolors.split(","),
         labels = dataset.linelabels.split(","),
-        useTooltipLine = this.props.useTooltipLine,  positionTooltip = this.props.positionTooltip;
+        useTooltipLine = this.props.useTooltipLine,
+        positionTooltip = this.props.positionTooltip,
+        formatTooltip = this.props.formatTooltip;
 
     if(useTooltipLine) svg.append("line")
       .attr("class", "tooltip-line hidden")
@@ -209,7 +207,7 @@ export default class Chart extends React.Component{
 
     var bisect = d3.bisector(function(d){ return d[dataset.xcol]; }).right;
 
-    if(this.props.disableTooltip){
+    if(this.props.disableTooltip == null){
       chart.select("svg").on("mousemove", function(){
         var mouse = d3.mouse(this),
             mouseX = x.invert(mouse[0] - margin.left),
@@ -226,7 +224,7 @@ export default class Chart extends React.Component{
             .classed("hidden", false);
 
           tooltip.classed("hidden", false)
-            .html("<strong>" + config.formatTooltip(datum[dataset.xcol]) + "</strong><br>" + ycols.map(function(d, i){
+            .html("<strong>" + formatTooltip(datum[dataset.xcol]) + "</strong><br>" + ycols.map(function(d, i){
               return "<div class = 'tooltip-label'><div class = 'bubble' style = 'background-color:" + colors[i] + "'></div>" + labels[i] + ": " + datum[d].toFixed(2) + "</div>";
             }).join(""))
             .style("left", positionTooltip(mouse, tooltip, x, y, state).left + "px")

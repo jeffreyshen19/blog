@@ -1,3 +1,106 @@
-"use strict";var _chart=_interopRequireDefault(require("/dist/JS/components/chart.js"));function _interopRequireDefault(a){return a&&a.__esModule?a:{default:a}}function ownKeys(a,b){var c=Object.keys(a);if(Object.getOwnPropertySymbols){var d=Object.getOwnPropertySymbols(a);b&&(d=d.filter(function(b){return Object.getOwnPropertyDescriptor(a,b).enumerable})),c.push.apply(c,d)}return c}function _objectSpread(a){for(var b,c=1;c<arguments.length;c++)b=null==arguments[c]?{}:arguments[c],c%2?ownKeys(Object(b),!0).forEach(function(c){_defineProperty(a,c,b[c])}):Object.getOwnPropertyDescriptors?Object.defineProperties(a,Object.getOwnPropertyDescriptors(b)):ownKeys(Object(b)).forEach(function(c){Object.defineProperty(a,c,Object.getOwnPropertyDescriptor(b,c))});return a}function _defineProperty(a,b,c){return b in a?Object.defineProperty(a,b,{value:c,enumerable:!0,configurable:!0,writable:!0}):a[b]=c,a}function _typeof(a){return _typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(a){return typeof a}:function(a){return a&&"function"==typeof Symbol&&a.constructor===Symbol&&a!==Symbol.prototype?"symbol":typeof a},_typeof(a)}function _extends(){return _extends=Object.assign||function(a){for(var b,c=1;c<arguments.length;c++)for(var d in b=arguments[c],b)Object.prototype.hasOwnProperty.call(b,d)&&(a[d]=b[d]);return a},_extends.apply(this,arguments)}function _classCallCheck(a,b){if(!(a instanceof b))throw new TypeError("Cannot call a class as a function")}function _defineProperties(a,b){for(var c,d=0;d<b.length;d++)c=b[d],c.enumerable=c.enumerable||!1,c.configurable=!0,"value"in c&&(c.writable=!0),Object.defineProperty(a,c.key,c)}function _createClass(a,b,c){return b&&_defineProperties(a.prototype,b),c&&_defineProperties(a,c),a}function _possibleConstructorReturn(a,b){return b&&("object"===_typeof(b)||"function"==typeof b)?b:_assertThisInitialized(a)}function _assertThisInitialized(a){if(void 0===a)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return a}function _getPrototypeOf(a){return _getPrototypeOf=Object.setPrototypeOf?Object.getPrototypeOf:function(a){return a.__proto__||Object.getPrototypeOf(a)},_getPrototypeOf(a)}function _inherits(a,b){if("function"!=typeof b&&null!==b)throw new TypeError("Super expression must either be null or a function");a.prototype=Object.create(b&&b.prototype,{constructor:{value:a,writable:!0,configurable:!0}}),b&&_setPrototypeOf(a,b)}function _setPrototypeOf(a,b){return _setPrototypeOf=Object.setPrototypeOf||function(a,b){return a.__proto__=b,a},_setPrototypeOf(a,b)}for(var e=React.createElement,BarChart=/*#__PURE__*/function(a){function b(a){return _classCallCheck(this,b),_possibleConstructorReturn(this,_getPrototypeOf(b).call(this,a))}return _inherits(b,a),_createClass(b,[{key:"xScale",value:function xScale(a){// Returns the scale the x axis should use
-return d3.scaleBand().range([0,a])}},{key:"yScale",value:function yScale(a,b){// Returns the scale the y axis should use
-return d3.scaleLinear().range([b,0])}},{key:"xAxisFormat",value:function xAxisFormat(a,b){console.log("formatting x axis"),b.tickFormat(function(a){return a=a.split(" "),a[0].charAt(0)+". "+a[1]})}},{key:"yAxisFormat",value:function yAxisFormat(a,b){console.log("formatting"),b.tickFormat(d3.format(".2s"))}},{key:"renderData",value:function renderData(a,b,c,e,d,f){var g=f.data,h=f.dataset,i=f.chart,j=i.select(".tooltip"),k=h.linelabels.split(","),l=h.ycols.split(","),m=d3.format(",.0f"),n=(d3.select("body").node().offsetWidth-d3.select("#body").node().offsetWidth)/2;d.selectAll(".bar").data(g).enter().append("rect").style("fill",h.linecolors.split(",")[a]).attr("class","bar").attr("x",function(a){return c(a[xcol])}).attr("width",c.bandwidth()).attr("y",function(a){return e(a[b])}).attr("height",function(a){return height-e(a[b])}).on("mousemove",function(a){var b=d3.mouse(this);j.classed("hidden",!1).html("<strong>"+a[xcol]+"</strong><br>"+l.map(function(b,c){return"<div class = 'tooltip-label'>"+k[c]+": "+m(a[b])+"</div>"}).join("")).style("left",(b[0]+j.node().offsetWidth>width?b[0]+55-j.node().offsetWidth-n:b[0]+75-n)+"px").style("top",b[1]+50+"px")}).on("mouseout",function(){j.classed("hidden",!0)})}},{key:"setXDomain",value:function setXDomain(a,b){return a.map(function(a){return a[b.xcol]})}},{key:"positionTooltip",value:function positionTooltip(a,b,c,d,e){return{left:20+a[0]+b.node().offsetWidth>e.width+e.margin.left+e.margin.right?a[0]-10-b.node().offsetWidth-e.offset:a[0]+10-e.offset,top:d(0)-b.node().offsetHeight+e.margin.top+24}}},{key:"render",value:function render(){return React.createElement(_chart["default"],_extends({},this.props,{margin:{top:5,right:20,bottom:20,left:65},padding:{top:40,right:20,bottom:40,left:20},xScale:this.xScale,yScale:this.yScale,xAxisFormat:this.xAxisFormat,yAxisFormat:this.yAxisFormat,renderData:this.renderData,positionTooltip:this.positionTooltip,setXDomain:this.setXDomain,disableTooltip:!0}))}}]),b}(React.Component),elements=document.getElementsByClassName("bar-chart"),i=0;i<elements.length;i++)ReactDOM.render(e(BarChart,_objectSpread({},elements[i].dataset,{chart:elements[i]})),elements[i]);
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+import Chart from "/dist/JS/components/chart.js";
+const e = React.createElement;
+
+class BarChart extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  xScale(width, height) {
+    // Returns the scale the x axis should use
+    return d3.scaleBand().range([0, width]);
+  }
+
+  yScale(width, height) {
+    // Returns the scale the y axis should use
+    return d3.scaleLinear().range([height, 0]);
+  }
+
+  xAxisFormat(body_width, axis) {
+    console.log("formatting x axis");
+    axis.tickFormat(function (d) {
+      d = d.split(" ");
+      return d[0].charAt(0) + ". " + d[1];
+    });
+  }
+
+  yAxisFormat(body_width, axis) {
+    console.log("formatting");
+    axis.tickFormat(d3.format(".2s"));
+  }
+
+  renderData(i, ycol, x, y, svg, state) {
+    let data = state.data,
+        dataset = state.dataset,
+        chart = state.chart;
+    var tooltip = chart.select(".tooltip"),
+        labels = dataset.linelabels.split(","),
+        ycols = dataset.ycols.split(","),
+        commas = d3.format(",.0f"),
+        offset = (d3.select("body").node().offsetWidth - d3.select("#body").node().offsetWidth) / 2;
+    svg.selectAll(".bar").data(data).enter().append("rect").style("fill", dataset.linecolors.split(",")[i]).attr("class", "bar").attr("x", function (d) {
+      return x(d[xcol]);
+    }).attr("width", x.bandwidth()).attr("y", function (d) {
+      return y(d[ycol]);
+    }).attr("height", function (d) {
+      return height - y(d[ycol]);
+    }).on("mousemove", function (d) {
+      var mouse = d3.mouse(this);
+      tooltip.classed("hidden", false).html("<strong>" + d[xcol] + "</strong><br>" + ycols.map(function (col, i) {
+        return "<div class = 'tooltip-label'>" + labels[i] + ": " + commas(d[col]) + "</div>";
+      }).join("")).style("left", (mouse[0] + tooltip.node().offsetWidth > width ? mouse[0] + 55 - tooltip.node().offsetWidth - offset : mouse[0] + 75 - offset) + "px").style("top", mouse[1] + 50 + "px");
+    }).on("mouseout", function (d) {
+      tooltip.classed("hidden", true);
+    });
+  }
+
+  setXDomain(data, dataset) {
+    return data.map(function (d) {
+      return d[dataset.xcol];
+    });
+  }
+
+  positionTooltip(mouse, tooltip, x, y, state) {
+    return {
+      "left": 20 + mouse[0] + tooltip.node().offsetWidth > state.width + state.margin.left + state.margin.right ? mouse[0] - 10 - tooltip.node().offsetWidth - state.offset : mouse[0] + 10 - state.offset,
+      "top": y(0) - tooltip.node().offsetHeight + state.margin.top + 24
+    };
+  }
+
+  render() {
+    return React.createElement(Chart, _extends({}, this.props, {
+      margin: {
+        top: 5,
+        right: 20,
+        bottom: 20,
+        left: 65
+      },
+      padding: {
+        top: 40,
+        right: 20,
+        bottom: 40,
+        left: 20
+      },
+      xScale: this.xScale,
+      yScale: this.yScale,
+      xAxisFormat: this.xAxisFormat,
+      yAxisFormat: this.yAxisFormat,
+      renderData: this.renderData,
+      positionTooltip: this.positionTooltip,
+      setXDomain: this.setXDomain,
+      disableTooltip: true
+    }));
+  }
+
+} // Render all bar charts
+
+
+let elements = document.getElementsByClassName('bar-chart');
+
+for (let i = 0; i < elements.length; i++) {
+  ReactDOM.render(e(BarChart, { ...elements[i].dataset,
+    chart: elements[i]
+  }), elements[i]);
+}

@@ -8,7 +8,7 @@ var babel = require('gulp-babel');
 gulp.task('babel', function() {
   return gulp.src(['./src/JS/components/*.js'])
     .pipe(babel({
-        presets: ['@babel/env', "minify"],
+        // presets: ["minify"],
         plugins: ['transform-react-jsx']
     }))
     .on('error', console.error.bind(console))
