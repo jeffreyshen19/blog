@@ -1,3 +1,21 @@
+/*
+  Parent class for all D3 charts.
+
+  Props:
+    * margin (required): object with integer fields top, left, right, bottom
+    * padding (required): object with integer fields top, left, right, bottom
+    * height (required): integer height of the visualization
+    * xScale (required): method which takes integer params width, height and returns the scale for the x axis
+    * yScale (required): method which takes integer params width, height and returns the scale for the y axis
+    * xAxisFormat (optional): method which takes body_width, axis and formats the x axis
+    * yAxisFormat (optional): method which takes body_width, axis and formats the y axis
+    * setXDomain (optional): method which takes data, dataset and sets the domain of the x axis
+    * setYDomain (optional): method which takes data, dataset and sets the domain of the y axis
+    * renderData (required): method which takes i, ycol, x, y, svg, state and specifies how to draw the graph, given each ycol.
+    * useTooltipLine (optional): boolean, display a vertical line with the tooltip
+    * positionTooltip (required): method which takes mouse, tooltip, x, y, state and outputs an object with integer fields x, y telling how the tooltip should be positioned
+*/
+
 export default class Chart extends React.Component{
   constructor(props) {
     super(props);
@@ -6,11 +24,12 @@ export default class Chart extends React.Component{
       data: [],
       chart: null,
       width: 0,
-      margin: this.props.margin,
-      padding: this.props.padding,
-      height: (props.height || 300) - this.props.margin.top - this.props.margin.bottom,
+      margin: props.margin,
+      padding: props.padding,
+      height: (props.height || 300) - props.margin.top - props.margin.bottom,
       offset: 0,
       body_width: 0,
+      dataset: props
     };
 
     // Load data from csv
@@ -54,7 +73,7 @@ export default class Chart extends React.Component{
   renderGraph(){
     let margin = this.state.margin,
         padding = this.state.padding,
-        dataset = this.props,
+        dataset = this.state.dataset,
         chart = this.state.chart,
         data = this.state.data,
         width = this.state.width,
@@ -63,15 +82,16 @@ export default class Chart extends React.Component{
         body_width = this.state.body_width;
 
     // Set the ranges
-    var	x = this.props.xScale(width, height),
-        y = this.props.yScale(width, height);
+    var	x = this.props.xScale(width, height).range([0, width]),
+        y = this.props.yScale(width, height).range([0, height]);
 
     // Define axes
     var xAxis = d3.axisBottom(x),
         yAxis = d3.axisLeft(y);
 
     // Set how ticks should behave responsively
-    if(this.props.setTicks) this.props.setTicks(body_width, xAxis);
+    if(this.props.xAxisFormat) this.props.xAxisFormat(body_width, yAxis);
+    if(this.props.yAxisFormat) this.props.yAxisFormat(body_width, yAxis);
 
     // Reset canvas
     chart.selectAll("*").remove();
@@ -96,20 +116,17 @@ export default class Chart extends React.Component{
       }));
     });
     var xextent = d3.extent(data, function(d) { return d[dataset.xcol]; });
-    x.domain(xextent);
-    y.domain([0, ymax]);
+
+    if(this.props.setXDomain) x.domain(this.props.setXDomain(data, dataset));
+    else x.domain(xextent);
+
+    if(this.props.setYDomain) y.domain(this.props.setYDomain(data, dataset));
+    else y.domain([0, ymax]);
 
     // Render data
-    let colors = dataset.linecolors.split(",");
+    let state = this.state;
     dataset.ycols.split(",").forEach(function(ycol, i){
-      var	valueline = d3.line()
-        .x(function(d) { return x(d[dataset.xcol]); })
-        .y(function(d) { return y(d[ycol]); });
-
-      svg.append("path")
-        .attr("class", "line")
-        .style("stroke", colors[i])
-        .attr("d", valueline(data));
+      this.props.renderData(i, ycol, x, y, svg, state);
     });
 
     // Add X Axis
@@ -143,14 +160,38 @@ export default class Chart extends React.Component{
       .attr("dy", "1em")
       .text(dataset.ylabel);
 
+    // Add legend if there are multiple lines
+    if(dataset.ycols.split(",").length > 1){
+      chart.append("div")
+        .attr("class", "legend")
+        .selectAll(".legend-label")
+        .data(dataset.linelabels.split(",").map(function(e, i){
+            return {
+              "color": dataset.linecolors.split(",")[i],
+              "label": e
+            };
+          }))
+        .enter()
+        .append('div')
+          .attr("class", "legend-label")
+          .html(function(d, i){
+            return "<div class = 'bubble' style = 'background-color:" + d.color + "'></div><span>" + d.label + "</span>";
+          });
+    }
+
     /*
       TOOLTIP
     */
 
     var ycols = dataset.ycols.split(","),
-        labels = dataset.linelabels.split(",");
+        colors = dataset.linecolors.split(","),
+        labels = dataset.linelabels.split(","),
+        useTooltipLine = this.props.useTooltipLine;
 
-    svg.append("line")
+    let state = this.state,
+        positionTooltip = this.props.positionTooltip;
+
+    if(useTooltipLine) svg.append("line")
       .attr("class", "tooltip-line hidden")
       .attr("x1", x(xextent[0]))
       .attr("y1", y(0))
@@ -161,43 +202,40 @@ export default class Chart extends React.Component{
       .style("stroke-dasharray", "5,5");
 
     var tooltip = chart.select(".tooltip"),
-        tooltipLine = chart.select(".tooltip-line");
+        tooltipLine;
+
+    if(useTooltipLine) tooltipLine = chart.select(".tooltip-line");
 
     var bisect = d3.bisector(function(d){ return d[dataset.xcol]; }).right;
 
-    let positionTooltip = (mouse, tooltip, x, y) => {
-      return {
-        "left": (20 + mouse[0] + tooltip.node().offsetWidth > this.state.width + this.state.margin.left + this.state.margin.right ? mouse[0] - 10 - tooltip.node().offsetWidth - this.state.offset: mouse[0] + 10 - this.state.offset),
-        "top": y(0) - tooltip.node().offsetHeight + this.state.margin.top + 24,
-      };
-    }
+    if(this.props.disableTooltip){
+      chart.select("svg").on("mousemove", function(){
+        var mouse = d3.mouse(this),
+            mouseX = x.invert(mouse[0] - margin.left),
+            index = bisect(data, mouseX),
+            datum = data[index];
 
-    chart.select("svg").on("mousemove", function(){
-      var mouse = d3.mouse(this),
-          mouseX = x.invert(mouse[0] - margin.left),
-          index = bisect(data, mouseX),
-          datum = data[index];
+        if(datum == null){
+          tooltip.classed("hidden", true);
+          tooltipLine.classed("hidden", true);
+        }
+        else{
+          if(useTooltipLine) tooltipLine.attr("x1", x(datum[dataset.xcol]))
+            .attr("x2", x(datum[dataset.xcol]))
+            .classed("hidden", false);
 
-      if(datum == null){
+          tooltip.classed("hidden", false)
+            .html("<strong>" + config.formatTooltip(datum[dataset.xcol]) + "</strong><br>" + ycols.map(function(d, i){
+              return "<div class = 'tooltip-label'><div class = 'bubble' style = 'background-color:" + colors[i] + "'></div>" + labels[i] + ": " + datum[d].toFixed(2) + "</div>";
+            }).join(""))
+            .style("left", positionTooltip(mouse, tooltip, x, y, state).left + "px")
+            .style("top", positionTooltip(mouse, tooltip, x, y, state).top + "px");
+        }
+      }).on("mouseout", function(d){
         tooltip.classed("hidden", true);
-        tooltipLine.classed("hidden", true);
-      }
-      else{
-        tooltipLine.attr("x1", x(datum[dataset.xcol]))
-          .attr("x2", x(datum[dataset.xcol]))
-          .classed("hidden", false);
-
-        tooltip.classed("hidden", false)
-          .html("<strong>" + d3.timeFormat("%b %e, %Y")(datum[dataset.xcol]) + "</strong><br>" + ycols.map(function(d, i){
-            return "<div class = 'tooltip-label'><div class = 'bubble' style = 'background-color:" + colors[i] + "'></div>" + labels[i] + ": " + datum[d].toFixed(2) + "</div>";
-          }).join(""))
-          .style("left", positionTooltip(mouse, tooltip, x, y).left + "px")
-          .style("top", positionTooltip(mouse, tooltip, x, y).top + "px");
-      }
-    }).on("mouseout", function(d){
-      tooltip.classed("hidden", true);
-      tooltipLine.classed("hidden", true);
-    });
+        if(useTooltipLine) tooltipLine.classed("hidden", true);
+      });
+    }
   }
 
 
