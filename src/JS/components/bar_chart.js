@@ -8,11 +8,11 @@ class BarChart extends React.Component {
   }
 
   xScale(width, height){ // Returns the scale the x axis should use
-    return d3.scaleBand().range([0, width]);
+    return d3.scaleBand();
   }
 
   yScale(width, height){ // Returns the scale the y axis should use
-    return d3.scaleLinear().range([height, 0]);
+    return d3.scaleLinear();
   }
 
   parseXCol(val){
@@ -67,13 +67,6 @@ class BarChart extends React.Component {
     return data.map(function(d){ return d[dataset.xcol]; });
   }
 
-  positionTooltip(mouse, tooltip, x, y, state){
-    return {
-      "left": (20 + mouse[0] + tooltip.node().offsetWidth > state.width + state.margin.left + state.margin.right ? mouse[0] - 10 - tooltip.node().offsetWidth - state.offset: mouse[0] + 10 - state.offset),
-      "top": y(0) - tooltip.node().offsetHeight + state.margin.top + 24,
-    };
-  }
-
   render() {
     return (
       <Chart {...this.props}
@@ -85,7 +78,6 @@ class BarChart extends React.Component {
         xAxisFormat = {this.xAxisFormat}
         yAxisFormat = {this.yAxisFormat}
         renderData = {this.renderData}
-        positionTooltip = {this.positionTooltip}
         setXDomain = {this.setXDomain}
         disableTooltip = {true}
         >
