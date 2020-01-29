@@ -20,6 +20,8 @@ export default class Chart extends React.Component{
   constructor(props) {
     super(props);
 
+    console.log(props);
+
     this.state = {
       data: [],
       chart: null,
@@ -81,6 +83,8 @@ export default class Chart extends React.Component{
         offset = this.state.offset,
         body_width = this.state.body_width;
 
+    console.log("yooo");
+
     // Set the ranges
     var	x = this.props.xScale(width, height).range([0, width]),
         y = this.props.yScale(width, height).range([0, height]);
@@ -90,7 +94,7 @@ export default class Chart extends React.Component{
         yAxis = d3.axisLeft(y);
 
     // Set how ticks should behave responsively
-    if(this.props.xAxisFormat) this.props.xAxisFormat(body_width, yAxis);
+    if(this.props.xAxisFormat) this.props.xAxisFormat(body_width, xAxis);
     if(this.props.yAxisFormat) this.props.yAxisFormat(body_width, yAxis);
 
     // Reset canvas
@@ -186,10 +190,7 @@ export default class Chart extends React.Component{
     var ycols = dataset.ycols.split(","),
         colors = dataset.linecolors.split(","),
         labels = dataset.linelabels.split(","),
-        useTooltipLine = this.props.useTooltipLine;
-
-    let state = this.state,
-        positionTooltip = this.props.positionTooltip;
+        useTooltipLine = this.props.useTooltipLine,  positionTooltip = this.props.positionTooltip;
 
     if(useTooltipLine) svg.append("line")
       .attr("class", "tooltip-line hidden")

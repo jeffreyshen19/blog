@@ -16,6 +16,7 @@ class BarChart extends React.Component {
   }
 
   xAxisFormat(body_width, axis){
+    console.log("formatting x axis");
     axis.tickFormat(function(d){
       d = d.split(" ");
       return d[0].charAt(0) + ". " + d[1];
@@ -23,6 +24,7 @@ class BarChart extends React.Component {
   }
 
   yAxisFormat(body_width, axis){
+    console.log("formatting");
     axis.tickFormat(d3.format(".2s"));
   }
 

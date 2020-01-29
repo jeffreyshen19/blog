@@ -6,12 +6,13 @@ var gutil = require('gulp-util');
 var babel = require('gulp-babel');
 
 gulp.task('babel', function() {
-  return gulp.src('./src/JS/components/*.js')
+  return gulp.src(['./src/JS/components/*.js'])
     .pipe(babel({
-        presets: ["minify"],
+        presets: ['@babel/env', "minify"],
         plugins: ['transform-react-jsx']
     }))
-    .pipe(gulp.dest('./dist/JS/components'))
+    .on('error', console.error.bind(console))
+    .pipe(gulp.dest('./dist/JS/components/'))
 });
 
 gulp.task('watch', function() {
@@ -35,4 +36,4 @@ gulp.task('jekyll', function() {
   jekyll.stderr.on('data', jekyllLogger);
 });
 
-gulp.task("default", ["babel", "watch"]);
+gulp.task("default", ["babel"]);
