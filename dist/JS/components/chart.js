@@ -4,6 +4,7 @@
   Props:
     * margin (required): object with integer fields top, left, right, bottom
     * padding (required): object with integer fields top, left, right, bottom
+    * parseXCol (required): method that takes xcol and converts it into a different form
     * height (required): integer height of the visualization
     * xScale (required): method which takes integer params width, height and returns the scale for the x axis
     * yScale (required): method which takes integer params width, height and returns the scale for the y axis
@@ -14,6 +15,7 @@
     * renderData (required): method which takes i, ycol, x, y, svg, state and specifies how to draw the graph, given each ycol.
     * useTooltipLine (optional): boolean, display a vertical line with the tooltip
     * positionTooltip (required): method which takes mouse, tooltip, x, y, state and outputs an object with integer fields x, y telling how the tooltip should be positioned
+    * formatTooltip (required): method which the data point and formats how the tooltip should be displayed
 */
 export default class Chart extends React.Component {
   constructor(props) {
@@ -34,7 +36,7 @@ export default class Chart extends React.Component {
       this.setState({
         data: values.map(function (d) {
           //Process csv data into correct format
-          d[props.xcol] = d3.timeParse("%Y-%m-%d")(d[props.xcol]);
+          d[props.xcol] = props.parseXCol(d[props.xcol]);
           props.ycols.split(",").forEach(function (ycol) {
             d[ycol] = parseFloat(d[ycol]);
           });
@@ -82,10 +84,7 @@ export default class Chart extends React.Component {
         y = this.props.yScale(width, height).range([height, 0]); // Define axes
 
     var xAxis = d3.axisBottom(x),
-        yAxis = d3.axisLeft(y); // Set how ticks should behave responsively
-
-    if (this.props.xAxisFormat) this.props.xAxisFormat(body_width, xAxis);
-    if (this.props.yAxisFormat) this.props.yAxisFormat(body_width, yAxis); // Reset canvas
+        yAxis = d3.axisLeft(y); // Reset canvas
 
     chart.selectAll("*").remove(); // Create canvas
 
@@ -102,7 +101,10 @@ export default class Chart extends React.Component {
       return d[dataset.xcol];
     });
     if (this.props.setXDomain) x.domain(this.props.setXDomain(data, dataset));else x.domain(xextent);
-    if (this.props.setYDomain) y.domain(this.props.setYDomain(data, dataset));else y.domain([0, ymax]); // Render data
+    if (this.props.setYDomain) y.domain(this.props.setYDomain(data, dataset));else y.domain([0, ymax]); // Set how ticks should appear
+
+    if (this.props.xAxisFormat) this.props.xAxisFormat(body_width, xAxis);
+    if (this.props.yAxisFormat) this.props.yAxisFormat(body_width, yAxis); // Render data
 
     let state = this.state;
     dataset.ycols.split(",").forEach((ycol, i) => {

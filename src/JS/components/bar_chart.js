@@ -15,8 +15,11 @@ class BarChart extends React.Component {
     return d3.scaleLinear().range([height, 0]);
   }
 
+  parseXCol(val){
+    return val;
+  }
+
   xAxisFormat(body_width, axis){
-    console.log("formatting x axis");
     axis.tickFormat(function(d){
       d = d.split(" ");
       return d[0].charAt(0) + ". " + d[1];
@@ -24,7 +27,6 @@ class BarChart extends React.Component {
   }
 
   yAxisFormat(body_width, axis){
-    console.log("formatting");
     axis.tickFormat(d3.format(".2s"));
   }
 
@@ -44,18 +46,18 @@ class BarChart extends React.Component {
       .enter().append("rect")
         .style("fill", dataset.linecolors.split(",")[i])
         .attr("class", "bar")
-        .attr("x", function(d) { return x(d[xcol]); })
+        .attr("x", function(d) { return x(d[dataset.xcol]); })
         .attr("width", x.bandwidth())
         .attr("y", function(d) { return y(d[ycol]); })
-        .attr("height", function(d) { return height - y(d[ycol]); })
+        .attr("height", function(d) { return state.height - y(d[ycol]); })
         .on("mousemove", function(d){
           var mouse = d3.mouse(this);
           tooltip
             .classed("hidden", false)
-            .html("<strong>" + d[xcol] + "</strong><br>" + ycols.map(function(col, i){
+            .html("<strong>" + d[dataset.xcol] + "</strong><br>" + ycols.map(function(col, i){
                 return "<div class = 'tooltip-label'>" + labels[i] + ": " + commas(d[col]) + "</div>";
             }).join(""))
-            .style("left", (mouse[0] + tooltip.node().offsetWidth > width ? mouse[0] + 55 - tooltip.node().offsetWidth - offset: mouse[0] + 75 - offset) + "px")
+            .style("left", (mouse[0] + tooltip.node().offsetWidth > state.width ? mouse[0] + 55 - tooltip.node().offsetWidth - offset: mouse[0] + 75 - offset) + "px")
             .style("top", mouse[1] + 50 + "px");
         })
         .on("mouseout", function(d){ tooltip.classed("hidden", true);});
@@ -79,6 +81,7 @@ class BarChart extends React.Component {
         padding = {{top: 40, right: 20, bottom: 40, left: 20}}
         xScale = {this.xScale}
         yScale = {this.yScale}
+        parseXCol = {this.parseXCol}
         xAxisFormat = {this.xAxisFormat}
         yAxisFormat = {this.yAxisFormat}
         renderData = {this.renderData}

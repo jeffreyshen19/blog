@@ -15,6 +15,10 @@ class LineChart extends React.Component {
     return d3.scaleLinear();
   }
 
+  parseXCol(val){
+    return d3.timeParse("%Y-%m-%d")(val);
+  }
+
   xAxisFormat(body_width, axis){
     if(body_width < 400) axis.ticks(d3.timeYear.every(8));
     else if(body_width < 800) axis.ticks(d3.timeYear.every(4));
@@ -53,6 +57,7 @@ class LineChart extends React.Component {
         padding = {{top: 40, right: 20, bottom: 40, left: 20}}
         xScale = {this.xScale}
         yScale = {this.yScale}
+        parseXCol = {this.parseXCol}
         xAxisFormat = {this.xAxisFormat}
         renderData = {this.renderData}
         positionTooltip = {this.positionTooltip}
