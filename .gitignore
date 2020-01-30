@@ -10,3 +10,5 @@ _code/broadband/USA_Block_Group_Boundaries.lpk
 .ipynb_checkpoints
 _code/la-greenspace/**/
 _code/library-equality/**/
+coronavirus-tweets.csv
+coronavirus-tweets.json
