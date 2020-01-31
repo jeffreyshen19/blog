@@ -12,4 +12,9 @@ references: [{
 header: centered
 caption: ""
 featured: true
+javascript: ["components/map.js"]
 ---
+
+<div class = "map" data-csv = "police-militarization/1033-by-state.csv">
+  <div class = "tooltip hidden"></div>
+</div>
