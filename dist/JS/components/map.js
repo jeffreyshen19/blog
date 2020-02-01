@@ -24,4 +24,13 @@ d3.selectAll(".map").each(function(){// var total = 0,
 //     color: colors[colorSort.indexOf(element)]
 //   };
 // });
-var a=this,b=d3.select(this.firstChild);d3.svg("/data/police-militarization/us-map-w-territories.svg").then(function(b){var c=b.documentElement;d3.select(a).node().appendChild(c)})});
+d3.select(this.firstChild);d3.csv(this.dataset.csv).then(a=>{// Process csv data into correct format
+let b=Object.keys(a[0]).slice(1),c=a.map(function(a){return b.forEach(function(b){a[b]=parseFloat(a[b])}),a});// Display SVG
+d3.svg("/data/police-militarization/us-map-w-territories.svg").then(a=>{console.log(a.documentElement);var b=a.documentElement;d3.select(this).node().appendChild(b),d3.select(b).select(".state").selectAll("*").data(c,function(a){return a?a.state:this.id})// .data(data)
+// .data(data, function(d){ //Match svg ids with data ids
+//   console.log(d);
+//   return this.id || d.state;
+// })
+.style("fill",function(){// if(d.state == "AK") return "#ff0000";
+// else return "#00000"
+return"#00ff00"}).on("mouseover",function(a){console.log(a)})})})});
