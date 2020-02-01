@@ -15,6 +15,15 @@ featured: true
 javascript: ["components/map.js"]
 ---
 
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
 <div class = "map" data-csv = "/data/police-militarization/1033-by-state.csv">
   <div class = "tooltip hidden"></div>
 </div>
