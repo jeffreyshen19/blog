@@ -1,31 +1,4 @@
 d3.selectAll(".map").each(function(){
-  // var total = 0,
-  //     regionNames = ["Discontinuous", "Northeast", "Southeast", "Southwest", "West", "Midwest", "International"];
-  //
-  // var accent = d3.color(this.dataset.accent);
-  //
-  // var colors = ["#abdde3","#74cee0","#42b6da","#1e8cb9","#13659d","#0c3d8b","#182552"];
-  //
-  // var responses = this.dataset.responses.split(",").map(function(element, i){
-  //   total += parseInt(element);
-  //   return {
-  //     responses: parseInt(element),
-  //     name: regionNames[i]
-  //   };
-  // });
-  //
-  // var colorSort = responses.slice().sort(function(a, b) {
-  //   return a.responses - b.responses;
-  // });
-  //
-  // responses = responses.map(function(element, i){
-  //   return {
-  //     responses: element.responses,
-  //     name: element.name,
-  //     color: colors[colorSort.indexOf(element)]
-  //   };
-  // });
-
   var tooltipText,
       tooltip = d3.select(this.firstChild);
 
@@ -40,22 +13,21 @@ d3.selectAll(".map").each(function(){
         return d;
       });
 
+      // Get color scale from data
+      var extent = d3.extent(data, (d) => d["total-cost"]);
+      var colors = d3.scaleLinear().domain(extent)
+        .interpolate(d3.interpolateHcl)
+        .range([d3.rgb("#e4f1fe"), d3.rgb('#3a539b'), d3.rgb('#24252a')]);;
+
       // Display SVG
       d3.svg("/data/police-militarization/us-map-w-territories.svg").then((res) => {
         console.log(res.documentElement);
         var svg = res.documentElement;
         d3.select(this).node().appendChild(svg);
         d3.select(svg).select(".state").selectAll("*")
-          .data(data, function(d) { return d ? d.state : this.id; })
-          // .data(data)
-          // .data(data, function(d){ //Match svg ids with data ids
-          //   console.log(d);
-          //   return this.id || d.state;
-          // })
+          .data(data, function(d) { return d ? d.state : this.id; }) // Join svg elements to their corresponding state dataa
           .style("fill", function(d, i){
-            // if(d.state == "AK") return "#ff0000";
-            // else return "#00000"
-            return "#00ff00"
+            return colors(d["total-cost"])
           })
           .on("mouseover", function(d, i){
             console.log(d);
