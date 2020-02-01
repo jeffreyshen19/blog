@@ -88,6 +88,7 @@ d3.selectAll(".map").each(function(){
         d3.select(svg)
           .style("width", "100%")
           .style("height", "100%")
+          .attr("viewBox", "0 0 900 600")
           .select(".state").selectAll("*")
             .data(data, function(d) { return d ? d.state : this.id; }) // Join svg elements to their corresponding state data
             .style("transition", "0.1s")
