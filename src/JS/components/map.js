@@ -75,7 +75,7 @@ d3.selectAll(".map").each(function(){
         return d;
       });
 
-      // Get color scale
+      // Get color scale        
       var extent = d3.extent(data, (d) => d["total-cost"]);
       var colors = d3.scaleLinear().domain(extent)
         .interpolate(d3.interpolateHcl)

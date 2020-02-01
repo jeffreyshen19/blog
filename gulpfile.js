@@ -5,35 +5,20 @@ var child = require('child_process');
 var gutil = require('gulp-util');
 var babel = require('gulp-babel');
 
-gulp.task('babel', function() {
+gulp.task('babel', function(done) {
   return gulp.src(['./src/JS/components/*.js'])
     .pipe(babel({
-        presets: ["minify"],
+        presets: [['minify', {
+          builtIns: false,
+        }]],
         plugins: ['transform-react-jsx']
     }))
     .on('error', console.error.bind(console))
-    .pipe(gulp.dest('./dist/JS/components/'))
+    .pipe(gulp.dest('./dist/JS/components/'));
 });
 
 gulp.task('watch', function() {
-  return gulp.watch('/src/JS/components/*.js', ['babel']);
+  gulp.watch('./src/JS/components/*.js', ['babel']);
 });
 
-gulp.task('jekyll', function() {
-  var jekyll = child.spawn('jekyll', ['serve',
-    '--watch',
-    '--incremental',
-    '--drafts'
-  ]);
-
-  var jekyllLogger = function(buffer){
-    buffer.toString()
-      .split(/\n/)
-      .forEach((message) => gutil.log('Jekyll: ' + message));
-  };
-
-  jekyll.stdout.on('data', jekyllLogger);
-  jekyll.stderr.on('data', jekyllLogger);
-});
-
-gulp.task("default", ["babel"]);
+gulp.task("default", ["babel", "watch"]);
