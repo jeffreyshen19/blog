@@ -5,7 +5,7 @@ d3.selectAll(".map").each(function(){
   d3.csv(this.dataset.csv)
     .then((values) => {
       // Process csv data into correct format
-      let ycolumns = Object.keys(values[0]).slice(1);
+      let ycolumns = Object.keys(values[0]).slice(2);
       let data = values.map(function(d){
         ycolumns.forEach(function(ycol){
           d[ycol] = parseFloat(d[ycol]);
@@ -20,20 +20,21 @@ d3.selectAll(".map").each(function(){
         .range([d3.rgb("#e4f1fe"), d3.rgb('#3a539b'), d3.rgb('#24252a')]);
 
       // Display SVG
-      d3.svg("/data/police-militarization/us-map-w-territories.svg").then((res) => {
+      d3.svg("/data/police-militarization/us-map-w-puerto-rico.svg").then((res) => {
         var svg = res.documentElement;
         d3.select(this).node().appendChild(svg);
         d3.select(svg)
           .style("width", "100%")
           .style("height", "100%")
           .attr("viewBox", "0 0 900 600")
-          .select(".state").selectAll("*")
-            .data(data, function(d) { return d ? d.state : this.id; }) // Join svg elements to their corresponding state data
+          .select("#g4864").selectAll("*")
+            .data(data, function(d) { return d ? d.state : this.className.baseVal.toUpperCase(); }) // Join svg elements to their corresponding state data
             .style("transition", "0.1s")
             .style("fill", function(d, i){
               return colors(d["total-cost"]);
             })
             .on("mouseover", function(d, i){
+              console.log(d);
               // Change color on hover
               d3.select(this).style("fill", d3.rgb(d3.color(colors(d["total-cost"])).brighter(0.3)));
 
