@@ -65,14 +65,22 @@ stateNames = {
 };
 
 states = {}
-
 populationData = {}
+crimeData = {}
+
 with open('population.csv') as csv_file:
     csv_reader = csv.DictReader(csv_file, delimiter=',')
     for row in csv_reader:
         for key, value in stateNames.items():
             if row["state"].lower() == value.lower():
                 populationData[key] = row["population"]
+
+with open('violent-crime.csv') as csv_file:
+    csv_reader = csv.DictReader(csv_file, delimiter=',')
+    for row in csv_reader:
+        for key, value in stateNames.items():
+            if row["state"].lower() == value.lower():
+                crimeData[key] = row["rate_per_100000_inhabitants"]
 
 with open('1033.csv') as csv_file:
     csv_reader = csv.DictReader(csv_file, delimiter=',')
@@ -85,6 +93,7 @@ with open('1033.csv') as csv_file:
                 "total-quantity": 0,
                 "total-cost": 0,
                 "population": populationData[row["state"]],
+                "violent_crime_rate_per_100000_inhabitants": crimeData[row["state"]],
             }
 
         states[row["state"]]["total-reports"] += 1
@@ -92,7 +101,7 @@ with open('1033.csv') as csv_file:
         states[row["state"]]["total-cost"] += float(row["cost"])
 
 with open("../../data/police-militarization/1033-by-state.csv", 'w') as csvfile:
-    writer = csv.DictWriter(csvfile, fieldnames=["state", "state-name", "total-reports", "total-quantity", "total-cost", "population"])
+    writer = csv.DictWriter(csvfile, fieldnames=["state", "state-name", "total-reports", "total-quantity", "total-cost", "population", "violent_crime_rate_per_100000_inhabitants"])
     writer.writeheader()
     for key, value in states.items():
         value["state"] = key
