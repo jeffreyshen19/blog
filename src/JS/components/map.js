@@ -2,9 +2,6 @@ d3.selectAll(".map").each(function(){
   var tooltipText,
       tooltip = d3.select(this).select(".tooltip");
 
-  let yvar = "total-cost", // Which variable to display on the map
-      normalization = "none";
-
   // Append form inputs
   d3.select(this)
     .append("div")
@@ -22,7 +19,7 @@ d3.selectAll(".map").each(function(){
           <div>
             <span class = "heading">Normalize by:</span>
             <input type="radio" name="normalize" value="none" checked>None&nbsp;&nbsp;
-            <input type="radio" name="normalize" value="population" checked>Population&nbsp;&nbsp;
+            <input type="radio" name="normalize" value="population">Population&nbsp;&nbsp;
             <input type="radio" name="normalize" value="violent_crime_rate_per_100000_inhabitants">Violent Crime Rate
           </div>
         </div>
@@ -40,8 +37,17 @@ d3.selectAll(".map").each(function(){
         return d;
       });
 
+      // Get radio options
+      let yvar = d3.select(this).select('input[name="yvar"]:checked').node().value,
+          normalize = d3.select(this).select('input[name="normalize"]:checked').node().value;
+
+      let getYVal = function(d){
+        if(normalize == "none") return d[yvar]
+        else return d[yvar] / d[normalize];
+      };
+
       // Get color scale
-      var extent = d3.extent(data, (d) => d["total-cost"]);
+      var extent = d3.extent(data, (d) => getYVal(d));
       var colors = d3.scaleLinear().domain(extent)
         .interpolate(d3.interpolateHcl)
         .range([d3.rgb("#e4f1fe"), d3.rgb('#3a539b'), d3.rgb('#24252a')]);
@@ -58,11 +64,11 @@ d3.selectAll(".map").each(function(){
             .data(data, function(d) { return d ? d.state : this.className.baseVal.toUpperCase(); }) // Join svg elements to their corresponding state data
             .style("transition", "0.1s")
             .style("fill", function(d, i){
-              return colors(d["total-cost"]);
+              return colors(getYVal(d));
             })
             .on("mouseover", function(d, i){
               // Change color on hover
-              d3.select(this).style("fill", d3.rgb(d3.color(colors(d["total-cost"])).brighter(0.3)));
+              d3.select(this).style("fill", d3.rgb(d3.color(colors(getYVal(d))).brighter(0.3)));
 
               // Add tooltip text
               tooltipText = `
@@ -78,7 +84,7 @@ d3.selectAll(".map").each(function(){
                 .style("top", mouse[1] - Math.round(tooltip.node().offsetHeight) - 10 + "px");
             })
             .on("mouseout", function(d){
-              d3.select(this).style("fill", d3.rgb(colors(d["total-cost"])));
+              d3.select(this).style("fill", d3.rgb(colors(getYVal(d))));
               tooltip.classed("hidden", true);
             });
       });
