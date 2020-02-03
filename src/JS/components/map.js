@@ -2,6 +2,33 @@ d3.selectAll(".map").each(function(){
   var tooltipText,
       tooltip = d3.select(this).select(".tooltip");
 
+  let yvar = "total-cost", // Which variable to display on the map
+      normalization = "none";
+
+  // Append form inputs
+  d3.select(this)
+    .append("div")
+    .attr("class", "labels level")
+    .html(`
+      <div class = "level-left">
+        <div class = "level-item">
+          <div>
+            <span class = "heading">Show:</span>
+            <input type="radio" name="yvar" value="total-quantity" checked>Quantity of Items&nbsp;&nbsp;
+            <input type="radio" name="yvar" value="total-cost">Cost of Items
+          </div>
+        </div>
+        <div class = "level-item">
+          <div>
+            <span class = "heading">Normalize by:</span>
+            <input type="radio" name="normalize" value="none" checked>None&nbsp;&nbsp;
+            <input type="radio" name="normalize" value="population" checked>Population&nbsp;&nbsp;
+            <input type="radio" name="normalize" value="violent_crime_rate_per_100000_inhabitants">Violent Crime Rate
+          </div>
+        </div>
+      </div>
+    `)
+
   d3.csv(this.dataset.csv)
     .then((values) => {
       // Process csv data into correct format
@@ -34,7 +61,6 @@ d3.selectAll(".map").each(function(){
               return colors(d["total-cost"]);
             })
             .on("mouseover", function(d, i){
-              console.log(d);
               // Change color on hover
               d3.select(this).style("fill", d3.rgb(d3.color(colors(d["total-cost"])).brighter(0.3)));
 

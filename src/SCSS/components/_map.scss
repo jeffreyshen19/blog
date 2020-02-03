@@ -1,4 +1,25 @@
 .map{
   position: relative;
   width: 100%;
+
+  .labels{
+    margin-bottom: 10px;
+    font-family: "IBMPlexSans";
+    font-size: 16px;
+
+    .level-item{
+      margin-right: 30px;
+    }
+
+    span{
+      display: block;
+      margin-bottom: -2px;
+      font-size: 14px;
+      font-family: "IBMPlexSans";
+    }
+
+    input[type = "radio"]{
+      margin-right: 10px;
+    }
+  }
 }
