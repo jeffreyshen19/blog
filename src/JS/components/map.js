@@ -73,10 +73,42 @@ class Map extends React.Component{
           // Change color on hover
           d3.select(this).style("fill", d3.rgb(d3.color(colors(getYVal(d))).brighter(0.3)));
 
+          let category_data = ["grenade-launchers","night-vision","assault-rifles","armored-vehicles" ,"aircraft","body-armor"].map(function(c){
+            return {
+              category: c,
+              val: d[(yvar == "total-cost" ? "cost" : "quantity") + "-" + c]
+            }
+          }).sort(function(a, b){
+            return b.val - a.val;
+          });
+
+          console.log(d["state-name"]);
+
           // Add tooltip text
           tooltipText = `
             <h1>${d["state-name"]}</h1>
-            <
+            <table class = "table is-fullwidth is-striped">
+              <thead>
+                <tr>
+                  <th>Type of Item</h1>
+                  <th>${yvar == "total-cost" ? "Cost" : "Quantity"}</h1>
+                </tr>
+              </thead>
+              <tbody>
+                ${category_data.map(function(c){
+                  return `
+                    <tr>
+                      <td>${c.category}</td>
+                      <td>${c.val}</td>
+                    </tr>
+                  `
+                }).join("")}
+                <tr>
+                  <td>Other</td>
+                  <td>${d[(yvar == "total-cost" ? "cost" : "quantity") + "-other"]}</td>
+                </tr>
+              </tbody>
+            </table>
           `;
           tooltip.classed("hidden", false).html(tooltipText);
         })
