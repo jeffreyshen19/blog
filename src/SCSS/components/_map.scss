@@ -4,17 +4,19 @@
 
   .labels{
     margin-bottom: 10px;
-    font-family: "IBMPlexSans";
     font-size: 16px;
 
     .level-item{
       margin-right: 30px;
     }
 
-    span{
+    .heading{
       display: block;
       margin-bottom: -2px;
       font-size: 14px;
+    }
+
+    span{
       font-family: "IBMPlexSans";
     }
 

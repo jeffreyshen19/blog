@@ -12,32 +12,16 @@ class Map extends React.Component{
 
   componentDidMount(){
     // Append form inputs
-    d3.select(this.state.chart)
-      .append("div")
-      .attr("class", "labels level")
-      .html(`
-        <div class = "level-left">
-          <div class = "level-item">
-            <div>
-              <span class = "heading">Show:</span>
-              <input type="radio" name="yvar" value="total-quantity" checked>Quantity of Items&nbsp;&nbsp;
-              <input type="radio" name="yvar" value="total-cost">Cost of Items
-            </div>
-          </div>
-          <div class = "level-item">
-            <div>
-              <span class = "heading">Normalize by:</span>
-              <input type="radio" name="normalize" value="none" checked>None&nbsp;&nbsp;
-              <input type="radio" name="normalize" value="population">Population&nbsp;&nbsp;
-              <input type="radio" name="normalize" value="violent_crime_rate_per_100000_inhabitants">Violent Crime Rate
-            </div>
-          </div>
-        </div>
-      `)
+    // d3.select(this.state.chart)
+    //   .append("div")
+    //   .attr("class", "labels level")
+    //   .html(`
+    //
+    //   `)
 
-    d3.select(this.state.chart)
-      .append("div")
-      .attr("class", "tooltip hidden")
+    // d3.select(this.state.chart)
+    //   .append("div")
+    //   .attr("class", "tooltip hidden")
 
     d3.csv(this.state.dataset.csv)
       .then((values) => {
@@ -122,7 +106,31 @@ class Map extends React.Component{
 
   render() {
     if(this.state.data.length && this.state.svg) this.renderGraph();
-    return (null);
+    return (
+      <div>
+        <div class = "tooltip hidden">
+        </div>
+        <div class = 'labels level'>
+          <div class = "level-left">
+            <div class = "level-item">
+              <div>
+                <span class = "heading">Show:</span>
+                <input type="radio" name="yvar" value="total-quantity" checked/><span>Quantity of Items&nbsp;&nbsp;</span>
+                <input type="radio" name="yvar" value="total-cost"/><span>Cost of Items</span>
+              </div>
+            </div>
+            <div class = "level-item">
+              <div>
+                <span class = "heading">Normalize by:</span>
+                <input type="radio" name="normalize" value="none" checked/><span>None&nbsp;&nbsp;</span>
+                <input type="radio" name="normalize" value="population"/><span>Population&nbsp;&nbsp;</span>
+                <input type="radio" name="normalize" value="violent_crime_rate_per_100000_inhabitants"/><span>Violent Crime Rate</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
   }
 }
 
