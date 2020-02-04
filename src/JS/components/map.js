@@ -37,6 +37,59 @@ class Map extends React.Component{
       })
   }
 
+  getTooltipText(d, yvar){
+    function formatNum(num){
+      return (yvar == "total-cost" ? "$" : "") + parseInt(num).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+
+    // Mapping from column names to display names
+    let category_names = {
+      "grenade-launchers": "Grenades & Launchers",
+      "night-vision": "Night Vision",
+      "assault-rifles": "Assault Rifles",
+      "armored-vehicles" : "Armored Vehicles",
+      "aircraft": "Aircraft",
+      "body-armor": "Body Armor & Shields"
+    }
+
+    // Sort categories into the order they should be displayed
+    let category_data = ["grenade-launchers","night-vision","assault-rifles","armored-vehicles" ,"aircraft","body-armor"].map(function(c){
+      return {
+        category: category_names[c],
+        val: formatNum(d[(yvar == "total-cost" ? "cost" : "quantity") + "-" + c])
+      }
+    }).sort(function(a, b){
+      return b.val - a.val;
+    });
+
+    // Add tooltip text
+    return `
+      <h1>${d["state-name"]}</h1>
+      <table class = "table is-fullwidth is-striped">
+        <thead>
+          <tr>
+            <th>Type of Item</h1>
+            <th>${yvar == "total-cost" ? "Cost" : "Quantity"}</h1>
+          </tr>
+        </thead>
+        <tbody>
+          ${category_data.map(function(c){
+            return `
+              <tr>
+                <td>${c.category}</td>
+                <td>${c.val}</td>
+              </tr>
+            `
+          }).join("")}
+          <tr>
+            <td>Other</td>
+            <td>${formatNum(d[(yvar == "total-cost" ? "cost" : "quantity") + "-other"])}</td>
+          </tr>
+        </tbody>
+      </table>
+    `;
+  }
+
   renderGraph(){
     var tooltipText,
         tooltip = d3.select(this.state.chart).select(".tooltip"),
@@ -58,6 +111,8 @@ class Map extends React.Component{
       .interpolate(d3.interpolateHcl)
       .range([d3.rgb("#e4f1fe"), d3.rgb('#3a539b'), d3.rgb('#24252a')]);
 
+    let getTooltipText = this.getTooltipText;
+
     // Display SVG
     d3.select(svg)
       .style("width", "100%")
@@ -72,45 +127,7 @@ class Map extends React.Component{
         .on("mouseover", function(d, i){
           // Change color on hover
           d3.select(this).style("fill", d3.rgb(d3.color(colors(getYVal(d))).brighter(0.3)));
-
-          let category_data = ["grenade-launchers","night-vision","assault-rifles","armored-vehicles" ,"aircraft","body-armor"].map(function(c){
-            return {
-              category: c,
-              val: d[(yvar == "total-cost" ? "cost" : "quantity") + "-" + c]
-            }
-          }).sort(function(a, b){
-            return b.val - a.val;
-          });
-
-          console.log(d["state-name"]);
-
-          // Add tooltip text
-          tooltipText = `
-            <h1>${d["state-name"]}</h1>
-            <table class = "table is-fullwidth is-striped">
-              <thead>
-                <tr>
-                  <th>Type of Item</h1>
-                  <th>${yvar == "total-cost" ? "Cost" : "Quantity"}</h1>
-                </tr>
-              </thead>
-              <tbody>
-                ${category_data.map(function(c){
-                  return `
-                    <tr>
-                      <td>${c.category}</td>
-                      <td>${c.val}</td>
-                    </tr>
-                  `
-                }).join("")}
-                <tr>
-                  <td>Other</td>
-                  <td>${d[(yvar == "total-cost" ? "cost" : "quantity") + "-other"]}</td>
-                </tr>
-              </tbody>
-            </table>
-          `;
-          tooltip.classed("hidden", false).html(tooltipText);
+          tooltip.classed("hidden", false).html(getTooltipText(d, yvar));
         })
         .on("mousemove", (d) => {
           var mouse = d3.mouse(this.state.chart.children[1]);
