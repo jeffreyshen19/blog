@@ -27,7 +27,12 @@ class Map extends React.Component{
         // Plot graph
         d3.svg("/data/police-militarization/us-map-w-puerto-rico.svg").then((res) => {
           var svg = res.documentElement;
-          d3.select(this.state.chart).node().appendChild(svg);
+
+          //Append map
+          d3.select(this.state.chart).append("div").attr("class", "svg").node().appendChild(svg);
+
+          // Append tooltip
+          d3.select(this.state.chart).select(".svg").append("div").attr("class", "tooltip hidden");
 
           this.setState({
             "svg": svg,
@@ -157,8 +162,6 @@ class Map extends React.Component{
     if(this.state.data.length && this.state.svg) this.renderGraph();
     return (
       <div>
-        <div class = "tooltip hidden">
-        </div>
         <div class = 'labels level'>
           <div class = "level-left">
             <div class = "level-item">
