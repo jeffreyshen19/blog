@@ -6,23 +6,13 @@ class Map extends React.Component{
       data: [],
       chart: this.props.chart,
       dataset: this.props,
-      svg: null
+      svg: null,
+      yvar: "total-quantity",
+      normalize: "none"
     };
   }
 
   componentDidMount(){
-    // Append form inputs
-    // d3.select(this.state.chart)
-    //   .append("div")
-    //   .attr("class", "labels level")
-    //   .html(`
-    //
-    //   `)
-
-    // d3.select(this.state.chart)
-    //   .append("div")
-    //   .attr("class", "tooltip hidden")
-
     d3.csv(this.state.dataset.csv)
       .then((values) => {
         // Process csv data into correct format
@@ -53,10 +43,9 @@ class Map extends React.Component{
         svg = this.state.svg,
         data = this.state.data;
 
-
     // Get radio options
-    let yvar = d3.select(this.state.chart).select('input[name="yvar"]:checked').node().value,
-        normalize = d3.select(this.state.chart).select('input[name="normalize"]:checked').node().value;
+    let yvar = this.state.yvar,
+        normalize = this.state.normalize;
 
     let getYVal = function(d){
       if(normalize == "none") return d[yvar]
@@ -103,6 +92,17 @@ class Map extends React.Component{
         });
   }
 
+  onYVarChanged(e){
+    this.setState({
+      yvar: e.currentTarget.value
+    });
+  }
+
+  onNormalizeChanged(e){
+    this.setState({
+      normalize: e.currentTarget.value
+    });
+  }
 
   render() {
     if(this.state.data.length && this.state.svg) this.renderGraph();
@@ -115,16 +115,16 @@ class Map extends React.Component{
             <div class = "level-item">
               <div>
                 <span class = "heading">Show:</span>
-                <input type="radio" name="yvar" value="total-quantity" checked/><span>Quantity of Items&nbsp;&nbsp;</span>
-                <input type="radio" name="yvar" value="total-cost"/><span>Cost of Items</span>
+                <input type="radio" name="yvar" value="total-quantity" checked={this.state.yvar === "total-quantity"} onChange={this.onYVarChanged.bind(this)} /><span>Quantity of Items&nbsp;&nbsp;</span>
+                <input type="radio" name="yvar" value="total-cost" checked={this.state.yvar === "total-cost"} onChange={this.onYVarChanged.bind(this)} /><span>Cost of Items</span>
               </div>
             </div>
             <div class = "level-item">
               <div>
                 <span class = "heading">Normalize by:</span>
-                <input type="radio" name="normalize" value="none" checked/><span>None&nbsp;&nbsp;</span>
-                <input type="radio" name="normalize" value="population"/><span>Population&nbsp;&nbsp;</span>
-                <input type="radio" name="normalize" value="violent_crime_rate_per_100000_inhabitants"/><span>Violent Crime Rate</span>
+                <input type="radio" name="normalize" value="none" checked={this.state.normalize === "none"} onChange={this.onNormalizeChanged.bind(this)}/><span>None&nbsp;&nbsp;</span>
+                <input type="radio" name="normalize" value="population" checked={this.state.normalize === "population"} onChange={this.onNormalizeChanged.bind(this)}/><span>Population&nbsp;&nbsp;</span>
+                <input type="radio" name="normalize" value="violent_crime_rate_per_100000_inhabitants" checked={this.state.normalize === "violent_crime_rate_per_100000_inhabitants"} onChange={this.onNormalizeChanged.bind(this)}/><span>Violent Crime Rate</span>
               </div>
             </div>
           </div>
