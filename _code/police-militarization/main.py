@@ -1,4 +1,5 @@
 import csv
+import get_category
 
 # Aggregate Quantity and Cost by State
 
@@ -82,6 +83,8 @@ with open('violent-crime.csv') as csv_file:
             if row["state"].lower() == value.lower():
                 crimeData[key] = row["rate_per_100000_inhabitants"]
 
+categories = ["grenade-launchers","night-vision","assault-rifles","armored-vehicles" ,"aircraft","body-armor","other"]
+
 with open('1033.csv') as csv_file:
     csv_reader = csv.DictReader(csv_file, delimiter=',')
     for row in csv_reader:
@@ -96,12 +99,25 @@ with open('1033.csv') as csv_file:
                 "violent_crime_rate_per_100000_inhabitants": crimeData[row["state"]],
             }
 
+            for category in categories:
+                states[row["state"]]["cost-" + category] = 0
+                states[row["state"]]["quantity-" + category] = 0
+
         states[row["state"]]["total-reports"] += 1
         states[row["state"]]["total-quantity"] += int(row["quantity"])
         states[row["state"]]["total-cost"] += float(row["cost"])
 
+        # Add category breakdown
+        category = get_category.get_category(row["item-name"])
+        states[row["state"]]["cost-" + category] += float(row["cost"])
+        states[row["state"]]["quantity-" + category] += int(row["quantity"])
+
+fieldnames = ["state", "state-name", "total-reports", "total-quantity", "total-cost", "population", "violent_crime_rate_per_100000_inhabitants"]
+for category in categories:
+    fieldnames.append("cost-" + category)
+    fieldnames.append("quantity-" + category)
 with open("../../data/police-militarization/1033-by-state.csv", 'w') as csvfile:
-    writer = csv.DictWriter(csvfile, fieldnames=["state", "state-name", "total-reports", "total-quantity", "total-cost", "population", "violent_crime_rate_per_100000_inhabitants"])
+    writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
     writer.writeheader()
     for key, value in states.items():
         value["state"] = key
