@@ -115,16 +115,16 @@ class Map extends React.Component{
             <div class = "level-item">
               <div>
                 <span class = "heading">Show:</span>
-                <input type="radio" name="yvar" value="total-quantity" checked={this.state.yvar === "total-quantity"} onChange={this.onYVarChanged.bind(this)} /><span>Quantity of Items&nbsp;&nbsp;</span>
-                <input type="radio" name="yvar" value="total-cost" checked={this.state.yvar === "total-cost"} onChange={this.onYVarChanged.bind(this)} /><span>Cost of Items</span>
+                <input type="radio" name="yvar" id="total-quantity" value="total-quantity" checked={this.state.yvar === "total-quantity"} onChange={this.onYVarChanged.bind(this)} /><label for = "total-quantity">Quantity of Items&nbsp;&nbsp;</label>
+                <input type="radio" name="yvar" id="total-cost" value="total-cost" checked={this.state.yvar === "total-cost"} onChange={this.onYVarChanged.bind(this)} /><label for = "total-cost">Cost of Items</label>
               </div>
             </div>
             <div class = "level-item">
               <div>
                 <span class = "heading">Normalize by:</span>
-                <input type="radio" name="normalize" value="none" checked={this.state.normalize === "none"} onChange={this.onNormalizeChanged.bind(this)}/><span>None&nbsp;&nbsp;</span>
-                <input type="radio" name="normalize" value="population" checked={this.state.normalize === "population"} onChange={this.onNormalizeChanged.bind(this)}/><span>Population&nbsp;&nbsp;</span>
-                <input type="radio" name="normalize" value="violent_crime_rate_per_100000_inhabitants" checked={this.state.normalize === "violent_crime_rate_per_100000_inhabitants"} onChange={this.onNormalizeChanged.bind(this)}/><span>Violent Crime Rate</span>
+                <input type="radio" name="normalize" id="none" value="none" checked={this.state.normalize === "none"} onChange={this.onNormalizeChanged.bind(this)}/><label for = "none">None&nbsp;&nbsp;</label>
+                <input type="radio" name="normalize" id="population" value="population" checked={this.state.normalize === "population"} onChange={this.onNormalizeChanged.bind(this)}/><label for = "population">Population&nbsp;&nbsp;</label>
+                <input type="radio" name="normalize" id="violent_crime_rate_per_100000_inhabitants" value="violent_crime_rate_per_100000_inhabitants" checked={this.state.normalize === "violent_crime_rate_per_100000_inhabitants"} onChange={this.onNormalizeChanged.bind(this)}/><label for = "violent_crime_rate_per_100000_inhabitants">Violent Crime Rate</label>
               </div>
             </div>
           </div>

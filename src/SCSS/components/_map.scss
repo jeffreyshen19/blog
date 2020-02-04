@@ -6,6 +6,10 @@
     margin-bottom: 10px;
     font-size: 16px;
 
+    label, span{
+      font-family: "IBMPlexSans";
+    }
+
     .level-item{
       margin-right: 30px;
     }
@@ -14,10 +18,6 @@
       display: block;
       margin-bottom: -2px;
       font-size: 14px;
-    }
-
-    span{
-      font-family: "IBMPlexSans";
     }
 
     input[type = "radio"]{
