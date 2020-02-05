@@ -70,7 +70,7 @@ class Map extends React.Component{
     // Add tooltip text
     return `
       <h1>${d["state-name"]}</h1>
-      <table class = "table is-fullwidth">
+      <table>
         <thead>
           <tr>
             <th>Type of Item</h1>

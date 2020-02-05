@@ -2,6 +2,22 @@
   position: relative;
   width: 100%;
 
+  .tooltip{
+    font-size: 12px;
+
+    h1{
+      margin-bottom: 0;
+    }
+
+    td, th{
+      padding: 3px 0;
+
+      &:first-of-type{
+        padding-right: 20px;
+      }
+    }
+  }
+
   .labels{
     margin-bottom: 10px;
     font-size: 16px;

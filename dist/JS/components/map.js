@@ -7,7 +7,7 @@ let e={"grenade-launchers":"Grenades & Launchers","night-vision":"Night Vision",
 // Add tooltip text
 return`
       <h1>${a["state-name"]}</h1>
-      <table class = "table is-fullwidth">
+      <table>
         <thead>
           <tr>
             <th>Type of Item</h1>
