@@ -6,7 +6,7 @@ export default class NormalizeHeader extends React.Component {
   render() {
     return (
       <div>
-        <div class = 'labels level'>
+        <div class = 'normalize-header labels level'>
           <div class = "level-left">
             <div class = "level-item">
               <div>

@@ -1,0 +1,22 @@
+.normalize-header{
+  margin-bottom: 10px;
+  font-size: 16px;
+
+  label, span{
+    font-family: "IBMPlexSans";
+  }
+
+  .level-item{
+    margin-right: 30px !important;
+  }
+
+  .heading{
+    display: block;
+    margin-bottom: -2px;
+    font-size: 14px;
+  }
+
+  input[type = "radio"]{
+    margin-right: 10px;
+  }
+}
