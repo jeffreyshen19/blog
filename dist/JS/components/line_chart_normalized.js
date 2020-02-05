@@ -1,0 +1,2 @@
+import LineChart from"/dist/JS/components/line_chart.js";const e=React.createElement;class LineChartNormalized extends React.Component{constructor(a){super(a)}render(){return React.createElement(LineChart,this.props)}}// Render all line charts
+let elements=document.getElementsByClassName("line-chart-normalized");for(let a=0;a<elements.length;a++)ReactDOM.render(e(LineChartNormalized,{...elements[a].dataset,chart:elements[a]}),elements[a]);

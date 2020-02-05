@@ -2,7 +2,7 @@ import Chart from "/dist/JS/components/chart.js";
 
 const e = React.createElement;
 
-class LineChart extends React.Component {
+export default class LineChart extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -23,6 +23,10 @@ class LineChart extends React.Component {
     if(body_width < 400) axis.ticks(d3.timeYear.every(8));
     else if(body_width < 800) axis.ticks(d3.timeYear.every(4));
     else axis.ticks(d3.timeYear.every(2));
+  }
+
+  yAxisFormat(body_width, axis){
+    axis.tickFormat(d3.format(".2s"));
   }
 
   renderData(i, ycol, x, y, svg, state){
@@ -46,24 +50,26 @@ class LineChart extends React.Component {
     };
   }
 
-  formatTooltip(datum){
-    return d3.timeFormat("%b %e, %Y")(datum);
+  formatTooltip(datum, tooltipformat){
+    return d3.timeFormat(tooltipformat)(datum);
   }
 
   render() {
-    let xcolparse = this.props["xcolparse"];
+    let xcolparse = this.props["xcolparse"],
+        tooltipformat = this.props["tooltipformat"] ? this.props["tooltipformat"] : "%b %e, %Y";
 
     return (
       <Chart {...this.props}
-        margin = {{top: 5, right: 20, bottom: 20, left: 65}}
+        margin = {this.props.margin ? JSON.parse(this.props.margin) : {top: 5, right: 20, bottom: 20, left: 65}}
         padding = {{top: 40, right: 20, bottom: 40, left: 20}}
         xScale = {this.xScale}
         yScale = {this.yScale}
         parseXCol = {(val) => this.parseXCol(val, xcolparse)}
         xAxisFormat = {this.xAxisFormat}
+        yAxisFormat = {this.props.yaxisformat ? this.yAxisFormat : () => {}}
         renderData = {this.renderData}
         positionTooltip = {this.positionTooltip}
-        formatTooltip = {this.formatTooltip}
+        formatTooltip = {(val) => this.formatTooltip(val, tooltipformat)}
         useTooltipLine = {true}
         >
       </Chart>

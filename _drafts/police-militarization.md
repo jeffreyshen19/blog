@@ -12,10 +12,10 @@ references: [{
 header: centered
 caption: "Police use a mine-resistant armored vehicle—equipment designed for war—to monitor protests in Ferguson, MI (Source: NYT)"
 featured: true
-javascript: ["components/map.js"]
+javascript: ["components/map.js", "components/line_chart_normalized.js"]
 ---
 
 <div class = "map" data-csv = "/data/police-militarization/1033-by-state.csv">
 </div>
 
-<!-- <div class = "line-chart" data-csv = "/data/lyricism/lyricalness.csv" data-xlabel = "Date" data-ylabel = "Avg. % of Unique Words" data-title = "Usage of Unique Words over Time" data-xcol = "date" data-ycols = "average_prop_unique_words" data-linelabels = "Average % of Unique Words" data-linecolors = "#6c5ce7"></div> -->
+<div class = "line-chart-normalized" data-csv = "/data/police-militarization/1033-by-time.csv" data-xlabel = "Date" data-ylabel = "Total Cost" data-title = "Add title" data-xcol = "date" data-ycols = "total-cost" data-linelabels = "Add line label" data-linecolors = "#3a539b" data-xcolparse = "%m/%Y" data-tooltipformat = "%B %Y" margin = "{top: 5, right: 20, bottom: 20, left: 80}" data-yaxisformat = "true" ></div>
