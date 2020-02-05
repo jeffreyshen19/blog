@@ -141,8 +141,8 @@ class Map extends React.Component{
         .on("mousemove", (d) => {
           var mouse = d3.mouse(this.state.chart.children[1]);
 
-          tooltip.classed("hidden", false).style("left", mouse[0] + 30 + "px")
-            .style("top", mouse[1] - 20 + "px");
+          tooltip.classed("hidden", false).style("left", mouse[0] - Math.round(tooltip.node().offsetWidth / 2) + "px")
+            .style("top", mouse[1] + 20 + "px");
         })
         .on("mouseout", function(d){
           d3.select(this).style("fill", d3.rgb(colors(getYVal(d))));
