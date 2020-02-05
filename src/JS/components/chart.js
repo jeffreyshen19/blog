@@ -49,7 +49,7 @@ export default class Chart extends React.Component{
   }
 
   updateDimensions() { //Calculate new width
-    let offset = (d3.select("body").node().offsetWidth -  d3.select("#body").node().offsetWidth) / 2,
+    let offset = this.props.useoffset != "false" ? (d3.select("body").node().offsetWidth -  d3.select("#body").node().offsetWidth) / 2 : 0,
         body_width = d3.select("body").node().offsetWidth,
         width = d3.select("#body").node().offsetWidth - this.state.margin.left - this.state.margin.right - this.state.padding.left - this.state.padding.right + 2 * offset;
 

@@ -18,4 +18,4 @@ javascript: ["components/map.js", "components/line_chart_normalized.js"]
 <div class = "map" data-csv = "/data/police-militarization/1033-by-state.csv">
 </div>
 
-<div class = "line-chart-normalized" data-csv = "/data/police-militarization/1033-by-time.csv" data-xlabel = "Date" data-ylabel = "Total Cost" data-title = "Add title" data-xcol = "date" data-ycols = "total-cost" data-linelabels = "Add line label" data-linecolors = "#3a539b" data-xcolparse = "%m/%Y" data-tooltipformat = "%B %Y" margin = "{top: 5, right: 20, bottom: 20, left: 80}" data-yaxisformat = "true" ></div>
+<div class = "line-chart-normalized" data-csv = "/data/police-militarization/1033-by-time.csv" data-xlabel = "Date" data-ylabel = "Total Cost" data-title = "Add title" data-xcol = "date" data-ycols = "total-cost" data-linelabels = "Add line label" data-linecolors = "#3a539b" data-xcolparse = "%m/%Y" data-tooltipformat = "%B %Y" margin = "{top: 0, right: 20, bottom: 20, left: 80}" data-yaxisformat = "true" data-useoffset = "false"></div>
