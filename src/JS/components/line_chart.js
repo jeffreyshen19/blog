@@ -15,8 +15,8 @@ class LineChart extends React.Component {
     return d3.scaleLinear();
   }
 
-  parseXCol(val){
-    return d3.timeParse("%Y-%m-%d")(val);
+  parseXCol(val, xColParse){
+    return d3.timeParse(xColParse)(val);
   }
 
   xAxisFormat(body_width, axis){
@@ -51,13 +51,15 @@ class LineChart extends React.Component {
   }
 
   render() {
+    let xcolparse = this.props["xcolparse"];
+
     return (
       <Chart {...this.props}
         margin = {{top: 5, right: 20, bottom: 20, left: 65}}
         padding = {{top: 40, right: 20, bottom: 40, left: 20}}
         xScale = {this.xScale}
         yScale = {this.yScale}
-        parseXCol = {this.parseXCol}
+        parseXCol = {(val) => this.parseXCol(val, xcolparse)}
         xAxisFormat = {this.xAxisFormat}
         renderData = {this.renderData}
         positionTooltip = {this.positionTooltip}
