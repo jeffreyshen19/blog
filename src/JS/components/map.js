@@ -61,7 +61,7 @@ class Map extends React.Component{
     let category_data = ["grenade-launchers","night-vision","assault-rifles","armored-vehicles" ,"aircraft","body-armor"].map(function(c){
       return {
         category: category_names[c],
-        val: formatNum(d[(yvar == "total-cost" ? "cost" : "quantity") + "-" + c])
+        val: d[(yvar == "total-cost" ? "cost" : "quantity") + "-" + c]
       }
     }).sort(function(a, b){
       return b.val - a.val;
@@ -70,7 +70,7 @@ class Map extends React.Component{
     // Add tooltip text
     return `
       <h1>${d["state-name"]}</h1>
-      <table class = "table is-fullwidth is-striped">
+      <table class = "table is-fullwidth">
         <thead>
           <tr>
             <th>Type of Item</h1>
@@ -82,13 +82,17 @@ class Map extends React.Component{
             return `
               <tr>
                 <td>${c.category}</td>
-                <td>${c.val}</td>
+                <td>${formatNum(c.val)}</td>
               </tr>
             `
           }).join("")}
           <tr>
             <td>Other</td>
             <td>${formatNum(d[(yvar == "total-cost" ? "cost" : "quantity") + "-other"])}</td>
+          </tr>
+          <tr>
+            <td><i>Total</i></td>
+            <td><i>${formatNum(d["total-" + (yvar == "total-cost" ? "cost" : "quantity")])}</i></td>
           </tr>
         </tbody>
       </table>

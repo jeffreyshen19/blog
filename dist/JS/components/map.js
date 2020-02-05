@@ -3,11 +3,11 @@ let b=Object.keys(a[0]).slice(2),c=a.map(function(a){return b.forEach(function(b
 d3.svg("/data/police-militarization/us-map-w-puerto-rico.svg").then(a=>{var b=a.documentElement;//Append map
 // Append tooltip
 d3.select(this.state.chart).append("div").attr("class","svg").node().appendChild(b),d3.select(this.state.chart).select(".svg").append("div").attr("class","tooltip hidden"),this.setState({svg:b,data:c})})})}getTooltipText(a,b){function d(a){return("total-cost"==b?"$":"")+parseInt(a).toString().replace(/\B(?=(\d{3})+(?!\d))/g,",")}// Mapping from column names to display names
-let e={"grenade-launchers":"Grenades & Launchers","night-vision":"Night Vision","assault-rifles":"Assault Rifles","armored-vehicles":"Armored Vehicles",aircraft:"Aircraft","body-armor":"Body Armor & Shields"},f=["grenade-launchers","night-vision","assault-rifles","armored-vehicles","aircraft","body-armor"].map(function(f){return{category:e[f],val:d(a[("total-cost"==b?"cost":"quantity")+"-"+f])}}).sort(function(c,a){return a.val-c.val});// Sort categories into the order they should be displayed
+let e={"grenade-launchers":"Grenades & Launchers","night-vision":"Night Vision","assault-rifles":"Assault Rifles","armored-vehicles":"Armored Vehicles",aircraft:"Aircraft","body-armor":"Body Armor & Shields"},f=["grenade-launchers","night-vision","assault-rifles","armored-vehicles","aircraft","body-armor"].map(function(d){return{category:e[d],val:a[("total-cost"==b?"cost":"quantity")+"-"+d]}}).sort(function(c,a){return a.val-c.val});// Sort categories into the order they should be displayed
 // Add tooltip text
 return`
       <h1>${a["state-name"]}</h1>
-      <table class = "table is-fullwidth is-striped">
+      <table class = "table is-fullwidth">
         <thead>
           <tr>
             <th>Type of Item</h1>
@@ -18,12 +18,16 @@ return`
           ${f.map(function(a){return`
               <tr>
                 <td>${a.category}</td>
-                <td>${a.val}</td>
+                <td>${d(a.val)}</td>
               </tr>
             `}).join("")}
           <tr>
             <td>Other</td>
             <td>${d(a[("total-cost"==b?"cost":"quantity")+"-other"])}</td>
+          </tr>
+          <tr>
+            <td><i>Total</i></td>
+            <td><i>${d(a["total-"+("total-cost"==b?"cost":"quantity")])}</i></td>
           </tr>
         </tbody>
       </table>
