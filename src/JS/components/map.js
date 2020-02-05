@@ -1,3 +1,5 @@
+import NormalizeHeader from "/dist/JS/components/subcomponents/normalize.js";
+
 class Map extends React.Component{
   constructor(props) {
     super(props);
@@ -165,27 +167,13 @@ class Map extends React.Component{
   render() {
     if(this.state.data.length && this.state.svg) this.renderGraph();
     return (
-      <div>
-        <div class = 'labels level'>
-          <div class = "level-left">
-            <div class = "level-item">
-              <div>
-                <span class = "heading">Show:</span>
-                <input type="radio" name="yvar" id="total-quantity" value="total-quantity" checked={this.state.yvar === "total-quantity"} onChange={this.onYVarChanged.bind(this)} /><label for = "total-quantity">Quantity of Items&nbsp;&nbsp;</label>
-                <input type="radio" name="yvar" id="total-cost" value="total-cost" checked={this.state.yvar === "total-cost"} onChange={this.onYVarChanged.bind(this)} /><label for = "total-cost">Cost of Items</label>
-              </div>
-            </div>
-            <div class = "level-item">
-              <div>
-                <span class = "heading">Normalize by:</span>
-                <input type="radio" name="normalize" id="none" value="none" checked={this.state.normalize === "none"} onChange={this.onNormalizeChanged.bind(this)}/><label for = "none">None&nbsp;&nbsp;</label>
-                <input type="radio" name="normalize" id="population" value="population" checked={this.state.normalize === "population"} onChange={this.onNormalizeChanged.bind(this)}/><label for = "population">Population&nbsp;&nbsp;</label>
-                <input type="radio" name="normalize" id="violent_crime_rate_per_100000_inhabitants" value="violent_crime_rate_per_100000_inhabitants" checked={this.state.normalize === "violent_crime_rate_per_100000_inhabitants"} onChange={this.onNormalizeChanged.bind(this)}/><label for = "violent_crime_rate_per_100000_inhabitants">Violent Crime Rate</label>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <NormalizeHeader
+        yvar = {this.state.yvar}
+        normalize = {this.state.normalize}
+        yVarHandler = {this.onYVarChanged.bind(this)}
+        normalizeHandler = {this.onNormalizeChanged.bind(this)}
+      >
+      </NormalizeHeader>
     );
   }
 }

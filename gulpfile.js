@@ -6,7 +6,7 @@ var gutil = require('gulp-util');
 var babel = require('gulp-babel');
 
 gulp.task('babel', function(done) {
-  return gulp.src(['./src/JS/components/*.js'])
+  return gulp.src(['./src/JS/components/*.js', './src/JS/components/**/*.js'])
     .pipe(babel({
         presets: [['minify', {
           builtIns: false,
