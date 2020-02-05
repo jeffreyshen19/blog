@@ -17,3 +17,5 @@ javascript: ["components/map.js"]
 
 <div class = "map" data-csv = "/data/police-militarization/1033-by-state.csv">
 </div>
+
+<!-- <div class = "line-chart" data-csv = "/data/lyricism/lyricalness.csv" data-xlabel = "Date" data-ylabel = "Avg. % of Unique Words" data-title = "Usage of Unique Words over Time" data-xcol = "date" data-ycols = "average_prop_unique_words" data-linelabels = "Average % of Unique Words" data-linecolors = "#6c5ce7"></div> -->
