@@ -49,7 +49,9 @@ class LineChartNormalized extends React.Component {
         </NormalizeHeader>
         <div class = "line-chart">
           { this.state.loaded ?
-            <LineChart {...this.props}>
+            <LineChart {...this.props}
+              ycols = {this.state.yvar}
+            >
             </LineChart>
             :
             null

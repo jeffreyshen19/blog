@@ -48,6 +48,10 @@ export default class Chart extends React.Component{
     })
   }
 
+  componentWillReceiveProps(props) {
+    if(props !== this.props) this.renderGraph();
+  }
+
   updateDimensions() { //Calculate new width
     let offset = this.props.useoffset != "false" ? (d3.select("body").node().offsetWidth -  d3.select("#body").node().offsetWidth) / 2 : 0,
         body_width = d3.select("body").node().offsetWidth,
@@ -75,7 +79,7 @@ export default class Chart extends React.Component{
   renderGraph(){
     let margin = this.state.margin,
         padding = this.state.padding,
-        dataset = this.state.dataset,
+        dataset = this.props,
         chart = this.state.chart,
         data = this.state.data,
         width = this.state.width,
