@@ -177,6 +177,13 @@ class Map extends React.Component{
         yVarHandler = {this.onYVarChanged}
         normalizeHandler = {this.onNormalizeChanged}
         id = "1"
+        ycols = {[{
+          "ycol": "total-quantity",
+          "label": "Total Quantity"
+        }, {
+          "ycol": "total-cost",
+          "label": "Total Cost"
+        }]}
       >
       </NormalizeHeader>
     );

@@ -6,14 +6,13 @@ const e = React.createElement;
 class LineChartNormalized extends React.Component {
   constructor(props) {
     super(props);
+    this.onYVarChanged = this.onYVarChanged.bind(this);
+    this.props.ycols = JSON.parse(this.props.ycols);
+
     this.state = {
       loaded: false,
-      yvar: "total-quantity",
-      normalize: "none"
+      yvar: this.props.ycols[0].ycol,
     }
-
-    this.onYVarChanged = this.onYVarChanged.bind(this);
-    this.onNormalizeChanged = this.onNormalizeChanged.bind(this);
   }
 
   componentDidMount(){
@@ -30,31 +29,42 @@ class LineChartNormalized extends React.Component {
     });
   }
 
-  onNormalizeChanged(e){
-    this.setState({
-      normalize: e.currentTarget.value
-    });
+  getLabelAndTitle(){
+    for(var i = 0; i < this.props.ycols.length; i++){
+      if(this.props.ycols[i].ycol == this.state.yvar) return {
+        label: this.props.ycols[i].label,
+        title: this.props.ycols[i].title,
+      }
+    }
+  }
+
+  getTitle(){
+    for(var i = 0; i < this.props.ycols.length; i++){
+      if(this.props.ycols[i].ycol == this.state.yvar) return this.props.ycols[i].title;
+    }
+    (this.state.yvar == "total-cost" ? "Cost" : "Quantity") + " of Items Acquired, Over Time"
   }
 
   render() {
+    let {label, title} = this.getLabelAndTitle();
+
     return (
       <div>
         <NormalizeHeader
           yvar = {this.state.yvar}
-          normalize = {this.state.normalize}
           yVarHandler = {this.onYVarChanged}
-          normalizeHandler = {this.onNormalizeChanged}
-          id = "2"
+          id = {this.props.id}
+          ycols = {this.props.ycols}
         >
         </NormalizeHeader>
         <div class = "line-chart">
           { this.state.loaded ?
             <LineChart {...this.props}
               ycols = {this.state.yvar}
-              ylabel = {this.state.yvar == "total-cost" ? "Total Cost" : "Total Quantity"}
-              linelabels = {this.state.yvar == "total-cost" ? "Total Cost" : "Total Quantity"}
+              ylabel = {label}
+              linelabels = {label}
               yaxisformat = {this.state.yvar == "total-cost" ? "$.2s" : ".2s"}
-              title = {(this.state.yvar == "total-cost" ? "Cost" : "Quantity") + " of Items Acquired, Over Time"}
+              title = {title}
             >
             </LineChart>
             :

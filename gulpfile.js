@@ -19,6 +19,7 @@ gulp.task('babel', function(done) {
 
 gulp.task('watch', function() {
   gulp.watch('./src/JS/components/*.js', ['babel']);
+  gulp.watch('./src/JS/components/**/*.js', ['babel']);
 });
 
 gulp.task("default", ["babel", "watch"]);
