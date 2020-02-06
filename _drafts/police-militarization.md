@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "Tracking the Flow of Military Weapons into Police Departments"
-subtitle: "Billions Worth of Equipment Made For War Have Been Transferred to Civilian Police Departments"
+title:  "Tracking Military Weapons in Police Departments"
+subtitle: "Billions in War Equipment Have Been Transferred to Civilian Agencies"
 categories: Politics
 source_code: "https://github.com/jeffreyshen19/jshen-personal-blog/tree/master/_code/police-militarization"
 image: "police-militarization.jpg"
