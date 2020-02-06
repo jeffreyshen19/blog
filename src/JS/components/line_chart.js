@@ -25,8 +25,8 @@ export default class LineChart extends React.Component {
     else axis.ticks(d3.timeYear.every(2));
   }
 
-  yAxisFormat(body_width, axis){
-    axis.tickFormat(d3.format(".2s"));
+  yAxisFormat(body_width, axis, yaxisformat){
+    if(yaxisformat.length) axis.tickFormat(d3.format(yaxisformat));
   }
 
   renderData(i, ycol, x, y, svg, state){
@@ -56,7 +56,8 @@ export default class LineChart extends React.Component {
 
   render() {
     let xcolparse = this.props["xcolparse"],
-        tooltipformat = this.props["tooltipformat"] ? this.props["tooltipformat"] : "%b %e, %Y";
+        tooltipformat = this.props["tooltipformat"] ? this.props["tooltipformat"] : "%b %e, %Y",
+        yaxisformat = this.props["yaxisformat"] ? this.props["yaxisformat"] : "";
 
     return (
       <Chart {...this.props}
@@ -66,7 +67,7 @@ export default class LineChart extends React.Component {
         yScale = {this.yScale}
         parseXCol = {(val) => this.parseXCol(val, xcolparse)}
         xAxisFormat = {this.xAxisFormat}
-        yAxisFormat = {this.props.yaxisformat ? this.yAxisFormat : () => {}}
+        yAxisFormat = {(body_width, axis) => this.yAxisFormat(body_width, axis, yaxisformat)}
         renderData = {this.renderData}
         positionTooltip = {this.positionTooltip}
         formatTooltip = {(val) => this.formatTooltip(val, tooltipformat)}

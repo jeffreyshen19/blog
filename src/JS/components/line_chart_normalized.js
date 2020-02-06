@@ -51,6 +51,10 @@ class LineChartNormalized extends React.Component {
           { this.state.loaded ?
             <LineChart {...this.props}
               ycols = {this.state.yvar}
+              ylabel = {this.state.yvar == "total-cost" ? "Total Cost" : "Total Quantity"}
+              linelabels = {this.state.yvar == "total-cost" ? "Total Cost" : "Total Quantity"}
+              yaxisformat = {this.state.yvar == "total-cost" ? "$.2s" : ".2s"}
+              title = {(this.state.yvar == "total-cost" ? "Cost" : "Quantity") + " of Items Acquired, Over Time"}
             >
             </LineChart>
             :
