@@ -11,11 +11,14 @@ class LineChartNormalized extends React.Component {
       yvar: "total-quantity",
       normalize: "none"
     }
+
+    this.onYVarChanged = this.onYVarChanged.bind(this);
+    this.onNormalizeChanged = this.onNormalizeChanged.bind(this);
   }
 
   componentDidMount(){
     this.props.chart = d3.select(this.props.chart).select(".line-chart").node();
-    
+
     this.setState({
       loaded: true
     });
@@ -34,14 +37,14 @@ class LineChartNormalized extends React.Component {
   }
 
   render() {
-
     return (
       <div>
         <NormalizeHeader
           yvar = {this.state.yvar}
           normalize = {this.state.normalize}
-          yVarHandler = {this.onYVarChanged.bind(this)}
-          normalizeHandler = {this.onNormalizeChanged.bind(this)}
+          yVarHandler = {this.onYVarChanged}
+          normalizeHandler = {this.onNormalizeChanged}
+          id = "2"
         >
         </NormalizeHeader>
         <div class = "line-chart">

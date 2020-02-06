@@ -12,6 +12,9 @@ class Map extends React.Component{
       yvar: "total-quantity",
       normalize: "none"
     };
+
+    this.onYVarChanged = this.onYVarChanged.bind(this);
+    this.onNormalizeChanged = this.onNormalizeChanged.bind(this);
   }
 
   componentDidMount(){
@@ -166,12 +169,14 @@ class Map extends React.Component{
 
   render() {
     if(this.state.data.length && this.state.svg) this.renderGraph();
+
     return (
       <NormalizeHeader
         yvar = {this.state.yvar}
         normalize = {this.state.normalize}
-        yVarHandler = {this.onYVarChanged.bind(this)}
-        normalizeHandler = {this.onNormalizeChanged.bind(this)}
+        yVarHandler = {this.onYVarChanged}
+        normalizeHandler = {this.onNormalizeChanged}
+        id = "1"
       >
       </NormalizeHeader>
     );
