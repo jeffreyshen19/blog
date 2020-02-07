@@ -49,7 +49,15 @@ export default class Chart extends React.Component{
   }
 
   componentWillReceiveProps(props) {
-    if(props !== this.props) this.renderGraph();
+    let data = this.state.data;
+    if(props !== this.props) this.setState({
+      data: data.map(function(d){ //Process csv data into correct format
+        props.ycols.split(",").forEach(function(ycol){
+          d[ycol] = parseFloat(d[ycol]);
+        });
+        return d;
+      })
+    })
   }
 
   updateDimensions() { //Calculate new width
