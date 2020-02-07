@@ -211,7 +211,10 @@ export default class Chart extends React.Component{
         formatTooltip = this.props.formatTooltip,
         formatTooltipData = this.formatTooltipData.bind(this);
 
-    if(useTooltipLine) svg.append("line")
+    let tooltip,
+        tooltipLine;
+
+    if(useTooltipLine) tooltipLine = svg.append("line")
       .attr("class", "tooltip-line hidden")
       .attr("x1", x(xextent[0]))
       .attr("y1", y(0))
@@ -221,40 +224,45 @@ export default class Chart extends React.Component{
       .style("stroke-width", "1")
       .style("stroke-dasharray", "5,5");
 
-    var tooltip = chart.select(".tooltip"),
-        tooltipLine;
-
-    if(useTooltipLine) tooltipLine = chart.select(".tooltip-line");
+    if(this.props.disableTooltip == null) tooltip = chart.append("div")
+      .attr("class", "tooltip hidden")
 
     var bisect = d3.bisector(function(d){ return d[dataset.xcol]; }).right;
 
     if(this.props.disableTooltip == null){
-      chart.select("svg").on("mousemove", function(){
-        var mouse = d3.mouse(this),
-            mouseX = x.invert(mouse[0] - margin.left),
-            index = bisect(data, mouseX),
-            datum = data[index];
+      chart.select("svg")
+        .on("mousemove", function(){
+          var mouse = d3.mouse(this),
+              mouseX = x.invert(mouse[0] - margin.left),
+              index = bisect(data, mouseX),
+              datum = data[index];
 
-        if(datum == null){
+          if(datum == null){
+            tooltip.classed("hidden", true);
+            tooltipLine.classed("hidden", true);
+          }
+          else{
+            if(useTooltipLine) {
+              tooltipLine.attr("x1", x(datum[dataset.xcol]))
+                .attr("x2", x(datum[dataset.xcol]))
+                .classed("hidden", false);
+            }
+
+            state.x = x(datum[dataset.xcol]);
+
+            tooltip
+              .html("<strong>" + formatTooltip(datum[dataset.xcol]) + "</strong><br>" + ycols.map(function(d, i){
+                return "<div class = 'tooltip-label'><div class = 'bubble' style = 'background-color:" + colors[i] + "'></div>" + labels[i] + ": " + formatTooltipData(datum[d]) + "</div>";
+              }).join(""))
+              .classed("hidden", false)
+              .style("left", positionTooltip(mouse, tooltip, x, y, state).left + "px")
+              .style("top", positionTooltip(mouse, tooltip, x, y, state).top + "px");
+          }
+        })
+        .on("mouseout", function(d){
           tooltip.classed("hidden", true);
-          tooltipLine.classed("hidden", true);
-        }
-        else{
-          if(useTooltipLine) tooltipLine.attr("x1", x(datum[dataset.xcol]))
-            .attr("x2", x(datum[dataset.xcol]))
-            .classed("hidden", false);
-
-          tooltip.classed("hidden", false)
-            .html("<strong>" + formatTooltip(datum[dataset.xcol]) + "</strong><br>" + ycols.map(function(d, i){
-              return "<div class = 'tooltip-label'><div class = 'bubble' style = 'background-color:" + colors[i] + "'></div>" + labels[i] + ": " + formatTooltipData(datum[d]) + "</div>";
-            }).join(""))
-            .style("left", positionTooltip(mouse, tooltip, x, y, state).left + "px")
-            .style("top", positionTooltip(mouse, tooltip, x, y, state).top + "px");
-        }
-      }).on("mouseout", function(d){
-        tooltip.classed("hidden", true);
-        if(useTooltipLine) tooltipLine.classed("hidden", true);
-      });
+          if(useTooltipLine) tooltipLine.classed("hidden", true);
+        });
     }
   }
 

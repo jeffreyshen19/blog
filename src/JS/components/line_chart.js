@@ -45,7 +45,7 @@ export default class LineChart extends React.Component {
 
   positionTooltip(mouse, tooltip, x, y, state){
     return {
-      "left": (20 + mouse[0] + tooltip.node().offsetWidth > state.width + state.margin.left + state.margin.right ? mouse[0] - 10 - tooltip.node().offsetWidth - state.offset: mouse[0] + 10 - state.offset),
+      "left": (20 + state.x + tooltip.node().offsetWidth > state.width + state.margin.left + state.margin.right ? state.x + state.margin.left - 10 - tooltip.node().offsetWidth - state.offset: state.x + state.margin.left + 10 - state.offset),
       "top": y(0) - tooltip.node().offsetHeight + state.margin.top + 24,
     };
   }
