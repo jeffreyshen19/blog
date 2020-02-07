@@ -38,11 +38,9 @@ class LineChartNormalized extends React.Component {
     }
   }
 
-  getTitle(){
-    for(var i = 0; i < this.props.ycols.length; i++){
-      if(this.props.ycols[i].ycol == this.state.yvar) return this.props.ycols[i].title;
-    }
-    (this.state.yvar == "total-cost" ? "Cost" : "Quantity") + " of Items Acquired, Over Time"
+  formatTooltipData(x){
+    console.log(x);
+    return x;
   }
 
   render() {
@@ -65,6 +63,7 @@ class LineChartNormalized extends React.Component {
               linelabels = {label}
               yaxisformat = {this.state.yvar == "total-cost" ? "$.2s" : ".2s"}
               title = {title}
+              formatTooltipData = {this.formatTooltipData}
             >
             </LineChart>
             :

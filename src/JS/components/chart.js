@@ -15,7 +15,8 @@
     * renderData (required): method which takes i, ycol, x, y, svg, state and specifies how to draw the graph, given each ycol.
     * useTooltipLine (optional): boolean, display a vertical line with the tooltip
     * positionTooltip (required): method which takes mouse, tooltip, x, y, state and outputs an object with integer fields x, y telling how the tooltip should be positioned
-    * formatTooltip (required): method which the data point and formats how the tooltip should be displayed
+    * formatTooltip (required): method which the data point and formats how the tooltip title should be displayed
+    * formatTooltipData: method which the data point and formats how the tooltip data should be displayed
 */
 
 export default class Chart extends React.Component{
@@ -46,6 +47,11 @@ export default class Chart extends React.Component{
         })
       })
     })
+  }
+
+  formatTooltipData(x){
+    if(this.props.formatTooltipData) return this.props.formatTooltipData(x);
+    else return x.toFixed(2);
   }
 
   componentWillReceiveProps(props) {
@@ -202,7 +208,8 @@ export default class Chart extends React.Component{
         labels = dataset.linelabels.split(","),
         useTooltipLine = this.props.useTooltipLine,
         positionTooltip = this.props.positionTooltip,
-        formatTooltip = this.props.formatTooltip;
+        formatTooltip = this.props.formatTooltip,
+        formatTooltipData = this.formatTooltipData.bind(this);
 
     if(useTooltipLine) svg.append("line")
       .attr("class", "tooltip-line hidden")
@@ -239,7 +246,7 @@ export default class Chart extends React.Component{
 
           tooltip.classed("hidden", false)
             .html("<strong>" + formatTooltip(datum[dataset.xcol]) + "</strong><br>" + ycols.map(function(d, i){
-              return "<div class = 'tooltip-label'><div class = 'bubble' style = 'background-color:" + colors[i] + "'></div>" + labels[i] + ": " + datum[d].toFixed(2) + "</div>";
+              return "<div class = 'tooltip-label'><div class = 'bubble' style = 'background-color:" + colors[i] + "'></div>" + labels[i] + ": " + formatTooltipData(datum[d]) + "</div>";
             }).join(""))
             .style("left", positionTooltip(mouse, tooltip, x, y, state).left + "px")
             .style("top", positionTooltip(mouse, tooltip, x, y, state).top + "px");
