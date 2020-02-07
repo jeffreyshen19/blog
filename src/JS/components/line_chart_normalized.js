@@ -39,12 +39,12 @@ class LineChartNormalized extends React.Component {
   }
 
   formatTooltipData(x){
-    console.log(x);
-    return x;
+    return (this.state.yvar == "total-cost" ? "$" : "") + parseInt(x).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
 
   render() {
     let {label, title} = this.getLabelAndTitle();
+    let formatTooltipData = this.formatTooltipData.bind(this);
 
     return (
       <div>
@@ -63,7 +63,7 @@ class LineChartNormalized extends React.Component {
               linelabels = {label}
               yaxisformat = {this.state.yvar == "total-cost" ? "$.2s" : ".2s"}
               title = {title}
-              formatTooltipData = {this.formatTooltipData}
+              formatTooltipData = {formatTooltipData}
             >
             </LineChart>
             :
