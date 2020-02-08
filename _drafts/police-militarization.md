@@ -22,4 +22,7 @@ javascript: ["components/map.js", "components/line_chart_normalized.js", "compon
 
 <div class = "line-chart-normalized" data-csv = "/data/police-militarization/us-population-and-crime.csv" data-xlabel = "Date" data-xcol = "year" data-linecolors = "#3a539b" data-xcolparse = "%Y" data-tooltipformat = "%Y" data-margin = '{"top":0,"right":20,"bottom":20,"left":70}' data-useoffset = "false" data-ycols = '[{"ycol":"population","label":"Population","title": "U.S. Population Over Time"},{"ycol":"violent-crime-rate","label":"Violent Crimes Per 100k People","title": "Violent Crime Rate Over Time"}]'  data-id = "3"></div>
 
-<div class = "pie-chart" data-csv = "/data/police-militarization/1033-by-category.csv" data-xcol = "category" data-ycol = "quantity" data-colorrange="#e4f1fe,#1d285b"></div>
+(ignoring "other")
+
+
+<div class = "pie-chart" data-csv = "/data/police-militarization/1033-by-category.csv" data-xcol = "category" data-ycol = "Cost" data-colorrange="#e4f1fe,#1d285b"></div>

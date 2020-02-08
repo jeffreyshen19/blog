@@ -15,6 +15,8 @@ export default class PieChart extends React.Component{
       let data = values.map(function(d){
         d[props.ycol] = parseFloat(d[props.ycol]);
         return d;
+      }).sort(function(a, b){
+        return a[props.ycol] - b[props.ycol];
       })
 
       this.setState({
@@ -31,11 +33,16 @@ export default class PieChart extends React.Component{
     });
   }
 
+  formatTooltipData(x){
+    return (this.props.ycol == "Cost" ? "$" : "") + parseInt(x).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
+
   renderGraph(){
     let ycol = this.props.ycol,
         xcol = this.props.xcol,
         data = this.state.data,
         chart = this.state.chart,
+        formatTooltipData = this.formatTooltipData.bind(this),
         radius = 150,
         height = radius * 2,
         width = radius * 2;
@@ -61,6 +68,8 @@ export default class PieChart extends React.Component{
 
     chart.style("width", width);
 
+    let mouseContainer = chart.node()
+
     var myChart = chart.append("svg")
       .attr("width", width)
       .attr("height", height)
@@ -69,27 +78,28 @@ export default class PieChart extends React.Component{
         .selectAll("path").data(pie(data))
         .enter().append("path")
           .attr("fill", function(d, i){
-            // colors(d.data[xcol]);
             return colors(i);
           })
           .attr("stroke", "white")
+          .style("transition", "0.2s")
           .attr("d", arc)
-  //         .on("mouseover", function(d, i){
-  //           tooltipText = generateTooltip({title: d.data.label, responses: d.value, percentage: d.value / total});
-  //           tooltip.classed("hidden", false).html(tooltipText);
-  //         })
-  //         .on("mousemove", function(d){
-  //           mouse = d3.mouse(currentElement);
-  //
-  //           tooltip.style("left", mouse[0] - Math.round(tooltip.node().offsetWidth / 2) + "px")
-  //             .style("top", mouse[1] - Math.round(tooltip.node().offsetHeight) - 12 + "px");
-  //
-  //           d3.select(this).style("fill", d3.rgb(d3.color(d.data.color).brighter(0.5)));
-  //         })
-  //         .on("mouseout", function(d){
-  //           tooltip.classed("hidden", true);
-  //           d3.select(this).style("fill", d.color);
-  //         });
+            .on("mouseover", function(d, i){
+              tooltip.classed("hidden", false).html(`
+                <h1>${d.data[xcol]}</h1>
+                ${ycol}: ${formatTooltipData(d.data[ycol])}
+              `);
+              d3.select(this).style("fill", d3.rgb(d3.color(colors(i)).brighter(0.5)));
+            })
+            .on("mousemove", function(d){
+              let mouse = d3.mouse(mouseContainer);
+
+              tooltip.style("left", mouse[0] + 20 + "px")
+                .style("top", mouse[1] + 20 + "px");
+            })
+            .on("mouseout", function(d, i){
+              tooltip.classed("hidden", true);
+              d3.select(this).style("fill", colors(i));
+            });
   //
   // //Add labels underneath pie chart
   // var pieLabel = d3.select(this).append("div")
