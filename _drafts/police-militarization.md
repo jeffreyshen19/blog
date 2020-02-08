@@ -12,7 +12,7 @@ references: [{
 header: centered
 caption: "Police use a mine-resistant armored vehicle—equipment designed for war—to monitor protests in Ferguson, MI (Source: NYT)"
 featured: true
-javascript: ["components/map.js", "components/line_chart_normalized.js", "components/pie_chart.js"]
+javascript: ["components/map.js", "components/line_chart_normalized.js", "components/pie_chart_normalized.js"]
 ---
 
 <div class = "map" data-csv = "/data/police-militarization/1033-by-state.csv">
@@ -25,4 +25,4 @@ javascript: ["components/map.js", "components/line_chart_normalized.js", "compon
 (ignoring "other")
 
 
-<div class = "pie-chart" data-csv = "/data/police-militarization/1033-by-category.csv" data-xcol = "category" data-ycol = "Cost" data-colorrange="#e4f1fe,#1d285b"></div>
+<div class = "pie-chart-normalized" data-csv = "/data/police-militarization/1033-by-category.csv" data-xcol = "category" data-colorrange="#e4f1fe,#1d285b" data-ycols = '[{"ycol":"Quantity","label":"Total Quantity"},{"ycol":"Cost","label":"Total Cost"}]' data-id = "4"></div>

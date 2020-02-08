@@ -54,6 +54,8 @@ export default class PieChart extends React.Component{
         return d3.rgb(d);
       }));
 
+    chart.selectAll("*").remove();
+
     var tooltip = chart.append("div")
       .attr("class", "tooltip hidden");
 
@@ -123,7 +125,7 @@ export default class PieChart extends React.Component{
 
 const e = React.createElement;
 
-// Render all line charts
+// Render all pie charts
 let elements = document.getElementsByClassName('pie-chart');
 for(let i = 0; i < elements.length; i++){
   ReactDOM.render(e(PieChart, {
