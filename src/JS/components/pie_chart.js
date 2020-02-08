@@ -66,53 +66,53 @@ export default class PieChart extends React.Component{
       .outerRadius(radius)
       .innerRadius(radius / 2);
 
-    chart.style("width", width);
+    chart.attr("class", "pie-chart columns is-vcentered is-centered").style("position", "relative");
 
-    let mouseContainer = chart.node()
+    let mouseContainer = chart.node();
 
-    var myChart = chart.append("svg")
-      .attr("width", width)
-      .attr("height", height)
-      .append("g")
-        .attr("transform", "translate(" + (width - radius) + "," + (height - radius) + ")")
-        .selectAll("path").data(pie(data))
-        .enter().append("path")
-          .attr("fill", function(d, i){
-            return colors(i);
-          })
-          .attr("stroke", "white")
-          .style("transition", "0.2s")
-          .attr("d", arc)
-            .on("mouseover", function(d, i){
-              tooltip.classed("hidden", false).html(`
-                <h1>${d.data[xcol]}</h1>
-                ${ycol}: ${formatTooltipData(d.data[ycol])}
-              `);
-              d3.select(this).style("fill", d3.rgb(d3.color(colors(i)).brighter(0.5)));
+    var myChart = chart.append("div")
+      .attr("class", "column is-narrow")
+        .append("svg")
+        .attr("width", width)
+        .attr("height", height)
+        .append("g")
+          .attr("transform", "translate(" + (width - radius) + "," + (height - radius) + ")")
+          .selectAll("path").data(pie(data))
+          .enter().append("path")
+            .attr("fill", function(d, i){
+              return colors(i);
             })
-            .on("mousemove", function(d){
-              let mouse = d3.mouse(mouseContainer);
+            .attr("stroke", "white")
+            .style("transition", "0.2s")
+            .attr("d", arc)
+              .on("mouseover", function(d, i){
+                tooltip.classed("hidden", false).html(`
+                  <h1>${d.data[xcol]}</h1>
+                  ${ycol}: ${formatTooltipData(d.data[ycol])}
+                `);
+                d3.select(this).style("fill", d3.rgb(d3.color(colors(i)).brighter(0.5)));
+              })
+              .on("mousemove", function(d){
+                let mouse = d3.mouse(mouseContainer);
 
-              tooltip.style("left", mouse[0] + 20 + "px")
-                .style("top", mouse[1] + 20 + "px");
-            })
-            .on("mouseout", function(d, i){
-              tooltip.classed("hidden", true);
-              d3.select(this).style("fill", colors(i));
-            });
-  //
-  // //Add labels underneath pie chart
-  // var pieLabel = d3.select(this).append("div")
-  //   .attr("class", "pie-label")
-  //   .style("width", width + "px");
-  //
-  // if(name) pieLabel.append("h3").html(name);
-  //
-  // pieLabel.selectAll("span").data(piedata)
-  //   .enter().append("span")
-  //     .html(function(d, i){
-  //       return "<div class = 'bubble' style = 'background:" + d.color + "'></div>" + d.label;
-  //     }).append("br");
+                tooltip.style("left", mouse[0] + 20 + "px")
+                  .style("top", mouse[1] + 20 + "px");
+              })
+              .on("mouseout", function(d, i){
+                tooltip.classed("hidden", true);
+                d3.select(this).style("fill", colors(i));
+              });
+
+    var pieLabel = chart.append("div")
+      .attr("class", "pie-label column is-narrow");
+
+    pieLabel.selectAll("span").data(data)
+      .enter().append("div")
+        .html(function(d, i){
+          return `
+            <div class = 'bubble' style = 'background:${colors(i)}'></div><span>${d[xcol]}</span>
+          `;
+        });
   }
 
   render() {

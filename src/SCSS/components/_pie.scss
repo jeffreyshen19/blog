@@ -1,11 +1,20 @@
 .pie-chart{
-  position: relative;
-
-  .tooltip{
-    position: absolute;
-    h1{
-      margin-bottom: 0;
-    }
+  .column{
+    padding: 1rem;
+    text-align: center;
   }
 
+  .pie-label{
+    text-align: left;
+    span{
+      font-family: "IBMPlexSans";
+      font-size: 14px;
+    }
+  }
+}
+
+@media screen and (max-width: 768px){
+  .pie-chart .pie-label{
+    text-align: center;
+  }
 }
