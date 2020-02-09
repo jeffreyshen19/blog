@@ -1,3 +1,18 @@
+.pie-chart-normalized{
+  .normalize-header{
+    text-align: center;
+    margin-bottom: 10px;
+
+    .level-left{
+      width: 100%;
+
+      .level-item{
+        width: 100% !important;
+      }
+    }
+  }
+}
+
 .pie-chart{
   .column{
     padding: 1rem;
