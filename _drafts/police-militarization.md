@@ -1,13 +1,22 @@
 ---
 layout: post
-title:  "Tracking the Flow of Military Weapons into U.S. Police Departments"
-subtitle: "Through the 1033 Program, Billions Worth Of Tanks, Assault Rifles, and Grenades Have Been Transferred to Local Police Agencies"
+title:  "Tracking the Militarization of Police Departments"
+subtitle: "Billions Worth Of Military Equipment Has Been Transferred to Local Law Enforcement "
 categories: Politics
 source_code: "https://github.com/jeffreyshen19/jshen-personal-blog/tree/master/_code/police-militarization"
 image: "police-militarization.jpg"
 references: [{
-    "title": "Department of Defense 1033 Program data",
-    "url": "https://github.com/washingtonpost/data-1033-program"
+  "title": "As We Remember the Militarized Response to the Ferguson Uprising, Trump Says Civilian Police Are Making ‘Good Use’ of Military Weapons",
+  "url": "https://www.aclu.org/blog/racial-justice/race-and-criminal-justice/we-remember-militarized-response-ferguson-uprising",
+}, {
+  "title": "Census Population Data",
+  "url": "https://www.census.gov/data/datasets/time-series/demo/popest/2010s-state-total.html#par_textimage_500989927"
+}, {
+  "title": "Department of Defense 1033 Program Data",
+  "url": "https://github.com/washingtonpost/data-1033-program"
+}, {
+  "title": "FBI Violent Crime Data",
+  "url": "https://ucr.fbi.gov/crime-in-the-u.s/2015/crime-in-the-u.s.-2015/tables/table-1"
 }]
 header: centered
 caption: "Police use a mine-resistant armored vehicle—equipment designed for war—to monitor protests in Ferguson, MI (Source: NYT)"
@@ -40,7 +49,3 @@ This is further reinforced by the fact that [line chart is not related to violen
 <div class = "line-chart-normalized" data-csv = "/data/police-militarization/1033-by-time.csv" data-xlabel = "Date" data-xcol = "date" data-linecolors = "#3a539b" data-xcolparse = "%m/%Y" data-tooltipformat = "%B %Y" data-margin = '{"top":0,"right":20,"bottom":20,"left":70}' data-useoffset = "false" data-ycols = '[{"ycol":"total-quantity","label":"Total Quantity","title": "Quantity of Items Acquired, Over Time"},{"ycol":"total-cost","label":"Total Cost","title": "Cost of Items Acquired, Over Time"}]' data-id = "2"></div>
 
 <div class = "line-chart-normalized" data-csv = "/data/police-militarization/us-population-and-crime.csv" data-xlabel = "Date" data-xcol = "year" data-linecolors = "#3a539b" data-xcolparse = "%Y" data-tooltipformat = "%Y" data-margin = '{"top":0,"right":20,"bottom":20,"left":70}' data-useoffset = "false" data-ycols = '[{"ycol":"violent-crime-rate","label":"Violent Crimes Per 100k People","title": "Violent Crime Rate Over Time"},{"ycol":"population","label":"Population","title": "U.S. Population Over Time"}]'  data-id = "3"></div>
-
-
-
-https://www.aclu.org/blog/racial-justice/race-and-criminal-justice/we-remember-militarized-response-ferguson-uprising
