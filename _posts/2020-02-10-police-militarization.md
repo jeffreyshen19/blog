@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Tracking the Militarization of Police Departments"
-subtitle: "Billions Worth Of Military Equipment Has Been Transferred to Local Law Enforcement "
+subtitle: "Billions Worth Of Military Equipment Has Been Transferred to Local Law Enforcement Over the Past Thirty Years"
 categories: Politics
 source_code: "https://github.com/jeffreyshen19/jshen-personal-blog/tree/master/_code/police-militarization"
 image: "police-militarization.jpg"
@@ -28,9 +28,11 @@ Since 1990, the 1033 Program has authorized the transfer of military equipment s
 
 For instance, following protests in Ferguson, MI in 2014, local police responded by deploying armored vehicles, sniper rifles, and body armor—some of which was acquired through the 1033 Program—against mostly peaceful protestors. The militarized response to protests in Ferguson prompted President Obama to limit the extent of the program, though these restrictions were later reversed by the Trump administration.
 
-While it is disturbing enough that equipment made for war is being used by civilian police departments to crush protests, widespread evidence of [police brutality and racial bias](https://mappingpoliceviolence.org/) in policing raise concerns about the deadly consequences of increased police militarization. According to an [article](https://www.washingtonpost.com/news/monkey-cage/wp/2017/06/30/does-military-equipment-lead-police-officers-to-be-more-violent-we-did-the-research/) in *The Washington Post*, increased police militarization has led officers to be more violent.
+While it is disturbing enough that equipment made for war is being used by civilian police departments to crush protests, widespread evidence of [police brutality and racial bias](https://mappingpoliceviolence.org/) in policing raise concerns about the deadly consequences of increased police militarization. In fact, according to an [article](https://www.washingtonpost.com/news/monkey-cage/wp/2017/06/30/does-military-equipment-lead-police-officers-to-be-more-violent-we-did-the-research/) in *The Washington Post*, increased police militarization is linked to officers becoming more violent.
 
-As can be seen below, the 1033 Program has enabled the transfer of equipment that most people would likely consider unnecessary to most local police agencies: armored vehicles, assault rifles, grenade launchers, and even attack planes.
+Therefore, I wanted to look closer into how local law enforcement agencies were utilizing the 1033 Program, to better understand the reasons why police departments choose to militarize. Specifically, what type of equipment was being requested, where was this equipment being sent to, and were there any trends in when equipment was transferred?
+
+As can be seen below, the 1033 Program has enabled police departments to acquire a wide variety of military equipment: armored vehicles, assault rifles, grenade launchers, and even attack planes, equipment which is hard to justify as necessary in most civilian contexts.
 
 <div class = "pie-chart-normalized" data-csv = "/data/police-militarization/1033-by-category.csv" data-xcol = "category" data-colorrange="#e4f1fe,#1d285b" data-ycols = '[{"ycol":"Quantity","label":"Total Quantity"},{"ycol":"Cost","label":"Total Cost"}]' data-id = "4"></div>  
 <br>
@@ -39,12 +41,13 @@ This data was sourced by *The Washington Post*, and categories were computationa
 
 Additionally, most items transferred by the 1033 Program were sent to larger states such as California, Texas, and Florida. However, after normalizing by population, the distribution of items is somewhat more even, though Texas still dominates in terms of quantity of items. This result indicates that military weapons are being sent to law enforcement agencies across the country at roughly equal rates.
 
-Similarly, after normalizing the data by the FBI's violent crime rate (in 2015), the graph still remains uneven. If police militarization was actually a function of violent crime, as many of its supporters claim it to be, we would expect a more even distribution of 1033 Program data because each state would be acquiring equipment roughly proportional to its crime rate. However, this is clearly not the case.
+After normalizing the data by the FBI's violent crime rate (in 2015), the graph also remains uneven. A common argument in support of police militarization is that it is necessary to fight violent criminals, yet if police militarization was actually a function of violent crime, we would expect a more even distribution of because each state would be acquiring equipment roughly proportional to its crime rate. However, this is clearly not the case.
 
 <div class = "map" data-csv = "/data/police-militarization/1033-by-state.csv">
 </div>
+<br>
 
-This is further reinforced by the fact that [line chart is not related to violent crime]
+Similarly, it appears transfers for military equipment spiked in the mid 2000s, even as population rose only marginally and violent crime actually dropped nationally. This again pushes back against the idea that police militarization is a necessary response to violent crime. 
 
 <div class = "line-chart-normalized" data-csv = "/data/police-militarization/1033-by-time.csv" data-xlabel = "Date" data-xcol = "date" data-linecolors = "#3a539b" data-xcolparse = "%m/%Y" data-tooltipformat = "%B %Y" data-margin = '{"top":0,"right":20,"bottom":20,"left":70}' data-useoffset = "false" data-ycols = '[{"ycol":"total-quantity","label":"Total Quantity","title": "Quantity of Items Acquired, Over Time"},{"ycol":"total-cost","label":"Total Cost","title": "Cost of Items Acquired, Over Time"}]' data-id = "2"></div>
 
