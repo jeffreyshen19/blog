@@ -1,0 +1,16 @@
+.bar-chart{
+  position: relative;
+
+  line {
+    shape-rendering: crispEdges;
+    stroke: #000000;
+  }
+  line.minor  {
+    stroke: #777777;
+    stroke-dasharray: 2,2;
+  }
+  path.domain {
+    fill: none;
+    stroke: black;
+  }
+}

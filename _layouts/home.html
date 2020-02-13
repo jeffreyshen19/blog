@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    {% include head.html %}
+    <title>Jeffrey Shen • {{site.description}}</title>
+    <link type = "text/css" rel = "stylesheet" href = "/src/SCSS/main.css">
+  </head>
+  <body>
+
+    <div class = "container">
+      <!-- Header -->
+      <header class = "has-text-centered">
+        <h1 class = "is-size-2">{{site.title}}</h1>
+        <p class = "is-size-4">Exploring politics, culture, and society with computer science</p>
+        <div class = "links">
+          <a href = "http://jeffreyshen.com" class = "heading is-size-6">ABOUT</a>
+          <a href = "/#posts" class = "heading is-size-6">POSTS</a>
+          <a href = "mailto:jjshen@mit.edu" class = "heading is-size-6">CONTACT</a>
+          <a href = "https://twitter.com/JeffreyShen10" target = "_blank" class = "heading is-size-6"><i class = "fab fa-twitter"></i></a>
+          <a href = "https://github.com/jeffreyshen19" target = "_blank" class = "heading is-size-6"><i class = "fab fa-github"></i></a>
+        </div>
+        <br>
+        <br>
+      </header>
+
+      <!-- Featured Content -->
+      {%- assign posts = site.posts | where: "featured", "true" -%}
+      {%- assign featured_post = posts[0] -%}
+      {% include post-thumb.html class = "featured" post = featured_post %}
+      <br>
+      <br>
+
+      <!-- Subscribe Banner  -->
+      {% include subscribe.html %}
+      <br>
+      <br>
+
+      <!-- Post Feed -->
+      <div id = "posts" class = "posts columns is-multiline is-4">
+        {%- for post in site.posts-%}
+          {% if post.title != featured_post.title %} <!-- Filter out featured post -->
+            {% include post-thumb.html class = "column is-4" post = post small = true %}
+          {% endif %}
+        {%- endfor -%}
+      </div>
+
+      {% include footer.html %}
+
+    </div>
+
+  </body>
+</html>

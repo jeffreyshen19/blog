@@ -1,0 +1,13 @@
+<!doctype html>
+<html>
+<head>
+  {% include head.html %}
+  <title>{{ page.title }} • Jeffrey Shen </title>
+</head>
+<body>
+  <p>Redirecting ... </p>
+  <script>
+    window.location.href = "{{ page.redirect_url }}";
+  </script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+// ** Fonts **
+
+@font-face { //Headings
+  font-family: "IBMPlexSans";
+  font-weight: bold;
+  src: url("/assets/fonts/IBM_Plex_Sans/IBMPlexSans-Bold.ttf");
+}
+
+@font-face { //Headings
+  font-family: "IBMPlexSans";
+  src: url("/assets/fonts/IBM_Plex_Sans/IBMPlexSans-SemiBold.ttf");
+}
+
+@font-face { //Sans Captions & non-body text elements
+  font-family: "IBMPlexSans";
+  src: url("/assets/fonts/IBM_Plex_Sans/IBMPlexSans-Regular.ttf");
+}
+
+@font-face{ //Body text
+  font-family: "CrimsonText";
+  src: url("/assets/fonts/crimsontext/CrimsonText-Regular.ttf");
+}
+
+@font-face{ //Body text (BOLD)
+  font-family: "CrimsonText";
+  font-weight: bold;
+  src: url("/assets/fonts/crimsontext/CrimsonText-Bold.ttf");
+}
+
+@font-face{ //Body text (ITALIC)
+  font-family: "CrimsonText";
+  font-style: italic;
+  src: url("/assets/fonts/crimsontext/CrimsonText-Italic.ttf");
+}
+
+// ** Palette **
+$gray: #f2f2f2;
+$purple: #6c5ce7;
+$blue: #275bd4;
+$black: #24252a;
+
+// ** Text Styling **
+
+h1, h2, h3, h4, h5, h6{
+  font-family: "IBMPlexSans";
+  font-weight: bold;
+}
+
+p, li, span, p a{
+  font-family: "CrimsonText";
+}
+
+a, .sans{
+  font-family: "IBMPlexSans";
+}
+
+a{
+  color: $purple;
+}
+
+ul, ol{
+  padding-left: 20px;
+}
+
+.content{
+  ul, ol{
+    margin-left: 0px;
+  }
+}
+
+// ** Layout **
+
+.container{
+  padding: 40px 20px 0;
+}

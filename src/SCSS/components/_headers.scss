@@ -1,0 +1,80 @@
+@import "nav";
+
+header.jumbotron{
+  height: 75vh;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 40px;
+
+  .text{
+    top: 50%;
+    transform: translateY(-50%);
+    position: relative;
+
+    h1{
+      margin-bottom: 8px;
+      line-height: 1em;
+    }
+  }
+}
+
+header.default{
+  padding-top: 80px;
+  padding-bottom: 0;
+  margin-bottom: -10px;
+}
+
+header.centered, header.default{
+  nav{
+    text-align: left;
+    background: $black;
+    padding-bottom: 10px;
+    a{
+      color: white;
+      &:hover{
+        color: white;
+      }
+    }
+
+    &:after{
+      height: 5px;
+      width: 100%;
+      background: #4e54c8;  /* fallback for old browsers */
+      background: -webkit-linear-gradient(to right, #8f94fb, #4e54c8);  /* Chrome 10-25, Safari 5.1-6 */
+      background: linear-gradient(to right, #8f94fb, #4e54c8); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 70px;
+    }
+  }
+}
+
+header.centered{
+  .category{
+    color: $purple;
+    font-family: "IBMPlexSans";
+    font-size: 1.1rem;
+  }
+
+  .caption{
+    font-family: "IBMPlexSans";
+    text-align: left;
+  }
+
+  img{
+    width: 100%;
+  }
+
+  padding-top: 120px;
+  width: 65%;
+  margin: 0 auto;
+  text-align: center;
+  margin-bottom: -20px;
+}
+
+header h1{
+  line-height: 1em;
+  margin-bottom: 5px;
+}
