@@ -1,59 +1,59 @@
-county,net-exodus
-Los Angeles County,70206
-Santa Clara County,18432
-San Diego County,16368
-San Francisco County,13113
-Alameda County,6802
-San Mateo County,4087
-Imperial County,1767
-Napa County,1667
-Madera County,908
-Sutter County,886
-Colusa County,794
-Glenn County,645
-Tulare County,589
-Inyo County,330
-Plumas County,247
-San Benito County,225
-Mendocino County,148
-Modoc County,122
-Alpine County,92
-Siskiyou County,92
-Shasta County,62
-Calaveras County,43
-Sierra County,1
-Mariposa County,-123
-Trinity County,-147
-Mono County,-190
-Yuba County,-236
-Del Norte County,-259
-Nevada County,-557
-Amador County,-836
-Monterey County,-955
-Ventura County,-1012
-Tehama County,-1130
-Orange County,-1143
-Tuolumne County,-1234
-Stanislaus County,-1235
-Fresno County,-1451
-Lake County,-1501
-Marin County,-1762
-Humboldt County,-1850
-Santa Cruz County,-2051
-El Dorado County,-2075
-Lassen County,-2103
-Placer County,-2113
-Merced County,-2786
-Butte County,-2897
-Kings County,-3149
-Sonoma County,-3329
-Yolo County,-4123
-San Luis Obispo County,-5386
-Solano County,-5579
-Santa Barbara County,-5830
-Kern County,-7168
-San Joaquin County,-7186
-Contra Costa County,-7499
-Sacramento County,-8963
-San Bernardino County,-23855
-Riverside County,-25913
+code,county,net-exodus
+37,Los Angeles County,70206
+85,Santa Clara County,18432
+73,San Diego County,16368
+75,San Francisco County,13113
+1,Alameda County,6802
+81,San Mateo County,4087
+25,Imperial County,1767
+55,Napa County,1667
+39,Madera County,908
+101,Sutter County,886
+11,Colusa County,794
+21,Glenn County,645
+107,Tulare County,589
+27,Inyo County,330
+63,Plumas County,247
+69,San Benito County,225
+45,Mendocino County,148
+49,Modoc County,122
+3,Alpine County,92
+93,Siskiyou County,92
+89,Shasta County,62
+9,Calaveras County,43
+91,Sierra County,1
+43,Mariposa County,-123
+105,Trinity County,-147
+51,Mono County,-190
+115,Yuba County,-236
+15,Del Norte County,-259
+57,Nevada County,-557
+5,Amador County,-836
+53,Monterey County,-955
+111,Ventura County,-1012
+103,Tehama County,-1130
+59,Orange County,-1143
+109,Tuolumne County,-1234
+99,Stanislaus County,-1235
+19,Fresno County,-1451
+33,Lake County,-1501
+41,Marin County,-1762
+23,Humboldt County,-1850
+87,Santa Cruz County,-2051
+17,El Dorado County,-2075
+35,Lassen County,-2103
+61,Placer County,-2113
+47,Merced County,-2786
+7,Butte County,-2897
+31,Kings County,-3149
+97,Sonoma County,-3329
+113,Yolo County,-4123
+79,San Luis Obispo County,-5386
+95,Solano County,-5579
+83,Santa Barbara County,-5830
+29,Kern County,-7168
+77,San Joaquin County,-7186
+13,Contra Costa County,-7499
+67,Sacramento County,-8963
+71,San Bernardino County,-23855
+65,Riverside County,-25913
