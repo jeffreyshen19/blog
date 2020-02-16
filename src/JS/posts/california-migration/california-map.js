@@ -64,7 +64,7 @@ class CaliforniaMap extends React.Component{
     console.log(extent);
     var colors = d3.scaleDiverging().domain([extent[0], 0, extent[1]])
       // .interpolator(d3.interpolateRdBu)
-      .interpolator(d3.piecewise(d3.interpolateRgb, ["#3a539b", "#e4f1fe", "#c0392b"]))
+      .interpolator(d3.piecewise(d3.interpolateRgb, ["#3a539b", "#ecf0f1", "#c0392b"]))
       // .range([d3.rgb('#3a539b'), d3.rgb("#e4f1fe"), d3.rgb('#c0392b')])
       // .interpolate(d3.interpolateHcl);
     let getTooltipText = this.getTooltipText;
