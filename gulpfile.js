@@ -6,7 +6,7 @@ var gutil = require('gulp-util');
 var babel = require('gulp-babel');
 
 gulp.task('babel', function(done) {
-  return gulp.src(['./src/JS/components/*.js', './src/JS/components/**/*.js'])
+  return gulp.src(['./src/JS/**/*.js', './src/JS/**/**/*.js'])
     .pipe(babel({
         presets: [['minify', {
           builtIns: false,
@@ -14,12 +14,13 @@ gulp.task('babel', function(done) {
         plugins: ['transform-react-jsx']
     }))
     .on('error', console.error.bind(console))
-    .pipe(gulp.dest('./dist/JS/components/'));
+    .pipe(gulp.dest('./dist/JS/'));
 });
 
 gulp.task('watch', function() {
   gulp.watch('./src/JS/components/*.js', ['babel']);
   gulp.watch('./src/JS/components/**/*.js', ['babel']);
+  gulp.watch('./src/JS/posts/**/*.js', ['babel']);
 });
 
 gulp.task("default", ["babel", "watch"]);
