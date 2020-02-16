@@ -49,7 +49,44 @@ class CaliforniaMap extends React.Component{
       return parseInt(num).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
 
-    return "yo"
+    // // Sort county level data into the order they should be displayed
+    let counties = Object.keys(d).slice(3);
+    let county_data = counties.map(function(c){
+      return {
+        "county": c.replace("flow-to-", "").replace(/-/g, " "),
+        "flow": d[c]
+      }
+    })
+    .filter(function(c){
+      return !isNaN(c.flow) && Math.sign(c.flow) == Math.sign(d["net-exodus"]);
+    })
+    .sort(function(a, b){
+      return (d["net-exodus"] < 0 ? -1 : 1) * (b.flow - a.flow); // If net flow is negative, sort ascending, otherwise descending
+    });
+    county_data = county_data.slice(0, Math.min(5, county_data.length));
+
+    // Add tooltip text
+    return `
+      <h1>${d["county"]}</h1>
+      <p>${formatNum(Math.abs(d["net-exodus"]))} people ${d["net-exodus"] < 0 ? "moved here from" : "left here for"} other counties in CA</p>
+      <table>
+        <thead>
+          <tr>
+            <th>County ${d["net-exodus"] < 0 ? "They Moved From" : "They Left For"}</h1>
+            <th>Number of People</h1>
+          </tr>
+        </thead>
+        <tbody>
+          ${county_data.map(function(c){
+            return `
+              <tr>
+                <td>${c.county}</td>
+                <td>${formatNum(Math.abs(c.flow))}</td>
+              </tr>
+            `
+          }).join("")}
+      </table>
+    `;
   }
 
   renderGraph(){

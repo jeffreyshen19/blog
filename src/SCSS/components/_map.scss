@@ -1,4 +1,4 @@
-.map{
+.map, .california-map{
   position: relative;
   width: 100%;
 
@@ -21,5 +21,24 @@
 
   .svg{
     position: relative;
+  }
+}
+
+.california-map{
+  .tooltip{
+    text-align: left;
+    font-family: "IBMPlexSans";
+    width: 300px;
+    white-space: normal;
+
+    h1{
+      margin-bottom: 3px;
+    }
+
+    p{
+      font-family: "IBMPlexSans";
+      font-size: 14px;
+      line-height: 1.1rem;
+    }
   }
 }
