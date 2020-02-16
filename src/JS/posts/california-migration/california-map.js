@@ -61,29 +61,32 @@ class CaliforniaMap extends React.Component{
 
     // Get color scale
     var extent = d3.extent(data, (d) => getYVal(d));
-    var colors = d3.scaleLinear().domain(extent)
-      .interpolate(d3.interpolateHcl)
-      .range([d3.rgb("#e4f1fe"), d3.rgb('#3a539b'), d3.rgb('#24252a')]);
-
+    console.log(extent);
+    var colors = d3.scaleDiverging().domain([extent[0], 0, extent[1]])
+      // .interpolator(d3.interpolateRdBu)
+      .interpolator(d3.piecewise(d3.interpolateRgb, ["#3a539b", "#e4f1fe", "#c0392b"]))
+      // .range([d3.rgb('#3a539b'), d3.rgb("#e4f1fe"), d3.rgb('#c0392b')])
+      // .interpolate(d3.interpolateHcl);
     let getTooltipText = this.getTooltipText;
 
     // Display SVG
     d3.select(svg)
-      .style("height", "500px")
+      .style("height", "550px")
       .style("margin", "0 auto")
-      .attr("viewBox", "0 0 700 700")
+      .attr("viewBox", "0 0 600 750")
       .select("#polygons").selectAll("*")
         .data(data, function(d) { return d ? d.code : this.id; }) // Join data to corresponding county
         // // .style("transition", "0.1s")
         .style("fill", function(d, i){
-          return "red";
-          // return colors(getYVal(d));
+          return colors(getYVal(d));
         })
-        // .on("mouseover", function(d, i){
-        //   // Change color on hover
-        //   d3.select(this).style("fill", d3.rgb(d3.color(colors(getYVal(d))).brighter(0.2)));
-        //   tooltip.html(getTooltipText(d, yvar));
-        // })
+        .on("mouseover", function(d, i){
+          console.log(d["net-exodus"]);
+          // console.log(d);
+          // // Change color on hover
+          // d3.select(this).style("fill", d3.rgb(d3.color(colors(getYVal(d))).brighter(0.2)));
+          // tooltip.html(getTooltipText(d, yvar));
+        })
         // .on("mousemove", (d) => {
         //   var mouse = d3.mouse(this.state.chart.children[1]);
         //
