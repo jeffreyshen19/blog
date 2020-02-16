@@ -27,7 +27,11 @@ class CaliforniaMap extends React.Component{
           var svg = res.documentElement;
 
           //Append map
-          d3.select(this.state.chart).append("div").attr("class", "svg").style("text-align", "center").node().appendChild(svg);
+          d3.select(this.state.chart).append("div").attr("class", "svg")
+            .style("text-align", "center")
+            .style("position", "relative")
+            .node()
+            .appendChild(svg);
 
           // Append tooltip
           d3.select(this.state.chart).select(".svg").append("div").attr("class", "tooltip hidden");
@@ -52,22 +56,17 @@ class CaliforniaMap extends React.Component{
     var tooltipText,
         tooltip = d3.select(this.state.chart).select(".tooltip"),
         svg = this.state.svg,
-        data = this.state.data;
+        data = this.state.data,
+        getTooltipText = this.getTooltipText;
 
-    // Get radio options
     let getYVal = function(d){
       return d["net-exodus"]
     };
 
     // Get color scale
     var extent = d3.extent(data, (d) => getYVal(d));
-    console.log(extent);
     var colors = d3.scaleDiverging().domain([extent[0], 0, extent[1]])
-      // .interpolator(d3.interpolateRdBu)
-      .interpolator(d3.piecewise(d3.interpolateRgb, ["#3a539b", "#ecf0f1", "#c0392b"]))
-      // .range([d3.rgb('#3a539b'), d3.rgb("#e4f1fe"), d3.rgb('#c0392b')])
-      // .interpolate(d3.interpolateHcl);
-    let getTooltipText = this.getTooltipText;
+      .interpolator(d3.piecewise(d3.interpolateRgb, ["#3a539b", "#ecf0f1", "#c0392b"]));
 
     // Display SVG
     d3.select(svg)
@@ -76,27 +75,26 @@ class CaliforniaMap extends React.Component{
       .attr("viewBox", "0 0 600 750")
       .select("#polygons").selectAll("*")
         .data(data, function(d) { return d ? d.code : this.id; }) // Join data to corresponding county
-        // // .style("transition", "0.1s")
+        .style("transition", "0.1s")
+        .style("cursor", "pointer")
         .style("fill", function(d, i){
           return colors(getYVal(d));
         })
         .on("mouseover", function(d, i){
-          console.log(d["net-exodus"]);
-          // console.log(d);
-          // // Change color on hover
-          // d3.select(this).style("fill", d3.rgb(d3.color(colors(getYVal(d))).brighter(0.2)));
-          // tooltip.html(getTooltipText(d, yvar));
+          // Change color on hover
+          d3.select(this).style("fill", d3.rgb(d3.color(colors(getYVal(d))).brighter(0.2)));
+          tooltip.html(getTooltipText(d));
         })
-        // .on("mousemove", (d) => {
-        //   var mouse = d3.mouse(this.state.chart.children[1]);
-        //
-        //   tooltip.classed("hidden", false).style("left", mouse[0] - Math.round(tooltip.node().offsetWidth / 2) + "px")
-        //     .style("top", mouse[1] + 20 + "px");
-        // })
-        // .on("mouseout", function(d){
-        //   d3.select(this).style("fill", d3.rgb(colors(getYVal(d))));
-        //   tooltip.classed("hidden", true);
-        // });
+        .on("mousemove", (d) => {
+          var mouse = d3.mouse(this.state.chart);
+
+          tooltip.classed("hidden", false).style("left", mouse[0] - Math.round(tooltip.node().offsetWidth / 2) + "px")
+            .style("top", mouse[1] + 20 + "px");
+        })
+        .on("mouseout", function(d){
+          d3.select(this).style("fill", d3.rgb(colors(getYVal(d))));
+          tooltip.classed("hidden", true);
+        });
   }
 
   render() {

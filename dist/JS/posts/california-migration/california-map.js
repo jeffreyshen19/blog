@@ -2,13 +2,9 @@ class CaliforniaMap extends React.Component{constructor(a){super(a),this.state={
 let b=Object.keys(a[0]).slice(2),c=a.map(function(a){return b.forEach(function(b){a[b]=parseFloat(a[b])}),a});// Plot graph
 d3.svg("/data/california-migration/california-counties.svg").then(a=>{var b=a.documentElement;//Append map
 // Append tooltip
-d3.select(this.state.chart).append("div").attr("class","svg").style("text-align","center").node().appendChild(b),d3.select(this.state.chart).select(".svg").append("div").attr("class","tooltip hidden"),this.setState({svg:b,data:c})})})}getTooltipText(a){return"yo"}renderGraph(){var a=d3.select(this.state.chart).select(".tooltip"),b=this.state.svg,c=this.state.data;// Get radio options
-let e=function(a){return a["net-exodus"]};// Get color scale
-var f=d3.extent(c,a=>e(a));console.log(f);var g=d3.scaleDiverging().domain([f[0],0,f[1]])// .interpolator(d3.interpolateRdBu)
-.interpolator(d3.piecewise(d3.interpolateRgb,["#3a539b","#ecf0f1","#c0392b"]));// .range([d3.rgb('#3a539b'), d3.rgb("#e4f1fe"), d3.rgb('#c0392b')])
-// .interpolate(d3.interpolateHcl);
-this.getTooltipText;// Display SVG
+d3.select(this.state.chart).append("div").attr("class","svg").style("text-align","center").style("position","relative").node().appendChild(b),d3.select(this.state.chart).select(".svg").append("div").attr("class","tooltip hidden"),this.setState({svg:b,data:c})})})}getTooltipText(a){return"yo"}renderGraph(){var a=d3.select(this.state.chart).select(".tooltip"),b=this.state.svg,c=this.state.data,e=this.getTooltipText;let f=function(a){return a["net-exodus"]};// Get color scale
+var g=d3.extent(c,a=>f(a)),h=d3.scaleDiverging().domain([g[0],0,g[1]]).interpolator(d3.piecewise(d3.interpolateRgb,["#3a539b","#ecf0f1","#c0392b"]));// Display SVG
 d3.select(b).style("height","550px").style("margin","0 auto").attr("viewBox","0 0 600 750").select("#polygons").selectAll("*").data(c,function(a){return a?a.code:this.id})// Join data to corresponding county
-// // .style("transition", "0.1s")
-.style("fill",function(a){return g(e(a))}).on("mouseover",function(a){console.log(a["net-exodus"])})}render(){return this.state.data.length&&this.state.svg&&this.renderGraph(),null}}const e=React.createElement;// Render all charts
+.style("transition","0.1s").style("cursor","pointer").style("fill",function(a){return h(f(a))}).on("mouseover",function(b){// Change color on hover
+d3.select(this).style("fill",d3.rgb(d3.color(h(f(b))).brighter(.2))),a.html(e(b))}).on("mousemove",()=>{var b=d3.mouse(this.state.chart);a.classed("hidden",!1).style("left",b[0]-Math.round(a.node().offsetWidth/2)+"px").style("top",b[1]+20+"px")}).on("mouseout",function(b){d3.select(this).style("fill",d3.rgb(h(f(b)))),a.classed("hidden",!0)})}render(){return this.state.data.length&&this.state.svg&&this.renderGraph(),null}}const e=React.createElement;// Render all charts
 let elements=document.getElementsByClassName("california-map");for(let a=0;a<elements.length;a++)ReactDOM.render(e(CaliforniaMap,{...elements[a].dataset,chart:elements[a]}),elements[a]);
