@@ -27,14 +27,14 @@ class CaliforniaMap extends React.Component{
           var svg = res.documentElement;
 
           //Append map
-          d3.select(this.state.chart).append("div").attr("class", "svg")
-            .style("text-align", "center")
+          d3.select(this.state.chart).attr("class", "california-map").append("div").attr("class", "svg")
             .style("position", "relative")
+            .style("text-align", "center")
             .node()
             .appendChild(svg);
 
           // Append tooltip
-          d3.select(this.state.chart).select(".svg").append("div").attr("class", "tooltip hidden");
+          d3.select(this.state.chart).append("div").attr("class", "tooltip hidden");
 
           this.setState({
             "svg": svg,
@@ -119,13 +119,13 @@ class CaliforniaMap extends React.Component{
         })
         .on("mouseover", function(d, i){
           // Change color on hover
-          d3.select(this).style("fill", d3.rgb(d3.color(colors(getYVal(d))).brighter(0.2)));
+          d3.select(this).style("fill", d3.rgb(colors(getYVal(d) * 0.6)));
           tooltip.html(getTooltipText(d));
         })
         .on("mousemove", (d) => {
           var mouse = d3.mouse(this.state.chart);
 
-          tooltip.classed("hidden", false).style("left", mouse[0] - Math.round(tooltip.node().offsetWidth / 2) + "px")
+          tooltip.classed("hidden", false).style("left", mouse[0] + 20 + "px")
             .style("top", mouse[1] + 20 + "px");
         })
         .on("mouseout", function(d){

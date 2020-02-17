@@ -2,7 +2,7 @@
   position: relative;
   width: 100%;
 
-  .tooltip{
+  .tooltip, .tooltip-static{
     font-size: 11px;
     z-index: 100;
 
@@ -30,6 +30,7 @@
     font-family: "IBMPlexSans";
     width: 300px;
     white-space: normal;
+    box-shadow: 0px 0px 3px #bdc3c7;
 
     h1{
       margin-bottom: 3px;
@@ -38,7 +39,7 @@
     p{
       font-family: "IBMPlexSans";
       font-size: 14px;
-      line-height: 1.1rem;
+      line-height: 1.2rem;
     }
   }
 }
