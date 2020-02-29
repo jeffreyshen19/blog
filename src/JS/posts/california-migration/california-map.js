@@ -11,7 +11,16 @@ class CaliforniaMap extends React.Component{
   }
 
   componentDidMount(){
-    var map = L.map('california-map').setView([38.0409129,-120.5467139], 6);
+    var southWest = L.latLng(23.158612, -132.638983),
+      northEast = L.latLng(45.326572, -108.247830);
+    var bounds = L.latLngBounds(southWest, northEast);
+
+    var map = L.map('california-map', {
+      minZoom: 5,
+      maxZoom: 9,
+      maxBounds: bounds,
+      maxBoundsViscosity: 0.5
+    }).setView([37.0409129,-120.5467139], 6);
 
     L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png', {
       attribution: 'Map tiles by Carto, under CC BY 3.0. Data by OpenStreetMap, under ODbL.'
@@ -26,7 +35,7 @@ class CaliforniaMap extends React.Component{
 
     var mouseContainer = d3.select(this.state.chart).select(".leaflet-tooltip-pane").node(),
         getTooltipText = this.getTooltipText,
-        tooltip = d3.select(this.state.chart).select(".leaflet-tooltip-pane").append("div").attr("class", "tooltip");
+        tooltip = d3.select(this.state.chart).select(".leaflet-tooltip-pane").append("div").attr("class", "tooltip hidden");
 
     d3.csv("/data/california-migration/county-net-exodus.csv")
       .then((values) => {
