@@ -50,19 +50,19 @@ class CaliforniaMap extends React.Component{
           })
 
           // Get color scale
-          var extent = d3.extent(features, (d) => d["net-exodus"]);
+          var extent = d3.extent(features, (d) => d.data["net-exodus"]);
           var colors = d3.scaleDiverging().domain([extent[0], 0, extent[1]])
             .interpolator(d3.piecewise(d3.interpolateRgb, ["#3a539b", "#ecf0f1", "#c0392b"]));
 
           var featureElement = svg.selectAll("path")
-              .data(features.features)
+              .data(features)
               .enter()
               .append("path")
-              .attr("stroke", "gray")
-              .attr("fill-opacity", 0.6)
-              .style("fill", function(d, i){
-                // return colors(d["net-exodus"]);
-                return "green";
+              .style("transition", "0.1s")
+              .style("cursor", "pointer")
+              .attr("stroke", "white")
+              .attr("fill", function(d, i){
+                return colors(d.data["net-exodus"]);
               })
 
           // // Display SVG
