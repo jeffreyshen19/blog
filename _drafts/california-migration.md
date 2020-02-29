@@ -12,5 +12,5 @@ featured: true
 javascript: ["posts/california-migration/california-map.js"]
 ---
 
-<div class = "california-map" data-csv = "/data/california-migration/county-net-exodus.csv">
+<div id = "california-map" class = "california-map" data-csv = "/data/california-migration/county-net-exodus.csv">
 </div>

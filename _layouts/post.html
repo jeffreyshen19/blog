@@ -3,6 +3,7 @@
 <head>
   {% include head.html %}
   <title>{{ page.title }} • Jeffrey Shen </title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" />
   <link type = "text/css" rel = "stylesheet" href = "/src/SCSS/post.css">
 </head>
 <body>
@@ -92,6 +93,7 @@
     <script src="https://unpkg.com/react@16/umd/react.production.min.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js" crossorigin></script>
     <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
     {%- for js in page.javascript -%}
       <script src = "/dist/JS/{{js}}" type="module"></script>
     {%- endfor -%}

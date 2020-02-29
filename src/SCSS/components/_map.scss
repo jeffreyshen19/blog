@@ -1,4 +1,4 @@
-.map, .california-map{
+.map, #california-map{
   position: relative;
   width: 100%;
 
@@ -24,7 +24,10 @@
   }
 }
 
-.california-map{
+#california-map{
+  width: 100%;
+  height: 500px;
+
   .tooltip{
     text-align: left;
     font-family: "IBMPlexSans";
