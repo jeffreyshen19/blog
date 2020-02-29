@@ -19,73 +19,90 @@ class CaliforniaMap extends React.Component{
 
     L.svg().addTo(map);
 
-    console.log("yoo");
+    function projectPoint(x, y) {
+      var point = map.latLngToLayerPoint(new L.LatLng(y, x));
+      this.stream.point(point.x, point.y);
+    }
 
-    d3.json("/data/california-migration/california-counties.geojson").then(function(data) {
+    d3.csv("/data/california-migration/county-net-exodus.csv")
+      .then((values) => {
+        // Process csv data into correct format
+        let ycolumns = Object.keys(values[0]).slice(2);
+        let data = {};
+        values.forEach(function(d){
+          ycolumns.forEach(function(ycol){
+            d[ycol] = parseFloat(d[ycol]);
+          });
+          d.county = d.county.replace(" County", "")
+          data[d.county] = d;
+        });
 
-      function projectPoint(x, y) {
-        var point = map.latLngToLayerPoint(new L.LatLng(y, x));
-        this.stream.point(point.x, point.y);
-      }
+        // Plot graph
+        d3.json("/data/california-migration/california-counties.geojson").then(function(features) {
+          var svg = d3.select("#california-map").select("svg"),
+              transform = d3.geoTransform({point: projectPoint}),
+              path = d3.geoPath().projection(transform);
 
-      var svg = d3.select("#california-map").select("svg");
+          // Merge data
+          var features = features.features.map(function(d){
+            d.data = data[d.properties.name];
+            return d;
+          })
 
-      var transform = d3.geoTransform({point: projectPoint});
-      var path = d3.geoPath().projection(transform);
+          // Get color scale
+          var extent = d3.extent(features, (d) => d["net-exodus"]);
+          var colors = d3.scaleDiverging().domain([extent[0], 0, extent[1]])
+            .interpolator(d3.piecewise(d3.interpolateRgb, ["#3a539b", "#ecf0f1", "#c0392b"]));
 
-      var featureElement = svg.selectAll("path")
-          .data(data.features)
-          .enter()
-          .append("path")
-          .attr("stroke", "gray")
-          .attr("fill", "green")
-          .attr("fill-opacity", 0.6);
+          var featureElement = svg.selectAll("path")
+              .data(features.features)
+              .enter()
+              .append("path")
+              .attr("stroke", "gray")
+              .attr("fill-opacity", 0.6)
+              .style("fill", function(d, i){
+                // return colors(d["net-exodus"]);
+                return "green";
+              })
 
-        map.on("moveend", update);
+          // // Display SVG
+          // d3.select(svg)
+          //   .style("width", "100%")
+          //   .style("margin", "0 auto")
+          //   .attr("viewBox", "0 0 600 750")
+          //   .select("#polygons").selectAll("*")
+          //     .data(data, function(d) { return d ? d.code : this.id; }) // Join data to corresponding county
+          //     .style("transition", "0.1s")
+          //     .style("cursor", "pointer")
+          //     .style("fill", function(d, i){
+          //       return colors(d["net-exodus"]);
+          //     })
+          //     .on("mouseover", function(d, i){
+          //       // Change color on hover
+          //       d3.select(this).style("fill", d3.rgb(colors(d["net-exodus"] * 0.6)));
+          //       tooltip.html(getTooltipText(d));
+          //     })
+          //     .on("mousemove", (d) => {
+          //       var mouse = d3.mouse(this.state.chart);
+          //
+          //       tooltip.classed("hidden", false).style("left", mouse[0] - Math.round(tooltip.node().offsetWidth / 2) + "px")
+          //         .style("top", mouse[1] + 20 + "px");
+          //     })
+          //     .on("mouseout", function(d){
+          //       d3.select(this).style("fill", d3.rgb(colors(d["net-exodus"])));
+          //       tooltip.classed("hidden", true);
+          //     });
 
-        update();
+            map.on("moveend", update);
 
+            update();
 
-        function update() {
-            featureElement.attr("d", path);
-        }
+            function update() {
+                featureElement.attr("d", path);
+            }
 
-    });
-
-    // d3.csv(this.state.dataset.csv)
-    //   .then((values) => {
-    //     // Process csv data into correct format
-    //     let ycolumns = Object.keys(values[0]).slice(2);
-    //     let data = values.map(function(d){
-    //       ycolumns.forEach(function(ycol){
-    //         d[ycol] = parseFloat(d[ycol]);
-    //       });
-    //       return d;
-    //     });
-    //
-    //     // Plot graph
-    //     d3.svg("/data/california-migration/california-counties.svg").then((res) => {
-    //       var svg = res.documentElement;
-    //
-    //       //Append title
-    //       d3.select(this.state.chart).append("h1").text("Migration Between Counties In California, 2013-2017").style('text-align', 'center').style('margin-bottom', '20px')
-    //
-    //       //Append map
-    //       d3.select(this.state.chart).attr("class", "california-map").append("div").attr("class", "svg")
-    //         .style("position", "relative")
-    //         .style("text-align", "center")
-    //         .node()
-    //         .appendChild(svg);
-    //
-    //       // Append tooltip
-    //       d3.select(this.state.chart).append("div").attr("class", "tooltip hidden");
-    //
-    //       this.setState({
-    //         "svg": svg,
-    //         "data": data
-    //       })
-    //     });
-    //   })
+        });
+      })
   }
 
   getTooltipText(d){
@@ -140,42 +157,8 @@ class CaliforniaMap extends React.Component{
     //     data = this.state.data,
     //     getTooltipText = this.getTooltipText;
     //
-    // let getYVal = function(d){
-    //   return d["net-exodus"]
-    // };
     //
-    // // Get color scale
-    // var extent = d3.extent(data, (d) => getYVal(d));
-    // var colors = d3.scaleDiverging().domain([extent[0], 0, extent[1]])
-    //   .interpolator(d3.piecewise(d3.interpolateRgb, ["#3a539b", "#ecf0f1", "#c0392b"]));
-    //
-    // // Display SVG
-    // d3.select(svg)
-    //   .style("width", "100%")
-    //   .style("margin", "0 auto")
-    //   .attr("viewBox", "0 0 600 750")
-    //   .select("#polygons").selectAll("*")
-    //     .data(data, function(d) { return d ? d.code : this.id; }) // Join data to corresponding county
-    //     .style("transition", "0.1s")
-    //     .style("cursor", "pointer")
-    //     .style("fill", function(d, i){
-    //       return colors(getYVal(d));
-    //     })
-    //     .on("mouseover", function(d, i){
-    //       // Change color on hover
-    //       d3.select(this).style("fill", d3.rgb(colors(getYVal(d) * 0.6)));
-    //       tooltip.html(getTooltipText(d));
-    //     })
-    //     .on("mousemove", (d) => {
-    //       var mouse = d3.mouse(this.state.chart);
-    //
-    //       tooltip.classed("hidden", false).style("left", mouse[0] - Math.round(tooltip.node().offsetWidth / 2) + "px")
-    //         .style("top", mouse[1] + 20 + "px");
-    //     })
-    //     .on("mouseout", function(d){
-    //       d3.select(this).style("fill", d3.rgb(colors(getYVal(d))));
-    //       tooltip.classed("hidden", true);
-    //     });
+
   }
 
   render() {

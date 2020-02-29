@@ -12,5 +12,7 @@ featured: true
 javascript: ["posts/california-migration/california-map.js"]
 ---
 
-<div id = "california-map" class = "california-map" data-csv = "/data/california-migration/county-net-exodus.csv">
+<h1 class = "has-text-centered">Migration Between Counties In California, 2013-2017</h1>
+
+<div id = "california-map" class = "california-map">
 </div>
