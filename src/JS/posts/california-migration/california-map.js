@@ -19,7 +19,7 @@ class CaliforniaMap extends React.Component{
       minZoom: 5,
       maxZoom: 9,
       maxBounds: bounds,
-      maxBoundsViscosity: 0.5
+      maxBoundsViscosity: 0.5,
     }).setView([37.0409129,-120.5467139], 6);
 
     L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png', {
@@ -67,6 +67,34 @@ class CaliforniaMap extends React.Component{
           var colors = d3.scaleDiverging().domain([extent[0], 0, extent[1]])
             .interpolator(d3.piecewise(d3.interpolateRgb, ["#3a539b", "#ecf0f1", "#c0392b"]));
 
+          //Add legend
+          var legend = d3.select("#california-map").append("div")
+            .style("width", "20px")
+            .style("height", "150px")
+            .style("bottom", "10px")
+            .style("left", "10px")
+            .style("z-index", "1000")
+            .style("position", "absolute")
+            .style("background", "linear-gradient(#c0392b, #ecf0f1, #3a539b)");
+
+          legend.append("p")
+            .html("More<br>Left<br>Here")
+            .style("position", "absolute")
+            .style("white-space", "nowrap")
+            .style("line-height", "1.1em")
+            .style("left", "25px")
+            .style("top", 0);
+
+          legend.append("p")
+            .html("More<br>Moved<br>Here")
+            .style("position", "absolute")
+            .style("white-space", "nowrap")
+            .style("line-height", "1.1em")
+            .style("left", "25px")
+            .style("margin-bottom", 0)
+            .style("bottom", 0);
+
+          // Color map elements
           var featureElement = svg.selectAll("path")
             .data(features)
             .enter()
@@ -98,8 +126,8 @@ class CaliforniaMap extends React.Component{
 
             update();
 
-            function update() {
-                featureElement.attr("d", path);
+            function update(e) {
+              featureElement.attr("d", path);
             }
 
         });
