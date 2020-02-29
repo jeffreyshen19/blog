@@ -24,6 +24,10 @@ class CaliforniaMap extends React.Component{
       this.stream.point(point.x, point.y);
     }
 
+    var mouseContainer = d3.select(this.state.chart).select(".leaflet-tooltip-pane").node(),
+        getTooltipText = this.getTooltipText,
+        tooltip = d3.select(this.state.chart).select(".leaflet-tooltip-pane").append("div").attr("class", "tooltip");
+
     d3.csv("/data/california-migration/county-net-exodus.csv")
       .then((values) => {
         // Process csv data into correct format
@@ -55,43 +59,31 @@ class CaliforniaMap extends React.Component{
             .interpolator(d3.piecewise(d3.interpolateRgb, ["#3a539b", "#ecf0f1", "#c0392b"]));
 
           var featureElement = svg.selectAll("path")
-              .data(features)
-              .enter()
-              .append("path")
+            .data(features)
+            .enter()
+            .append("path")
               .style("transition", "0.1s")
               .style("cursor", "pointer")
+              .style("pointer-events","visible")
               .attr("stroke", "white")
               .attr("fill", function(d, i){
                 return colors(d.data["net-exodus"]);
               })
+              .on("mouseover", function(d, i){
+                // Change color on hover
+                d3.select(this).style("fill", d3.rgb(colors(d.data["net-exodus"] * 0.6)));
+                tooltip.html(getTooltipText(d.data));
+              })
+              .on("mousemove", (d) => {
+                var mouse = d3.mouse(mouseContainer);
 
-          // // Display SVG
-          // d3.select(svg)
-          //   .style("width", "100%")
-          //   .style("margin", "0 auto")
-          //   .attr("viewBox", "0 0 600 750")
-          //   .select("#polygons").selectAll("*")
-          //     .data(data, function(d) { return d ? d.code : this.id; }) // Join data to corresponding county
-          //     .style("transition", "0.1s")
-          //     .style("cursor", "pointer")
-          //     .style("fill", function(d, i){
-          //       return colors(d["net-exodus"]);
-          //     })
-          //     .on("mouseover", function(d, i){
-          //       // Change color on hover
-          //       d3.select(this).style("fill", d3.rgb(colors(d["net-exodus"] * 0.6)));
-          //       tooltip.html(getTooltipText(d));
-          //     })
-          //     .on("mousemove", (d) => {
-          //       var mouse = d3.mouse(this.state.chart);
-          //
-          //       tooltip.classed("hidden", false).style("left", mouse[0] - Math.round(tooltip.node().offsetWidth / 2) + "px")
-          //         .style("top", mouse[1] + 20 + "px");
-          //     })
-          //     .on("mouseout", function(d){
-          //       d3.select(this).style("fill", d3.rgb(colors(d["net-exodus"])));
-          //       tooltip.classed("hidden", true);
-          //     });
+                tooltip.classed("hidden", false).style("left", mouse[0] - Math.round(tooltip.node().offsetWidth / 2) + "px")
+                  .style("top", mouse[1] + 20 + "px");
+              })
+              .on("mouseout", function(d){
+                d3.select(this).style("fill", d3.rgb(colors(d.data["net-exodus"])));
+                tooltip.classed("hidden", true);
+              });
 
             map.on("moveend", update);
 
@@ -150,20 +142,7 @@ class CaliforniaMap extends React.Component{
     `;
   }
 
-  renderGraph(){
-    // var tooltipText,
-    //     tooltip = d3.select(this.state.chart).select(".tooltip"),
-    //     svg = this.state.svg,
-    //     data = this.state.data,
-    //     getTooltipText = this.getTooltipText;
-    //
-    //
-
-  }
-
   render() {
-    if(this.state.data.length && this.state.svg) this.renderGraph();
-
     return (
       null
     );
