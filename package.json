@@ -27,5 +27,9 @@
     "gulp-minify": "^3.1.0",
     "gulp-sass": "^4.0.2",
     "gulp-util": "^3.0.8"
+  },
+  "dependencies": {
+    "proj4": "^2.6.0",
+    "reproject": "^1.2.5"
   }
 }

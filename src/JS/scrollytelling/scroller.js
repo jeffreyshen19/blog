@@ -81,7 +81,6 @@ export default function scroller() {
       }
       sectionPositions.push(top - startPos);
     });
-    console.log(container);
     containerStart = container.node().getBoundingClientRect().top + window.pageYOffset;
   }
 

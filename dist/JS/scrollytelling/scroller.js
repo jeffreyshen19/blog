@@ -24,7 +24,7 @@ var d=d3.timer(function(){c(),d.stop()})}/**
    * also when page is resized.
    * Resets the sectionPositions
    *
-   */function b(){g=[];var a;f.each(function(b,c){var d=this.getBoundingClientRect().top;0===c&&(a=d),g.push(d-a)}),console.log(d),i=d.node().getBoundingClientRect().top+window.pageYOffset}/**
+   */function b(){g=[];var a;f.each(function(b,c){var d=this.getBoundingClientRect().top;0===c&&(a=d),g.push(d-a)}),i=d.node().getBoundingClientRect().top+window.pageYOffset}/**
    * position - get current users position.
    * if user has scrolled to new section,
    * dispatch active event with new section
