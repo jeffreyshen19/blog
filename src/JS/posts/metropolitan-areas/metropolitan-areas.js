@@ -13,6 +13,7 @@ var scrollVis = function () {
   var updateFunctions = []; //Functions called DURING each section (takes a param progress 0.0 - 1.0)
 
   var map, layers = [];
+  let markers = [[[34.0218948,-118.498265], "Santa Monica"], [[34.0825832,-118.4170435], "Beverly Hills"], [[33.8932864,-118.2393202], "Compton"]]
 
   /**
    * chart
@@ -42,6 +43,7 @@ var scrollVis = function () {
     	subdomains: 'abcd',
     }).addTo(map);
 
+    //Add layers
     layers[0] = L.geoJSON(cities);
     layers[1] = L.geoJSON(urbanAreas);
     layers[2] = L.geoJSON(msa);
@@ -51,6 +53,19 @@ var scrollVis = function () {
       hideLayer(layers[i])
       layers[i].addTo(map);
     }
+
+    //Add markers
+    markers = markers.map(function(m){
+      m = L.marker(m[0], {opacity: 0})
+        .bindTooltip(m[1], {
+          direction: 'right',
+          className: 'label'
+        })
+        .addTo(map);
+
+      m.closeTooltip();
+      return m;
+    });
   };
 
   // Handles display logic for sections
@@ -67,12 +82,27 @@ var scrollVis = function () {
       // Show Los Angeles
       layers[0].eachLayer(function (layer) {
         if(layer.feature.properties.NAME == 'Los Angeles') {
-          map.flyToBounds(layer.getBounds(), {'duration': 0.5})
+          map.fitBounds(layer.getBounds(), {'duration': 0.5})
           showLayer(layer, "blue");
         }
       });
+
+      //Hide markers
+      markers.forEach(function(m){
+        m.setOpacity(0);
+        m.closeTooltip();
+      })
     };
     updateFunctions[1] = function() {};
+
+    activateFunctions[2] = function(){
+      //Show markers
+      markers.forEach(function(m){
+        m.setOpacity(1);
+        m.openTooltip();
+      })
+    };
+    updateFunctions[2] = function() {};
   };
 
   /**

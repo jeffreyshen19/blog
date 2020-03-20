@@ -23,5 +23,8 @@ javascript: ["posts/metropolitan-areas/metropolitan-areas.js"]
     <section class="step">
       Here are the city boundaries.
     </section>
+    <section class="step">
+      You'll notice these boundaries don't actually include many places we think are part of L.A.
+    </section>
   </div>
 </div>
