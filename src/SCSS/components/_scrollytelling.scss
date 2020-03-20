@@ -1,11 +1,13 @@
 #scrolling-vis{
   position: relative;
 
+  .column{
+    padding: 0.75rem;
+  }
+
   #sections {
-    position: relative;
     display: inline-block;
-    width: 250px;
-    top: 0px;
+    width: 300px;
     z-index: 90;
   }
 
@@ -15,13 +17,16 @@
 
   #vis {
     display: inline-block;
-    position: fixed;
+    position: sticky;
+    position: -webkit-sticky;
     top: 60px;
     z-index: 1;
     margin-left: 0;
-
     height: 600px;
-    width: 600px;
-    background-color: #ddd;
+
+    #map{
+      width: 100%;
+      height: 100%;
+    }
   }
 }
