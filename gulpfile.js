@@ -21,6 +21,7 @@ gulp.task('watch', function() {
   gulp.watch('./src/JS/components/*.js', ['babel']);
   gulp.watch('./src/JS/components/**/*.js', ['babel']);
   gulp.watch('./src/JS/posts/**/*.js', ['babel']);
+  gulp.watch('./src/JS/scrollytelling/*.js', ['babel']);
 });
 
 gulp.task("default", ["babel", "watch"]);
