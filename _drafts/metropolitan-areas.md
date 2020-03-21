@@ -48,7 +48,13 @@ javascript: ["posts/metropolitan-areas/metropolitan-areas.js"]
       Alternatively, we could consider the L.A. Combined Statistical Area, which is defined as a region containing economically linked metropolitan and micropolitan areas.
     </section>
     <section class="step">
-      This region has a population of over 18.7 million people (nearly half of California's population), and is yet another way to define the Greater Los Angeles area. 
+      This region has a population of over 18.7 million people (nearly half of California's population), and is yet another way to define the Greater Los Angeles area.
+    </section>
+    <section class="step">
+      As you can probably tell by now, L.A. and its surrounding metropolitan area has some strange boundaries! Keep scrolling to explore more U.S. Cities.
+    </section>
+    <section class="step">
+      Choose a city 
     </section>
   </div>
 </div>

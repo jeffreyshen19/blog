@@ -13,7 +13,8 @@ var scrollVis = function () {
   var updateFunctions = []; //Functions called DURING each section (takes a param progress 0.0 - 1.0)
 
   var map, layers = [];
-  let markers = [[[[34.0218948,-118.498265], "Santa Monica"], [[34.0825832,-118.4170435], "Beverly Hills"], [[33.8932864,-118.2393202], "Compton"]], [[[34.0115278,-118.1798982], "East Los Angeles"]], [[[33.8340569,-117.8805115], "Disneyland!"], [[34.137662,-118.1274577], "Caltech"]], [[[34.0432117,-118.2587082], "Downtown L.A."]]]
+  let markers = [[[[34.0218948,-118.498265], "Santa Monica"], [[34.0825832,-118.4170435], "Beverly Hills"], [[33.8932864,-118.2393202], "Compton"]], [[[34.0115278,-118.1798982], "East Los Angeles"]], [[[33.8340569,-117.8805115], "Disneyland!"], [[34.137662,-118.1274577], "Caltech"]], [[[34.0432117,-118.2587082], "Downtown L.A."]]];
+  let cityMetadata;
 
   /**
    * chart
@@ -24,13 +25,16 @@ var scrollVis = function () {
    */
   var chart = function (selection) {
     selection.each(function (data) {
-      setupVis(data[0], data[1], data[2], data[3]);
+      setupVis(data[0], data[1], data[2], data[3], data[4]);
       setupSections();
     });
   };
 
   // Creates initial elements for all visualizations
-  var setupVis = function (cities, urbanAreas, msa, csa) {
+  var setupVis = function (cities, urbanAreas, msa, csa, metadata) {
+    cityMetadata = metadata;
+    console.log(metadata);
+    
     map = L.map('map', {
       zoomControl: false,
       scrollWheelZoom: false,
@@ -186,6 +190,9 @@ var scrollVis = function () {
 
     activateFunctions[10] = function(){};
     updateFunctions[10] = function() {};
+
+    activateFunctions[11] = function(){};
+    updateFunctions[11] = function() {};
   };
 
   /**
@@ -271,6 +278,7 @@ Promise.all([
   d3.json("/data/metropolitan-areas/urban-areas.geojson"),
   d3.json("/data/metropolitan-areas/msa.geojson"),
   d3.json("/data/metropolitan-areas/csa.geojson"),
+  d3.json("/data/metropolitan-areas/city-metadata.json"),
 ]).then(function(data) {
   var plot = scrollVis();
 
