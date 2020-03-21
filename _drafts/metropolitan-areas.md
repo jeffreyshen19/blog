@@ -36,10 +36,19 @@ javascript: ["posts/metropolitan-areas/metropolitan-areas.js"]
       This area, which contains over 12 million people (four million more than New York City), is probably what most people have in mind when they say "Los Angeles."
     </section>
     <section class="step">
-      Metropolitan Statistical Area
+      Importantly, this region only includes "urbanized areas", or Census-designated regions with over 50,000 people, which excludes many suburbs and towns that might be considered part of the Greater Los Angeles Area.
     </section>
     <section class="step">
-      Combined Statistical Area
+      Another region to consider is the L.A. Metropolitan Statistical Area, which is defined by the U.S. Office of Management and Budget as a region which "consists of a city and surrounding communities that are linked by social and economic factors."
+    </section>
+    <section class="step">
+      This area, which contains over 13.2 million people, does a good job approximating what we think the "Greater Los Angeles Area" looks like.
+    </section>
+    <section class="step">
+      Alternatively, we could consider the L.A. Combined Statistical Area, which is defined as a region containing economically linked metropolitan and micropolitan areas.
+    </section>
+    <section class="step">
+      This region has a population of over 18.7 million people (nearly half of California's population), and is yet another way to define the Greater Los Angeles area. 
     </section>
   </div>
 </div>

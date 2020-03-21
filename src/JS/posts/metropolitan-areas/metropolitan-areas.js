@@ -13,7 +13,7 @@ var scrollVis = function () {
   var updateFunctions = []; //Functions called DURING each section (takes a param progress 0.0 - 1.0)
 
   var map, layers = [];
-  let markers = [[[[34.0218948,-118.498265], "Santa Monica"], [[34.0825832,-118.4170435], "Beverly Hills"], [[33.8932864,-118.2393202], "Compton"]], [[[34.0115278,-118.1798982], "East Los Angeles"]], [[[33.8340569,-117.8805115], "Disneyland!"], [[34.137662,-118.1274577], "Caltech"]]]
+  let markers = [[[[34.0218948,-118.498265], "Santa Monica"], [[34.0825832,-118.4170435], "Beverly Hills"], [[33.8932864,-118.2393202], "Compton"]], [[[34.0115278,-118.1798982], "East Los Angeles"]], [[[33.8340569,-117.8805115], "Disneyland!"], [[34.137662,-118.1274577], "Caltech"]], [[[34.0432117,-118.2587082], "Downtown L.A."]]]
 
   /**
    * chart
@@ -119,6 +119,7 @@ var scrollVis = function () {
 
     activateFunctions[4] = function(){
       hideMarkers(1);
+      hideMarkers(3);
       showMarkers(0);
       showMarkers(2);
 
@@ -135,7 +136,15 @@ var scrollVis = function () {
     activateFunctions[5] = function(){
       hideMarkers(0);
       hideMarkers(2);
+      showMarkers(3);
 
+      findAndShowLayer(layers[1], function(layer){
+        return layer.feature.properties.GEOID10 === "51445"
+      });
+    };
+    updateFunctions[5] = function() {};
+
+    activateFunctions[6] = function(){
       findAndShowLayer(layers[1], function(layer){
         return layer.feature.properties.GEOID10 === "51445"
       });
@@ -143,12 +152,19 @@ var scrollVis = function () {
         return layer.feature.properties.GEOID === "31080"
       }, false);
     };
-    updateFunctions[5] = function() {};
+    updateFunctions[6] = function() {};
 
-    activateFunctions[6] = function(){
+    activateFunctions[7] = function(){
       findAndHideLayer(layers[1], function(layer){
         return layer.feature.properties.GEOID10 === "51445"
       }, false);
+      findAndShowLayer(layers[2], function(layer){
+        return layer.feature.properties.GEOID === "31080"
+      });
+    };
+    updateFunctions[7] = function() {};
+
+    activateFunctions[8] = function(){
       findAndShowLayer(layers[2], function(layer){
         return layer.feature.properties.GEOID === "31080"
       });
@@ -156,9 +172,9 @@ var scrollVis = function () {
         return layer.feature.properties.GEOID === "348"
       }, false);
     };
-    updateFunctions[6] = function() {};
+    updateFunctions[8] = function() {};
 
-    activateFunctions[7] = function(){
+    activateFunctions[9] = function(){
       findAndHideLayer(layers[2], function(layer){
         return layer.feature.properties.GEOID === "31080"
       }, false);
@@ -166,7 +182,10 @@ var scrollVis = function () {
         return layer.feature.properties.GEOID === "348"
       });
     };
-    updateFunctions[7] = function() {};
+    updateFunctions[9] = function() {};
+
+    activateFunctions[10] = function(){};
+    updateFunctions[10] = function() {};
   };
 
   /**
