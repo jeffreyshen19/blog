@@ -54,7 +54,41 @@ javascript: ["posts/metropolitan-areas/metropolitan-areas.js"]
       As you can probably tell by now, L.A. and its surrounding metropolitan area has some strange boundaries! Keep scrolling to explore more U.S. Cities.
     </section>
     <section class="step">
-      Choose a city 
+      <div class="field">
+        <label class="label">Choose a city</label>
+        <div class="control">
+          <div id = "dropdown" class="select">
+            <select onchange="updateDropdown()">
+              <option value = ""></option>
+            </select>
+          </div>
+        </div>
+        <label class="help">(Sorted by population of metropolitan statistical area)</label>
+      </div>
+      <div class="field">
+        <label class="label">Show: </label>
+        <div class="control">
+          <label class="radio">
+            <input type="radio" name="show-control" onclick="updateRadio(this);" value = "0">
+            City Boundary
+          </label>
+          <br>
+          <label class="radio">
+            <input type="radio" name="show-control" onclick="updateRadio(this);" value = "1">
+            Urbanized Area
+          </label>
+          <br>
+          <label class="radio">
+            <input type="radio" name="show-control" onclick="updateRadio(this);" value = "2">
+            Metropolitan Statistical Area
+          </label>
+          <br>
+          <label class="radio" disabled id = "csa">
+            <input type="radio" name="show-control" onclick="updateRadio(this);" value = "3" disabled>
+            Combined Statistical Area
+          </label>
+        </div>
+      </div>
     </section>
   </div>
 </div>

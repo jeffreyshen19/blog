@@ -33,8 +33,7 @@ var scrollVis = function () {
   // Creates initial elements for all visualizations
   var setupVis = function (cities, urbanAreas, msa, csa, metadata) {
     cityMetadata = metadata;
-    console.log(metadata);
-    
+
     map = L.map('map', {
       zoomControl: false,
       scrollWheelZoom: false,
@@ -72,6 +71,16 @@ var scrollVis = function () {
         return m;
       });
     });
+
+    //Populate dropdown
+    d3.select("#dropdown select")
+      .selectAll(".option")
+      .data(metadata)
+      .enter()
+        .append("option")
+        .attr("class", "option")
+        .attr("value", (d, i) => i)
+        .text((d, i) => (i + 1) + ". " + d.name)
   };
 
   // Handles display logic for sections
@@ -193,6 +202,9 @@ var scrollVis = function () {
 
     activateFunctions[11] = function(){};
     updateFunctions[11] = function() {};
+
+    activateFunctions[12] = function(){};
+    updateFunctions[12] = function() {};
   };
 
   /**
