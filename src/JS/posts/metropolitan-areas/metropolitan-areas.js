@@ -73,7 +73,7 @@ var scrollVis = function () {
     });
 
     //Populate dropdown
-    d3.select("#dropdown select")
+    d3.select("#dropdown")
       .selectAll(".option")
       .data(metadata)
       .enter()
@@ -81,6 +81,10 @@ var scrollVis = function () {
         .attr("class", "option")
         .attr("value", (d, i) => i)
         .text((d, i) => (i + 1) + ". " + d.name)
+
+    //Add dropdown and radio handlers
+    d3.select("#dropdown").on("change", updateCity);
+    d3.selectAll("input[name='show-control']").on("change", updateCity);
   };
 
   // Handles display logic for sections
@@ -200,10 +204,21 @@ var scrollVis = function () {
     activateFunctions[10] = function(){};
     updateFunctions[10] = function() {};
 
-    activateFunctions[11] = function(){};
+    activateFunctions[11] = function(){
+      showMarkers(3);
+      hideLayer(layers[0]);
+      hideLayer(layers[1]);
+      hideLayer(layers[2]);
+      findAndShowLayer(layers[3], function(layer){
+        return layer.feature.properties.GEOID === "348"
+      });
+    };
     updateFunctions[11] = function() {};
 
-    activateFunctions[12] = function(){};
+    activateFunctions[12] = function(){
+      hideMarkers(3)
+      updateCity();
+    };
     updateFunctions[12] = function() {};
   };
 
@@ -277,6 +292,17 @@ var scrollVis = function () {
         if(fit != false) map.fitBounds(layer.getBounds(), {'duration': 0.5})
         hideLayer(layer);
       }
+    });
+  }
+
+  function updateCity(){
+    let dropdownValue = d3.select("#dropdown").property("value");
+    let radioValue = d3.select('input[name="show-control"]:checked').node().value;
+
+    for(let i = 0; i < 4; i++) hideLayer(layers[i]);
+
+    if(dropdownValue != "") findAndShowLayer(layers[radioValue], function(layer){
+      return layer.feature.properties[cityMetadata[dropdownValue].identifiers[radioValue][0]] === cityMetadata[dropdownValue].identifiers[radioValue][1]
     });
   }
 

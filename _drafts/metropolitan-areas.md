@@ -57,8 +57,8 @@ javascript: ["posts/metropolitan-areas/metropolitan-areas.js"]
       <div class="field">
         <label class="label">Choose a city</label>
         <div class="control">
-          <div id = "dropdown" class="select">
-            <select onchange="updateDropdown()">
+          <div class="select">
+            <select id = "dropdown" >
               <option value = ""></option>
             </select>
           </div>
@@ -69,22 +69,22 @@ javascript: ["posts/metropolitan-areas/metropolitan-areas.js"]
         <label class="label">Show: </label>
         <div class="control">
           <label class="radio">
-            <input type="radio" name="show-control" onclick="updateRadio(this);" value = "0">
+            <input type="radio" name="show-control" value = "0" checked>
             City Boundary
           </label>
           <br>
           <label class="radio">
-            <input type="radio" name="show-control" onclick="updateRadio(this);" value = "1">
+            <input type="radio" name="show-control" value = "1">
             Urbanized Area
           </label>
           <br>
           <label class="radio">
-            <input type="radio" name="show-control" onclick="updateRadio(this);" value = "2">
+            <input type="radio" name="show-control" value = "2">
             Metropolitan Statistical Area
           </label>
           <br>
           <label class="radio" disabled id = "csa">
-            <input type="radio" name="show-control" onclick="updateRadio(this);" value = "3" disabled>
+            <input type="radio" name="show-control" value = "3" disabled>
             Combined Statistical Area
           </label>
         </div>
