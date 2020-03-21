@@ -83,9 +83,10 @@ javascript: ["posts/metropolitan-areas/metropolitan-areas.js"]
             Metropolitan Statistical Area
           </label>
           <br>
-          <label class="radio" disabled id = "csa">
-            <input type="radio" name="show-control" value = "3" disabled>
+          <label class="radio" id = "csa">
+            <input type="radio" name="show-control" value = "3">
             Combined Statistical Area
+            <label class="help" style="opacity:0">(This city is not part of a combined statistical area)</label>
           </label>
         </div>
       </div>

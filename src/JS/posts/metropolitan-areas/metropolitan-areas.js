@@ -301,9 +301,23 @@ var scrollVis = function () {
 
     for(let i = 0; i < 4; i++) hideLayer(layers[i]);
 
-    if(dropdownValue != "") findAndShowLayer(layers[radioValue], function(layer){
-      return layer.feature.properties[cityMetadata[dropdownValue].identifiers[radioValue][0]] === cityMetadata[dropdownValue].identifiers[radioValue][1]
-    });
+    if(dropdownValue != ""){
+      //If the city does not have a combined statistical area, hide that option
+      if(cityMetadata[dropdownValue].identifiers[3][1] == null){
+        d3.select("#csa").attr("disabled", true);
+        d3.select("#csa").select("input").attr("disabled", true);
+        d3.select("#csa").select("label").style("opacity", 1);
+      }
+      else{
+        d3.select("#csa").attr("disabled", null);
+        d3.select("#csa").select("input").attr("disabled", null);
+        d3.select("#csa").select("label").style("opacity", 0);
+      }
+
+      findAndShowLayer(layers[radioValue], function(layer){
+        return layer.feature.properties[cityMetadata[dropdownValue].identifiers[radioValue][0]] === cityMetadata[dropdownValue].identifiers[radioValue][1]
+      });
+    }
   }
 
   // return chart function
