@@ -13,7 +13,7 @@ var scrollVis = function () {
   var updateFunctions = []; //Functions called DURING each section (takes a param progress 0.0 - 1.0)
 
   var map, layers = [];
-  let markers = [[[34.0218948,-118.498265], "Santa Monica"], [[34.0825832,-118.4170435], "Beverly Hills"], [[33.8932864,-118.2393202], "Compton"]]
+  let markers = [[[[34.0218948,-118.498265], "Santa Monica"], [[34.0825832,-118.4170435], "Beverly Hills"], [[33.8932864,-118.2393202], "Compton"]], [[[34.0115278,-118.1798982], "East Los Angeles"]], [[[33.8340569,-117.8805115], "Disneyland!"], [[34.137662,-118.1274577], "Caltech"]]]
 
   /**
    * chart
@@ -55,16 +55,18 @@ var scrollVis = function () {
     }
 
     //Add markers
-    markers = markers.map(function(m){
-      m = L.marker(m[0], {opacity: 0})
-        .bindTooltip(m[1], {
-          direction: 'right',
-          className: 'label'
-        })
-        .addTo(map);
+    markers = markers.map(function(set){
+      return set.map(function(m){
+        m = L.marker(m[0], {opacity: 0})
+          .bindTooltip(m[1], {
+            direction: 'top',
+            className: 'label'
+          })
+          .addTo(map);
 
-      m.closeTooltip();
-      return m;
+        m.closeTooltip();
+        return m;
+      });
     });
   };
 
@@ -80,29 +82,55 @@ var scrollVis = function () {
 
     activateFunctions[1] = function(){
       // Show Los Angeles
-      layers[0].eachLayer(function (layer) {
-        if(layer.feature.properties.NAME == 'Los Angeles') {
-          map.fitBounds(layer.getBounds(), {'duration': 0.5})
-          showLayer(layer, "blue");
-        }
+      findAndShowLayer(layers[0], function(layer){
+        return layer.feature.properties.NAME == 'Los Angeles'
       });
 
-      //Hide markers
-      markers.forEach(function(m){
-        m.setOpacity(0);
-        m.closeTooltip();
-      })
+      hideMarkers(0);
     };
     updateFunctions[1] = function() {};
 
     activateFunctions[2] = function(){
-      //Show markers
-      markers.forEach(function(m){
-        m.setOpacity(1);
-        m.openTooltip();
-      })
+      showMarkers(0);
+      hideMarkers(1);
+
+      // Hide Los Angeles Urban Area
+      findAndHideLayer(layers[1], function(layer){
+        return layer.feature.properties.GEOID10 === "51445"
+      }, false);
+
+      // Show Los Angeles
+      findAndShowLayer(layers[0], function(layer){
+        return layer.feature.properties.NAME == 'Los Angeles'
+      });
     };
     updateFunctions[2] = function() {};
+
+    activateFunctions[3] = function(){
+      showMarkers(1);
+      hideMarkers(2);
+    };
+    updateFunctions[3] = function() {};
+
+    activateFunctions[4] = function(){
+      hideMarkers(1);
+      showMarkers(2);
+
+      // Show Los Angeles Urban Area and Hide City of Los Angeles
+      findAndHideLayer(layers[0], function(layer){
+        return layer.feature.properties.NAME == 'Los Angeles'
+      });
+      findAndShowLayer(layers[1], function(layer){
+        return layer.feature.properties.GEOID10 === "51445"
+      });
+    };
+    updateFunctions[4] = function() {};
+
+    activateFunctions[5] = function(){
+      hideMarkers(0);
+      hideMarkers(2);
+    };
+    updateFunctions[5] = function() {};
   };
 
   /**
@@ -142,6 +170,40 @@ var scrollVis = function () {
       fillColor: color,
       opacity: 1
     })
+  }
+
+  function hideMarkers(i){
+    markers[i].forEach(function(m){
+      m.setOpacity(0);
+      m.closeTooltip();
+    })
+  }
+
+  function showMarkers(i){
+    //Show markers
+    markers[i].forEach(function(m){
+      m.setOpacity(1);
+      m.openTooltip();
+    })
+  }
+
+  function findAndShowLayer(layers, goalCondition, fit){
+    layers.eachLayer(function (layer) {
+      if(goalCondition(layer)) {
+        if(fit != false) map.fitBounds(layer.getBounds(), {'duration': 0.5})
+        showLayer(layer, "blue");
+        return;
+      }
+    });
+  }
+
+  function findAndHideLayer(layers, goalCondition, fit){
+    layers.eachLayer(function (layer) {
+      if(goalCondition(layer)) {
+        if(fit != false) map.fitBounds(layer.getBounds(), {'duration': 0.5})
+        hideLayer(layer);
+      }
+    });
   }
 
   // return chart function
