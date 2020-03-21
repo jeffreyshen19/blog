@@ -94,11 +94,6 @@ var scrollVis = function () {
       showMarkers(0);
       hideMarkers(1);
 
-      // Hide Los Angeles Urban Area
-      findAndHideLayer(layers[1], function(layer){
-        return layer.feature.properties.GEOID10 === "51445"
-      }, false);
-
       // Show Los Angeles
       findAndShowLayer(layers[0], function(layer){
         return layer.feature.properties.NAME == 'Los Angeles'
@@ -109,17 +104,28 @@ var scrollVis = function () {
     activateFunctions[3] = function(){
       showMarkers(1);
       hideMarkers(2);
+
+      // Show Los Angeles
+      findAndShowLayer(layers[0], function(layer){
+        return layer.feature.properties.NAME == 'Los Angeles'
+      });
+
+      // Hide Los Angeles Urban Area
+      findAndHideLayer(layers[1], function(layer){
+        return layer.feature.properties.GEOID10 === "51445"
+      }, false);
     };
     updateFunctions[3] = function() {};
 
     activateFunctions[4] = function(){
       hideMarkers(1);
+      showMarkers(0);
       showMarkers(2);
 
       // Show Los Angeles Urban Area and Hide City of Los Angeles
       findAndHideLayer(layers[0], function(layer){
         return layer.feature.properties.NAME == 'Los Angeles'
-      });
+      }, false);
       findAndShowLayer(layers[1], function(layer){
         return layer.feature.properties.GEOID10 === "51445"
       });
@@ -129,8 +135,38 @@ var scrollVis = function () {
     activateFunctions[5] = function(){
       hideMarkers(0);
       hideMarkers(2);
+
+      findAndShowLayer(layers[1], function(layer){
+        return layer.feature.properties.GEOID10 === "51445"
+      });
+      findAndHideLayer(layers[2], function(layer){
+        return layer.feature.properties.GEOID === "31080"
+      }, false);
     };
     updateFunctions[5] = function() {};
+
+    activateFunctions[6] = function(){
+      findAndHideLayer(layers[1], function(layer){
+        return layer.feature.properties.GEOID10 === "51445"
+      }, false);
+      findAndShowLayer(layers[2], function(layer){
+        return layer.feature.properties.GEOID === "31080"
+      });
+      findAndHideLayer(layers[3], function(layer){
+        return layer.feature.properties.GEOID === "348"
+      }, false);
+    };
+    updateFunctions[6] = function() {};
+
+    activateFunctions[7] = function(){
+      findAndHideLayer(layers[2], function(layer){
+        return layer.feature.properties.GEOID === "31080"
+      }, false);
+      findAndShowLayer(layers[3], function(layer){
+        return layer.feature.properties.GEOID === "348"
+      });
+    };
+    updateFunctions[7] = function() {};
   };
 
   /**

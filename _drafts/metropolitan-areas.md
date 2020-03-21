@@ -33,7 +33,13 @@ javascript: ["posts/metropolitan-areas/metropolitan-areas.js"]
       If we instead look at the "L.A.-Long Beach-Anaheim Urbanized Area" (as determined by the Census), the boundaries fit more of what we expect L.A. to look like.
     </section>
     <section class="step">
-      This area, which contains over twelve million people (over three million more than New York City proper), is probably what most people have in mind when they say "Los Angeles."
+      This area, which contains over 12 million people (four million more than New York City), is probably what most people have in mind when they say "Los Angeles."
+    </section>
+    <section class="step">
+      Metropolitan Statistical Area
+    </section>
+    <section class="step">
+      Combined Statistical Area
     </section>
   </div>
 </div>
