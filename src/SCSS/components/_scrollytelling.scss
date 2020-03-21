@@ -19,8 +19,13 @@
     }
 
     &:last-of-type{
-      margin-bottom: 300px;
+      margin-bottom: 200px;
     }
+  }
+
+  #population{
+    font-family: "IBMPlexSans";
+    font-size: 18px;
   }
 
   #vis {

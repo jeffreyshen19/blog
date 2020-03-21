@@ -206,9 +206,12 @@ var scrollVis = function () {
 
     activateFunctions[11] = function(){
       showMarkers(3);
-      hideLayer(layers[0]);
-      hideLayer(layers[1]);
-      hideLayer(layers[2]);
+      let dropdownValue = d3.select("#dropdown").property("value");
+      let radioValue = d3.select('input[name="show-control"]:checked').node().value;
+
+      if(dropdownValue != "") findAndHideLayer(layers[radioValue], function(layer){
+        return layer.feature.properties[cityMetadata[dropdownValue].identifiers[radioValue][0]] === cityMetadata[dropdownValue].identifiers[radioValue][1]
+      }, false);
       findAndShowLayer(layers[3], function(layer){
         return layer.feature.properties.GEOID === "348"
       });
@@ -276,11 +279,12 @@ var scrollVis = function () {
     })
   }
 
-  function findAndShowLayer(layers, goalCondition, fit){
+  function findAndShowLayer(layers, goalCondition, fit, callback){
     layers.eachLayer(function (layer) {
       if(goalCondition(layer)) {
         if(fit != false) map.fitBounds(layer.getBounds(), {'duration': 0.5})
         showLayer(layer, "blue");
+        if(callback) callback(layer);
         return;
       }
     });
@@ -304,6 +308,12 @@ var scrollVis = function () {
     if(dropdownValue != ""){
       //If the city does not have a combined statistical area, hide that option
       if(cityMetadata[dropdownValue].identifiers[3][1] == null){
+        if(radioValue == 3){
+          radioValue = 0;
+          d3.select('input[name="show-control"]:checked').node().checked = null;
+          d3.select('#city-boundary').node().checked = true;
+        }
+
         d3.select("#csa").attr("disabled", true);
         d3.select("#csa").select("input").attr("disabled", true);
         d3.select("#csa").select("label").style("opacity", 1);
@@ -316,7 +326,13 @@ var scrollVis = function () {
 
       findAndShowLayer(layers[radioValue], function(layer){
         return layer.feature.properties[cityMetadata[dropdownValue].identifiers[radioValue][0]] === cityMetadata[dropdownValue].identifiers[radioValue][1]
+      }, true, function(result){
+        let population = result.feature.properties.respop72018;
+        d3.select("#population").text(d3.format(".3s")(population));
       });
+    }
+    else{
+      d3.select("#population").text("N/A");
     }
   }
 

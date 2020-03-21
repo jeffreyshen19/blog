@@ -69,7 +69,7 @@ javascript: ["posts/metropolitan-areas/metropolitan-areas.js"]
         <label class="label">Show: </label>
         <div class="control">
           <label class="radio">
-            <input type="radio" name="show-control" value = "0" checked>
+            <input type="radio" name="show-control" value = "0" id = "city-boundary" checked>
             City Boundary
           </label>
           <br>
@@ -89,6 +89,9 @@ javascript: ["posts/metropolitan-areas/metropolitan-areas.js"]
             <label class="help" style="opacity:0">(This city is not part of a combined statistical area)</label>
           </label>
         </div>
+      </div>
+      <div class="field">
+        <label class="label">Population: </label><span id = "population">N/A</span>
       </div>
     </section>
   </div>
