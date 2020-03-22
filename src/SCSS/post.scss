@@ -58,6 +58,11 @@ twitter-widget{
   margin-left: calc(-2.5vw - 20px) !important;
 }
 
+.container.wider .offset{
+  width: 75vw !important;
+}
+
+
 @media screen and (max-width: 1000px){
   .container{
     width: 70%;
@@ -74,6 +79,11 @@ twitter-widget{
   .offset{
     width: 75vw !important;
   }
+
+  .container.wider .offset{
+    width: 90vw !important;
+  }
+
 }
 
 @media screen and (max-width: 800px){
@@ -91,6 +101,10 @@ twitter-widget{
 
   .offset{
     width: 85vw !important;
+  }
+
+  .container.wider .offset{
+    width: 95vw !important;
   }
 }
 
@@ -111,5 +125,10 @@ twitter-widget{
 
   .offset{
     width: 100vw !important;
+  }
+
+  .container.wider .offset{
+    width: 105vw !important;
+    margin-left: calc(-5vw - 20px) !important;
   }
 }
