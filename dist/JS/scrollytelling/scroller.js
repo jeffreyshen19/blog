@@ -30,7 +30,7 @@ var d=d3.timer(function(){c(),d.stop()})}/**
    * dispatch active event with new section
    * index.
    *
-   */function c(){var a=window.pageYOffset-10-i,b=d3.bisect(g,a);b=Math.min(f.size()-1,b),h!==b&&(e.call("active",this,b),h=b);var c=Math.max(b-1,0),d=g[c],j=(a-d)/(g[b]-d);e.call("progress",this,h,j)}/**
+   */function c(){var a=window.pageYOffset-100-i,b=d3.bisect(g,a);b=Math.min(f.size()-1,b),h!==b&&(e.call("active",this,b),h=b);var c=Math.max(b-1,0),d=g[c],j=(a-d)/(g[b]-d);e.call("progress",this,h,j)}/**
    * container - get/set the parent element
    * of the sections. Useful for if the
    * scrolling doesn't start at the very top

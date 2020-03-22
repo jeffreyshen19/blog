@@ -19,7 +19,7 @@
     }
 
     &:last-of-type{
-      margin-bottom: 200px;
+      margin-bottom: 100px;
     }
   }
 
@@ -56,5 +56,39 @@
         border: none;
       }
     }
+  }
+}
+
+@media screen and (max-width: 1000px){
+  #scrolling-vis #sections {
+    width: 250px;
+  }
+}
+
+@media screen and (max-width: 768px){
+  #scrolling-vis {
+    #vis {
+      display: block;
+    }
+
+    #sections{
+      width: 80%;
+      margin: -300px auto;
+      display: block;
+      top: 0;
+      position: relative;
+
+      section{
+        background: white;
+        padding: 10px 20px;
+        visibility: hidden;
+      }
+
+      section.active{
+        visibility: visible;
+      }
+    }
+
+    margin-bottom: 300px;
   }
 }

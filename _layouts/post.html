@@ -37,7 +37,7 @@
   <!-- Header -->
   {% include headers/{{page.header}}.html %}
 
-  <div class = "container" id = "body">
+  <div class = "container {{page.container_class}}" id = "body">
 
     <!-- Attribution -->
     <p><strong>Jeffrey Shen</strong></p>
@@ -49,16 +49,18 @@
     <hr>
 
     <!-- Sources -->
-    <h1>Further Reading</h1>
-    <ol>
-      {% if page.source_code %}
-        <li><a href = "{{ page.source_code }}" target = "_blank">Source Code</a></li>
-      {% endif %}
-      {% for post in page.references %}
-        <li><a href = "{{ post.url }}" target = "_blank">{{ post.title }}</a></li>
-      {% endfor %}
-    </ol>
-    <br>
+    {% if page.source_code or page.references.length %}
+      <h1>Further Reading</h1>
+      <ol>
+        {% if page.source_code %}
+          <li><a href = "{{ page.source_code }}" target = "_blank">Source Code</a></li>
+        {% endif %}
+        {% for post in page.references %}
+          <li><a href = "{{ post.url }}" target = "_blank">{{ post.title }}</a></li>
+        {% endfor %}
+      </ol>
+      <br>
+    {% endif %}
 
     <!-- Subscribe Banner  -->
     {% include subscribe.html %}

@@ -8,6 +8,7 @@ references: []
 header: jumbotron
 caption: ""
 featured: true
+container_class: "wider"
 javascript: ["posts/metropolitan-areas/metropolitan-areas.js"]
 ---
 
