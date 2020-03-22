@@ -1,14 +1,13 @@
 ---
 layout: post
-title:  "Scrollytelling Demo"
-subtitle: ""
+title:  "What's In A City?"
+subtitle: "Exploring the boundaries and metropolitan areas of U.S. cities"
 categories: Society
-source_code: ""
-image: ""
+image: "metropolitan.jpg"
 references: []
-header: centered
+header: jumbotron
 caption: ""
-featured: false
+featured: true
 javascript: ["posts/metropolitan-areas/metropolitan-areas.js"]
 ---
 
@@ -18,7 +17,7 @@ javascript: ["posts/metropolitan-areas/metropolitan-areas.js"]
   </div>
   <div id = 'sections' class = "column is-narrow">
     <section class="step">
-      Let's start with Los Angeles, my home town and the second largest city in the U.S.
+      Let's start with Los Angeles, my home and the second largest city in the U.S.
     </section>
     <section class="step">
       Here are the city boundaries, containing around four million people.
