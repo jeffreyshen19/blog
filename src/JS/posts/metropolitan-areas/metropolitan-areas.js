@@ -13,7 +13,7 @@ var scrollVis = function () {
   var updateFunctions = []; //Functions called DURING each section (takes a param progress 0.0 - 1.0)
 
   var map, layers = [];
-  let markers = [[[[34.0218948,-118.498265], "Santa Monica"], [[34.0825832,-118.4170435], "Beverly Hills"], [[33.8932864,-118.2393202], "Compton"]], [[[34.0115278,-118.1798982], "East Los Angeles"]], [[[33.8340569,-117.8805115], "Disneyland!"], [[34.137662,-118.1274577], "Caltech"]], [[[34.0432117,-118.2587082], "Downtown L.A."]]];
+  let markers = [[[[34.0218948,-118.498265], "Santa Monica"], [[34.0825832,-118.4170435], "Beverly Hills"], [[33.8932864,-118.2393202], "Compton"]], [[[34.0115278,-118.1798982], "East Los Angeles"]], [[[33.8340569,-117.8805115], "Disneyland!"], [[34.137662,-118.1274577], "Caltech"]], [[[34.0432117,-118.2587082], "Downtown L.A."]], [[[34.3023856,-119.3888723], "Ventura"]]];
   let cityMetadata;
 
   /**
@@ -198,14 +198,18 @@ var scrollVis = function () {
       findAndShowLayer(layers[3], function(layer){
         return layer.feature.properties.GEOID === "348"
       });
+      hideMarkers(4);
     };
     updateFunctions[9] = function() {};
 
-    activateFunctions[10] = function(){};
+    activateFunctions[10] = function(){
+      showMarkers(4);
+    };
     updateFunctions[10] = function() {};
 
     activateFunctions[11] = function(){
       showMarkers(3);
+      hideMarkers(4);
       let dropdownValue = d3.select("#dropdown").property("value");
       let radioValue = d3.select('input[name="show-control"]:checked').node().value;
 
@@ -219,7 +223,7 @@ var scrollVis = function () {
     updateFunctions[11] = function() {};
 
     activateFunctions[12] = function(){
-      hideMarkers(3)
+      hideMarkers(3);
       updateCity();
     };
     updateFunctions[12] = function() {};
