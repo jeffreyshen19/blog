@@ -72,7 +72,7 @@
     }
 
     #sections{
-      width: 80%;
+      width: 90%;
       margin: -300px auto;
       display: block;
       top: 0;
@@ -82,10 +82,12 @@
         background: white;
         padding: 10px 20px;
         visibility: hidden;
+        border-radius: 5px
       }
 
       section.active{
         visibility: visible;
+        box-shadow: 0 0 10px #888888;
       }
     }
 

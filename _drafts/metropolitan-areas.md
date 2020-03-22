@@ -86,7 +86,7 @@ javascript: ["posts/metropolitan-areas/metropolitan-areas.js"]
           <label class="radio" id = "csa">
             <input type="radio" name="show-control" value = "3">
             Combined Statistical Area
-            <label class="help" style="opacity:0">(This city is not part of a combined statistical area)</label>
+            <label class="help" style="display:none">(This city is not part of a combined statistical area)</label>
           </label>
         </div>
       </div>

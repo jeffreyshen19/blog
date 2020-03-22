@@ -320,12 +320,12 @@ var scrollVis = function () {
 
         d3.select("#csa").attr("disabled", true);
         d3.select("#csa").select("input").attr("disabled", true);
-        d3.select("#csa").select("label").style("opacity", 1);
+        d3.select("#csa").select("label").style("display", "block");
       }
       else{
         d3.select("#csa").attr("disabled", null);
         d3.select("#csa").select("input").attr("disabled", null);
-        d3.select("#csa").select("label").style("opacity", 0);
+        d3.select("#csa").select("label").style("display", "none");
       }
 
       findAndShowLayer(layers[radioValue], function(layer){
