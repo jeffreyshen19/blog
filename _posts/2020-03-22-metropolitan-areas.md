@@ -12,6 +12,12 @@ container_class: "wider"
 javascript: ["posts/metropolitan-areas/metropolitan-areas.js"]
 ---
 
+Cities are often represented as dots on a map, but in reality, their boundaries are rarely ever that simple (exception: [Mooresboro, NC](https://www.google.com/maps/place/Mooresboro,+NC/@35.3021018,-81.7188018,14z/data=!4m5!3m4!1s0x88573d48e306a619:0xc2f8fd46dd8e445c!8m2!3d35.2987362!4d-81.6989863)). If you've ever seen the boundaries of, say, [San Jose, CA](https://www.google.com/maps/place/San+Jose,+CA/@37.2970523,-121.957499,11z) or [Houston, TX](https://www.google.com/maps/place/Houston,+TX/@29.8174782,-95.6814879,10z), you'll know that municipal boundaries don't always line up with what we think a city looks like.
+
+This means that even something as simple as the population of a city depends on what we consider that city's boundaries to be. So, I decided to explore the various ways we can consider the boundaries of cities and their surrounding metropolitan areas:
+<br>
+<br>
+
 <div id = 'scrolling-vis' class = "columns">
   <div id = 'vis' class = "column">
     <div id = "map"></div>
