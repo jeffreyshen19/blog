@@ -48,8 +48,6 @@ var scrollVis = function () {
   var setupSections = function () {
     activateFunctions[0] = function(){};
     updateFunctions[0] = function() {};
-
-
   };
 
   /**
@@ -82,29 +80,50 @@ var scrollVis = function () {
 };
 
 // Load data, then display
-d3.json("/data/la-shade/census-tracts-2012.geojson").then(function(data) {
-  var plot = scrollVis();
+d3.json("/data/la-shade/census-tracts-2012.geojson")
+  .then(function(data){ // Process data
+    let histogramData = [[], [], []]; // Store the tree canopy cover, broken down by the median income of census tracts (lower, middle, upper income)
 
-  d3.select('#vis')
-    .datum(data)
-    .call(plot);
+    data.features.forEach(function(d){
+      let treePercent = parseFloat(d.properties["TREE-PCT"]),
+          medianIncome = parseInt(d.properties["median-income"]);
 
-  var scroll = scroller()
-    .container(d3.select('#scrolling-vis'));
+      if(!isNaN(treePercent) && !isNaN(medianIncome)){
+        if(medianIncome <= 42000) histogramData[0].push(treePercent); //Lower income
+        else if(medianIncome <= 125000) histogramData[1].push(treePercent); //Middle income
+        else histogramData[2].push(treePercent); //Upper income
+      }
+    });
 
-  scroll(d3.selectAll('.step'));
+    return {
+      "geojson": data,
+      "histogramData": histogramData
+    };
+  })
+  .then(function(data) {
+    var plot = scrollVis();
 
-  scroll.on('active', function (index) {
-    d3.selectAll('.step')
-      .classed("active", function (d, i) { return i === index })
-      .style('opacity', function (d, i) { return i === index ? 1 : 0.1; });
+    d3.select('#vis')
+      .datum(data)
+      .call(plot);
 
-    plot.activate(index);
+    var scroll = scroller()
+      .container(d3.select('#scrolling-vis'));
+
+    scroll(d3.selectAll('.step'));
+
+    scroll.on('active', function (index) {
+      d3.selectAll('.step')
+        .classed("active", function (d, i) { return i === index })
+        .style('opacity', function (d, i) { return i === index ? 1 : 0.1; });
+
+      plot.activate(index);
+    });
+
+    scroll.on('progress', function (index, progress) {
+      plot.update(index, progress);
+    });
+  }).catch(function(err) {
+      // handle error here
+      console.log(err);
   });
-
-  scroll.on('progress', function (index, progress) {
-    plot.update(index, progress);
-  });
-}).catch(function(err) {
-    // handle error here
-})
