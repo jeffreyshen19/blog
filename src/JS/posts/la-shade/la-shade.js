@@ -44,7 +44,7 @@ var scrollVis = function () {
     // }).addTo(map);
 
     // Add histogram
-    const margin = {top: 10, right: 30, bottom: 30, left: 40},
+    const margin = {top: 10, right: 30, bottom: 70, left: 55},
         width = document.getElementById("vis").offsetWidth - margin.left - margin.right,
         height = document.getElementById("vis").offsetHeight - margin.top - margin.bottom;
 
@@ -56,14 +56,22 @@ var scrollVis = function () {
         .attr("transform",
               "translate(" + margin.left + "," + margin.top + ")");
 
-    // X axis: scale and draw:
+    // Add X Axis
     var x = d3.scaleLinear()
         .domain([0, 50])
         .range([0, width]);
 
     svg.append("g")
         .attr("transform", "translate(0," + height + ")")
-        .call(d3.axisBottom(x));
+        .call(d3.axisBottom(x).tickFormat((x) => x + "%"));
+
+    svg.append("text")
+      .attr("transform",
+            `translate(${width / 2},${height + margin.top + 30})`)
+      .style("text-anchor", "middle")
+      .style("font-family", "IBMPlexSans")
+      .style("font-size", 16)
+      .text("Percent of Census Tract Area Covered By Tree Canopy");
 
     // set the parameters for the histogram
     var histogram = d3.histogram()
@@ -74,12 +82,22 @@ var scrollVis = function () {
     // And apply this function to data to get the bins
     var bins = histogram(data.histogramData[0]);
 
-    // Y axis: scale and draw:
+    // Add Y Axis
     var y = d3.scaleLinear()
         .range([height, 0]);
         y.domain([0, d3.max(bins, function(d) { return d.length; })]);   // d3.hist has to be called before the Y axis obviously
     svg.append("g")
         .call(d3.axisLeft(y));
+
+    svg.append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 0 - margin.left)
+      .attr("x", 0 - (height / 2))
+      .attr("dy", "1em")
+      .style("text-anchor", "middle")
+      .style("font-family", "IBMPlexSans")
+      .style("font-size", 16)
+      .text("Number of Census Tracts");
 
     // append the bar rectangles to the svg element
     svg.selectAll("rect")
