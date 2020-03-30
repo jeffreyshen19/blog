@@ -20,7 +20,8 @@ Consequat cillum exercitation deserunt incididunt excepteur sint officia cupidat
 
 <div id = 'scrolling-vis' class = "columns">
   <div id = 'vis' class = "column">
-    <div id = "map"></div>
+    <!-- <div id = "map"></div> -->
+    <div id = "graph"></div>
   </div>
   <div id = 'sections' class = "column is-narrow">
     <section class="step">
