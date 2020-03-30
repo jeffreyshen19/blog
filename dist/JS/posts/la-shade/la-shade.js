@@ -12,7 +12,7 @@ var a=-1,b=0,c=[],d=[],e=function(a){a.each(function(a){f(a),g()})},f=function(a
 // 	subdomains: 'abcd',
 // }).addTo(map);
 // Add histogram
-const b={top:10,right:30,bottom:30,left:40},c=460-b.left-b.right,e=400-b.top-b.bottom;var f=d3.select("#graph").append("svg").attr("width",c+b.left+b.right).attr("height",e+b.top+b.bottom).append("g").attr("transform","translate("+b.left+","+b.top+")"),g=d3.scaleLinear().domain([0,50]).range([0,c]);// X axis: scale and draw:
+const b={top:10,right:30,bottom:30,left:40},c=document.getElementById("vis").offsetWidth-b.left-b.right,e=document.getElementById("vis").offsetHeight-b.top-b.bottom;var f=d3.select("#graph").append("svg").attr("width",c+b.left+b.right).attr("height",e+b.top+b.bottom).append("g").attr("transform","translate("+b.left+","+b.top+")"),g=d3.scaleLinear().domain([0,50]).range([0,c]);// X axis: scale and draw:
 f.append("g").attr("transform","translate(0,"+e+")").call(d3.axisBottom(g));// set the parameters for the histogram
 var d=d3.histogram().value(function(a){return a})// I need to give the vector of value
 .domain(g.domain())// then the domain of the graphic
