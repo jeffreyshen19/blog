@@ -44,7 +44,7 @@ var scrollVis = function () {
     // }).addTo(map);
 
     // Add histogram
-    const margin = {top: 10, right: 30, bottom: 70, left: 55},
+    const margin = {top: 50, right: 30, bottom: 70, left: 55},
         width = document.getElementById("vis").offsetWidth - margin.left - margin.right,
         height = document.getElementById("vis").offsetHeight - margin.top - margin.bottom;
 
@@ -67,7 +67,7 @@ var scrollVis = function () {
 
     svg.append("text")
       .attr("transform",
-            `translate(${width / 2},${height + margin.top + 30})`)
+            `translate(${width / 2},${height + 40})`)
       .style("text-anchor", "middle")
       .style("font-family", "IBMPlexSans")
       .style("font-size", 16)
@@ -80,7 +80,31 @@ var scrollVis = function () {
         .thresholds(x.ticks(25)); // then the numbers of bins
 
     // And apply this function to data to get the bins
-    var bins = histogram(data.histogramData[0]);
+    var bins = histogram(data.histogramData[0]),
+        median = d3.median(data.histogramData[0]);
+
+    var medianX = x(median);
+
+    // Add median
+    svg.append("text")
+      .attr("transform", `translate(${medianX}, ${-22})`)
+      .style("text-anchor", "middle")
+      .style("font-family", "IBMPlexSans")
+      .style("font-size", 14)
+      .text(`Median (${d3.format(".2%")(median / 100)})`);
+
+    svg.append("polygon")
+      .attr("points", `${medianX},-5 ${medianX - 10},-15 ${medianX + 10},-15`)
+      .style("fill", "black");
+
+    svg.append("line")
+      .attr("x1", medianX)
+      .attr("x2", medianX)
+      .attr("y1", 0)
+      .attr("y2", height)
+      .style("stroke", "black")
+      .style("stroke-width", 1)
+      .style("stroke-dasharray", "4");
 
     // Add Y Axis
     var y = d3.scaleLinear()
@@ -106,7 +130,7 @@ var scrollVis = function () {
         .append("rect")
           .attr("x", 1)
           .attr("transform", function(d) { return "translate(" + x(d.x0) + "," + y(d.length) + ")"; })
-          .attr("width", function(d) { return x(d.x1) - x(d.x0) -1 ; })
+          .attr("width", function(d) { return x(d.x1) - x(d.x0); })
           .attr("height", function(d) { return height - y(d.length); })
           .style("fill", "#4e54c8")
 
