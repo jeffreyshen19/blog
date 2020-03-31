@@ -79,9 +79,7 @@ var scrollVis = function () {
       .thresholds(x.ticks(25)); // then the numbers of bins
 
     // And apply this function to data to get the bins
-    var bins = histogram(data.histogramData[0]),
-        median = d3.median(data.histogramData[0]);
-
+    var bins = histogram(data.histogramData[0]);
 
     // Add median
     svg.append("text")
@@ -150,19 +148,26 @@ var scrollVis = function () {
         .domain([0, d3.max(bins, function(d) { return d.length; })]);
 
     d3.select('.y.axis')
+      .transition()
+      .duration(1000)
       .call(d3.axisLeft(y));
-      // TODO: animate y axis transition
 
     // Update median
     d3.select("svg").select(".median-text")
+      .transition()
+      .duration(1000)
       .attr("transform", `translate(${medianX}, ${-22})`)
       .text(`Median (${d3.format(".2%")(median / 100)})`);
 
     d3.select("svg").select(".median-line")
+      .transition()
+      .duration(1000)
       .attr("x1", medianX)
       .attr("x2", medianX);
 
     d3.select("svg").select(".median-arrow")
+      .transition()
+      .duration(1000)
       .attr("points", `${medianX},-5 ${medianX - 10},-15 ${medianX + 10},-15`);
 
     // Update bars
