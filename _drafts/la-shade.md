@@ -12,9 +12,11 @@ container_class: "wider"
 javascript: ["posts/la-shade/la-shade.js"]
 ---
 
-Est fugiat consequat tempor commodo Lorem et consequat voluptate consectetur do duis enim quis officia tempor anim dolore. Nostrud ullamco id quis elit eiusmod non eiusmod ea. Anim esse labore labore tempor cillum officia occaecat non ad voluptate consequat ullamco cillum qui voluptate fugiat amet. Amet aliqua adipisicing ipsum ex commodo pariatur pariatur proident cillum dolor proident. Do minim sunt tempor proident incididunt minim commodo aliqua aliqua incididunt mollit. In deserunt esse reprehenderit ad velit dolor occaecat non culpa qui occaecat aliquip voluptate nisi eu adipisicing sint. Anim deserunt culpa sit non aute esse aute labore ex sint voluptate Lorem sunt amet adipisicing.
+Los Angeles is famous for its sunny and warm weather, yet too much sunshine is a growing issue, as global climate change is bringing more and more days of [extreme heat](https://www.nytimes.com/2017/06/22/us/california-today-extreme-heat.html) to the city. This problem is exacerbated by the lack of trees in L.A., which provide shade, improve air quality, and make public spaces more pleasant.
 
-Consequat cillum exercitation deserunt incididunt excepteur sint officia cupidatat occaecat ullamco consectetur incididunt excepteur non ea. Fugiat fugiat duis nostrud ipsum cupidatat culpa do incididunt mollit nostrud culpa. Enim labore fugiat ex laboris magna laboris fugiat irure qui ad sit dolor consectetur.
+Trees, however, are not equitably distributed throughout L.A. Beverly Hills Boulevard, for example, is lined with many mature trees that provide a lot of shade. In contrast, in many poorer neighborhoods, trees were actually cut down as part of “tough on crime” enforcement policies, because the city believed that dense tree canopies could [promote crime](https://99percentinvisible.org/episode/shade/) and be used to [stash drugs and guns](https://www.nytimes.com/2019/12/01/us/los-angeles-shade-climate-change.html).
+
+So, just how unequally are trees distributed throughout Los Angeles? I decided to quantify the issue, using GIS and [satellite imagery of L.A.](https://www.fs.usda.gov/detailfull/r5/communityforests/?cid=fseprd647442&width=full)
 <br>
 <br>
 
