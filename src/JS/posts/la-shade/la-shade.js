@@ -12,7 +12,7 @@ var scrollVis = function () {
   var activateFunctions = []; //Functions called at the START of each section
   var updateFunctions = []; //Functions called DURING each section (takes a param progress 0.0 - 1.0)
 
-  var map, histogram, bar, histogramData;
+  var map, histogram, histogramData;
 
   /**
    * chart
@@ -46,7 +46,6 @@ var scrollVis = function () {
     histogramData = data.histogramData;
 
     // Add histogram
-
     var svg = d3.select("#graph")
       .append("svg")
         .attr("width", width + margin.left + margin.right)
@@ -83,23 +82,20 @@ var scrollVis = function () {
     var bins = histogram(data.histogramData[0]),
         median = d3.median(data.histogramData[0]);
 
-    var medianX = x(median);
 
     // Add median
     svg.append("text")
-      .attr("transform", `translate(${medianX}, ${-22})`)
+      .attr("class", "median-text")
       .style("text-anchor", "middle")
       .style("font-family", "IBMPlexSans")
-      .style("font-size", 14)
-      .text(`Median (${d3.format(".2%")(median / 100)})`);
+      .style("font-size", 14);
 
     svg.append("polygon")
-      .attr("points", `${medianX},-5 ${medianX - 10},-15 ${medianX + 10},-15`)
+      .attr("class", "median-arrow")
       .style("fill", "#24252a");
 
     svg.append("line")
-      .attr("x1", medianX)
-      .attr("x2", medianX)
+      .attr("class", "median-line")
       .attr("y1", 0)
       .attr("y2", height)
       .style("stroke", "#24252a")
@@ -107,13 +103,8 @@ var scrollVis = function () {
       .style("stroke-dasharray", "4");
 
     // Add Y Axis
-    var y = d3.scaleLinear()
-        .range([height, 0])
-        .domain([0, d3.max(bins, function(d) { return d.length; })]);
-
     svg.append("g")
-      .attr("class", "y axis")
-      .call(d3.axisLeft(y));
+      .attr("class", "y axis");
 
     svg.append("text")
       .attr("transform", "rotate(-90)")
@@ -125,17 +116,12 @@ var scrollVis = function () {
       .style("font-size", 16)
       .text("Number of Census Tracts");
 
-    // append the bar rectangles to the svg element
-    bar = svg.selectAll("rect")
+    // Append histogram rectangles
+    svg.selectAll("rect")
       .data(bins)
       .enter()
       .append("rect")
-        .attr("x", 1)
-        .attr("transform", function(d) { return "translate(" + x(d.x0) + "," + y(d.length) + ")"; })
-        .attr("width", function(d) { return x(d.x1) - x(d.x0); })
-        .attr("height", function(d) { return height - y(d.length); })
-        .style("fill", "#4e54c8")
-
+        .style("fill", "#4e54c8");
   };
 
   // Handles display logic for sections
@@ -155,7 +141,9 @@ var scrollVis = function () {
         .domain([0, 50])
         .range([0, width]);
 
-    var bins = histogram(histogramData[index]);
+    var bins = histogram(histogramData[index]),
+        median = d3.median(histogramData[index]),
+        medianX = x(median);
 
     var y = d3.scaleLinear()
         .range([height, 0])
@@ -163,7 +151,21 @@ var scrollVis = function () {
 
     d3.select('.y.axis')
       .call(d3.axisLeft(y));
+      // TODO: animate y axis transition
 
+    // Update median
+    d3.select("svg").select(".median-text")
+      .attr("transform", `translate(${medianX}, ${-22})`)
+      .text(`Median (${d3.format(".2%")(median / 100)})`);
+
+    d3.select("svg").select(".median-line")
+      .attr("x1", medianX)
+      .attr("x2", medianX);
+
+    d3.select("svg").select(".median-arrow")
+      .attr("points", `${medianX},-5 ${medianX - 10},-15 ${medianX + 10},-15`);
+
+    // Update bars
     d3.select("svg").selectAll("rect")
       .data(bins)
       .transition()
@@ -171,7 +173,7 @@ var scrollVis = function () {
       .attr("x", 1)
       .attr("transform", function(d) { return "translate(" + x(d.x0) + "," + y(d.length) + ")"; })
       .attr("width", function(d) { return x(d.x1) - x(d.x0); })
-      .attr("height", function(d) { return height - y(d.length); });
+      .attr("height", function(d) { return height - y(d.length);});
   }
 
 
