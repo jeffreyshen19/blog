@@ -1,9 +1,9 @@
 import scroller from "/dist/JS/scrollytelling/scroller.js";
 
 var scrollVis = function () {
-  const width = 600,
-        height = 520,
-        margin = { top: 0, left: 20, bottom: 40, right: 10 };
+  const margin = {top: 50, right: 30, bottom: 70, left: 55},
+      width = document.getElementById("vis").offsetWidth - margin.left - margin.right,
+      height = document.getElementById("vis").offsetHeight - margin.top - margin.bottom;
 
   // Which visualization we currently are on
   var lastIndex = -1;
@@ -12,7 +12,7 @@ var scrollVis = function () {
   var activateFunctions = []; //Functions called at the START of each section
   var updateFunctions = []; //Functions called DURING each section (takes a param progress 0.0 - 1.0)
 
-  var map, layers = [];
+  var map, histogram, bar, histogramData;
 
   /**
    * chart
@@ -43,10 +43,9 @@ var scrollVis = function () {
     // 	subdomains: 'abcd',
     // }).addTo(map);
 
+    histogramData = data.histogramData;
+
     // Add histogram
-    const margin = {top: 50, right: 30, bottom: 70, left: 55},
-        width = document.getElementById("vis").offsetWidth - margin.left - margin.right,
-        height = document.getElementById("vis").offsetHeight - margin.top - margin.bottom;
 
     var svg = d3.select("#graph")
       .append("svg")
@@ -62,8 +61,9 @@ var scrollVis = function () {
         .range([0, width]);
 
     svg.append("g")
-        .attr("transform", "translate(0," + height + ")")
-        .call(d3.axisBottom(x).tickFormat((x) => x + "%"));
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height + ")")
+      .call(d3.axisBottom(x).tickFormat((x) => x + "%"));
 
     svg.append("text")
       .attr("transform",
@@ -74,10 +74,10 @@ var scrollVis = function () {
       .text("Percent of Census Tract Area Covered By Tree Canopy");
 
     // set the parameters for the histogram
-    var histogram = d3.histogram()
-        .value(function(d) { return d; })   // I need to give the vector of value
-        .domain(x.domain())  // then the domain of the graphic
-        .thresholds(x.ticks(25)); // then the numbers of bins
+    histogram = d3.histogram()
+      .value(function(d) { return d; })   // I need to give the vector of value
+      .domain(x.domain())  // then the domain of the graphic
+      .thresholds(x.ticks(25)); // then the numbers of bins
 
     // And apply this function to data to get the bins
     var bins = histogram(data.histogramData[0]),
@@ -95,23 +95,25 @@ var scrollVis = function () {
 
     svg.append("polygon")
       .attr("points", `${medianX},-5 ${medianX - 10},-15 ${medianX + 10},-15`)
-      .style("fill", "black");
+      .style("fill", "#24252a");
 
     svg.append("line")
       .attr("x1", medianX)
       .attr("x2", medianX)
       .attr("y1", 0)
       .attr("y2", height)
-      .style("stroke", "black")
+      .style("stroke", "#24252a")
       .style("stroke-width", 1)
       .style("stroke-dasharray", "4");
 
     // Add Y Axis
     var y = d3.scaleLinear()
-        .range([height, 0]);
-        y.domain([0, d3.max(bins, function(d) { return d.length; })]);   // d3.hist has to be called before the Y axis obviously
+        .range([height, 0])
+        .domain([0, d3.max(bins, function(d) { return d.length; })]);
+
     svg.append("g")
-        .call(d3.axisLeft(y));
+      .attr("class", "y axis")
+      .call(d3.axisLeft(y));
 
     svg.append("text")
       .attr("transform", "rotate(-90)")
@@ -124,23 +126,54 @@ var scrollVis = function () {
       .text("Number of Census Tracts");
 
     // append the bar rectangles to the svg element
-    svg.selectAll("rect")
-        .data(bins)
-        .enter()
-        .append("rect")
-          .attr("x", 1)
-          .attr("transform", function(d) { return "translate(" + x(d.x0) + "," + y(d.length) + ")"; })
-          .attr("width", function(d) { return x(d.x1) - x(d.x0); })
-          .attr("height", function(d) { return height - y(d.length); })
-          .style("fill", "#4e54c8")
+    bar = svg.selectAll("rect")
+      .data(bins)
+      .enter()
+      .append("rect")
+        .attr("x", 1)
+        .attr("transform", function(d) { return "translate(" + x(d.x0) + "," + y(d.length) + ")"; })
+        .attr("width", function(d) { return x(d.x1) - x(d.x0); })
+        .attr("height", function(d) { return height - y(d.length); })
+        .style("fill", "#4e54c8")
 
   };
 
   // Handles display logic for sections
   var setupSections = function () {
-    activateFunctions[0] = function(){};
-    updateFunctions[0] = function() {};
+    activateFunctions[0] = function(){displayHistogram(0)};
+    updateFunctions[0] = function(){};
+
+    activateFunctions[1] = function(){displayHistogram(1)};
+    updateFunctions[1] = function(){};
+
+    activateFunctions[2] = function(){displayHistogram(2)};
+    updateFunctions[2] = function(){};
   };
+
+  function displayHistogram(index){
+    var x = d3.scaleLinear()
+        .domain([0, 50])
+        .range([0, width]);
+
+    var bins = histogram(histogramData[index]);
+
+    var y = d3.scaleLinear()
+        .range([height, 0])
+        .domain([0, d3.max(bins, function(d) { return d.length; })]);
+
+    d3.select('.y.axis')
+      .call(d3.axisLeft(y));
+
+    d3.select("svg").selectAll("rect")
+      .data(bins)
+      .transition()
+      .duration(1000)
+      .attr("x", 1)
+      .attr("transform", function(d) { return "translate(" + x(d.x0) + "," + y(d.length) + ")"; })
+      .attr("width", function(d) { return x(d.x1) - x(d.x0); })
+      .attr("height", function(d) { return height - y(d.length); });
+  }
+
 
   /**
    * activate -

@@ -25,7 +25,19 @@ Consequat cillum exercitation deserunt incididunt excepteur sint officia cupidat
   </div>
   <div id = 'sections' class = "column is-narrow">
     <section class="step">
-
+    0
+    </section>  
+    <section class="step">
+    1
+    </section>
+    <section class="step">
+    2
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
     </section>
   </div>
 </div>
