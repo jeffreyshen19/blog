@@ -124,14 +124,17 @@ var scrollVis = function () {
 
   // Handles display logic for sections
   var setupSections = function () {
-    activateFunctions[0] = function(){displayHistogram(0)};
+    activateFunctions[0] = function(){};
     updateFunctions[0] = function(){};
 
-    activateFunctions[1] = function(){displayHistogram(1)};
-    updateFunctions[1] = function(){};
-
-    activateFunctions[2] = function(){displayHistogram(2)};
-    updateFunctions[2] = function(){};
+    // activateFunctions[0] = function(){displayHistogram(0)};
+    // updateFunctions[0] = function(){};
+    //
+    // activateFunctions[1] = function(){displayHistogram(1)};
+    // updateFunctions[1] = function(){};
+    //
+    // activateFunctions[2] = function(){displayHistogram(2)};
+    // updateFunctions[2] = function(){};
   };
 
   function displayHistogram(index){
