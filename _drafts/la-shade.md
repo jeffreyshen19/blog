@@ -24,6 +24,9 @@ So, just how unequally are trees distributed throughout Los Angeles? I decided t
   <div id = 'vis' class = "column">
     <!-- <div id = "map"></div> -->
     <div id = "graph"></div>
+    <img id = "img1" src = "/assets/graphics/posts/la-shade/tree-canopy.png">
+    <img id = "img2" src = "/assets/graphics/posts/la-shade/tree-canopy-tracts.png">
+    <img id = "img3" src = "/assets/graphics/posts/la-shade/income.png">
   </div>
   <div id = 'sections' class = "column is-narrow">
     <section class="step">
@@ -43,3 +46,5 @@ So, just how unequally are trees distributed throughout Los Angeles? I decided t
     </section>
   </div>
 </div>
+<br>
+<br>

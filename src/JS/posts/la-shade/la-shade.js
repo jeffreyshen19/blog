@@ -47,6 +47,7 @@ var scrollVis = function () {
 
     // Add histogram
     var svg = d3.select("#graph")
+      .style("display", "none")
       .append("svg")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
@@ -124,8 +125,14 @@ var scrollVis = function () {
 
   // Handles display logic for sections
   var setupSections = function () {
-    activateFunctions[0] = function(){};
+    activateFunctions[0] = function(){displayImage("img1")};
     updateFunctions[0] = function(){};
+
+    activateFunctions[1] = function(){displayImage("img2")};
+    updateFunctions[1] = function(){};
+
+    activateFunctions[2] = function(){displayImage("img3")};
+    updateFunctions[2] = function(){};
 
     // activateFunctions[0] = function(){displayHistogram(0)};
     // updateFunctions[0] = function(){};
@@ -137,7 +144,14 @@ var scrollVis = function () {
     // updateFunctions[2] = function(){};
   };
 
+  function displayImage(id){
+    d3.select("#vis").selectAll("img").transition().duration(500).style("opacity", "0");
+    d3.select("#" + id).transition().duration(500).style("opacity", "1");
+  }
+
   function displayHistogram(index){
+    d3.select("#graph").style("opacity", "1");
+
     var x = d3.scaleLinear()
         .domain([0, 50])
         .range([0, width]);
