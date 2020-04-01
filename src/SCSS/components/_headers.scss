@@ -6,6 +6,7 @@ header.jumbotron{
   background-size: cover;
   background-repeat: no-repeat;
   padding: 40px;
+  position: relative;
 
   .text{
     top: 50%;
@@ -16,6 +17,37 @@ header.jumbotron{
       margin-bottom: 8px;
       line-height: 1em;
       font-size: 3.5em;
+    }
+
+    h1, p{
+      color: white;
+      text-shadow: 0 0 4px $black;
+    }
+  }
+
+  nav{
+    a{
+      color: white;
+      &:hover{
+        color: #d5d5d5;
+      }
+    }
+  }
+}
+
+header.jumbotron.jumbotron-corner{
+  .text{
+    bottom: 40px;
+    left: 40px;
+    transform: none;
+    position: absolute;
+    top: unset;
+    padding-right: 40px;
+
+    h1{
+      margin-bottom: 8px;
+      line-height: 1em;
+      font-size: 3.2em;
     }
 
     h1, p{
