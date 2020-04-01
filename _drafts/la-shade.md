@@ -29,14 +29,25 @@ So, just how unequally are trees distributed throughout Los Angeles? I decided t
     <img id = "img3" src = "/assets/graphics/posts/la-shade/income.png">
   </div>
   <div id = 'sections' class = "column is-narrow">
-    <section class="step">
-    0
+    <section class="step" style = "margin-top: 170px;">
+    Here's a map of where trees are located in the Greater Los Angeles area, marked by green dots.
     </section>  
     <section class="step">
-    1
+    Importantly, this map shows the tree canopy (the area covered by leaves, branches, etc. when viewed from a satellite), rather than individual trees.
     </section>
     <section class="step">
-    2
+    Then, we can combine this data with the census tracts in the L.A. area. This map shows the percentage of area in a given tract which is covered by trees.
+    </section>
+    <section class="step">
+    You'll notice that South L.A. has minimal tree coverage, while neighborhoods in North L.A. and the Palos Verdes Peninsula have significant tree coverage.
+    </section>
+    <section class="step">
+    Compare this to a map of median income (2012). These maps are nearly identical—the wealthier the neighborhood, the more trees there are.
+    </section>
+    <section class="step">
+    Histogram
+    </section>
+    <section class="step">
     <br>
     <br>
     <br>

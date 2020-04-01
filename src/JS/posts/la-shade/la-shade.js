@@ -128,15 +128,27 @@ var scrollVis = function () {
     activateFunctions[0] = function(){displayImage("img1")};
     updateFunctions[0] = function(){};
 
-    activateFunctions[1] = function(){displayImage("img2")};
+    activateFunctions[1] = function(){displayImage("img1")};
     updateFunctions[1] = function(){};
 
-    activateFunctions[2] = function(){displayImage("img3")};
+    activateFunctions[2] = function(){displayImage("img2")};
     updateFunctions[2] = function(){};
 
-    // activateFunctions[0] = function(){displayHistogram(0)};
-    // updateFunctions[0] = function(){};
-    //
+    activateFunctions[3] = function(){displayImage("img2")};
+    updateFunctions[3] = function(){};
+
+    activateFunctions[4] = function(){
+      displayImage("img3");
+      d3.select("#graph").style("opacity", "0").style("display", "none");
+    };
+    updateFunctions[4] = function(){};
+
+    activateFunctions[5] = function(){
+      d3.select("#img3").transition().duration(500).style("opacity", "0");
+      displayHistogram(0)
+    };
+    updateFunctions[5] = function(){};
+
     // activateFunctions[1] = function(){displayHistogram(1)};
     // updateFunctions[1] = function(){};
     //
@@ -150,7 +162,7 @@ var scrollVis = function () {
   }
 
   function displayHistogram(index){
-    d3.select("#graph").style("opacity", "1");
+    d3.select("#graph").style("opacity", "1").style("display", "block");
 
     var x = d3.scaleLinear()
         .domain([0, 50])
