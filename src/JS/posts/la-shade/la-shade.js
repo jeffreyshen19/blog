@@ -66,12 +66,12 @@ var scrollVis = function () {
       .call(d3.axisBottom(x).tickFormat((x) => x + "%"));
 
     svg.append("text")
+      .attr("class", "y-axis-label")
       .attr("transform",
             `translate(${width / 2},${height + 40})`)
       .style("text-anchor", "middle")
       .style("font-family", "IBMPlexSans")
-      .style("font-size", 16)
-      .text("Percent of Census Tract Area Covered By Tree Canopy");
+      .style("font-size", 16);
 
     // set the parameters for the histogram
     histogram = d3.histogram()
@@ -145,15 +145,18 @@ var scrollVis = function () {
 
     activateFunctions[5] = function(){
       d3.select("#img3").transition().duration(500).style("opacity", "0");
-      displayHistogram(0)
+      displayHistogram(0, false);
     };
     updateFunctions[5] = function(){};
 
-    // activateFunctions[1] = function(){displayHistogram(1)};
-    // updateFunctions[1] = function(){};
-    //
-    // activateFunctions[2] = function(){displayHistogram(2)};
-    // updateFunctions[2] = function(){};
+    activateFunctions[6] = function(){displayHistogram(0)};
+    updateFunctions[6] = function(){};
+
+    activateFunctions[7] = function(){displayHistogram(1)};
+    updateFunctions[7] = function(){};
+
+    activateFunctions[8] = function(){displayHistogram(2)};
+    updateFunctions[8] = function(){};
   };
 
   function displayImage(id){
@@ -161,7 +164,7 @@ var scrollVis = function () {
     d3.select("#" + id).transition().duration(500).style("opacity", "1");
   }
 
-  function displayHistogram(index){
+  function displayHistogram(index, useMedian){
     d3.select("#graph").transition().duration(500).style("opacity", "1");
 
     var x = d3.scaleLinear()
@@ -181,23 +184,49 @@ var scrollVis = function () {
       .duration(1000)
       .call(d3.axisLeft(y));
 
+    d3.select(".y-axis-label")
+      .transition()
+      .duration(1000)
+      .text("Percent of Census Tract Area Covered By Tree Canopy (" + ["Low", "Middle", "Upper"][index] + " Income Tracts)");
+
     // Update median
-    d3.select("svg").select(".median-text")
-      .transition()
-      .duration(1000)
-      .attr("transform", `translate(${medianX}, ${-22})`)
-      .text(`Median (${d3.format(".2%")(median / 100)})`);
+    if(useMedian == false){
+      d3.select("svg").select(".median-text")
+        .transition()
+        .duration(1000)
+        .style("opacity", "0");
 
-    d3.select("svg").select(".median-line")
-      .transition()
-      .duration(1000)
-      .attr("x1", medianX)
-      .attr("x2", medianX);
+      d3.select("svg").select(".median-line")
+        .transition()
+        .duration(1000)
+        .style("opacity", "0");
 
-    d3.select("svg").select(".median-arrow")
-      .transition()
-      .duration(1000)
-      .attr("points", `${medianX},-5 ${medianX - 10},-15 ${medianX + 10},-15`);
+      d3.select("svg").select(".median-arrow")
+        .transition()
+        .duration(1000)
+        .style("opacity", "0");
+    }
+    else{
+      d3.select("svg").select(".median-text")
+        .transition()
+        .duration(1000)
+        .style("opacity", "1")
+        .attr("transform", `translate(${medianX}, ${-22})`)
+        .text(`Median (${d3.format(".2%")(median / 100)})`);
+
+      d3.select("svg").select(".median-line")
+        .transition()
+        .duration(1000)
+        .style("opacity", "1")
+        .attr("x1", medianX)
+        .attr("x2", medianX);
+
+      d3.select("svg").select(".median-arrow")
+        .transition()
+        .duration(1000)
+        .style("opacity", "1")
+        .attr("points", `${medianX},-5 ${medianX - 10},-15 ${medianX + 10},-15`);
+    }
 
     // Update bars
     d3.select("svg").selectAll("rect")

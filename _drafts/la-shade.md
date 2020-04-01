@@ -45,7 +45,17 @@ So, just how unequally are trees distributed throughout Los Angeles? I decided t
     Compare this to a map of median income (2012). These maps are nearly identical—the wealthier the neighborhood, the more trees there are.
     </section>
     <section class="step">
-    Histogram
+    To make the income disparities in tree coverage even more apparent, here's the distribution of tree coverage for low income census tracts (median annual income less than $42,000).
+    <label class="help">(Income categorizations from the <a href = "https://www.pewsocialtrends.org/2016/05/11/americas-shrinking-middle-class-a-close-look-at-changes-within-metropolitan-areas/">Pew Research Center</a>)</label>
+    </section>
+    <section class="step">
+    On average, low income census tracts only have 6% tree coverage.
+    </section>
+    <section class="step">
+    Similarly, middle income census tracts (median annual income between $42,000 and $125,000) have slightly higher tree coverage, with an average of 9.8% coverage.
+    </section>
+    <section class="step">
+    Compare that to upper income tracts (median annual income greater than $125,000), which have 23.4% coverage on average, and a high of 45% coverage!
     </section>
     <section class="step">
     <br>
