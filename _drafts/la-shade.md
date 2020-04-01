@@ -69,14 +69,8 @@ So, just how unequally are trees distributed throughout Los Angeles? I decided t
     <section class="step">
     Similarly, middle income census tracts (median annual income between $42,000 and $125,000) have slightly higher tree coverage, with an average of 9.8% coverage.
     </section>
-    <section class="step">
+    <section class="step" style = "margin-bottom: 200px;">
     Compare that to upper income tracts (median annual income greater than $125,000), which have 23.4% coverage on average, and a high of 45% coverage!
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
     </section>
   </div>
 </div>

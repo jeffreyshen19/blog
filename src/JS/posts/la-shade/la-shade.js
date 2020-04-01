@@ -1,9 +1,12 @@
 import scroller from "/dist/JS/scrollytelling/scroller.js";
 
+const margin = {top: 50, right: 30, bottom: 70, left: 55};
+let width = document.getElementById("vis").offsetWidth - margin.left - margin.right - 30,
+    height = document.getElementById("vis").offsetHeight - margin.top - margin.bottom;
+
+let map, histogram, histogramData, currentHistogram = -1;
+
 var scrollVis = function () {
-  const margin = {top: 50, right: 30, bottom: 70, left: 55},
-      width = document.getElementById("vis").offsetWidth - margin.left - margin.right - 30,
-      height = document.getElementById("vis").offsetHeight - margin.top - margin.bottom;
 
   // Which visualization we currently are on
   var lastIndex = -1;
@@ -11,8 +14,6 @@ var scrollVis = function () {
 
   var activateFunctions = []; //Functions called at the START of each section
   var updateFunctions = []; //Functions called DURING each section (takes a param progress 0.0 - 1.0)
-
-  var map, histogram, histogramData;
 
   /**
    * chart
@@ -140,6 +141,7 @@ var scrollVis = function () {
     activateFunctions[4] = function(){
       displayImage("img3");
       d3.select("#graph").transition().duration(500).style("opacity", "0");
+      currentHistogram = -1;
     };
     updateFunctions[4] = function(){};
 
@@ -165,6 +167,8 @@ var scrollVis = function () {
   }
 
   function displayHistogram(index, useMedian){
+    currentHistogram = index;
+
     d3.select("#graph").transition().duration(500).style("opacity", "1");
 
     var x = d3.scaleLinear()
@@ -313,6 +317,61 @@ d3.json("/data/la-shade/census-tracts-2012.geojson")
     scroll.on('progress', function (index, progress) {
       plot.update(index, progress);
     });
+
+    // Handle Resize
+    d3.select(window)
+      .on('resize', function(){
+        console.log("resizing");
+
+        width = document.getElementById("vis").offsetWidth - margin.left - margin.right - 30;
+
+        var svg = d3.select("#graph").select("svg")
+          .attr("width", width + margin.left + margin.right)
+          .attr("height", height + margin.top + margin.bottom);
+
+        var x = d3.scaleLinear()
+          .domain([0, 50])
+          .range([0, width]);
+
+        svg.select(".x.axis")
+          .call(d3.axisBottom(x).tickFormat((x) => x + "%"));
+
+        svg.select(".y-axis-label")
+          .attr("transform",
+                `translate(${width / 2},${height + 40})`);
+
+        histogram = d3.histogram()
+          .value(function(d) { return d; })
+          .domain(x.domain())
+          .thresholds(x.ticks(25));
+
+        if(currentHistogram != -1){
+          var bins = histogram(histogramData[currentHistogram]),
+              median = d3.median(histogramData[currentHistogram]),
+              medianX = x(median);
+
+          var y = d3.scaleLinear()
+              .range([height, 0])
+              .domain([0, d3.max(bins, function(d) { return d.length; })]);
+
+          d3.select("svg").select(".median-text")
+            .attr("transform", `translate(${medianX}, ${-22})`);
+
+          d3.select("svg").select(".median-line")
+            .attr("x1", medianX)
+            .attr("x2", medianX);
+
+          d3.select("svg").select(".median-arrow")
+            .attr("points", `${medianX},-5 ${medianX - 10},-15 ${medianX + 10},-15`);
+
+          d3.select("svg").selectAll("rect")
+            .attr("x", 1)
+            .attr("transform", function(d) { return "translate(" + x(d.x0) + "," + y(d.length) + ")"; })
+            .attr("width", function(d) { return x(d.x1) - x(d.x0); })
+            .attr("height", function(d) { return height - y(d.length);});
+        }
+      });
+
   }).catch(function(err) {
       // handle error here
       console.log(err);
