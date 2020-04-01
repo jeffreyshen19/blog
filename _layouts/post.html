@@ -49,7 +49,7 @@
     <hr>
 
     <!-- Sources -->
-    {% if page.source_code or page.references.length %}
+    {% if page.source_code or page.references.size > 0 %}
       <h1>Further Reading</h1>
       <ol>
         {% if page.source_code %}

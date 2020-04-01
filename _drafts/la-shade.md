@@ -4,7 +4,22 @@ title:  ""
 subtitle: ""
 categories: Society
 image: ""
-references: []
+references: [{
+    "url": "https://www.fs.usda.gov/detailfull/r5/communityforests/?cid=fseprd647442&width=full",
+    "title": “Urban Tree Canopy in California“
+},
+{
+    "url": "https://data.census.gov/cedsci/table?q=s1901&hidePreview=false&tid=ACSST1Y2012.S1901&vintage=2018",
+    "title": “Median Annual Income (2012 American Community Survey)“
+},
+{
+    "url": "https://www.nytimes.com/2019/12/01/us/los-angeles-shade-climate-change.html",
+    "title": "‘Turn Off the Sunshine’: Why Shade Is a Mark of Privilege in Los Angeles"
+},
+{
+    "url": "https://99percentinvisible.org/episode/shade/",
+    "title": "Shade — 99% Invisible"
+}]
 header: jumbotron
 caption: ""
 featured: true
