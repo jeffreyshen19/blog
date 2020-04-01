@@ -64,7 +64,7 @@ So, just how unequally are trees distributed throughout Los Angeles? I decided t
     <label class="help">(Income categorizations from the <a href = "https://www.pewsocialtrends.org/2016/05/11/americas-shrinking-middle-class-a-close-look-at-changes-within-metropolitan-areas/">Pew Research Center</a>)</label>
     </section>
     <section class="step">
-    On average, low income census tracts only have 6% tree coverage.
+    On average, low income census tracts only have 6% tree coverage (defined as the percent of a tract's area covered in trees).
     </section>
     <section class="step">
     Similarly, middle income census tracts (median annual income between $42,000 and $125,000) have slightly higher tree coverage, with an average of 9.8% coverage.

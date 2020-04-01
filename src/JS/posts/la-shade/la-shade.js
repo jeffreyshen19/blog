@@ -191,7 +191,7 @@ var scrollVis = function () {
     d3.select(".y-axis-label")
       .transition()
       .duration(1000)
-      .text("Percent of Census Tract Area Covered By Tree Canopy (" + ["Low", "Middle", "Upper"][index] + " Income Tracts)");
+      .text("Tree Canopy Coverage (" + ["Low", "Middle", "Upper"][index] + " Income Tracts)");
 
     // Update median
     if(useMedian == false){
@@ -318,58 +318,60 @@ d3.json("/data/la-shade/census-tracts-2012.geojson")
       plot.update(index, progress);
     });
 
+    let resizeTimer;
+
     // Handle Resize
     d3.select(window)
       .on('resize', function(){
-        console.log("resizing");
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(function() {
+          width = document.getElementById("vis").offsetWidth - margin.left - margin.right - 30;
 
-        width = document.getElementById("vis").offsetWidth - margin.left - margin.right - 30;
+          var svg = d3.select("#graph").select("svg")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom);
 
-        var svg = d3.select("#graph").select("svg")
-          .attr("width", width + margin.left + margin.right)
-          .attr("height", height + margin.top + margin.bottom);
+          var x = d3.scaleLinear()
+            .domain([0, 50])
+            .range([0, width]);
 
-        var x = d3.scaleLinear()
-          .domain([0, 50])
-          .range([0, width]);
+          svg.select(".x.axis")
+            .call(d3.axisBottom(x).tickFormat((x) => x + "%"));
 
-        svg.select(".x.axis")
-          .call(d3.axisBottom(x).tickFormat((x) => x + "%"));
+          svg.select(".y-axis-label")
+            .attr("transform",
+                  `translate(${width / 2},${height + 40})`);
 
-        svg.select(".y-axis-label")
-          .attr("transform",
-                `translate(${width / 2},${height + 40})`);
+          histogram = d3.histogram()
+            .value(function(d) { return d; })
+            .domain(x.domain())
+            .thresholds(x.ticks(25));
 
-        histogram = d3.histogram()
-          .value(function(d) { return d; })
-          .domain(x.domain())
-          .thresholds(x.ticks(25));
+          if(currentHistogram != -1){
+            var bins = histogram(histogramData[currentHistogram]),
+                median = d3.median(histogramData[currentHistogram]),
+                medianX = x(median);
 
-        if(currentHistogram != -1){
-          var bins = histogram(histogramData[currentHistogram]),
-              median = d3.median(histogramData[currentHistogram]),
-              medianX = x(median);
+            var y = d3.scaleLinear()
+                .range([height, 0])
+                .domain([0, d3.max(bins, function(d) { return d.length; })]);
 
-          var y = d3.scaleLinear()
-              .range([height, 0])
-              .domain([0, d3.max(bins, function(d) { return d.length; })]);
+            d3.select("svg").select(".median-text")
+              .attr("transform", `translate(${medianX}, ${-22})`);
 
-          d3.select("svg").select(".median-text")
-            .attr("transform", `translate(${medianX}, ${-22})`);
+            d3.select("svg").select(".median-line")
+              .attr("x1", medianX)
+              .attr("x2", medianX);
 
-          d3.select("svg").select(".median-line")
-            .attr("x1", medianX)
-            .attr("x2", medianX);
+            d3.select("svg").select(".median-arrow")
+              .attr("points", `${medianX},-5 ${medianX - 10},-15 ${medianX + 10},-15`);
 
-          d3.select("svg").select(".median-arrow")
-            .attr("points", `${medianX},-5 ${medianX - 10},-15 ${medianX + 10},-15`);
-
-          d3.select("svg").selectAll("rect")
-            .attr("x", 1)
-            .attr("transform", function(d) { return "translate(" + x(d.x0) + "," + y(d.length) + ")"; })
-            .attr("width", function(d) { return x(d.x1) - x(d.x0); })
-            .attr("height", function(d) { return height - y(d.length);});
-        }
+            d3.select("svg").selectAll("rect")
+              .attr("x", 1)
+              .attr("transform", function(d) { return "translate(" + x(d.x0) + "," + y(d.length) + ")"; })
+              .attr("width", function(d) { return x(d.x1) - x(d.x0); });
+          }
+        }, 50);
       });
 
   }).catch(function(err) {
