@@ -56,8 +56,6 @@ So, just how unequally are trees distributed throughout Los Angeles? I decided t
     </section>
     <section class="step">
     Compare that to upper income tracts (median annual income greater than $125,000), which have 23.4% coverage on average, and a high of 45% coverage!
-    </section>
-    <section class="step">
     <br>
     <br>
     <br>
@@ -67,5 +65,4 @@ So, just how unequally are trees distributed throughout Los Angeles? I decided t
     </section>
   </div>
 </div>
-<br>
-<br>
+As can be seen, trees—and the shade, improved air quality, and aesthetic benefits they bring—are inequitably distributed throughout Los Angeles, with wealthy neighborhoods having, on average, more tree coverage than low or middle income neighborhoods. It is important that we make sure all L.A. residents have access to ample tree coverage, in order to help mitigate climate change's effects and bring about environmental justice in the city.
