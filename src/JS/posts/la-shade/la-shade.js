@@ -2,7 +2,7 @@ import scroller from "/dist/JS/scrollytelling/scroller.js";
 
 var scrollVis = function () {
   const margin = {top: 50, right: 30, bottom: 70, left: 55},
-      width = document.getElementById("vis").offsetWidth - margin.left - margin.right,
+      width = document.getElementById("vis").offsetWidth - margin.left - margin.right - 30,
       height = document.getElementById("vis").offsetHeight - margin.top - margin.bottom;
 
   // Which visualization we currently are on
@@ -47,7 +47,7 @@ var scrollVis = function () {
 
     // Add histogram
     var svg = d3.select("#graph")
-      .style("display", "none")
+      .style("opacity", "0")
       .append("svg")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
@@ -139,7 +139,7 @@ var scrollVis = function () {
 
     activateFunctions[4] = function(){
       displayImage("img3");
-      d3.select("#graph").style("opacity", "0").style("display", "none");
+      d3.select("#graph").transition().duration(500).style("opacity", "0");
     };
     updateFunctions[4] = function(){};
 
@@ -162,7 +162,7 @@ var scrollVis = function () {
   }
 
   function displayHistogram(index){
-    d3.select("#graph").style("opacity", "1").style("display", "block");
+    d3.select("#graph").transition().duration(500).style("opacity", "1");
 
     var x = d3.scaleLinear()
         .domain([0, 50])
