@@ -1,7 +1,7 @@
 import scroller from "/dist/JS/scrollytelling/scroller.js";
 
-const margin = {top: 50, right: 30, bottom: 70, left: 55};
-let width = document.getElementById("vis").offsetWidth - margin.left - margin.right - 30,
+const margin = {top: 50, right: 15, bottom: 70, left: 55};
+let width = document.getElementById("vis").offsetWidth - margin.left - margin.right - 20,
     height = document.getElementById("vis").offsetHeight - margin.top - margin.bottom;
 
 let map, histogram, histogramData, currentHistogram = -1;
@@ -64,7 +64,7 @@ var scrollVis = function () {
     svg.append("g")
       .attr("class", "x axis")
       .attr("transform", "translate(0," + height + ")")
-      .call(d3.axisBottom(x).tickFormat((x) => x + "%"));
+      .call(d3.axisBottom(x).tickFormat((x) => x + "%").ticks(5));
 
     svg.append("text")
       .attr("class", "y-axis-label")
@@ -191,7 +191,7 @@ var scrollVis = function () {
     d3.select(".y-axis-label")
       .transition()
       .duration(1000)
-      .text("Tree Canopy Coverage (" + ["Low", "Middle", "Upper"][index] + " Income Tracts)");
+      .text("Tree Canopy (" + ["Low", "Middle", "Upper"][index] + " Income Tracts)");
 
     // Update median
     if(useMedian == false){
@@ -325,7 +325,7 @@ d3.json("/data/la-shade/census-tracts-2012.geojson")
       .on('resize', function(){
         clearTimeout(resizeTimer);
         resizeTimer = setTimeout(function() {
-          width = document.getElementById("vis").offsetWidth - margin.left - margin.right - 30;
+          width = document.getElementById("vis").offsetWidth - margin.left - margin.right - 20;
 
           var svg = d3.select("#graph").select("svg")
             .attr("width", width + margin.left + margin.right)
@@ -336,7 +336,7 @@ d3.json("/data/la-shade/census-tracts-2012.geojson")
             .range([0, width]);
 
           svg.select(".x.axis")
-            .call(d3.axisBottom(x).tickFormat((x) => x + "%"));
+            .call(d3.axisBottom(x).tickFormat((x) => x + "%").ticks(5));
 
           svg.select(".y-axis-label")
             .attr("transform",
