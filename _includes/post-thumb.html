@@ -5,7 +5,8 @@
     {% if include.small %}
       <div class = "img" style = "background-image: url('/assets/graphics/posts/{{ include.post.image }}')"/></div>
     {% else %}
-      <img src = "/assets/graphics/posts/{{ include.post.image }}">
+      <!-- <img src = "/assets/graphics/posts/{{ include.post.image }}"> -->
+      <div class = "img jumbo" style = "background-image: url('/assets/graphics/posts/{{ include.post.image }}')"/></div>
     {% endif %}
     <div class = "text">
       <p class = "meta is-size-6 heading">{{include.post.categories}}</p>

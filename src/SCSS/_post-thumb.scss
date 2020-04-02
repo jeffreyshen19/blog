@@ -37,8 +37,9 @@
     background-size: cover;
   }
 
-  img{
+  .jumbo{
     width: 100%;
+    height: 700px;
   }
 
   .text{
@@ -68,10 +69,32 @@
 
 }
 
+@media screen and (max-width: 1500px){
+  .post {
+    .jumbo{
+      height: 500px;
+    }
+  }
+}
+
+@media screen and (max-width: 1000px){
+  .post {
+    .jumbo{
+      height: 400px;
+    }
+  }
+}
+
 @media screen and (max-width: 768px){
   .post {
     .img{
       height: 300px;
+    }
+  }
+
+  .post {
+    .jumbo{
+      height: 400px;
     }
   }
 }
