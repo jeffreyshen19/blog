@@ -1,0 +1,41 @@
+Country,Allows All, Allows Some,Allows None
+Austria,TRUE,,
+Albania,TRUE,,
+Croatia,TRUE,,
+Czech Republic,TRUE,,
+Denmark,TRUE,,
+Finland,TRUE,,
+Germany,TRUE,,
+Iceland,TRUE,,
+Ireland,TRUE,,
+Lithuania,TRUE,,
+Macedonia,TRUE,,
+Montenegro,TRUE,,
+Netherlands,TRUE,,
+Serbia,TRUE,,
+Slovenia,TRUE,,
+Sweden,TRUE,,
+Switzerland,TRUE,,
+Belgium,,TRUE,
+Bosnia and Herzegovina,,TRUE,
+France,,TRUE,
+Greece,,TRUE,
+Italy,,TRUE,
+Luxembourg,,TRUE,
+Malta,,TRUE,
+Norway,,TRUE,
+Poland,,TRUE,
+Portugal,,TRUE,
+Romania,,TRUE,
+Belarus,,,TRUE
+Bulgaria,,,TRUE
+Estonia,,,TRUE
+Hungary,,,TRUE
+Kosovo,,,TRUE
+Latvia,,,TRUE
+Moldova,,,TRUE
+Russia,,,TRUE
+Slovakia,,,TRUE
+Spain,,,TRUE
+Ukraine,,,TRUE
+United Kingdom,,,TRUE
