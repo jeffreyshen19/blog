@@ -34,15 +34,28 @@ var scrollVis = function () {
   // Creates initial elements for all visualizations
   var setupVis = function (data) {
     d3.select("#vis").style("height", NUM_DISENFRANCHISED / width + "px");
-    d3.select("#dot").style("background-color", "black").style("margin", "0 auto").style("transition", "0.5s");
-    d3.select(".step:nth-of-type(3)").style("padding-bottom", NUM_DISENFRANCHISED / width + "px");
+    d3.select("#dot").style("left", "50%").style("transform", "translateX(-50%)").style("position", "relative").style("transition", "0.5s").style("background-color", "#24252a");
+    d3.select(".step:nth-of-type(3)").style("padding-bottom", NUM_DISENFRANCHISED / width / 2 + "px");
+    d3.select(".step:nth-of-type(4)").style("padding-bottom", NUM_DISENFRANCHISED / width / 2 + "px");
+
+    // Add ticks to svg
+    for(var i = 100000; i < NUM_DISENFRANCHISED; i += 100000){
+      d3.select("#dot").append("line")
+        .attr("stroke", "white")
+        .attr("x1", 0)
+        .attr("x2", (i % 1000000 == 0 ? 100 : (i % 500000 == 0 ? 75 : 50)))
+        .attr("y1", i / width)
+        .attr("y2", i / width);
+    }
   };
 
   // Handles display logic for sections
   var setupSections = function () {
+    let dot = d3.select("#dot");
+
     // Show one dot
     activateFunctions[0] = function(){
-      d3.select("#dot").style("width", "10px").style("height", "10px").style("margin-top", "200px");
+      dot.attr("width", 10).attr("height", 10).style("margin-top", "200px");
     };
     updateFunctions[0] = function(){};
 
@@ -50,7 +63,9 @@ var scrollVis = function () {
     updateFunctions[1] = function(){};
 
     activateFunctions[2] = function(){
-      d3.select("#dot").style("width", width + "px").style("height", NUM_DISENFRANCHISED / width + "px").style("margin-top", 0);
+      // Set height
+      dot.attr("width", width).attr("height", NUM_DISENFRANCHISED / width).style("margin-top", 0);
+
     };
     updateFunctions[2] = function(){};
 
@@ -58,6 +73,11 @@ var scrollVis = function () {
       console.log("switching");
     };
     updateFunctions[3] = function(){};
+
+    activateFunctions[4] = function(){
+      console.log("switching 2");
+    };
+    updateFunctions[4] = function(){};
   };
 
   /**

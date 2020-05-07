@@ -13,7 +13,8 @@ javascript: ["posts/felony-disenfranchisement/felony-disenfranchisement.js"]
 
 <div id = 'scrolling-vis' class = "columns">
   <div id = 'vis' class = "column">
-    <div id = "dot"></div>
+    <svg id = "dot">
+    </svg>
   </div>
   <div id = 'sections' class = "column is-narrow">
     <section class="step" style = "margin-top: 170px;">
@@ -26,7 +27,10 @@ javascript: ["posts/felony-disenfranchisement/felony-disenfranchisement.js"]
       Here's what that looks like:
     </section>
     <section class="step">
-      Context
+      Halfway there!
+    </section>
+    <section class="step">
+      Context 2
     </section>
 
   </div>
