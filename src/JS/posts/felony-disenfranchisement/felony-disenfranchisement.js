@@ -31,10 +31,18 @@ var scrollVis = function () {
     });
   };
 
+  var addTickLabel = function(text, people){
+    d3.select("#dot").append("text")
+      .text(text)
+      .attr("x", (people % 1000000 == 0 ? 100 : (people % 500000 == 0 ? 75 : 50)) + 10)
+      .attr("y", people / width + 6)
+      .style("fill", "white");
+  }
+
   // Creates initial elements for all visualizations
   var setupVis = function (data) {
     d3.select("#vis").style("height", NUM_DISENFRANCHISED / width + "px");
-    d3.select("#dot").style("left", "50%").style("transform", "translateX(-50%)").style("position", "relative").style("transition", "0.5s").style("background-color", "#24252a");
+    d3.select("#dot").style("left", "50%").style("transform", "translateX(-50%)").style("position", "relative").style("transition", "0.5s").style("background-color", "#24252a").style("font-size", "14px");
     d3.select(".step:nth-of-type(3)").style("padding-bottom", NUM_DISENFRANCHISED / width / 2 + "px");
     d3.select(".step:nth-of-type(4)").style("padding-bottom", NUM_DISENFRANCHISED / width / 2 + "px");
 
@@ -46,7 +54,12 @@ var scrollVis = function () {
         .attr("x2", (i % 1000000 == 0 ? 100 : (i % 500000 == 0 ? 75 : 50)))
         .attr("y1", i / width)
         .attr("y2", i / width);
+
+      if(i % 1000000 == 0) addTickLabel(i / 1000000 + "M", i);
     }
+
+    // Add scale
+    addTickLabel("100k people", 100000)
   };
 
   // Handles display logic for sections
