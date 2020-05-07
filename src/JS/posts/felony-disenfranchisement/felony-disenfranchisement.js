@@ -1,7 +1,7 @@
 import scroller from "/dist/JS/scrollytelling/scroller.js";
 
 const margin = {top: 50, right: 15, bottom: 70, left: 55};
-let width = document.getElementById("vis").offsetWidth - margin.left - margin.right - 20,
+let width = Math.min(document.getElementById("vis").offsetWidth - margin.left - margin.right - 20, 600),
     height = document.getElementById("vis").offsetHeight - margin.top - margin.bottom;
 
 let map, histogram, histogramData, currentHistogram = -1;
@@ -54,12 +54,20 @@ var scrollVis = function () {
         .attr("x2", (i % 1000000 == 0 ? 100 : (i % 500000 == 0 ? 75 : 50)))
         .attr("y1", i / width)
         .attr("y2", i / width);
-
-      if(i % 1000000 == 0) addTickLabel(i / 1000000 + "M", i);
     }
 
     // Add scale
-    addTickLabel("100k people", 100000)
+    addTickLabel("100k people", 100000);
+    addTickLabel("1M people", 1000000);
+
+    // Add comparison points
+    addTickLabel("32 states have a population smaller than this (6M)", 6000000);
+    addTickLabel("Number of prisoners in Russia", 500000);
+    addTickLabel("Number of prisoners in China", 1700000);
+    addTickLabel("Halfway there...", 3000000);
+    addTickLabel("Population of Los Angeles", 4000000);
+    addTickLabel("Entire U.S. army", 2200000);
+    addTickLabel("Number of prisoners in the U.S.", 2300000);
   };
 
   // Handles display logic for sections

@@ -21,7 +21,7 @@ javascript: ["posts/felony-disenfranchisement/felony-disenfranchisement.js"]
       Here's a hundred people, each represented as one pixel.  
     </section>  
     <section class="step">
-      In the U.S., there are an estimate 6.1 million people who can't vote because of a past or current felony conviction.
+      In the U.S., there are an estimated 6.1 million people who can't vote because of a past or current felony conviction—that's 2.5% of U.S. adults.
     </section>
     <section class="step">
       Here's what that looks like:
