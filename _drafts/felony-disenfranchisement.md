@@ -13,13 +13,21 @@ javascript: ["posts/felony-disenfranchisement/felony-disenfranchisement.js"]
 
 <div id = 'scrolling-vis' class = "columns">
   <div id = 'vis' class = "column">
-
+    <div id = "dot"></div>
   </div>
   <div id = 'sections' class = "column is-narrow">
     <section class="step" style = "margin-top: 170px;">
-      One Person
+      Here's a hundred people, each represented as one pixel.  
     </section>  
+    <section class="step">
+      In the U.S., there are an estimate 6.1 million people who can't vote because of a past or current felony conviction.
+    </section>
+    <section class="step">
+      Here's what that looks like:
+    </section>
+    <section class="step">
+      Context
+    </section>
 
   </div>
 </div>
-As can be seen, trees—and the shade, improved air quality, and aesthetic benefits they bring—are inequitably distributed throughout Los Angeles, with wealthy neighborhoods having, on average, more tree coverage than low or middle income neighborhoods. It is important that all L.A. residents have equal access to the benefits of ample tree coverage, in order to help mitigate climate change's effects and bring about environmental justice in the city.

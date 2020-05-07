@@ -6,6 +6,8 @@ let width = document.getElementById("vis").offsetWidth - margin.left - margin.ri
 
 let map, histogram, histogramData, currentHistogram = -1;
 
+const NUM_DISENFRANCHISED = 6106327;
+
 var scrollVis = function () {
 
   // Which visualization we currently are on
@@ -31,14 +33,31 @@ var scrollVis = function () {
 
   // Creates initial elements for all visualizations
   var setupVis = function (data) {
-    
-
+    d3.select("#vis").style("height", NUM_DISENFRANCHISED / width + "px");
+    d3.select("#dot").style("background-color", "black").style("margin", "0 auto").style("transition", "0.5s");
+    d3.select(".step:nth-of-type(3)").style("padding-bottom", NUM_DISENFRANCHISED / width + "px");
   };
 
   // Handles display logic for sections
   var setupSections = function () {
-    activateFunctions[0] = function(){};
+    // Show one dot
+    activateFunctions[0] = function(){
+      d3.select("#dot").style("width", "10px").style("height", "10px").style("margin-top", "200px");
+    };
     updateFunctions[0] = function(){};
+
+    activateFunctions[1] = activateFunctions[0];
+    updateFunctions[1] = function(){};
+
+    activateFunctions[2] = function(){
+      d3.select("#dot").style("width", width + "px").style("height", NUM_DISENFRANCHISED / width + "px").style("margin-top", 0);
+    };
+    updateFunctions[2] = function(){};
+
+    activateFunctions[3] = function(){
+      console.log("switching");
+    };
+    updateFunctions[3] = function(){};
   };
 
   /**
@@ -74,7 +93,6 @@ var scrollVis = function () {
 var plot = scrollVis();
 
 d3.select('#vis')
-  .datum(data)
   .call(plot);
 
 var scroll = scroller()
