@@ -5,6 +5,9 @@
   <title>{{ page.title }} • Jeffrey Shen </title>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" />
   <link type = "text/css" rel = "stylesheet" href = "/src/SCSS/post.css">
+  {% if page.stylesheet %}
+    <link type = "text/css" rel = "stylesheet" href = "/src/SCSS/posts/{{page.stylesheet}}">
+  {% endif %}
 </head>
 <body>
 
