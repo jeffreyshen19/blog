@@ -17,3 +17,4 @@ geographic-mobility
 _code/metropolitan-areas
 _code/la-shade
 scraper
+_code/police-stops/*.csv
