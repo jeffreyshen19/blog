@@ -4,7 +4,7 @@ const margin = {top: 50, right: 15, bottom: 70, left: 55};
 let width = document.getElementById("vis").offsetWidth - margin.left - margin.right - 20,
     height = document.getElementById("vis").offsetHeight - margin.top - margin.bottom;
 
-let svg, counties, radiusScale, categories = ["Chinese (Total)","Chinese (Unspecified)","Mandarin","Cantonese","Hakka","Wu","Kan, Hsiang","Fuchow","Formosan"];
+let svg, counties, radiusScale, categories = ["Chinese (Unspecified)","Mandarin","Cantonese","Hakka","Wu","Kan, Hsiang","Fuchow","Formosan","Total"];
 
 var scrollVis = function () {
 
@@ -58,7 +58,7 @@ var scrollVis = function () {
           countyDataDict[name].fullName = (countyDataDict[name].County == "Baltimore County, MD" || countyDataDict[name].County == "Baltimore, MD" ? countyDataDict[name].County : countyDataDict[name].County.split(",")[0] + " County," + countyDataDict[name].County.split(",")[1]);
 
           countyData.push(countyDataDict[name]);
-          maxValue = Math.max(maxValue, countyDataDict[name]["Chinese (Total)"])
+          maxValue = Math.max(maxValue, countyDataDict[name]["Total"])
         }
       });
 
@@ -86,33 +86,36 @@ var scrollVis = function () {
       .append("foreignObject")
       .attr("class", "tooltip")
       .style("display", "none")
-      .style("padding", 0)
-      .style("background", "none")
-      .attr("width", 200)
-      .attr("height", 200)
+      .style("box-sizing", "border-box")
+      .style("padding", 7)
+      .attr("width", 213)
+      .attr("height", 230)
       .append("xhtml:div")
         .style("font-size", "10px")
-        .style("background", "#eee")
-        .style("padding", "7px")
-        .style("z-index", 100)
+        .style("box-sizing", "border-box")
         .html(`
           <h1 style = "font-size:12px;text-align:left;"></h1>
-          <table class="table is-small">
+          <table class="table is-narrow">
             <thead>
-              <tr>
+              <tr style = "font-size:8px">
                 <th>Dialect</th>
                 <th>Num. Speakers</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>Hakka</td>
-                <td>100,000</td>
-              </tr>
-              <tr>
-                <td><strong>Total</strong></td>
-                <td><strong>100,000</strong></td>
-              </tr>
+              ${categories.map((c) => {
+                return `
+                  <tr>
+                  ${c == "Total" ? `
+                    <td><strong>${c}</strong></td>
+                    <td><strong>100,000</strong></td>
+                  ` : `
+                    <td>${c}</td>
+                    <td>100,000</td>
+                  `}
+                  </tr>
+                `
+              }).join("")}
             </tbody>
           </table>
         `);
@@ -123,6 +126,16 @@ var scrollVis = function () {
       .on("mouseover", function(d){
         tooltip.style("display", "block");
         tooltip.select("h1").text(d.fullName);
+        // tooltip.select("tbody").selectAll("tr")
+        //   .data(categories)
+        //   .append("tr")
+          // .html((c) => {return c == "Total" ? `
+          //   <td><strong>${c}</strong></td>
+          //   <td><strong>${d[c]}</strong></td>
+          // ` : `
+          //   <td>${c}</td>
+          //   <td>${d[c]}</td>
+          // `});
       })
       .on("mousemove", function(d){
         let mouse = d3.mouse(this);
@@ -140,7 +153,7 @@ var scrollVis = function () {
   var setupSections = function () {
     activateFunctions[0] = function(){
       counties.attr("r", function(d){
-        return radiusScale(d["Chinese (Total)"])
+        return radiusScale(d["Total"])
       })
     };
     updateFunctions[0] = function(){};
