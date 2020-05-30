@@ -87,12 +87,14 @@ var scrollVis = function () {
       .attr("class", "tooltip")
       .style("display", "none")
       .style("box-sizing", "border-box")
-      .style("padding", 7)
-      .attr("width", 213)
+      .style("background", "none")
+      .attr("width", 227)
       .attr("height", 230)
       .append("xhtml:div")
         .style("font-size", "10px")
         .style("box-sizing", "border-box")
+        .style("padding", "7px")
+        .style("background", "#eee")
         .html(`
           <h1 style = "font-size:12px;text-align:left;"></h1>
           <table class="table is-narrow">
