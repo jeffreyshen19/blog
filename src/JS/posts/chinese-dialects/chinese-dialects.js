@@ -33,7 +33,7 @@ var scrollVis = function () {
   var setupVis = function (data) {
     // Add svg
     d3.select('#map').style("text-align", "center").node().append(data[0].documentElement);
-    svg = d3.select("svg");
+    svg = d3.select("svg").select("g").style("transition", "0.4s all");
 
     // Style paths
     svg.select("#State_Lines").style("stroke", "white");
@@ -144,8 +144,19 @@ var scrollVis = function () {
       counties.attr("r", function(d){
         return d["Mandarin"] - d["Cantonese"] > 0 ? radiusScale(d["Mandarin"] - d["Cantonese"]) : 0;
       })
+      svg.attr("transform", "translate(0, 0) scale(1)");
     };
     updateFunctions[4] = function(){};
+
+    activateFunctions[5] = function(){
+      svg.attr("transform", "translate(100, -400) scale(4)");
+    };
+    updateFunctions[5] = function(){};
+
+    activateFunctions[6] = function(){
+      svg.attr("transform", "translate(-2700, -500) scale(6)");
+    };
+    updateFunctions[6] = function(){};
   };
 
 

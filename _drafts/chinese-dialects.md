@@ -37,6 +37,12 @@ javascript: ["posts/chinese-dialects/chinese-dialects.js"]
     <section class="step" style = "margin-top: 170px;">
       Lorem ipsum
     </section>  
+    <section class="step" style = "margin-top: 170px;">
+      San Francisco
+    </section>  
+    <section class="step" style = "margin-top: 170px;">
+      New York
+    </section>  
     <!-- Explore all dialects at the end  -->
   </div>
 </div>
