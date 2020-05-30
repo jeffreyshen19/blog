@@ -4,7 +4,7 @@ const margin = {top: 50, right: 15, bottom: 70, left: 55};
 let width = document.getElementById("vis").offsetWidth - margin.left - margin.right - 20,
     height = document.getElementById("vis").offsetHeight - margin.top - margin.bottom;
 
-let svg, counties, radiusScale, categories = ["Chinese (Unspecified)","Mandarin","Cantonese","Hakka","Wu","Kan, Hsiang","Fuchow","Formosan","Total"];
+let svg, counties, circles, radiusScale, colorScale, categories = ["Chinese (Unspecified)","Mandarin","Cantonese","Hakka","Wu","Kan, Hsiang","Fuchow","Formosan","Total"];
 
 var scrollVis = function () {
 
@@ -39,7 +39,7 @@ var scrollVis = function () {
     svg.select("#State_Lines").style("stroke", "white");
 
     // Organize data to match it by county
-    let countyDataDict = {}, countyData = [], maxValue = 0;
+    let countyDataDict = {}, countyData = [], maxValue = 0, extent = [0, 0];
     data[1].forEach(function(d){
       countyDataDict[d["County"]] = d;
     })
@@ -58,12 +58,19 @@ var scrollVis = function () {
           countyDataDict[name].fullName = (countyDataDict[name].County == "Baltimore County, MD" || countyDataDict[name].County == "Baltimore, MD" ? countyDataDict[name].County : countyDataDict[name].County.split(",")[0] + " County," + countyDataDict[name].County.split(",")[1]);
 
           countyData.push(countyDataDict[name]);
-          maxValue = Math.max(maxValue, countyDataDict[name]["Total"])
+          maxValue = Math.max(maxValue, countyDataDict[name]["Total"]);
+          extent[0] = Math.min(countyDataDict[name].Cantonese - countyDataDict[name].Mandarin, extent[0])
+          extent[1] = Math.max(countyDataDict[name].Cantonese - countyDataDict[name].Mandarin, extent[1])
+
+          d3.select(this).attr("class", "path")
         }
       });
 
-    // Radius scale
+    // Scales
     radiusScale = d3.scaleSqrt().domain([0, maxValue]).range([0, 40]);
+    colorScale = d3.scaleDiverging()
+      .domain([extent[0], 0, extent[1]])
+      .interpolator(d3.interpolatePuOr);
 
     // Add Legend
     let bbox = svg.node().getBBox(), legend = [100000, 10000, 1000];
@@ -92,6 +99,10 @@ var scrollVis = function () {
 
     // Add Circles
     counties = svg.select("#stylegroup")
+      .selectAll(".path")
+      .data(countyData);
+
+    circles = svg.select("#stylegroup")
       .selectAll("circle")
       .data(countyData)
       .enter()
@@ -104,52 +115,55 @@ var scrollVis = function () {
         });
 
     svg.selectAll("circle")
-      .style("fill", "rgba(102, 51, 153, 0.15)")
-      .style("stroke", "rgba(102, 51, 153, 0.5)")
-      .style("stroke-width", 1)
-      .style("transition", "0.2s all");
+    .style("fill", "rgba(102, 51, 153, 0.15)")
+    .style("stroke", "rgba(102, 51, 153, 0.5)")
+    .style("stroke-width", 1)
+    .style("transition", "0.2s all");
   };
 
   // Handles display logic for sections
   var setupSections = function () {
     activateFunctions[0] = function(){
-      counties.attr("r", function(d){
+      circles.attr("r", function(d){
         return radiusScale(d["Total"])
       })
     };
     updateFunctions[0] = function(){};
 
     activateFunctions[1] = function(){
-      counties.attr("r", function(d){
+      circles.attr("r", function(d){
         return radiusScale(d["Mandarin"])
       })
     };
     updateFunctions[1] = function(){};
 
     activateFunctions[2] = function(){
-      counties.attr("r", function(d){
+      circles.attr("r", function(d){
         return radiusScale(d["Cantonese"])
       })
     };
     updateFunctions[2] = function(){};
 
     activateFunctions[3] = function(){
-      counties.attr("r", function(d){
+      circles.attr("r", function(d){
         return d["Cantonese"] - d["Mandarin"] > 0 ? radiusScale(d["Cantonese"] - d["Mandarin"]) : 0;
       })
     };
     updateFunctions[3] = function(){};
 
     activateFunctions[4] = function(){
-      counties.attr("r", function(d){
+      circles.attr("r", function(d){
         return d["Mandarin"] - d["Cantonese"] > 0 ? radiusScale(d["Mandarin"] - d["Cantonese"]) : 0;
       })
       svg.attr("transform", "translate(0, 0) scale(1)");
+      counties.style("fill", "d0d0d0");
     };
     updateFunctions[4] = function(){};
 
     activateFunctions[5] = function(){
-      svg.attr("transform", "translate(100, -400) scale(4)");
+      svg.attr("transform", "translate(50, -800) scale(7)");
+      counties.style("fill", (d) => colorScale(d.Cantonese - d.Mandarin));
+      circles.attr("r", 0);
     };
     updateFunctions[5] = function(){};
 
