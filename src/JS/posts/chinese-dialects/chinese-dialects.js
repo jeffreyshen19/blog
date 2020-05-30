@@ -63,7 +63,32 @@ var scrollVis = function () {
       });
 
     // Radius scale
-    radiusScale = d3.scaleSqrt().domain([0, maxValue]).range([0, 20]);
+    radiusScale = d3.scaleSqrt().domain([0, maxValue]).range([0, 40]);
+
+    // Add Legend
+    let bbox = svg.node().getBBox(), legend = [100000, 10000, 1000];
+
+    svg.append("g").selectAll("circle")
+      .data(legend)
+      .enter()
+      .append("circle")
+        .attr("cx", bbox.width - radiusScale(legend[0]))
+        .attr("cy", (d, i) => bbox.height - radiusScale(d) - legend.slice(0, i).reduce(function(a, currentValue){return a + 2 * radiusScale(currentValue) + 5}, 0))
+        .attr("r", (d) => radiusScale(d));
+
+    svg.append("text")
+      .text("100k")
+      .style("text-anchor", "middle")
+      .style("font-size", "8")
+      .attr("x", bbox.width - radiusScale(100000))
+      .attr("y", bbox.height - radiusScale(100000) + 2);
+
+    svg.append("text")
+      .text("1k")
+      .style("text-anchor", "middle")
+      .style("font-size", "8")
+      .attr("x", bbox.width - radiusScale(100000))
+      .attr("y", bbox.height - radiusScale(100000) * 2 - radiusScale(10000) * 2 - radiusScale(1000) - 17);
 
     // Add Circles
     counties = svg.select("#stylegroup")
@@ -71,16 +96,18 @@ var scrollVis = function () {
       .data(countyData)
       .enter()
       .append("circle")
-        .style("fill", "rgba(102, 51, 153, 0.15)")
-        .style("stroke", "rgba(102, 51, 153, 0.5)")
-        .style("stroke-width", 1)
-        .style("transition", "0.2s all")
         .attr("cx", (d) => {
           return d.center[0]
         })
         .attr("cy", (d) => {
           return d.center[1]
         });
+
+    svg.selectAll("circle")
+      .style("fill", "rgba(102, 51, 153, 0.15)")
+      .style("stroke", "rgba(102, 51, 153, 0.5)")
+      .style("stroke-width", 1)
+      .style("transition", "0.2s all");
   };
 
   // Handles display logic for sections
