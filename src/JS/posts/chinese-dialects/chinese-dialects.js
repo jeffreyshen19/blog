@@ -4,7 +4,7 @@ const margin = {top: 50, right: 15, bottom: 70, left: 55};
 let width = document.getElementById("vis").offsetWidth - margin.left - margin.right - 20,
     height = document.getElementById("vis").offsetHeight - margin.top - margin.bottom;
 
-let svg, counties, radiusScale;
+let svg, counties, radiusScale, categories = ["Chinese (Total)","Chinese (Unspecified)","Mandarin","Cantonese","Hakka","Wu","Kan, Hsiang","Fuchow","Formosan"];
 
 var scrollVis = function () {
 
@@ -32,7 +32,7 @@ var scrollVis = function () {
   // Creates initial elements for all visualizations
   var setupVis = function (data) {
     // Add svg
-    d3.select('#map').node().append(data[0].documentElement);
+    d3.select('#map').style("text-align", "center").node().append(data[0].documentElement);
     svg = d3.select("svg");
 
     // Style paths
@@ -54,7 +54,9 @@ var scrollVis = function () {
       .each(function(d) {
         let name = d3.select(this).select("title").text();
         if(name in countyDataDict) {
-          countyDataDict[name].center = getCentroid(this)
+          countyDataDict[name].center = getCentroid(this);
+          countyDataDict[name].fullName = (countyDataDict[name].County == "Baltimore County, MD" || countyDataDict[name].County == "Baltimore, MD" ? countyDataDict[name].County : countyDataDict[name].County.split(",")[0] + " County," + countyDataDict[name].County.split(",")[1]);
+
           countyData.push(countyDataDict[name]);
           maxValue = Math.max(maxValue, countyDataDict[name]["Chinese (Total)"])
         }
@@ -78,6 +80,60 @@ var scrollVis = function () {
         .attr("cy", (d) => {
           return d.center[1]
         });
+
+    // Add tooltip
+    svg.style("overflow", "visible")
+      .append("foreignObject")
+      .attr("class", "tooltip")
+      .style("display", "none")
+      .style("padding", 0)
+      .style("background", "none")
+      .attr("width", 200)
+      .attr("height", 200)
+      .append("xhtml:div")
+        .style("font-size", "10px")
+        .style("background", "#eee")
+        .style("padding", "7px")
+        .style("z-index", 100)
+        .html(`
+          <h1 style = "font-size:12px;text-align:left;"></h1>
+          <table class="table is-small">
+            <thead>
+              <tr>
+                <th>Dialect</th>
+                <th>Num. Speakers</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Hakka</td>
+                <td>100,000</td>
+              </tr>
+              <tr>
+                <td><strong>Total</strong></td>
+                <td><strong>100,000</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        `);
+
+    let tooltip = d3.select(".tooltip");
+
+    d3.selectAll("circle")
+      .on("mouseover", function(d){
+        tooltip.style("display", "block");
+        tooltip.select("h1").text(d.fullName);
+      })
+      .on("mousemove", function(d){
+        let mouse = d3.mouse(this);
+        console.log(mouse);
+        tooltip
+          .attr("x", mouse[0])
+          .attr("y", mouse[1])
+      })
+      .on("mouseout", function(d){
+        tooltip.style("display", "none");
+      })
   };
 
   // Handles display logic for sections

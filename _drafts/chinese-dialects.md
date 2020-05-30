@@ -18,7 +18,7 @@ javascript: ["posts/chinese-dialects/chinese-dialects.js"]
 
 <div id = 'scrolling-vis' class = "columns">
   <div id = 'vis' class = "column">
-    <div id = "map" style = 'text-align:center'></div>
+    <div id = "map"></div>
     <!-- <div id = "graph"></div> -->
   </div>
   <div id = 'sections' class = "column is-narrow">
