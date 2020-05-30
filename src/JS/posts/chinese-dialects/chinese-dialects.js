@@ -4,7 +4,7 @@ const margin = {top: 50, right: 15, bottom: 70, left: 55};
 let width = document.getElementById("vis").offsetWidth - margin.left - margin.right - 20,
     height = document.getElementById("vis").offsetHeight - margin.top - margin.bottom;
 
-let svg, counties;
+let svg, counties, radiusScale;
 
 var scrollVis = function () {
 
@@ -38,8 +38,8 @@ var scrollVis = function () {
     // Style paths
     svg.select("#State_Lines").style("stroke", "white");
 
-    // Add circles for each county that has data
-    let countyDataDict = {}, countyData = [];
+    // Organize data to match it by county
+    let countyDataDict = {}, countyData = [], maxValue = 0;
     data[1].forEach(function(d){
       countyDataDict[d["County"]] = d;
     })
@@ -54,34 +54,38 @@ var scrollVis = function () {
       .each(function(d) {
         let name = d3.select(this).select("title").text();
         if(name in countyDataDict) {
+          countyDataDict[name].center = getCentroid(this)
           countyData.push(countyDataDict[name]);
-          svg.append("circle")
-            .style("fill", "red")
-            .style("stroke", "red")
-            .attr("r", 5)
-            .attr("cx", (d) => {
-              return getCentroid(this)[0]
-            })
-            .attr("cy", (d) => {
-              return getCentroid(this)[1]
-            });
+          maxValue = Math.max(maxValue, countyDataDict[name]["Chinese (Total)"])
         }
       });
 
-    // Bind Data
+    // Radius scale
+    radiusScale = d3.scaleSqrt().domain([0, maxValue]).range([0, 20]);
+
+    // Add Circles
     counties = svg.select("#stylegroup")
       .selectAll("circle")
-      .data(countyData);
+      .data(countyData)
+      .enter()
+      .append("circle")
+        .style("fill", "rgba(102, 51, 153, 0.15)")
+        .style("stroke", "rgba(102, 51, 153, 0.5)")
+        .style("stroke-width", 1)
+        .attr("cx", (d) => {
+          return d.center[0]
+        })
+        .attr("cy", (d) => {
+          return d.center[1]
+        });
   };
 
   // Handles display logic for sections
   var setupSections = function () {
     activateFunctions[0] = function(){
-      // counties.style("fill", function(d){
-      //   if(d == null) return "#d0d0d0";
-      //   console.log(path.centroid(d));
-      //   return "red";
-      // })
+      counties.attr("r", function(d){
+        return radiusScale(d["Chinese (Total)"])
+      })
     };
     updateFunctions[0] = function(){};
   };
