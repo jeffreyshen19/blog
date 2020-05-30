@@ -74,81 +74,13 @@ var scrollVis = function () {
         .style("fill", "rgba(102, 51, 153, 0.15)")
         .style("stroke", "rgba(102, 51, 153, 0.5)")
         .style("stroke-width", 1)
+        .style("transition", "0.2s all")
         .attr("cx", (d) => {
           return d.center[0]
         })
         .attr("cy", (d) => {
           return d.center[1]
         });
-
-    // Add tooltip
-    svg.style("overflow", "visible")
-      .append("foreignObject")
-      .attr("class", "tooltip")
-      .style("display", "none")
-      .style("box-sizing", "border-box")
-      .style("background", "none")
-      .attr("width", 227)
-      .attr("height", 230)
-      .append("xhtml:div")
-        .style("font-size", "10px")
-        .style("box-sizing", "border-box")
-        .style("padding", "7px")
-        .style("background", "#eee")
-        .html(`
-          <h1 style = "font-size:12px;text-align:left;"></h1>
-          <table class="table is-narrow">
-            <thead>
-              <tr style = "font-size:8px">
-                <th>Dialect</th>
-                <th>Num. Speakers</th>
-              </tr>
-            </thead>
-            <tbody>
-              ${categories.map((c) => {
-                return `
-                  <tr>
-                  ${c == "Total" ? `
-                    <td><strong>${c}</strong></td>
-                    <td><strong>100,000</strong></td>
-                  ` : `
-                    <td>${c}</td>
-                    <td>100,000</td>
-                  `}
-                  </tr>
-                `
-              }).join("")}
-            </tbody>
-          </table>
-        `);
-
-    let tooltip = d3.select(".tooltip");
-
-    d3.selectAll("circle")
-      .on("mouseover", function(d){
-        tooltip.style("display", "block");
-        tooltip.select("h1").text(d.fullName);
-        // tooltip.select("tbody").selectAll("tr")
-        //   .data(categories)
-        //   .append("tr")
-          // .html((c) => {return c == "Total" ? `
-          //   <td><strong>${c}</strong></td>
-          //   <td><strong>${d[c]}</strong></td>
-          // ` : `
-          //   <td>${c}</td>
-          //   <td>${d[c]}</td>
-          // `});
-      })
-      .on("mousemove", function(d){
-        let mouse = d3.mouse(this);
-        console.log(mouse);
-        tooltip
-          .attr("x", mouse[0])
-          .attr("y", mouse[1])
-      })
-      .on("mouseout", function(d){
-        tooltip.style("display", "none");
-      })
   };
 
   // Handles display logic for sections
@@ -159,6 +91,34 @@ var scrollVis = function () {
       })
     };
     updateFunctions[0] = function(){};
+
+    activateFunctions[1] = function(){
+      counties.attr("r", function(d){
+        return radiusScale(d["Mandarin"])
+      })
+    };
+    updateFunctions[1] = function(){};
+
+    activateFunctions[2] = function(){
+      counties.attr("r", function(d){
+        return radiusScale(d["Cantonese"])
+      })
+    };
+    updateFunctions[2] = function(){};
+
+    activateFunctions[3] = function(){
+      counties.attr("r", function(d){
+        return d["Cantonese"] - d["Mandarin"] > 0 ? radiusScale(d["Cantonese"] - d["Mandarin"]) : 0;
+      })
+    };
+    updateFunctions[3] = function(){};
+
+    activateFunctions[4] = function(){
+      counties.attr("r", function(d){
+        return d["Mandarin"] - d["Cantonese"] > 0 ? radiusScale(d["Mandarin"] - d["Cantonese"]) : 0;
+      })
+    };
+    updateFunctions[4] = function(){};
   };
 
 

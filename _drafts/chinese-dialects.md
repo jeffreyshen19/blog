@@ -23,7 +23,20 @@ javascript: ["posts/chinese-dialects/chinese-dialects.js"]
   </div>
   <div id = 'sections' class = "column is-narrow">
     <section class="step" style = "margin-top: 170px;">
-    Lorem ipsum
+      Overall
     </section>  
+    <section class="step" style = "margin-top: 170px;">
+      Mandarin
+    </section>  
+    <section class="step" style = "margin-top: 170px;">
+      Cantonese
+    </section>  
+    <section class="step" style = "margin-top: 170px;">
+      Lorem ipsum
+    </section>  
+    <section class="step" style = "margin-top: 170px;">
+      Lorem ipsum
+    </section>  
+    <!-- Explore all dialects at the end  -->
   </div>
 </div>
