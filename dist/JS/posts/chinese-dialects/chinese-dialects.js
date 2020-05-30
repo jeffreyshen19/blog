@@ -1,4 +1,8 @@
-Promise.all([d3.xml("/data/chinese-dialects/usa_counties.svg"),d3.csv("/data/chinese-dialects/languages.csv")]).then(a=>{d3.select("#map").node().append(a[0].documentElement);let b=d3.select("svg"),c={},d=[];// Join data
+import scroller from"/dist/JS/scrollytelling/scroller.js";const margin={top:50,right:15,bottom:70,left:55};let svg,counties,width=document.getElementById("vis").offsetWidth-margin.left-margin.right-20,height=document.getElementById("vis").offsetHeight-margin.top-margin.bottom;var scrollVis=function(){// Which visualization we currently are on
+var a=-1,b=0,c=[],d=[],e=function(a){a.each(function(a){f(a),g()})},f=function(a){d3.select("#map").node().append(a[0].documentElement),svg=d3.select("svg");// Join data
 // -- First, get proper order of data
-a[1].forEach(function(a){c[a.County]=a}),b.select("#stylegroup").selectAll("path").each(function(){let a=d3.select(this).select("title").text();a in c?d.push(c[a]):d.push(null)});// -- Then, bind data to DOM
-b.select("#stylegroup").selectAll("path").data(d)});
+let b={},c=[];a[1].forEach(function(a){b[a.County]=a}),svg.select("#stylegroup").selectAll("path").each(function(){let a=d3.select(this).select("title").text();a in b?c.push(b[a]):c.push(null)}),counties=svg.select("#stylegroup").selectAll("path").data(c)},g=function(){c[0]=function(){},d[0]=function(){}};// return chart function
+return e.activate=function(d){b=d;var e=0>b-a?-1:1,f=d3.range(a+e,b+e,e);f.forEach(function(a){c[a]()}),a=b},e.update=function(a,b){d[a](b)},e};// Load data, then display
+Promise.all([d3.xml("/data/chinese-dialects/usa_counties.svg"),d3.csv("/data/chinese-dialects/languages.csv")]).then(function(a){var b=scrollVis();d3.select("#vis").datum(a).call(b);var c=scroller().container(d3.select("#scrolling-vis"));c(d3.selectAll(".step")),c.on("active",function(a){d3.selectAll(".step").classed("active",function(b,c){return c===a}).style("opacity",function(b,c){return c===a?1:.1}),b.activate(a)}),c.on("progress",function(a,c){b.update(a,c)});let d;// Handle Resize
+d3.select(window).on("resize",function(){clearTimeout(d),d=setTimeout(function(){},50)})}).catch(function(a){// handle error here
+console.log(a)});

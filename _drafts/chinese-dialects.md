@@ -15,5 +15,15 @@ featured: false
 javascript: ["posts/chinese-dialects/chinese-dialects.js"]
 ---
 
-<div id = "map">
+
+<div id = 'scrolling-vis' class = "columns">
+  <div id = 'vis' class = "column">
+    <div id = "map" style = 'text-align:center'></div>
+    <!-- <div id = "graph"></div> -->
+  </div>
+  <div id = 'sections' class = "column is-narrow">
+    <section class="step" style = "margin-top: 170px;">
+    Lorem ipsum
+    </section>  
+  </div>
 </div>
