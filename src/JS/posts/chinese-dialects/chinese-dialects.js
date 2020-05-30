@@ -75,6 +75,27 @@ var scrollVis = function () {
     // Add Legend
     let bbox = svg.node().getBBox(), legend = [100000, 10000, 1000];
 
+    d3.select("#map").append("div")
+      .attr("class", "color-scale")
+      .style("position", "absolute")
+      .style("background-image", "linear-gradient(to right, #330554, #9084B9, #f0eded, #F8B562, #853F07)")
+      .style("width", "280px")
+      .style("height", "20px")
+      .style("bottom", "20px")
+      .style("left", "20px")
+      .style("font-size", "12px")
+      .style("padding", "3px 15px")
+      .style("position", "relative")
+      .style("display", "none")
+      .style("transition", "0.4s all")
+      .style("transform", "rotate(90deg) translate(-140px, 140px)")
+      .append("div")
+        .style("position", "absolute")
+        .style("top", "-20px")
+        .style("left", "0")
+        .style("right", "0")
+        .html("⟵ More Mandarin<span style = 'margin-right: 30px;'></span>More Cantonese ⟶")
+
     svg.append("g").selectAll("circle")
       .data(legend)
       .enter()
@@ -157,6 +178,7 @@ var scrollVis = function () {
       })
       svg.attr("transform", "translate(0, 0) scale(1)");
       counties.style("fill", "d0d0d0");
+      d3.select(".color-scale").style("display", "none");
     };
     updateFunctions[4] = function(){};
 
@@ -164,6 +186,7 @@ var scrollVis = function () {
       svg.attr("transform", "translate(50, -800) scale(7)");
       counties.style("fill", (d) => colorScale(d.Cantonese - d.Mandarin));
       circles.attr("r", 0);
+      d3.select(".color-scale").style("display", "block");
     };
     updateFunctions[5] = function(){};
 
