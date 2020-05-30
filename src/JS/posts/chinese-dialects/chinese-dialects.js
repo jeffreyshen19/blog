@@ -35,29 +35,54 @@ var scrollVis = function () {
     d3.select('#map').node().append(data[0].documentElement);
     svg = d3.select("svg");
 
-    // Join data
+    // Style paths
+    svg.select("#State_Lines").style("stroke", "white");
 
-    // -- First, get proper order of data
+    // Add circles for each county that has data
     let countyDataDict = {}, countyData = [];
     data[1].forEach(function(d){
       countyDataDict[d["County"]] = d;
     })
 
+    function getCentroid(e){
+      var bbox = e.getBBox();
+      return [bbox.x + bbox.width/2, bbox.y + bbox.height/2];
+    }
+
     svg.select("#stylegroup").selectAll("path")
+      .style("stroke", "white")
       .each(function(d) {
         let name = d3.select(this).select("title").text();
-        if(name in countyDataDict) countyData.push(countyDataDict[name])
-        else countyData.push(null)
+        if(name in countyDataDict) {
+          countyData.push(countyDataDict[name]);
+          svg.append("circle")
+            .style("fill", "red")
+            .style("stroke", "red")
+            .attr("r", 5)
+            .attr("cx", (d) => {
+              return getCentroid(this)[0]
+            })
+            .attr("cy", (d) => {
+              return getCentroid(this)[1]
+            });
+        }
       });
 
-    // -- Then, bind data to DOM
-    counties = svg.select("#stylegroup").selectAll("path")
-      .data(countyData)
+    // Bind Data
+    counties = svg.select("#stylegroup")
+      .selectAll("circle")
+      .data(countyData);
   };
 
   // Handles display logic for sections
   var setupSections = function () {
-    activateFunctions[0] = function(){};
+    activateFunctions[0] = function(){
+      // counties.style("fill", function(d){
+      //   if(d == null) return "#d0d0d0";
+      //   console.log(path.centroid(d));
+      //   return "red";
+      // })
+    };
     updateFunctions[0] = function(){};
   };
 
