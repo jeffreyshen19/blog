@@ -1,0 +1,431 @@
+,State,City,Group Name,Leader,Group Name (Clean),Lat,Lon
+0,KY,Louisville,Golden Acorn,Mary Hayward,Golden Acorn,,
+1,AZ,Glendale,Copper Creek,Steve Fay,Copper Creek,,
+2,TX,Alba,"Alba-Golden School (Alba, TX)",Cynthia Weimer,Alba-Golden School,32.7520618,-95.5827334
+3,WI,Cross Plains,St Francis-Xavier,Dave Mack,St Francis-Xavier,,
+4,AL,Lanett,Lanett Junior High School,Tiffenie Dozier,Lanett Junior High School,32.8565288,-85.1970425
+5,CA,Heber,"Heber Elementary School (Heber, CA)",Tanya Romero,Heber Elementary School,32.726299,-115.5284066
+6,TN,Antioch,"Apollo Middle School (Antioch, TN)",Elizabeth Rose,Apollo Middle School,36.0666023,-86.66417919999999
+7,ID,Lewiston,Cornerstone Christian School,Dena Johnson,Cornerstone Christian School,46.4027159,-117.0210703
+8,NY,Brooklyn,"P.S./I.S. 288 - The Shirley Tanyhill (Brooklyn, NY)",Michael Gentils,P.S./I.S. 288 - The Shirley Tanyhill,,
+9,SC,walterboro,"Colleton County Middle School (Walterboro, SC)",teresa blankenship,Colleton County Middle School,32.9390551,-80.63879829999999
+10,FL,Lake Wales,McLaughlin Middle School and Fine Arts Academy,LaShonda English,McLaughlin Middle School and Fine Arts Academy,27.888534,-81.58449499999999
+11,MA,Chestnut Hill,Mount Alvernia Academy,Kathleen Hall,Mount Alvernia Academy,42.3386409,-71.1734903
+12,WA,Silverdale,Central Kitsap Middle School (Corbo),Tina Corbo,Central Kitsap Middle School,47.6536546,-122.6993793
+13,MA,Lynn,Breed Middle School,Kristina Agarwal,Breed Middle School,42.4705374,-70.9847715
+14,CA,Portola Valley,Woodland School,Betsy Zager,Woodland School,37.402995,-122.19691
+15,GA,Canton,Cherokee Charter Academy,Amy Tice,Cherokee Charter Academy,34.1623391,-84.5345876
+16,TX,Schertz,"Ray D Corbett Junior High Sch (Schertz, TX)",Amanda Heavyside,Ray D Corbett Junior High Sch,29.5279435,-98.24333969999999
+17,DC,Washington,Eliot Hine Middle School,Lorena Martinez,Eliot Hine Middle School,38.89261219999999,-76.9782895
+18,ID,Boise,Cole Valley Christian School,Ashley McDowell,Cole Valley Christian School,43.6331901,-116.2914435
+19,VA,Warrenton,"W C Taylor Middle School (Warrenton, VA)",Susan Morrison,W C Taylor Middle School,38.7022818,-77.79189989999999
+20,KY,Barlow,"Ballard County Middle School (Barlow, KY)",Veronica Hopwood,Ballard County Middle School,37.0679637,-88.98757069999999
+21,NJ,Westampton,"Benjamin Banneker Prep Cs (Willingboro, NJ)",Anna Loving,Benjamin Banneker Prep Cs,40.0525655,-74.889454
+22,CT,Newtown,"Fraser Woods School (Newtown, CT)",Megan Sutherland,Fraser Woods School,41.380883,-73.28134
+23,WA,Spangle,Liberty Jr. High & Elementary,Veronica Bermann,Liberty Jr. High & Elementary,47.38154979999999,-117.3187957
+24,FL,Pensacola,Sacred Heart Cathedral School,Leighann Roberts,Sacred Heart Cathedral School,30.4315358,-87.20517509999999
+25,NJ,Bayville,Central Regional Middle School,Dawn Nolan,Central Regional Middle School,39.890216,-74.205597
+26,OH,Akron,Innes CLC,Chelcee Schoenbaechler,Innes CLC,,
+27,PA,Allentown,"Saint John Vianney Regional School (Allentown, PA)",Kim  Heintzelman,Saint John Vianney Regional School,40.59929390000001,-75.49605679999999
+28,MA,Andover,Andover West Middle School,Marjorie Andresen,Andover West Middle School,42.6586988,-71.1525035
+29,CA,Castro Valley,Creekside Middle School,Isabella Siu,Creekside Middle School,37.6995141,-122.0607067
+30,NJ,Highland Park,Highland Park Middle School,Lizette Lopez,Highland Park Middle School,40.502593,-74.4267595
+31,MI,Monroe,HIS Homeschool,Jennifer Spencer,HIS Homeschool,41.9222141,-83.4087674
+32,VA,Leesburg,Belmont Ridge Middle School,Lingxia Chen,Belmont Ridge Middle School,39.0896951,-77.4906924
+33,ID,"Moscow, ID",J.Russell Elementary School,Luella Stelck,J.Russell Elementary School,46.73435019999999,-116.9976024
+34,MT,Billings,Billings Christian School,Heather Sloan,Billings Christian School,45.7844658,-108.630058
+35,IL,Chicago,Christopher House,Lauren  Adejumo,Christopher House,,
+36,VT,Springfield,Riverside Middle School (Weber),Brian Weber,Riverside Middle School,43.3044678,-72.4970883
+37,NC,Clinton,Sampson Middle School,Sequita White,Sampson Middle School,34.97351510000001,-78.33212259999999
+38,KS,Leawood,"Nativity Parish School (Leawood, KS)",Logan Dunn,Nativity Parish School,38.91402,-94.629407
+39,TX,Houston,"St. Thomas Episcopal  (Houston, TX)",Gordon Sampson,St. Thomas Episcopal,,
+40,MD,ellicott city,Burleigh Manor Middle School,Jay Su,Burleigh Manor Middle School,39.25516229999999,-76.86729849999999
+41,MN,Blaine,"Calvin Christian School Blaine (Blaine, MN)",Joy Myren,Calvin Christian School Blaine,45.13274029999999,-93.2419466
+42,CA,La Jolla,"La Jolla Country Day School  (La Jolla, CA)",Jamilah Ryan,La Jolla Country Day School,32.878598,-117.216727
+43,IL,Elmhurst,Visitation School,Mary Lou Vainisi,Visitation School,41.8738,-87.9355489
+44,NY,brooklyn,"Brooklyn Ascend Charter School (Brooklyn, NY)",Brenda Smith,Brooklyn Ascend Charter School,40.6620174,-73.9206845
+45,NY,Circleville,Pine Bush Elementary,Michelle Pollack,Pine Bush Elementary,41.5998548,-74.31090460000001
+46,NY,New York,City and Country School,Lisa Ochs,City and Country School,40.7373314,-73.99946589999999
+47,PA,Moosic,Riverside East Elementary,Diane Miller,Riverside East Elementary,41.3663445,-75.7049854
+48,PA,Media,Springton Lake Middle School,Stefanie Miller,Springton Lake Middle School,39.9404961,-75.3986568
+49,GA,Savannah,Hancock Day School,Jack Cargile,Hancock Day School,32.005426,-81.07056899999999
+50,AR,sherwood,Sylvan Hills Middle School,Judy Lambertus,Sylvan Hills Middle School,34.8490855,-92.2208241
+51,MO,Ravenwood,Northeast Nodaway R5 School,Brooke Hecker,Northeast Nodaway R5 School,40.3508542,-94.6696839
+52,TX,Duncanville,Byrd Middle School,Latrina Bowen,Byrd Middle School,32.6461696,-96.9322313
+53,CA,Carmel,All Saints Day School,Kelley Langmann,All Saints Day School,36.529864,-121.834538
+54,AZ,Gilber,Cooley Middle School,Elizabeth Ruiz,Cooley Middle School,33.3308523,-111.706154
+55,OH,New Carlisle,Tecumseh Middle School,Amy Moore,Tecumseh Middle School,39.9128338,-83.99969430000002
+56,OK,Broken Arrow,Oklahoma Virtual Charter Academy (Wyers),Holly Wyers,Oklahoma Virtual Charter Academy,35.4535213,-97.3698065
+57,OK,Shawnee,Bethel Middle School,Stephanie Murray,Bethel Middle School,35.3189415,-97.0159719
+58,OH,Independence,St Michael School,Linda Niro,St Michael School,41.3838467,-81.6422541
+59,NM,Roswell,Mesa Middle School,Denise  Taylor,Mesa Middle School,33.3872169,-104.5006521
+60,MA,Milton,"Tomorrow, Inc Homeschool",Steven Chang,"Tomorrow, Inc Homeschool",42.2552185,-71.0718795
+61,TN,Germantown,Houston Middle School,Anne-Marie Pratt,Houston Middle School,35.0964548,-89.748604
+62,MA,Carver,"Carver Middle High School (Carver, MA)",Tammy Johnson,Carver Middle High School,41.8938703,-70.7559996
+63,ID,Boise,Sacred Heart Catholic School,Carol Gado,Sacred Heart Catholic School,43.5967254,-116.2292403
+64,CO,Carbondale,"Carbondale Middle School (Carbondale, CO)",Megan Currier,Carbondale Middle School,39.39224979999999,-107.2076311
+65,GA,Austell,EPIC Homeschoolers,Andrea Hall,EPIC Homeschoolers,33.810853,-84.635772
+66,PA,Kingston,"Wyoming Valley West Middle School       (Kingston, PA)",Pam Oliveira,Wyoming Valley West Middle School,41.2616461,-75.8909663
+67,MA,belmont,Chenery Middle School,Brenton Lussier,Chenery Middle School,42.3860353,-71.17071969999999
+68,LA,Columbia,"Caldwell Parish Jr High School (Columbia, LA)",Ann Carter,Caldwell Parish Jr High School,32.0582205,-92.0958727
+69,CA,Ridgecrest,"Murray Middle School  (Ridgecrest, CA)",Susan Dahms,Murray Middle School,35.6355934,-117.6632003
+70,MI,Ferndale,Ferndale Middle School (Maes),Tom Maes,Ferndale Middle School,42.4533261,-83.1496045
+71,PA,Davidsville,Conemaugh Township Middle/High School,Jakeb Rising,Conemaugh Township Middle/High School,40.2287057,-78.9399682
+72,GA,Atlanta,"Ron Clark Academy (Atlanta, GA)",Carrie-Jo Wallace,Ron Clark Academy,33.712058,-84.3815718
+73,CT,Woodbridge,"Ezra Academy  (Woodbridge, CT)",Denise Bowman,Ezra Academy,41.3380654,-73.0032654
+74,NC,Lenoir,Gamewell Middle,Sharon Hubbard,Gamewell Middle,35.8708181,-81.59868159999999
+75,AR,POYEN,6B Mathematicians,Debbie McCrackin,6B Mathematicians,,
+76,NJ,Elizabeth,Robert Morris School 18,Kristi Capindica,Robert Morris School 18,40.6840632,-74.21065589999999
+77,NJ,West Windsor Township,Grover Middle School (Gautieri),Alyssa Gautieri,Grover Middle School,40.272422,-74.5951017
+78,NC,Warsaw,Warsaw Elementary School,Monica  Ruffin,Warsaw Elementary School,34.9962468,-78.0763891
+79,CA,Sunnyvale,Silver Pines Friends,Jen Vawter,Silver Pines Friends,,
+80,FL,Panama City,"Covenant Christian School (Panama City, FL)",Angela Feitel,Covenant Christian School,30.191815,-85.69110599999999
+81,NE,Omaha,Trinity Classical Academy,Justin Bourgeois,Trinity Classical Academy,41.2679146,-96.1481834
+82,WI,Brooklyn,Holy Family Homeschoolers,Quyen Palenik,Holy Family Homeschoolers,42.8536139,-89.3703963
+83,OH,Piqua,Piqua Catholic School,Dee  Monnin,Piqua Catholic School,40.1515886,-84.2466926
+84,TX,Dallas,"George B Dealey International Academy (Dallas, TX)",Jill Emery,George B Dealey International Academy,32.8950906,-96.7921507
+85,WI,Menomonie,"Menomonie Middle School      (Menomonie, WI)",Kathy Forster,Menomonie Middle School,44.8744144,-91.89878139999999
+86,NY,Wappingers Falls,"Van Wyck Junior High School  (Wappingers Falls, NY)",Seema Bhatt,Van Wyck Junior High School,41.60582429999999,-73.82190229999999
+87,PA,Philadelphia,Keystone Academy Charter School,Michael Browning,Keystone Academy Charter School,40.02762329999999,-75.0435265
+88,HI,Lahaina,Maui Prep Academy,Joe Lee,Maui Prep Academy,20.9824803,-156.6688095
+89,UT,Harrisville,Orion Junior High,Janessa Richardson,Orion Junior High,41.2971072,-111.9874914
+90,WV,Morgantown,Trinity Christian School,Carrie Breakey,Trinity Christian School,39.6209207,-79.9162566
+91,IL,Evanston,Chiaravalle Montessori School,Victoria Curnutte,Chiaravalle Montessori School,42.0413983,-87.67810229999999
+92,NE,Sumner,Sumner-Eddyville-Miller Math Club,Lois McKenzie,Sumner-Eddyville-Miller Math Club,,
+93,NJ,Hillsborough,"Hillsborough Middle School (Hillsborough, NJ)",Angelic Torre,Hillsborough Middle School,40.51687829999999,-74.6465233
+94,IL,Crystal Lake,"Richard Bernotas Middle School (Crystal Lake, IL)",Rebecca Shields,Richard Bernotas Middle School,42.2463168,-88.3371667
+95,NJ,Red Bank,"St James School (Red Bank, NJ)",Christine Lucisano,St James School,40.3480224,-74.0665862
+96,CT,Bristol,St Paul Catholic High School,Mary Clarke,St Paul Catholic High School,41.7023543,-72.9140424
+97,WI,South Milwaukee,"Divine Mercy School (S Milwaukee, WI)",Erin Lovas,Divine Mercy School,42.9290587,-87.8560912
+98,IL,Crete,Mother Teresa Catholic Academy,Anita Cwiertniak,Mother Teresa Catholic Academy,41.4511443,-87.6566009
+99,NJ,Stillwater,Stillwater Township School,ELAINE MAKAREVICH,Stillwater Township School,41.06390330000001,-74.8624092
+100,MA,everett,madeline english school,jessica salem,madeline english school,42.4134724,-71.0691208
+101,PA,Chester,Chester Charter Scholars Academy,Ben Emmons,Chester Charter Scholars Academy,39.8387314,-75.3992971
+102,TX,Corpus Christi,Bishop Garriga Middle School,Michael Derocher,Bishop Garriga Middle School,27.709147,-97.428889
+103,OK,OKC,Heritage Hall,Barbara Nykol,Heritage Hall,,
+104,NC,Harrisburg,"Hickory Ridge Middle School (Harrisburg, NC)",Leah Cottrell,Hickory Ridge Middle School,35.3090568,-80.64222989999999
+105,NM,Los Alamos,Mrs. Hettinga's Students,Susan Hettinga,Mrs. Hettinga's Students,,
+106,WI,Brookfield,Brookfield Academy,Daniel Geu,Brookfield Academy,43.08173679999999,-88.14519469999999
+107,VT,Middlebury,"Middlebury Union Middle School  (Middlebury, VT)",Jennifer Billings,Middlebury Union Middle School,43.9982614,-73.15243559999999
+108,NE,Omaha,King Science Technology Magnet School,Stacy Atkin,King Science Technology Magnet School,41.2928875,-95.9431963
+109,AZ,Scottsdale,Desert Sun Academy,Linda  Timms,Desert Sun Academy,33.737679,-111.944107
+110,MI,Ada,"Furness Homeschool   (Ada, MI)",Meredith Furness,Furness Homeschool,42.960727,-85.4954803
+111,VA,Falls Church,"Mary Ellen Henderson Middle School   (Falls Church, VA)",Nicholas Draper,Mary Ellen Henderson Middle School,38.89711,-77.192882
+112,IL,Chicago,Lazaro Cardenas,Amanda Babb,Lazaro Cardenas,,
+113,UT,Ogden,Ogden Preparatory Academy,Camie Walker,Ogden Preparatory Academy,41.240496,-111.976459
+114,MA,Chelsea,Eugene Wright Science and Technology Academy,Heather Pascucci,Eugene Wright Science and Technology Academy,42.3939302,-71.03676349999999
+115,OR,Portland,Sellwood Middle School (Vennebush),Patrick Vennebush,Sellwood Middle School,45.4625931,-122.6504795
+116,GA,mcrae,Telfair Co Middle School,Carol KAHRMANN,Telfair Co Middle School,32.0481996,-82.9119772
+117,NY,Burnt Hills,"Richard H Orourke Middle School (Burnt Hills, NY)",Yin Qian,Richard H Orourke Middle School,42.90701869999999,-73.9079897
+118,OH,Westerville,Worthington Park Elementary,Kathleen Cermak,Worthington Park Elementary,40.1290828,-82.9893757
+119,CO,Fort Collins,Polaris Expeditionary Learning School,Stephanie Flynn,Polaris Expeditionary Learning School,40.578081,-105.1115183
+120,CA,El Cajon,Montgomery Middle School,Elisa Allan,Montgomery Middle School,32.7973281,-116.9210268
+121,FL,DeLand,DeLand Middle School,Christopher Clark,DeLand Middle School,29.0041936,-81.29775339999999
+122,MN,Moorhead,"Liberty Middle School  (West Fargo, ND)",Daniel Werness,Liberty Middle School,46.82456579999999,-96.8855
+123,TX,Midland,St. Ann's Catholic School,Stephanie Fuller,St. Ann's Catholic School,31.9960883,-102.0954544
+124,MD,Annapolis,St. Anne's School of Annapolis,Christian Pazdersky,St. Anne's School of Annapolis,38.93893,-76.48465399999999
+125,MI,Grosse Pointe Park,Pierce Middle School,Jennifer Schaupeter,Pierce Middle School,42.38224,-82.93642899999999
+126,CO,Boulder,GRAN,laura granstrand,GRAN,,
+127,GA,columbus,"East Columbus Magnet Academy       (Columbus, GA)",angeleque borom,East Columbus Magnet Academy,32.4654519,-84.8848032
+128,IL,Franklin Park,Hester Junior High School,Linda Hunt,Hester Junior High School,41.9307091,-87.8668783
+129,NJ,Egg Harbor Twp,Frog Pond Elementary School,Lisa Wentzell,Frog Pond Elementary School,39.628964,-74.32685260000001
+130,ME,Ellsworth,Ellsworth Elementary-Middle School,Jane Stackpole,Ellsworth Elementary-Middle School,44.5493355,-68.43247970000002
+131,RI,Providence,The UCAP School,LuAnn Masse,The UCAP School,41.82112679999999,-71.42133439999999
+132,IL,Hebron,"Alden Hebron Middle School (Hebron, IL)",Michelle Venard,Alden Hebron Middle School,42.46568180000001,-88.4309438
+133,PA,erie,Saint James School,Theresa Teed,Saint James School,42.1379878,-80.02156149999999
+134,WI,Madison,Black Hawk Middle School,Frank Conway,Black Hawk Middle School,43.1463641,-89.36999999999999
+135,AL,Evergreen,Southside Preparatory Magnet Academy,Quinton Lindsey,Southside Preparatory Magnet Academy,31.4264655,-86.9492652
+136,TN,Johnson City,Central Elementary School,Kimberly Jacobs,Central Elementary School,36.3325223,-82.28718169999999
+137,SC,Columbia,W.G. Sanders Middle School,Marife Empleo,W.G. Sanders Middle School,34.0398399,-80.9916197
+138,TX,DIME BOX,Dime Box School,Tammy Rouse,Dime Box School,30.3573615,-96.8269864
+139,CA,North Highlands,Madison Eagles,Leticia  Kiwan,Madison Eagles,,
+140,MO,Nixa,"Nixa Junior High School  (Nixa, MO)",Elizabeth Staats,Nixa Junior High School,37.05192479999999,-93.2935151
+141,NC,Bryson City,Swain Middle School (Booth),DeAnna Booth,Swain Middle School,35.4236439,-83.4486459
+142,LA,Shreveport,"Evangel Christian Academy (Shreveport, LA)",Lisa Westerfield,Evangel Christian Academy,32.4358003,-93.8721322
+143,MO,Maysville,Maysville Elementary,Sue Bridgman,Maysville Elementary,39.8905526,-94.3655862
+144,OK,Woodward,Woodward Middle School-South,Susan Moyer,Woodward Middle School-South,36.4304561,-99.3908266
+145,TX,Houston,St. Jerome Catholic School,Delores Buck,St. Jerome Catholic School,29.8204369,-95.5114601
+146,MA,Webster,All Saints Academy,Laurie Heflin,All Saints Academy,42.0492791,-71.8779376
+147,WI,Waukesha,"Trinity Lutheran School (Waukesha, WI)",Sarah Kaulitz,Trinity Lutheran School,43.0148087,-88.2251977
+148,MA,Mansfield,"Qualters Middle School   (Mansfield, MA)",Jennifer  MacMurray,Qualters Middle School,42.02863259999999,-71.2062333
+149,CA,Palo Alto,"Ellen Fletcher Middle School (Palo Alto, CA)",Paul Jorgens,Ellen Fletcher Middle School,37.403238,-122.1263945
+150,ID,Emmett,Emmett Middle School (Chinnock),Madisen Chinnock,Emmett Middle School,43.8714989,-116.4969581
+151,OK,Broken Arrow,Union Eighth Grade Center (Peyton),Susan Peyton,Union Eighth Grade Center,,
+152,VA,Williamsburg,Providence Classical School,Carolyn Petrina,Providence Classical School,37.2547149,-76.7852935
+153,CA,San Mateo,"Borel Middle School  (San Mateo, CA)",Jeanne DeTorre-Ozeki,Borel Middle School,37.5499646,-122.3215136
+154,MT,Helena,C.R. Anderson  Middle School,Doug Dellwo,C.R. Anderson  Middle School,46.600215,-112.054032
+155,WI,Stanley,Stanley-Boyd Middle School,Randy Gustafson,Stanley-Boyd Middle School,44.9618298,-90.92462839999999
+156,WI,Sussex,Bulldog Challenge,Brenda Peterson,Bulldog Challenge,,
+157,NY,Walton,"Dr George F Mack Middle School (Walton, NY)",Dustin Purdy,Dr George F Mack Middle School,42.1695296,-75.12933509999999
+158,MN,Richfield,Seven Hills Preparatory Academy,Leah Lellman,Seven Hills Preparatory Academy,44.86468929999999,-93.2979781
+159,IL,Chicago,"Evergreen Academy Middle School (Chicago, IL)",Carla Gurgone,Evergreen Academy Middle School,41.8290346,-87.6675583
+160,NH,Epping,Epping Middle School,Kristen Jasper,Epping Middle School,43.0445584,-71.07689669999999
+161,KS,Shawnee,"Hope Lutheran School (Shawnee, KS)",Laura Haverkamp,Hope Lutheran School,39.014233,-94.7254631
+162,IL,Romeoville,"John Lukancic Middle School (Romeoville, IL)",Sarah  Sciortino,John Lukancic Middle School,41.6532191,-88.09808819999999
+163,TX,Center,excelsior,Judy Andrews,excelsior,,
+164,MA,Andover,The Pike School (Latham),Karen Latham,The Pike School,42.6320407,-71.13176469999999
+165,IN,Valparaiso,Washington Township Middle School,Ruth Anne Olson,Washington Township Middle School,41.4844935,-86.9945285
+166,NH,Lyme,Crossroads Academy,Maria Squire,Crossroads Academy,43.779115,-72.18216
+167,GA,Roberta,"Crawford County Middle School (Roberta, GA)",Lydia Bozeman,Crawford County Middle School,32.7311493,-84.00764500000001
+168,MI,Ann Arbor,A2 Virtual Academy,Hande Yaprak,A2 Virtual Academy,42.2503743,-83.7369307
+169,TX,Fort Worth,"Saint Andrew Catholic School (Fort Worth, TX)",Angie Watts,Saint Andrew Catholic School,32.6949495,-97.36325649999999
+170,AZ,Phoenix,EAGLE College Prep Academy - South Mountain,April Batty,EAGLE College Prep Academy - South Mountain,33.3716173,-112.1122498
+171,OH,WESTERVILLE,Emerson Elementary School,Jennifer Findell,Emerson Elementary School,40.1272188,-82.9286338
+172,CA,Mountain View,Private Home School,Mari Nelson,Private Home School,37.3938722,-122.0849872
+173,IL,Chicago,University of Chicago Charter School - Woodlawn Campus,Kate Carter,University of Chicago Charter School - Woodlawn Campus,41.7801956,-87.5974023
+174,IL,Winfield,"Wheaton Christian Grammar School   (Winfield, IL)",Jennifer Rodriguez,Wheaton Christian Grammar School,41.8942603,-88.1282794
+175,IA,Des Moines,Woodside Middle School,Cheryl Smith,Woodside Middle School,41.6660186,-93.60115739999999
+176,AK,Glennallen,Upstream Learning,Sarah Abbott,Upstream Learning,,
+177,TN,Springfield,Springfield Middle School,Ashley Schnetzler,Springfield Middle School,36.5109442,-86.8937619
+178,PA,Chambersburg,Chambersburg Area Middle School South (Kibbe),Jason Kibbe,Chambersburg Area Middle School South,39.9235796,-77.6404433
+179,MI,Jackson,Paragon Charter Academy,Renee Novak-Arze,Paragon Charter Academy,42.234741,-84.4661884
+180,TN,Mt. Pleasant,Mt. Pleasant Middle School of the Visual and Performing Arts,Audrey  Bryant,Mt. Pleasant Middle School of the Visual and Performing Arts,35.5487008,-87.20519139999999
+181,PA,Ambler,Wissahickon Middle School,Troy Deckebach,Wissahickon Middle School,40.1693372,-75.22665040000001
+182,NE,Papillion,St. Columbkille,Victoria Verdoni,St. Columbkille,,
+183,IL,Chicago,North River Elementary School (Tinoco),Maria Tinoco,North River Elementary School,41.9617957,-87.7071991
+184,IL,Chicago,John C. Dore Elementary School (Shannon),Louisa Shannon,John C. Dore Elementary School,41.773874,-87.8000639
+185,CT,Pomfret Center,Pomfret Community School (Slingo),Kate Slingo,Pomfret Community School,41.859653,-71.96024299999999
+186,IL,Chicago,Arnold Mireles Academy (Jackson),LaJuana Jackson,Arnold Mireles Academy,41.7316406,-87.5528844
+187,IL,Chicago,Brennemann Elementary School (Cole),Tori Cole,Brennemann Elementary School,41.9600422,-87.6492392
+188,FL,Jacksonville,Landmark Middle School,Caitlin Bogart,Landmark Middle School,30.3234062,-81.48732849999999
+189,NE,Ralston,"Ralston Middle School        (Ralston, NE)",Christine Redemske,Ralston Middle School,41.2093246,-96.04106
+190,KS,Kismet,Southwestern Heights Junior High School,Kerri Vajnar,Southwestern Heights Junior High School,37.2288857,-100.6480118
+191,MA,Walpole,"Blessed Sacrament Elem School (Walpole, MA)",Scott Souza,Blessed Sacrament Elem School,42.1466433,-71.245194
+192,DD,APo AE,Kaiserslautern Middle School,Kara Stolee-Kiefer,Kaiserslautern Middle School,49.4324309,7.707172
+193,WI,West Bend,St. Frances Cabrini,Theresa Gardon,St. Frances Cabrini,,
+194,CA,Corona del Mar,"Harbor Day School (Corona Del Mar, CA)",Meggen Stockstill,Harbor Day School,33.6080566,-117.8568056
+195,MT,Glasgow,Glasgow Middle School,Mandy Rasmusan,Glasgow Middle School,48.1953765,-106.6183287
+196,MI,Northville,Hillside Middle School,Yi Xiao,Hillside Middle School,42.4380645,-83.486477
+197,HI,Honolulu,Punahou School (Damon),Elizabeth Damon,Punahou School,21.3025124,-157.829891
+198,SC,Greeenville,Bob Jones Academy,Anita Sedivy,Bob Jones Academy,34.8714461,-82.3642019
+199,MN,Aitkin,Aitkin Secondary School,Chancy Nordick,Aitkin Secondary School,46.5336663,-93.71121749999999
+200,AZ,Phoenix,Caballeros de Matemáticas,Kenneth Simonen,Caballeros de Matemáticas,,
+201,NJ,Gloucester City,Gloucester City Middle School,Anna Peeke,Gloucester City Middle School,39.8939159,-75.1226171
+202,VA,Richmond,St. Catherine's School,Brett Degnan,St. Catherine's School,37.5724945,-77.5224495
+203,PA,Chalfont,St Jude Math Club,MARIE HOFFMAN,St Jude Math Club,,
+204,VA,Sterling,River Bend Middle School,Kin Chung,River Bend Middle School,39.0530968,-77.3989292
+205,AK,Bethel,Bethel Regional High School,Carmen Wessels,Bethel Regional High School,60.8021495,-161.7704565
+206,LA,Jennings,Jennings Elementary,Michael Romine,Jennings Elementary,30.2255428,-92.64486029999999
+207,PR,Carolina,Calvary Baptist Christian School,Vanesa Pritchard,Calvary Baptist Christian School,18.3688045,-65.97622249999999
+208,VA,Fishersville,Wilson Middle School,Joey  Mason,Wilson Middle School,38.120951,-78.98780599999999
+209,SC,Clover,Blue Eagle Academy,Tisha  Wilson,Blue Eagle Academy,35.1045142,-81.22119169999999
+210,OH,Springfield,Schaefer Middle School,Amanda Rupp,Schaefer Middle School,39.9210708,-83.7664704
+211,NM,Albuquerque,Desert Ridge Middle School,Judy Moore,Desert Ridge Middle School,35.1794908,-106.550442
+212,FL,Fort Myers,"Canterbury School (Fort Myers, FL)",Tommy Jewell,Canterbury School,26.5558757,-81.8896915
+213,ID,Boise,West Junior High,Kimberly Sudac,West Junior High,43.5709195,-116.2851745
+214,IL,Skokie,Rehov Grove,Sarah Alexander,Rehov Grove,,
+215,CA,ENCINITAS,The Rhoades School,Carolyn Swayze,The Rhoades School,33.0366309,-117.2373587
+216,GA,Peachtree Corners,Wesleyan School,Nancy Davis,Wesleyan School,33.970744,-84.216646
+217,CO,Littleton,"Powell Middle School   (Littleton, CO)",Kelsey Dondelinger,Powell Middle School,39.5735599,-104.9778728
+218,CA,San Francisco,San Francisco Waldorf School,Sandy Portillo-Robins,San Francisco Waldorf School,37.7904673,-122.4424749
+219,CO,Fort Collins,Compass Community Collaborative School,Karen Karppinen,Compass Community Collaborative School,40.5600577,-105.0781674
+220,WA,Oakville,Oakville MS/HS,Laurie Holdsworth,Oakville MS/HS,46.8412648,-123.2408706
+221,PA,Meyersdale,Meyersdale Area Middle School,Diane Caton,Meyersdale Area Middle School,39.7990352,-79.04227999999999
+222,OH,Worthington,Colonial Hills Elementary,Amy Scragg,Colonial Hills Elementary,40.0822707,-83.00889080000002
+223,NC,Pinetown,"Northeast Elementary School       (Pinetown, NC)",Melanie Simmons,Northeast Elementary School,35.5382576,-76.7093004
+224,GA,Lyons,Toombs Co Middle School,Addy Baker,Toombs Co Middle School,32.1859626,-82.3350909
+225,VA,Charlottesville,The Covenant School,Karen Klintworth,The Covenant School,38.0015295,-78.51838339999999
+226,IN,Middlebury,Northridge Middle School,Robert Nisen,Northridge Middle School,41.6725587,-85.72674219999999
+227,NJ,Ocean,Ocean Township Intermediate School,Suzanne DeValue,Ocean Township Intermediate School,40.2609507,-74.0635022
+228,DC,Washington,Washington School for Girls,Cherry Walker,Washington School for Girls,38.8574428,-76.9822871
+229,OK,Lawton,"MacArthur Middle School  (Lawton, OK)",Julie Swofford,MacArthur Middle School,34.6142726,-98.3362353
+230,OH,Cincinnati,Winton Woods Middle School,Donald Schutte,Winton Woods Middle School,39.2647722,-84.51531940000001
+231,CA,Arroyo Grande,St. Patrick Catholic School,Barry Garelick,St. Patrick Catholic School,35.1263233,-120.5915483
+232,MD,Ellicott City,Resurrection-St. Paul School,Adri Westlake,Resurrection-St. Paul School,39.2822583,-76.8296141
+233,HI,HONOLULU,University Laboratory School,Cynthia Twibell,University Laboratory School,21.2978857,-157.8216782
+234,CA,San Francisco,Rise University Preparatory,Dan Yamamoto,Rise University Preparatory,37.7406393,-122.3880764
+235,AR,Lonoke,Cabot Christian Homeschool Co-op,Amber Bailey,Cabot Christian Homeschool Co-op,,
+236,NY,Depew,Depew Middle School,Jaime Garver,Depew Middle School,42.8960127,-78.69650589999999
+237,TN,Knoxville,BMSmathClub,Sarah Kenny,BMSmathClub,,
+238,MA,Carlisle,Conjecture Cooperative,Matthew Coleman,Conjecture Cooperative,,
+239,CA,Fairfield,Oakbrook Academy of the Arts,Darci Vogelgesang,Oakbrook Academy of the Arts,38.1917721,-122.143456
+240,NY,Staten Island,I.S. 61 William A. Morris / Morris Knights Math Club,Théa Jon Curry,I.S. 61 William A. Morris / Morris Knights Math Club,,
+241,TX,Clute,Clute Intermediate,Christina Giles,Clute Intermediate,,
+242,MO,Old Monroe,Immaculate Conception School,Laurie Rapp,Immaculate Conception School,38.9376296,-90.7784957
+243,CA,Sunnyvale,Peterson Middle School,Jennifer Hoppe,Peterson Middle School,37.3494604,-122.0073753
+244,FL,Dundee,DWOC Math Club,Minnette Wright Smith,DWOC Math Club,,
+245,MD,Westminster,Carroll Christian School,Leeanne Zablosky,Carroll Christian School,39.567262,-76.975987
+246,ID,Emmett,Emmett Middle School (Hyde),Kim Hyde,Emmett Middle School,43.8714989,-116.4969581
+247,KS,Peabody,Peabody-Burns MSHS,Michelle Foster,Peabody-Burns MSHS,38.1733963,-97.10481689999999
+248,OK,Tulsa,Saint Catherine School,Jacob Kruse,Saint Catherine School,36.0974457,-96.02202319999999
+249,CO,Englewood,Kent Denver School,Marty Wittmer,Kent Denver School,39.6339585,-104.940344
+250,CO,Englewood,Kent Denver School,Marty Wittmer,Kent Denver School,39.6339585,-104.940344
+251,NY,Jamaica,Queens Collegiate,Ronalda McMillian,Queens Collegiate,,
+252,DC,Washington,Amidon-Bowen Elementary School,Rebecca Wolf,Amidon-Bowen Elementary School,38.8793257,-77.01822489999999
+253,OH,Columbus,St. Catharine,Stephanie Speed,St. Catharine,,
+254,CA,San Diego,Standley Middle School,Jon Robell,Standley Middle School,32.8527745,-117.2059487
+255,GA,Atlanta,The Paideia School,David MILLIANS,The Paideia School,33.7731723,-84.3379362
+256,DC,Washington,St. Patrick's Episcopal Day School,Beth Cole,St. Patrick's Episcopal Day School,38.9161034,-77.0914866
+257,CA,Laguna Beach,Math Wizards at the Beach,Suzanne Nottage,Math Wizards at the Beach,,
+258,WV,cameron,Cameron Middle High School,Cheyanne Bender,Cameron Middle High School,39.8485903,-80.5541887
+259,KS,junction city,Junction City Middle School,Karissa Hammock,Junction City Middle School,39.0285479,-96.87955550000001
+260,TX,Houston,Hambrick Hawks,P. Jihan Goodly,Hambrick Hawks,,
+261,VA,Lynchburg,LFO Academy,Kimberly Weatherford,LFO Academy,37.4137536,-79.14224639999999
+262,NE,Omaha,St. Vincent de Paul School,Diane Warneke,St. Vincent de Paul School,41.2889331,-96.1373965
+263,CA,Huntington Beach,Dwyer Middle School,James Downs,Dwyer Middle School,33.6697033,-118.0045647
+264,NC,Summerfield,Bethany Community School,Glennan Saraceno,Bethany Community School,36.2617759,-79.8688354
+265,MI,Saginaw,Peace Lutheran School,Joann Roller,Peace Lutheran School,43.45356779999999,-84.0369587
+266,AZ,Tucson,Pima Partnership Academy,Enid Bos,Pima Partnership Academy,32.2390595,-110.9714803
+267,NY,Schenectady,Brown School (McLeron),Pam McLeron,Brown School,42.7837195,-73.90068409999999
+268,WA,Bothell,Skyview Middle School,Theresa Slater,Skyview Middle School,47.8034887,-122.1889014
+269,CA,Redding,University Preparatory School,Michelle Oberlander,University Preparatory School,40.5873126,-122.4045088
+270,IL,Hawthorn Woods,Garden of Academic Learning Homeschool Co-op,Elizabeth Zafiris,Garden of Academic Learning Homeschool Co-op,42.2169686,-88.04952109999999
+271,AL,Montgomery,Walter T. McKee Middle School (Julius),Jennifer Julius,Walter T. McKee Middle School,32.2940453,-86.2533416
+272,PA,Philadelphia,St. Mary Interparochial School,Denise Pimpinella,St. Mary Interparochial School,39.9460777,-75.14965839999999
+273,NY,North Salem,North Salem Middle School,Suzanne Taylor,North Salem Middle School,41.35530139999999,-73.5953993
+274,WI,Bloomington,St. Mary Catholic School,Joanie Dickerson,St. Mary Catholic School,42.8886333,-90.9242593
+275,CA,Huntington Beach,St. Bonaventure School,Kathleen Kustura,St. Bonaventure School,33.723547,-118.0235033
+276,AL,Valley,Beulah Elementary Bobcats,Paula Brickner,Beulah Elementary Bobcats,32.7131398,-85.18851699999999
+277,MD,Odenton,Anne Arundel Homeschoolers,Kelly  Lovar,Anne Arundel Homeschoolers,39.0839981,-76.7002462
+278,NY,South Huntington,Long Island School for the Gifted,Cheryl Novick,Long Island School for the Gifted,40.821445,-73.39049299999999
+279,NY,New York,Manhattan Country School,Ava Parnes,Manhattan Country School,40.7864265,-73.9746602
+280,NY,Brooklyn,St. Catherine St. Therese,Kerry Evans,St. Catherine St. Therese,,
+281,SD,Sioux Falls,Sioux Falls Lutheran School,Leanne Holdorf,Sioux Falls Lutheran School,43.4873902,-96.7900229
+282,WA,REDMOND,The Overlake School,Rebecca Flora,The Overlake School,47.694126,-122.0699601
+283,MO,Strafford,Strafford Middle School,Mandy Williams,Strafford Middle School,37.2715097,-93.1184909
+284,CA,San Francisco,Visitacion Valley Middle School,Patrick De Ocampo,Visitacion Valley Middle School,37.7160815,-122.4139545
+285,WI,Bloomer,St. Paul Lutheran School,Thomas Rosenow,St. Paul Lutheran School,45.1026134,-91.48794869999999
+286,VA,Arlington,Saint Ann Catholic School,Tess Quingperez,Saint Ann Catholic School,38.880665,-77.12639899999999
+287,NJ,Rumson,Holy Cross School (Chadwick),Kathy Chadwick,Holy Cross School,40.3657091,-73.9808395
+288,MI,Port Huron,St. Mary/McCormick Catholic Academy,Marsha Celmer,St. Mary/McCormick Catholic Academy,43.0092795,-82.43836069999999
+289,MA,Wakefield,Galvin Middle School,Jeff MacInnis,Galvin Middle School,42.499618,-71.0708824
+290,MI,Grand Rapids,Grand Rapids Christian Middle School,Joan Van Dyke,Grand Rapids Christian Middle School,42.9262976,-85.61635660000002
+291,NE,Lincoln,Saint Peter School,Sister Mary Guadalupe Trausch,Saint Peter School,40.7522571,-96.65715259999999
+292,TX,Katy,Katy Math Circle,Rosa Aristy,Katy Math Circle,,
+293,ND,Dickinson,Trinity Junior High School,Sr. Annette Dobitz,Trinity Junior High School,46.8912925,-102.7983779
+294,NC,Asheboro,North Asheboro Middle School,Sue Shumaker,North Asheboro Middle School,35.7441928,-79.82266059999999
+295,MD,Baltimore,Talmudical Academy,Lisa Mallonee,Talmudical Academy,39.367785,-76.7473977
+296,CA,Cupertino,St. Joseph of Cupertino,Jan Wedig,St. Joseph of Cupertino,,
+297,TX,Jacksonville,Jacksonville Middle School,Spencer Wright,Jacksonville Middle School,31.9771755,-95.253061
+298,IL,Chicago,Joseph E. Gary Elementary School,Jessica Aranda,Joseph E. Gary Elementary School,41.83787969999999,-87.7187629
+299,CA,Redwood City,Thinkering,Bridget Mercay,Thinkering,,
+300,NE,Scottsbluff,Bluffs Middle School,Shelby Aaberg,Bluffs Middle School,41.8703349,-103.6613109
+301,LA,New Iberia,Johnston Hopkins Elementary School,Christine Bayard,Johnston Hopkins Elementary School,30.0059148,-91.8356031
+302,NE,Ainsworth,Ainsworth Community Schools,Wendy Allen,Ainsworth Community Schools,42.5475556,-99.8561203
+303,PA,Boyertown,Boyertown Middle School West (Parish),Kristy Parish,Boyertown Middle School West,40.3241179,-75.6324822
+304,MA,Hingham,Derby Academy,Susannah Murphy,Derby Academy,42.2484494,-70.8938867
+305,OH,Northfield,St. Barnabas School,Rebecca Mittler Pope,St. Barnabas School,41.3109079,-81.53721759999999
+306,KY,Louisville,Noe Middle School,Stephanie Fields,Noe Middle School,38.223169,-85.7575452
+307,NJ,Nutley,John H Walker Middle School,Kristen Miller,John H Walker Middle School,40.8187017,-74.1607306
+308,MI,Birmingham,Holy Name,Jeanette Senfftleben,Holy Name,,
+309,KS,Lawrence,Billy Mills Middle School,Shana Poettker,Billy Mills Middle School,38.93485829999999,-95.239488
+310,NY,Briarcliff Manor,Briarcliff Middle School,Svetlana Ryzhik,Briarcliff Middle School,41.1343112,-73.8124093
+311,MS,Long Beach,Long Beach Middle School,TRENA ATTIPOE,Long Beach Middle School,30.359173,-89.1494633
+312,CA,Benicia,Benicia Middle School,Gregory Reed,Benicia Middle School,38.0690302,-122.1728571
+313,IN,Elkhart,Trinity Lutheran,Dawn Flatt,Trinity Lutheran,,
+314,OK,Altus,Altus Junior High (Howard),Shellie Howard,Altus Junior High,34.621755,-99.31773799999999
+315,IL,mount prospect,science academy of chicago,meral aycicek,science academy of chicago,42.025576,-87.943276
+316,TX,Dallas,Providence Christian School of Texas,Tim Ricchuiti,Providence Christian School of Texas,32.8504507,-96.8254697
+317,TX,Dallas,St. Elizabeth of Hungary Catholic School,Georgiana Simon,St. Elizabeth of Hungary Catholic School,32.6925736,-96.8576023
+318,NV,Reno,DYS Homeschool Co-op (K_Davi),Katie Davi,DYS Homeschool Co-op,39.5520055,-119.7775722
+319,KS,Olathe,Frontier Trail Middle School/USD 233,Julie Miller,Frontier Trail Middle School/USD 233,38.8704529,-94.7638556
+320,OK,Red Rock,Frontier Public School,Dana Scherman,Frontier Public School,36.4623751,-97.15901160000001
+321,NE,Falls City,Falls City Middle School,Terri Hogue,Falls City Middle School,40.0595443,-95.5997239
+322,OK,Tulsa,Holland Hall,Melissa Stirling,Holland Hall,,
+323,AL,Hoover,Hoover City Schools,Michele Ross,Hoover City Schools,33.40303460000001,-86.80696979999999
+324,WI,Milwaukee,St. Thomas Aquinas Academy,Lori Stolaski,St. Thomas Aquinas Academy,42.971751,-87.9058608
+325,CA,Anza,Hamilton School,Jennifer Halstead,Hamilton School,33.571056,-116.6567001
+326,PA,Gibsonia,Pine-Richland Middle School,Patty Cekella,Pine-Richland Middle School,40.6565582,-80.01396369999999
+327,IL,chicago,Taylor Elementary School,Elinor Sullivan,Taylor Elementary School,41.7153893,-87.53322519999999
+328,ID,Rathdrum,Lakeland Junior High School,Esther Mclean,Lakeland Junior High School,47.8148061,-116.8864338
+329,NJ,Newark,Dr. E. Alma Flagg,Joyce McCree,Dr. E. Alma Flagg,,
+330,CT,Fairfield,Fairfield Country Day School,Kristina Barnaby,Fairfield Country Day School,41.1726,-73.2911053
+331,NJ,Belleville,Belleville Middle School,Margaret Sabino,Belleville Middle School,40.7906753,-74.1522148
+332,MN,Rochester,Friedell Middle School,Greg Schoenbeck,Friedell Middle School,44.006049,-92.46214599999999
+333,AZ,Prescott Valley,Prescott Valley School,Lina Lett,Prescott Valley School,34.5820292,-112.299899
+334,HI,Kapolei,Kapolei Middle School,Kristine Lindstrom,Kapolei Middle School,21.3323609,-158.0576636
+335,TX,Houston,Memorial Lutheran School,Richard Gaub,Memorial Lutheran School,29.738873,-95.480149
+336,GA,Cumming,Cornerstone Schools,Jennifer Bartlett,Cornerstone Schools,34.2493012,-84.0623727
+337,CT,Voluntown,Voluntown Elementary School,Jackie Vaillancourt,Voluntown Elementary School,41.5744689,-71.8663487
+338,VA,Charlottesville,Village School,Tres Wells,Village School,38.0328137,-78.4789782
+339,HI,Honolulu,Punahou School (Chow-Hoy),Todd Chow-Hoy,Punahou School,21.3025124,-157.829891
+340,MO,Kansas City,The Barstow School,Charlotte Keith,The Barstow School,38.918111,-94.6051749
+341,FL,Largo,Morgan Fitzgerald Middle School Center For Gifted Studies,Diana Wolff,Morgan Fitzgerald Middle School Center For Gifted Studies,27.877326,-82.725858
+342,UT,Salt Lake City,Glendale Middle School,Marcie McIntosh,Glendale Middle School,40.7376923,-111.9303998
+343,IL,Chicago,Portage Park School (Volpe),Marisa Volpe,Portage Park School,41.9571504,-87.76110419999999
+344,IL,Chicago,Locke Elementary School (Foote),Robert Foote,Locke Elementary School,41.9317953,-87.7956842
+345,OR,Klamath Falls,Klamath County School District,Amy Hill,Klamath County School District,42.195788,-121.792485
+346,AL,Five Points,Five Points Elementary School,Mary Spence,Five Points Elementary School,33.0173639,-85.34353329999999
+347,DC,Washington,Saint Anselm's Abbey School,Christopher Battle,Saint Anselm's Abbey School,38.9474709,-76.9840627
+348,TX,Grapevine,Grapevine Faith Christian School,Cheryl Macdonald,Grapevine Faith Christian School,32.9335292,-97.06872480000001
+349,VA,Arlington,Swanson Middle School,Laura Partridge,Swanson Middle School,38.8832933,-77.13897960000001
+350,NC,Denver,Denver Christian Academy,Cynthia Matson,Denver Christian Academy,35.502153,-81.00009399999999
+351,NC,Cary,West Cary Middle School,William Slechta,West Cary Middle School,35.8014796,-78.7940986
+352,MT,Kalispell,Kalispell Middle School,Peter Musick,Kalispell Middle School,48.2158928,-114.333315
+353,MD,Beltsville,MLKMS Mathletes,Catherine Abbott,MLKMS Mathletes,,
+354,PA,Hatfield,Pennfield Middle School,Gerald Kerzmann,Pennfield Middle School,40.2727928,-75.311116
+355,OH,Dublin,Dublin Grizzell Middle School,April Lucas,Dublin Grizzell Middle School,40.1437345,-83.1662987
+356,NJ,Oakland,Valley Middle School,Kevin Jacobsen,Valley Middle School,41.02372829999999,-74.2466361
+357,NY,New York,Berkeley Carroll School,Sharona Kahn,Berkeley Carroll School,40.6756927,-73.97372829999999
+358,AZ,Gilbert,Mesquite Junior High School,Shanah Pugnetti,Mesquite Junior High School,33.3451776,-111.7934804
+359,CO,Thornton,Thornton Middle School (Gilbertson),Holly Gilbertson,Thornton Middle School,39.8675547,-104.9765271
+360,NJ,Edison,Woodrow Wilson Middle School,Deborah Jasper,Woodrow Wilson Middle School,40.5548903,-74.375236
+361,FL,Tampa,Hillsborough Academy of Math and Science,Greg Long,Hillsborough Academy of Math and Science,28.0301977,-82.5967356
+362,IA,Ames,Ames Middle School,Robert Alden,Ames Middle School,42.0132039,-93.6710489
+363,CA,Mountain View,Springer School,Warren Horowitz,Springer School,37.3713306,-122.0945358
+364,OH,Lakewood,Garfield Middle School,Barbara Lynch,Garfield Middle School,41.4857994,-81.7798068
+365,IL,Sherrard,Sherrard Junior High School,Kathy Felt,Sherrard Junior High School,41.3218376,-90.5034709
+366,NY,Turin,South Lewis Middle School,Lanette Liddiard,South Lewis Middle School,43.6361123,-75.39440929999999
+367,CA,Livermore,Joe Michell K-8 School,Meggin Hu,Joe Michell K-8 School,37.6690867,-121.7835359
+368,MS,Raymond,Raymond High School,Joyce Moore-dawson,Raymond High School,32.2456559,-90.438543
+369,NJ,Carlstadt,Carlstadt Public School,Kelly Ydrovo,Carlstadt Public School,40.84418420000001,-74.0942369
+370,NM,Albuquerque,Grant Middle School,Karen Robinson,Grant Middle School,35.091086,-106.541697
+371,AZ,Chandler,Arizona College Prep,Wendy Heun,Arizona College Prep,33.3102407,-111.8618261
+372,AL,Hoover,Bumpus Middle School,Aida Knox,Bumpus Middle School,33.3311625,-86.8545489
+373,IL,Oak Forest,ST DAMIAN SCHOOL (Kelly),JOANN KELLY,ST DAMIAN SCHOOL,41.610993,-87.749498
+374,SC,Florence,John W. Moore Middle School,Shelly Flud,John W. Moore Middle School,34.2023135,-79.85044189999999
+375,OK,Chickasha,Chickasha Middle School,Betsy Phillips,Chickasha Middle School,35.0406257,-97.94461109999999
+376,PA,Greencastle,Greencastle-Antrim Middle School,Andrew Geesaman,Greencastle-Antrim Middle School,39.7830756,-77.7241674
+377,AR,White Hall,White Hall Middle School,Kimberly Lambert,White Hall Middle School,34.27248489999999,-92.0912511
+378,DC,Washington,Hardy Middle School,Sarah Bax,Hardy Middle School,38.9154344,-77.0682288
+379,CA,Castro Valley,Canyon Middle School (Siu),Isabella Siu,Canyon Middle School,37.7054157,-122.0518942
+380,NE,Omaha,Holy Name School,James McDermott,Holy Name School,41.2859211,-95.98257939999999
+381,CA,Morgan Hill,Oakwood School,Karen Arnold,Oakwood School,37.1040607,-121.6345322
+382,NC,Advance,William Ellis Middle School,Stephen Rareshide,William Ellis Middle School,35.929299,-80.40717839999999
+383,NY,Whitestone,William H. Carr Junior High School #194,Julie Santaniello,William H. Carr Junior High School #194,40.78322,-73.806977
+384,PA,Lancaster,Lancaster Mennonite School,Rachael Thomas,Lancaster Mennonite School,40.0275048,-76.2271566
+385,NC,New Bern,The Epiphany School Of Global Studies,Wendy Hopkins,The Epiphany School Of Global Studies,35.1016211,-77.0743444
+386,IL,Niles,Logos Christian Academy,Ligia Comanescu,Logos Christian Academy,42.0138988,-87.79097660000001
+387,FL,Fort Walton Beach,Saint Mary,Susan Honsinger,Saint Mary,,
+388,FL,Orlando,Orlando Science Schools (Thomas),Samuel Thomas,Orlando Science Schools,28.5736647,-81.4129559
+389,PA,Bryn Mawr,The Baldwin School,Lynn Cohen,The Baldwin School,40.0227536,-75.3127275
+390,NJ,Hoboken,Hoboken Charter School,Christopher Kunkel,Hoboken Charter School,40.7384237,-74.0359562
+391,NM,Albuquerque,Holy Child Catholic School,Patrick McDaniel,Holy Child Catholic School,35.0822504,-106.3810719
+392,TN,Pleasant View,Pleasant View Christian School,Beth Grinder,Pleasant View Christian School,36.385157,-87.03683
+393,OH,Columbus,International Academy Of Columbus,Beverly Tracy,International Academy Of Columbus,40.0506509,-82.9812919
+394,CA,Scotts Valley,BCS,Rachel H,BCS,,
+395,NJ,Union,St Michael Parish School,Dawn Schugel,St Michael Parish School,40.7013785,-74.2701458
+396,IL,Chicago,Chicago Jewish Day School,Kate Burstein,Chicago Jewish Day School,41.9494269,-87.698555
+397,MA,Newtonville,Newton Chinese Language School,Ming Kang,Newton Chinese Language School,42.3536212,-71.18136849999999
+398,VA,Charlottesville,Burley Middle School,Robert Tupelo-Schneck,Burley Middle School,38.0396503,-78.4862912
+399,MO,St. Louis,St. Margaret Of Scotland Catholic School,Karen Kuppinger,St. Margaret Of Scotland Catholic School,38.6147268,-90.2474012
+400,IL,Downers Grove,St. Mary Of Gostyn School,Doreen Sloyan,St. Mary Of Gostyn School,41.8005486,-87.9971496
+401,TX,Mission,Kenneth White Junior High School,Adrian Chapa,Kenneth White Junior High School,26.230308,-98.3361535
+402,LA,Alexandria,Grace Christian School,Cheri Norton,Grace Christian School,31.2750902,-92.483175
+403,NJ,Short Hills,New Jersey Enrichment Academy (we also run Math Club at Millburn Middle School 2 days a week),Stela Anguelova,New Jersey Enrichment Academy,40.7244011,-74.3059461
+404,VA,Fairfax,Trinity Christian School,Michelle Hunt,Trinity Christian School,38.8337516,-77.3323187
+405,CA,Santa Barbara,Monte Vista,Janis Spracher,Monte Vista,,
+406,IL,Lake Forest,East Lake Academy,Jerrold Losch,East Lake Academy,42.2697502,-87.9036635
+407,OH,Madiera,St Gertrude School,Jeanne Cregan,St Gertrude School,39.1818611,-84.3662805
+408,OH,rocky river,Saint Christopher School,Kristin Dudas,Saint Christopher School,41.47729349999999,-81.8443788
+409,MS,Collinsville,West Lauderdale Middle School,Melissa Pogue,West Lauderdale Middle School,32.5284072,-88.82014769999999
+410,WA,Bellevue,Tillicum Middle School,Gregory Abbas,Tillicum Middle School,47.5988552,-122.1252355
+411,TN,Smyrna,Smyrna Middle School,Becky Shaffer,Smyrna Middle School,35.9707473,-86.52018079999999
+412,TN,Nashville,Ensworth School,Melissa Fogaros,Ensworth School,36.1245773,-86.8409502
+413,OH,Bethel,Bethel-Tate Middle School,Fay Wagner,Bethel-Tate Middle School,38.96443420000001,-84.0934035
+414,AZ,Cochise,Cochise Elementary School,Tina Mascarenas,Cochise Elementary School,32.112389,-109.920802
+415,TN,Bolivar,Bolivar Middle School (Sain),Deana Sain,Bolivar Middle School,35.2522676,-88.9999371
+416,NY,Uniondale,Kellenberg Memorial High School,Allyson Frisina,Kellenberg Memorial High School,40.7145739,-73.5820699
+417,IL,Burr Ridge,Trinity Lutheran School (Hammes),Neil Hammes,Trinity Lutheran School,41.7379947,-87.90392849999999
+418,MD,Walkersville,Walkersville Middle School (Silver),Evan Silver,Walkersville Middle School,39.4795843,-77.3538324
+419,NJ,Spotswood,Memorial Middle School,Stefanie Bromberg,Memorial Middle School,40.4004053,-74.3894562
+420,MO,Paris,Paris Junior High School,Deb Rinz,Paris Junior High School,33.6403448,-95.53326779999999
+421,MA,Marblehead,Marblehead Community Charter Public School,Ellen Lodgen,Marblehead Community Charter Public School,42.5084299,-70.8531268
+422,NE,Bellevue,Mission Middle School,Sarah Juarez,Mission Middle School,41.1367623,-95.89707419999999
+423,WA,Richland,Carmichael Middle School,Michelle Gotthold,Carmichael Middle School,46.2740257,-119.2889334
+424,SD,Mellette,Northwestern Area School District,Allison Schmitz,Northwestern Area School District,45.1559264,-98.5002159
+425,FL,Citra,North Marion Middle School,William Lockley,North Marion Middle School,29.332489,-82.1622709
+426,TX,Houston,The Banff School (Sindhu),Sophie Sindhu,The Banff School,29.9774561,-95.53820329999999
+427,ND,Hunter,Northern Cass School,Nicole Severance,Northern Cass School,47.1534017,-97.1092218
+428,VT,Manchester Center,Manchester Middle School,Scott Diedrich,Manchester Middle School,43.178738,-73.05373399999999
+429,MI,Plymouth,East Middle School,Melanie Formosa,East Middle School,42.3627017,-83.4617675
